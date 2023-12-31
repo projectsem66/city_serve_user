@@ -1,5 +1,10 @@
+import 'package:city_serve/src/signUp.dart';
+import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -23,19 +28,23 @@ class _LoginState extends State<Login> {
                   height: dimension.height40,
                 ),
                 Center(
-                    child: Text(
-                  "Login",
-                  style: dimension.style30,
-                )),
+                  child: Text(
+                    "Login",
+                    style: GoogleFonts.amaranth(
+                        color: AppColors.Colorq, fontSize: dimension.height35),
+                  ),
+                ),
                 SizedBox(
                   height: dimension.height35,
                 ),
                 Container(
-                  color: Colors.grey.shade200,
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -46,7 +55,10 @@ class _LoginState extends State<Login> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
-                      labelStyle: dimension.style20,
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey.shade400),
@@ -63,7 +75,9 @@ class _LoginState extends State<Login> {
                   height: dimension.height15,
                 ),
                 Container(
-                  color: Colors.grey.shade200,
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
@@ -78,7 +92,10 @@ class _LoginState extends State<Login> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
-                      labelStyle: dimension.style20,
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.grey.shade400),
@@ -99,24 +116,37 @@ class _LoginState extends State<Login> {
                     Spacer(),
                     Text(
                       "Forgot Password? ",
-                      style: dimension.style18,
+                      style: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),
                 SizedBox(
                   height: dimension.height20,
                 ),
-                Container(
-                  height: dimension.height50,
-                  width: double.maxFinite,
-                  child: Center(
+                Bounce(
+                  duration: Duration(milliseconds: 400),
+                  onPressed: () {
+                    print("tapped");
+                    Get.to(() => SignUp());
+                  },
+                  child: Container(
+                    height: dimension.height50,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: Center(
                       child: Text(
-                    "Sign In",
-                    style: dimension.style20,
-                  )),
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(5)),
+                        "Sign In",
+                        style: GoogleFonts.amaranth(
+                            fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: dimension.height35,
@@ -127,11 +157,19 @@ class _LoginState extends State<Login> {
                   children: [
                     Text(
                       "Don't have an account? ",
-                      style: dimension.style15,
+                      style: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300),
                     ),
                     Text(
                       "Sign up",
-                      style: dimension.style15,
+                      style: GoogleFonts.amaranth(
+                        color: AppColors.Colorq,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ],
                 )),
@@ -143,26 +181,25 @@ class _LoginState extends State<Login> {
                     Expanded(
                       flex: 1,
                       child: Divider(
-                        height: 2,
                         thickness: 1,
-                        color: Colors.black,
+                        color: AppColors.Colorq,
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "   Or Continue With",
-                        style: TextStyle(
-                          color: Color(0xff222831),
-                        ),
+                        " Or continue with",
+                        style: GoogleFonts.amaranth(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.font15,
+                            fontWeight: FontWeight.w300),
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: Divider(
-                        height: 2,
                         thickness: 1,
-                        color: Colors.black,
+                        color: AppColors.Colorq,
                       ),
                     ),
                   ],
@@ -173,6 +210,9 @@ class _LoginState extends State<Login> {
                 Container(
                   height: dimension.height50,
                   width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
                   child: Row(
                     children: [
                       Padding(
@@ -189,14 +229,17 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       SizedBox(
-                        width: dimension.width40,
+                        width: dimension.width28,
                       ),
-                      Text("Sign in with google")
+                      Text(
+                        "Sign in with google",
+                        style: GoogleFonts.amaranth(
+                            color: AppColors.Colorq,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w300),
+                      )
                     ],
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(5)),
                 ),
                 SizedBox(
                   height: dimension.height15,
@@ -204,30 +247,36 @@ class _LoginState extends State<Login> {
                 Container(
                   height: dimension.height50,
                   width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Container(
                           height: dimension.height80,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle, color: Colors.black12),
                           child: Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.all(6.0),
                             child: Image.asset("assets/logo/callLogo.png",
                                 height: dimension.height50),
                           ),
                         ),
                       ),
                       SizedBox(
-                        width: dimension.width40,
+                        width: dimension.width30,
                       ),
-                      Text("Sign in with OTP")
+                      Text(
+                        "Sign in with OTP",
+                        style: GoogleFonts.amaranth(
+                            color: AppColors.Colorq,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w300),
+                      )
                     ],
                   ),
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(5)),
                 ),
               ],
             ),
