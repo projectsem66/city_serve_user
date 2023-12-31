@@ -23,7 +23,7 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               children: [
                 SizedBox(
-                  height: dimension.height20,
+                  height: dimension.height65,
                 ),
                 Container(
                   height: dimension.height90,
@@ -31,13 +31,13 @@ class _SignUpState extends State<SignUp> {
                       shape: BoxShape.circle, color: AppColors.Colorq),
                 ),
                 SizedBox(
-                  height: dimension.height30,
+                  height: dimension.height25,
                 ),
                 Center(
                   child: Text(
                     "Create Your Account",
                     style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq, fontSize: dimension.height25),
+                        color: AppColors.Colorq, fontSize: dimension.height24),
                   ),
                 ),
                 SizedBox(
@@ -45,14 +45,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -63,7 +62,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: "First Name",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
@@ -82,14 +81,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -100,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Last Name",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
@@ -119,14 +117,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -137,11 +134,11 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Email Address",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -156,14 +153,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -174,11 +170,11 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Mobile Number",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -193,14 +189,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -211,11 +206,11 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Password",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -230,14 +225,13 @@ class _SignUpState extends State<SignUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
@@ -248,11 +242,11 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Confirm Password",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(

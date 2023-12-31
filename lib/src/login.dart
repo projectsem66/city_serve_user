@@ -25,39 +25,39 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: dimension.height40,
+                  height: dimension.height70,
                 ),
                 Center(
                   child: Text(
                     "Login",
                     style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq, fontSize: dimension.height34),
+                        color: AppColors.Colorq, fontSize: dimension.height36),
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height35,
+                  height: dimension.height50,
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
                       setState(() {});
                     },
                     decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.email_outlined),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
@@ -76,25 +76,25 @@ class _LoginState extends State<Login> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: const TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                     onChanged: (value) {
                       setState(() {});
                     },
                     decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.password),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
                       labelStyle: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
+                          fontSize: 17,
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
@@ -109,7 +109,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height15,
+                  height: dimension.height12,
                 ),
                 Row(
                   children: [
@@ -118,8 +118,9 @@ class _LoginState extends State<Login> {
                       "Forgot Password? ",
                       style: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w300),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w300,
+                      fontStyle: FontStyle.italic),
                     ),
                   ],
                 ),
@@ -169,6 +170,7 @@ class _LoginState extends State<Login> {
                         fontSize: 15,
                         fontWeight: FontWeight.w300,
                         decoration: TextDecoration.underline,
+                          fontStyle: FontStyle.italic,
                       ),
                     ),
                   ],
@@ -188,7 +190,7 @@ class _LoginState extends State<Login> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        " Or continue with",
+                        " Or Continue With",
                         style: GoogleFonts.amaranth(
                             color: AppColors.Colorq,
                             fontSize: dimension.font15,
@@ -211,7 +213,7 @@ class _LoginState extends State<Login> {
                   height: dimension.height50,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
+                      color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: Row(
                     children: [
@@ -232,7 +234,7 @@ class _LoginState extends State<Login> {
                         width: dimension.width28,
                       ),
                       Text(
-                        "Sign in with google",
+                        "Sign In With Google",
                         style: GoogleFonts.amaranth(
                             color: AppColors.Colorq,
                             fontSize: 17,
@@ -248,7 +250,7 @@ class _LoginState extends State<Login> {
                   height: dimension.height50,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                    color: AppColors.Colorq.withOpacity(0.1),
+                    color: AppColors.Colorq.withOpacity(0.05),
                     borderRadius: BorderRadius.circular(7),
                   ),
                   child: Row(
@@ -270,7 +272,7 @@ class _LoginState extends State<Login> {
                         width: dimension.width30,
                       ),
                       Text(
-                        "Sign in with OTP",
+                        "Sign In With OTP",
                         style: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
                           fontSize: 17,
