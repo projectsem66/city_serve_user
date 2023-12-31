@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
                   child: Text(
                     "Login",
                     style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq, fontSize: dimension.height34),
+                        color: AppColors.Colorq, fontSize: dimension.height35),
                   ),
                 ),
                 SizedBox(
