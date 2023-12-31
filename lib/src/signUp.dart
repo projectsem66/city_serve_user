@@ -1,5 +1,9 @@
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../utils/colors.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -15,191 +19,275 @@ class _SignUpState extends State<SignUp> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Container(
-                height: dimension.height80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: Colors.blueAccent),
-              ),
-              SizedBox(
-                height: dimension.height30,
-              ),
-              Text("Create Your Acoount"),
-              SizedBox(
-                height: dimension.height20,
-              ),
-              Container(
-                color: Colors.grey.shade200,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: dimension.height20,
+                ),
+                Container(
+                  height: dimension.height90,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: AppColors.Colorq),
+                ),
+                SizedBox(
+                  height: dimension.height30,
+                ),
+                Center(
+                  child: Text(
+                    "Create Your Account",
+                    style: GoogleFonts.amaranth(
+                        color: AppColors.Colorq, fontSize: dimension.height25),
                   ),
-                  onChanged: (value) {
-                    setState(() {});
+                ),
+                SizedBox(
+                  height: dimension.height25,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "First Name",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.Colorq),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height12,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "Last Name",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.Colorq),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height12,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "Email Address",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height12,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "Mobile Number",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height12,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "Password",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height20,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(7)),
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                    decoration: InputDecoration(
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      labelText: "Confirm Password",
+                      labelStyle: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300),
+                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height20,
+                ),
+                Bounce(
+                  duration: Duration(milliseconds: 400),
+                  onPressed: () {
+                    print("tapped");
                   },
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: "First Name",
-                    labelStyle: dimension.style20,
-                    contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5.0),
+                  child: Container(
+                    height: dimension.height50,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(7),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: dimension.height12,
-              ),
-              Container(
-                color: Colors.grey.shade200,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: "Last Name",
-                    labelStyle: dimension.style20,
-                    contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.0),
+                    child: Center(
+                      child: Text(
+                        "Sign In",
+                        style: GoogleFonts.amaranth(
+                            fontSize: 20, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: dimension.height12,
-              ),
-              Container(
-                color: Colors.grey.shade200,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: "E-mail",
-                    labelStyle: dimension.style20,
-                    contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: dimension.height12,
-              ),
-              Container(
-                color: Colors.grey.shade200,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: "Contact No",
-                    labelStyle: dimension.style20,
-                    contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: dimension.height12,
-              ),
-              Container(
-                color: Colors.grey.shade200,
-                child: TextFormField(
-                  keyboardType: TextInputType.text,
-                  cursorColor: Colors.black,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                  decoration: InputDecoration(
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelText: "Password",
-                    labelStyle: dimension.style20,
-                    contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey.shade400),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: dimension.height20,
-              ),
-              Container(
-                height: dimension.height50,
-                width: double.maxFinite,
-                child: Center(
-                  child: Text("Sign Up"),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade600,
-                    borderRadius: BorderRadius.circular(5)),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

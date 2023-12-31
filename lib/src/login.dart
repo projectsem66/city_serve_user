@@ -248,8 +248,9 @@ class _LoginState extends State<Login> {
                   height: dimension.height50,
                   width: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(7)),
+                    color: AppColors.Colorq.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(7),
+                  ),
                   child: Row(
                     children: [
                       Padding(
@@ -271,10 +272,11 @@ class _LoginState extends State<Login> {
                       Text(
                         "Sign in with OTP",
                         style: GoogleFonts.amaranth(
-                            color: AppColors.Colorq,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w300),
-                      )
+                          color: AppColors.Colorq,
+                          fontSize: 17,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
                     ],
                   ),
                 ),
