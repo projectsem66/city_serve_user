@@ -146,33 +146,33 @@ class _LoginState extends State<Login> {
                 ),
                 Center(
                     child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: GoogleFonts.amaranth(
-                          color: AppColors.Colorq,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
-                    Bounce(
-                      duration: Duration(milliseconds: 400),
-                      onPressed: () {
-                        print("tapped");
-                        Get.to(() => SignUp());
-                      },
-                      child: Text(
-                        "Sign up",
-                        style: GoogleFonts.amaranth(
-                          color: AppColors.Colorq,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.underline,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account? ",
+                          style: GoogleFonts.amaranth(
+                              color: AppColors.Colorq,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300),
                         ),
-                      ),
-                    ),
-                  ],
-                )),
+                        Bounce(
+                          duration: Duration(milliseconds: 400),
+                          onPressed: () {
+                            print("tapped");
+                            Get.to(() => SignUp());
+                          },
+                          child: Text(
+                            "Sign up",
+                            style: GoogleFonts.amaranth(
+                              color: AppColors.Colorq,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
                 SizedBox(
                   height: dimension.height24,
                 ),
