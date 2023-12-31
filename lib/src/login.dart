@@ -126,25 +126,18 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: dimension.height20,
                 ),
-                Bounce(
-                  duration: Duration(milliseconds: 400),
-                  onPressed: () {
-                    print("tapped");
-                    Get.to(() => SignUp());
-                  },
-                  child: Container(
-                    height: dimension.height50,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.9),
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Sign In",
-                        style: GoogleFonts.amaranth(
-                            fontSize: 20, color: Colors.white),
-                      ),
+                Container(
+                  height: dimension.height50,
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    color: AppColors.Colorq.withOpacity(0.9),
+                    borderRadius: BorderRadius.circular(7),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Sign In",
+                      style: GoogleFonts.amaranth(
+                          fontSize: 20, color: Colors.white),
                     ),
                   ),
                 ),
@@ -162,13 +155,20 @@ class _LoginState extends State<Login> {
                           fontSize: 15,
                           fontWeight: FontWeight.w300),
                     ),
-                    Text(
-                      "Sign up",
-                      style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                        decoration: TextDecoration.underline,
+                    Bounce(
+                      duration: Duration(milliseconds: 400),
+                      onPressed: () {
+                        print("tapped");
+                        Get.to(() => SignUp());
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ],
