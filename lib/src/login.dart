@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                   ],
                 )),
                 SizedBox(
-                  height: dimension.height25,
+                  height: dimension.height24,
                 ),
                 Row(
                   children: [
