@@ -154,27 +154,27 @@ class _LoginState extends State<Login> {
                 ),
                 Center(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't have an account? ",
-                          style: GoogleFonts.amaranth(
-                              color: AppColors.Colorq,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w300),
-                        ),
-                        Text(
-                          "Sign up",
-                          style: GoogleFonts.amaranth(
-                            color: AppColors.Colorq,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w300,
-                            decoration: TextDecoration.underline,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ],
-                    )),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300),
+                    ),
+                    Text(
+                      "Sign up",
+                      style: GoogleFonts.amaranth(
+                        color: AppColors.Colorq,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300,
+                        decoration: TextDecoration.underline,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                )),
                 SizedBox(
                   height: dimension.height24,
                 ),

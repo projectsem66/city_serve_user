@@ -1,5 +1,6 @@
 import 'package:city_serve/src/first/one.dart';
 import 'package:city_serve/src/login.dart';
+import 'package:city_serve/src/page/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
