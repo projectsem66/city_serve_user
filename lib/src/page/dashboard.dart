@@ -11,6 +11,12 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
+List sliderImages = [
+  "assets/dashboard/slider1.jpg",
+  "assets/dashboard/slider2.jpg",
+  "assets/dashboard/slider3.jpg",
+];
+
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
@@ -22,39 +28,35 @@ class _DashboardState extends State<Dashboard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: screenwidth(),
-                  child: CarouselSlider.builder(
-                    carouselController: CarouselController(),
-                    itemCount: 3,
-                    itemBuilder: (context, index, realIndex) {
-                      return Container(
-                        height: dimension.height70,
-                        width: screenwidth() - 10,
-                        decoration: BoxDecoration(
-                            color: AppColors.Colorq.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(7)),
-                      );
+                CarouselSlider.builder(
+                  carouselController: CarouselController(),
+                  itemCount: 3,
+                  itemBuilder: (context, index, realIndex) {
+                    return Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: AssetImage(sliderImages[index]))),
+                    );
+                  },
+                  options: CarouselOptions(
+                    autoPlay: false,
+                    enlargeFactor: 0.2,
+                    scrollDirection: Axis.horizontal,
+                    autoPlayInterval: Duration(seconds: 8),
+                    autoPlayCurve: Curves.ease,
+                    enableInfiniteScroll: true,
+                    height: dimension.height100 * 2,
+                    viewportFraction: 1,
+                    enlargeCenterPage: true,
+                    autoPlayAnimationDuration: const Duration(seconds: 4),
+                    animateToClosest: true,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        // _currentIndex = index;
+                        print(index);
+                      });
                     },
-                    options: CarouselOptions(
-                      autoPlay: false,
-                      enlargeFactor: 0.2,
-                      scrollDirection: Axis.horizontal,
-                      // autoPlayInterval: Duration(seconds: 1),
-                      autoPlayCurve: Curves.ease,
-                      enableInfiniteScroll: true,
-                      height: dimension.height100 * 2,
-                      viewportFraction: 1,
-                      enlargeCenterPage: true,
-                      autoPlayAnimationDuration: const Duration(seconds: 3),
-                      animateToClosest: true,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          // _currentIndex = index;
-                          print(index);
-                        });
-                      },
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -184,7 +186,7 @@ class _DashboardState extends State<Dashboard> {
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           height: 200,
                           width: 130,
@@ -209,19 +211,20 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: dimension.height15,
                 ),
-                Container(
+                SizedBox(
                   height: 120,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           width: 120,
                           decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
+                            color: AppColors.Colorq.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(7),
+                          ),
                         ),
                       );
                     },
@@ -240,14 +243,14 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: dimension.height15,
                 ),
-                Container(
+                SizedBox(
                   height: 135,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           width: 135,
                           decoration: BoxDecoration(
@@ -271,14 +274,14 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: dimension.height15,
                 ),
-                Container(
+                SizedBox(
                   height: 145,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 2,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           width: 145,
                           decoration: BoxDecoration(
@@ -302,14 +305,14 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: dimension.height15,
                 ),
-                Container(
+                SizedBox(
                   height: 135,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           width: 135,
                           decoration: BoxDecoration(
@@ -333,14 +336,14 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: dimension.height15,
                 ),
-                Container(
+                SizedBox(
                   height: 155,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: EdgeInsets.only(right: dimension.width5),
                         child: Container(
                           width: 145,
                           decoration: BoxDecoration(

@@ -1,8 +1,8 @@
-import 'package:city_serve/src/first/one.dart';
-import 'package:city_serve/src/login.dart';
 import 'package:city_serve/src/page/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+import 'navigationBar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: OnePage()
+      home: NavigationBarr(),
     );
   }
 }
