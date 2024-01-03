@@ -1,7 +1,3 @@
-import 'package:city_serve/src/first/four.dart';
-import 'package:city_serve/src/first/one.dart';
-import 'package:city_serve/src/first/three.dart';
-import 'package:city_serve/src/first/two.dart';
 import 'package:city_serve/src/page/account.dart';
 import 'package:city_serve/src/page/bookings.dart';
 import 'package:city_serve/src/page/category.dart';
@@ -42,7 +38,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         showSelectedLabels: true,
-        selectedIconTheme: IconThemeData(color: Colors.black87, shadows: []),
+        selectedIconTheme: IconThemeData(color: AppColors.Colorq, shadows: []),
         unselectedIconTheme:
             IconThemeData(color: AppColors.Colorq.withOpacity(0.7)),
         selectedItemColor: AppColors.Colorq,
