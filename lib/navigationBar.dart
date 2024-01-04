@@ -1,84 +1,87 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:city_serve/src/page/account.dart';
+import 'package:city_serve/src/page/bookings.dart';
+import 'package:city_serve/src/page/category.dart';
+import 'package:city_serve/src/page/dashboard.dart';
+import 'package:city_serve/src/page/studio.dart';
+import 'package:city_serve/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:friends/profile/Profile_page.dart';
-
-import 'discover.dart';
-import 'friendzy.dart';
-import 'matches.dart';
-import 'message.dart';
-
-// List pages = [
-//   DiscoverPage(),
-//   matches(),
-//   message(),
-// ];
-final btmNaviScr = [
-  FriendzyPage(),
-  message(),
-  const matches(),
-  DiscoverPage(),
-  profile_page(),
-];
-int _currentIndex = 2;
 
 class NavigationBarr extends StatefulWidget {
-  NavigationBarr({super.key});
+  const NavigationBarr({super.key});
 
   @override
   State<NavigationBarr> createState() => _NavigationBarrState();
 }
 
 class _NavigationBarrState extends State<NavigationBarr> {
-  // const NavigationBar({super.key});
+  int _selectedIndex = 0;
+  List<Widget> pages = const [
+    Text("CS"),
+    Text("CS"),
+    Text("CS"),
+    Text("CS"),
+  ];
+  final btmNaviScr = [
+    Dashboard(),
+    Bookings(),
+    Categoryy(),
+    Studio(),
+    Account(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: btmNaviScr[_currentIndex],
-      bottomNavigationBar: CurvedNavigationBar(
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          height: 51,
-          index: _currentIndex,
-          // index: items[Index],
-          // onTap: (value) {
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(builder: (context) => pages[value]),
-          //   );
-          // },
-          color: Color(0xffDD88CF),
-          backgroundColor: Colors.transparent,
-          animationDuration: Duration(milliseconds: 240),
-          buttonBackgroundColor: Color(0xcc4B164C),
-          animationCurve: Curves.easeOutExpo,
-          items: [
-            // Icon(Icons.home_filled,color: Colors.white),
-
-            Icon(
-              Icons.home_filled,
-              color: Colors.white,
+      body: SafeArea(
+        child: btmNaviScr[_selectedIndex],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        showSelectedLabels: true,
+        selectedIconTheme: IconThemeData(color: AppColors.Colorq, shadows: []),
+        unselectedIconTheme:
+            IconThemeData(color: AppColors.Colorq.withOpacity(0.7)),
+        selectedItemColor: AppColors.Colorq,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: "Home"),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.event_note,
             ),
-            Icon(
-              Icons.message,
-              color: Colors.white,
+            label: "Bookings",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.category_outlined,
             ),
-            Icon(
-              Icons.call,
-              color: Colors.white,
+            label: "Category",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.store_mall_directory_outlined,
             ),
-            Icon(
-              Icons.search,
-              color: Colors.white,
+            label: "Studio",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_circle_outlined,
             ),
-            Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-          ]),
+            label: "Account",
+          ),
+        ],
+        onTap: (index) {
+          setState(
+            () {
+              print("navigation page:" + _selectedIndex.toString());
+              _selectedIndex = index;
+            },
+          );
+        },
+      ),
     );
   }
 }
