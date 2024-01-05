@@ -20,76 +20,94 @@ class _TwoPageState extends State<TwoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(18.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height: dimension.height100 * 5,
-                width: double.maxFinite,
-                color: AppColors.Colorq.withOpacity(0.6),
-              ),
-              SizedBox(
-                height: dimension.height20,
-              ),
-              Text(
-                "Find your service",
-                style: GoogleFonts.amaranth(
-                    color: AppColors.Colorq,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w300),
-              ),
-              SizedBox(
-                height: dimension.height20,
-              ),
-              Text(
-                "find a service as per your Preference",
-                style: GoogleFonts.amaranth(
-                    color: AppColors.Colorq,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300),
-              ),
-              Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Bounce(
-                    duration: Duration(milliseconds: 400),
-                    onPressed: () {
-                      print("tapped");
-                      Get.to(() => Login(),transition: Transition.downToUp);
-                    },
-                    child: Text(
-                      "Skip",
-                      style: GoogleFonts.amaranth(
+        child: Stack(
+          children: [
+            Container(
+              height: screenheight(),
+              width: screenwidth(),
+              child:
+                  Image(image: AssetImage("assets/two.jpg"), fit: BoxFit.cover),
+            ),
+            Align(
+              alignment: AlignmentDirectional.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 155,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Container(
+                      //   height: dimension.height100 * 5,
+                      //   width: double.maxFinite,
+                      //   color: AppColors.Colorq.withOpacity(0.6),
+                      // ),
+                      Text(
+                        "Find your service",
+                        style: GoogleFonts.amaranth(
                           color: AppColors.Colorq,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
-                  ),
-                  Bounce(
-                    duration: Duration(milliseconds: 400),
-                    onPressed: () {
-                      print("tapped");
-                      Get.to(() => ThreePage(),transition: Transition.rightToLeft);
-                    },
-                    child: Text(
-                      "Next",
-                      style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w300,
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        height: dimension.height20,
+                      ),
+                      Text(
+                        "find a service as per your Preference\n",
+                        style: GoogleFonts.amaranth(
+                            color: AppColors.Colorq,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w300),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Bounce(
+                            duration: Duration(milliseconds: 400),
+                            onPressed: () {
+                              print("tapped");
+                              Get.to(() => Login(),
+                                  transition: Transition.downToUp);
+                            },
+                            child: Text(
+                              "Skip",
+                              style: GoogleFonts.amaranth(
+                                  color: AppColors.Colorq,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300),
+                            ),
+                          ),
+                          Bounce(
+                            duration: Duration(milliseconds: 400),
+                            onPressed: () {
+                              print("tapped");
+                              Get.to(() => ThreePage(),
+                                  transition: Transition.rightToLeft);
+                            },
+                            child: Text(
+                              "Next",
+                              style: GoogleFonts.amaranth(
+                                color: AppColors.Colorq,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: dimension.height10,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-              SizedBox(
-                height: dimension.height10,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

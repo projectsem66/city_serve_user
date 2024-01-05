@@ -212,18 +212,35 @@ class _DashboardState extends State<Dashboard> {
                   height: dimension.height15,
                 ),
                 SizedBox(
-                  height: 120,
+                  height: dimension.height100 * 2,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: dimension.width5),
-                        child: Container(
-                          width: 120,
-                          decoration: BoxDecoration(
-                            color: AppColors.Colorq.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(7),
+                      return Container(
+                        // height: 300,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: dimension.width5),
+                          child: Column(
+                            children: [
+                              Container(
+                                height:
+                                    dimension.height100 + dimension.height20,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                              ),
+                              Container(
+                                height: dimension.height80,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
@@ -306,18 +323,37 @@ class _DashboardState extends State<Dashboard> {
                   height: dimension.height15,
                 ),
                 SizedBox(
-                  height: 135,
+                  height: dimension.height100 * 2,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: dimension.width5),
-                        child: Container(
-                          width: 135,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
+                      return Container(
+                        width: 135,
+                        // height: 300,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: dimension.width5),
+                          child: Column(
+                            children: [
+                              Container(
+                                height:
+                                    dimension.height100 + dimension.height20,
+                                width: 135,
+                                decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                              ),
+                              Container(
+                                height: dimension.height80,
+                                width: 135,
+                                decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(7),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -329,9 +365,10 @@ class _DashboardState extends State<Dashboard> {
                 Text(
                   "AC & appliance repairs",
                   style: GoogleFonts.amaranth(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height25,
+                    fontWeight: FontWeight.w100,
+                  ),
                 ),
                 SizedBox(
                   height: dimension.height15,
