@@ -1,3 +1,4 @@
+import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
@@ -131,7 +132,7 @@ class _LoginState extends State<Login> {
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
                     print("tapped");
-                    Get.to(() => SignUp());
+                    Get.to(() => Dashboard());
                   },
                   child: Container(
                     height: dimension.height50,
@@ -163,14 +164,21 @@ class _LoginState extends State<Login> {
                           fontSize: 15,
                           fontWeight: FontWeight.w300),
                     ),
-                    Text(
-                      "Sign up",
-                      style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                        decoration: TextDecoration.underline,
-                        fontStyle: FontStyle.italic,
+                    Bounce(
+                      duration: Duration(milliseconds: 400),
+                      onPressed: () {
+                        print("tapped");
+                        Get.to(() => SignUp());
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: GoogleFonts.amaranth(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                          decoration: TextDecoration.underline,
+                          fontStyle: FontStyle.italic,
+                        ),
                       ),
                     ),
                   ],

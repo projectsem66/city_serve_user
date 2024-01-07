@@ -1,6 +1,9 @@
+import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/colors.dart';
@@ -262,7 +265,7 @@ class _SignUpState extends State<SignUp> {
                 Bounce(
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
-                    print("tapped");
+                    Get.to(Dashboard());
                   },
                   child: Container(
                     height: dimension.height50,
