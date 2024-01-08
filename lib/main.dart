@@ -1,5 +1,4 @@
-
-import 'package:city_serve/src/page/category.dart';
+import 'package:city_serve/src/first/one.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Categoryy(),
+      home: OnePage(),
     );
   }
 }

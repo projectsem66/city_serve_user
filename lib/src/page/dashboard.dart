@@ -1,7 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:city_serve/src/page/search.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
@@ -34,9 +38,10 @@ class _DashboardState extends State<Dashboard> {
                   itemBuilder: (context, index, realIndex) {
                     return Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                              image: AssetImage(sliderImages[index]))),
+                              image: AssetImage(sliderImages[index]),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(7)),
                     );
                   },
                   options: CarouselOptions(
@@ -67,17 +72,18 @@ class _DashboardState extends State<Dashboard> {
                       color: AppColors.Colorq.withOpacity(0.05),
                       borderRadius: BorderRadius.circular(7)),
                   child: TextFormField(
+                    onTap: () {
+                      Get.to(SearchPage());
+
+                    },
                     keyboardType: TextInputType.text,
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                     ),
-                    onChanged: (value) {
-                      setState(() {});
-                    },
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: Icon(Icons.search, color: AppColors.Colorq),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintText: "Search here..",
                       hintStyle: GoogleFonts.amaranth(

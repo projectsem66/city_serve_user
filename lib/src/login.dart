@@ -53,7 +53,7 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.email_outlined),
+                      suffixIcon: Icon(Icons.email_outlined,color: AppColors.Colorq,),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
                       labelStyle: GoogleFonts.amaranth(
@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.password),
+                      suffixIcon: Icon(Icons.password,color: AppColors.Colorq),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
                       labelStyle: GoogleFonts.amaranth(
