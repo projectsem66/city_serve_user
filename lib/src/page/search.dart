@@ -39,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
                   hintText: "Search here..",
                   hintStyle: GoogleFonts.poppins(
                       color: AppColors.Colorq,
-                      fontSize: 17,
+                      fontSize: 16,
                       fontWeight: FontWeight.w300),
                   contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                   focusedBorder: OutlineInputBorder(
@@ -57,7 +57,7 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(height: 10),
             Text(
               "Trending search",
-              style: GoogleFonts.ubuntu(
+              style: GoogleFonts.poppins(
                   color: AppColors.Colorq,
                   fontSize: dimension.height15,
                   fontWeight: FontWeight.w300),
@@ -79,14 +79,14 @@ class _SearchPageState extends State<SearchPage> {
                           Icon(
                             Icons.trending_up,
                             color: AppColors.Colorq,
-                            size: 20,
+                            size: 18,
                           ),
                           SizedBox(
                             width: 7,
                           ),
                           Text(
                             "Plumber",
-                            style: GoogleFonts.ubuntu(),
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),
@@ -107,14 +107,14 @@ class _SearchPageState extends State<SearchPage> {
                           Icon(
                             Icons.trending_up,
                             color: AppColors.Colorq,
-                            size: 20,
+                            size: 18,
                           ),
                           SizedBox(
                             width: 7,
                           ),
                           Text(
-                            "Electrician",
-                            style: GoogleFonts.ubuntu(),
+                            "Hair Artist",
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),
@@ -135,14 +135,14 @@ class _SearchPageState extends State<SearchPage> {
                           Icon(
                             Icons.trending_up,
                             color: AppColors.Colorq,
-                            size: 20,
+                            size: 18,
                           ),
                           SizedBox(
                             width: 7,
                           ),
                           Text(
-                            "Electrician",
-                            style: GoogleFonts.ubuntu(),
+                            "Painter",
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),
@@ -163,14 +163,14 @@ class _SearchPageState extends State<SearchPage> {
                           Icon(
                             Icons.trending_up,
                             color: AppColors.Colorq,
-                            size: 20,
+                            size: 18,
                           ),
                           SizedBox(
                             width: 7,
                           ),
                           Text(
                             "Electrician",
-                            style: GoogleFonts.ubuntu(),
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),
@@ -191,14 +191,14 @@ class _SearchPageState extends State<SearchPage> {
                           Icon(
                             Icons.trending_up,
                             color: AppColors.Colorq,
-                            size: 20,
+                            size: 18,
                           ),
                           SizedBox(
                             width: 7,
                           ),
                           Text(
-                            "Electrician",
-                            style: GoogleFonts.ubuntu(),
+                            "Carpenter",
+                            style: GoogleFonts.poppins(),
                           ),
                         ],
                       ),

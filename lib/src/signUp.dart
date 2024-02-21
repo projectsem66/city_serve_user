@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp> {
                   child: Text(
                     "Create Your Account",
                     style: GoogleFonts.poppins(
-                        color: AppColors.Colorq, fontSize: dimension.height24),
+                        color: AppColors.Colorq, fontSize: dimension.height22),
                   ),
                 ),
                 SizedBox(

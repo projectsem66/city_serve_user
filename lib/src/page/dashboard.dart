@@ -156,7 +156,7 @@ class _DashboardState extends State<Dashboard> {
                                       child: Text(
                                         "Spa for \n men",
                                         style:
-                                            GoogleFonts.poppins(fontSize: 17),
+                                            GoogleFonts.poppins(fontSize: 16),
                                       ),
                                     ),
                                     Spacer(),
@@ -194,7 +194,7 @@ class _DashboardState extends State<Dashboard> {
                                       child: Text(
                                         "Spa for\nWomen",
                                         style:
-                                            GoogleFonts.poppins(fontSize: 17),
+                                            GoogleFonts.poppins(fontSize: 16),
                                       ),
                                     ),
                                   ],
@@ -495,7 +495,7 @@ class _DashboardState extends State<Dashboard> {
                     "Most booked service",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
-                        fontSize: dimension.height25,
+                        fontSize: dimension.height22,
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
@@ -579,8 +579,8 @@ class _DashboardState extends State<Dashboard> {
                     "Spa for women",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
-                        fontSize: dimension.height25,
-                        fontWeight: FontWeight.w100),
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -610,8 +610,8 @@ class _DashboardState extends State<Dashboard> {
                     "Cleaning & post control",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
-                        fontSize: dimension.height25,
-                        fontWeight: FontWeight.w100),
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -641,8 +641,8 @@ class _DashboardState extends State<Dashboard> {
                     "Quick home repairs",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
-                        fontSize: dimension.height25,
-                        fontWeight: FontWeight.w100),
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -691,8 +691,8 @@ class _DashboardState extends State<Dashboard> {
                     "AC & appliance repairs",
                     style: GoogleFonts.poppins(
                       color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100,
+                      fontSize: dimension.height22,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   SizedBox(
