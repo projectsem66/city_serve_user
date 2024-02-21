@@ -33,7 +33,7 @@ class _TwoPageState extends State<TwoPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 155,
+                  height: dimension.height100+dimension.height66,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

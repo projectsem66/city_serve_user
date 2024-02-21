@@ -20,6 +20,8 @@ List sliderImages = [
   "assets/dashboard/slider1.jpg",
   "assets/dashboard/slider2.jpg",
   "assets/dashboard/slider3.jpg",
+  "assets/dashboard/slider5.jpg",
+  "assets/dashboard/slider7.jpg"
 ];
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
@@ -38,12 +40,12 @@ class _DashboardState extends State<Dashboard> {
                 Container(
                   height: dimension.height100 +
                       dimension.height100 +
-                      dimension.height25,
+                      dimension.height75,
                   child: Align(
                     alignment: AlignmentDirectional.topCenter,
                     child: CarouselSlider.builder(
                       carouselController: CarouselController(),
-                      itemCount: 3,
+                      itemCount: 5,
                       itemBuilder: (context, index, realIndex) {
                         return Container(
                           decoration: BoxDecoration(
@@ -60,7 +62,7 @@ class _DashboardState extends State<Dashboard> {
                         autoPlayInterval: Duration(seconds: 8),
                         autoPlayCurve: Curves.ease,
                         enableInfiniteScroll: true,
-                        height: dimension.height100 * 2,
+                        height: dimension.height100 * 2.5,
                         viewportFraction: 1,
                         enlargeCenterPage: true,
                         autoPlayAnimationDuration: const Duration(seconds: 4),
@@ -137,63 +139,14 @@ class _DashboardState extends State<Dashboard> {
                                 _.update();
                                 print(_currentIndex1);
                               });
-                              // Get.bottomSheet(
-                              //     isDismissible: true,
-                              //     Container(
-                              //       height: 285,
-                              //       decoration: BoxDecoration(
-                              //           color: Colors.white,
-                              //           borderRadius: BorderRadius.only(
-                              //               topLeft: Radius.circular(10),
-                              //               topRight: Radius.circular(10))),
-                              //       child: Column(
-                              //         crossAxisAlignment:
-                              //             CrossAxisAlignment.start,
-                              //         children: [
-                              //           Padding(
-                              //             padding: const EdgeInsets.all(8.0),
-                              //             child: Text(
-                              //               "Electrician, Plumber & Carpenters",
-                              //               style: GoogleFonts.poppins(
-                              //                   color: AppColors.Colorq,
-                              //                   fontSize: 20,
-                              //                   fontWeight: FontWeight.w300),
-                              //             ),
-                              //           ),
-                              //           Container(
-                              //             height: 245,
-                              //             child: GridView.builder(
-                              //               physics:
-                              //                   NeverScrollableScrollPhysics(),
-                              //               gridDelegate:
-                              //                   SliverGridDelegateWithFixedCrossAxisCount(
-                              //                       crossAxisCount: 3,
-                              //                       childAspectRatio: 1.7),
-                              //               itemCount: 8,
-                              //               itemBuilder: (context, index) {
-                              //                 return Padding(
-                              //                   padding:
-                              //                       const EdgeInsets.all(8.0),
-                              //                   child: Container(
-                              //                     // height: 40,
-                              //                     // width: 80,
-                              //                     decoration: BoxDecoration(
-                              //                         color: AppColors.Colorq
-                              //                             .withOpacity(0.5),
-                              //                         borderRadius:
-                              //                             BorderRadius.circular(
-                              //                                 7)),
-                              //                   ),
-                              //                 );
-                              //               },
-                              //             ),
-                              //           )
-                              //         ],
-                              //       ),
-                              //     ));
+
                             },
                             child: Container(
                               height: 75,
+                              decoration: BoxDecoration(
+                                color: AppColors.Colorq.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
@@ -212,10 +165,6 @@ class _DashboardState extends State<Dashboard> {
                                             "assets/category/category_man.jpg"))
                                   ],
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.Colorq.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(7),
                               ),
                             ),
                           ),
@@ -243,7 +192,7 @@ class _DashboardState extends State<Dashboard> {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 15),
                                       child: Text(
-                                        "Spa for \nWomen",
+                                        "Spa for\nWomen",
                                         style:
                                             GoogleFonts.poppins(fontSize: 17),
                                       ),

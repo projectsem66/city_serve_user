@@ -32,7 +32,7 @@ class _FourPageState extends State<FourPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 155,
+                  height: dimension.height66+dimension.height100,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

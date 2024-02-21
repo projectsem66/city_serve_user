@@ -196,14 +196,14 @@ class _LoginState extends State<Login> {
                 Row(
                   children: [
                     Expanded(
-                      flex: 1,
+                      flex: 5,
                       child: Divider(
                         thickness: 1,
                         color: AppColors.Colorq,
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 6,
                       child: Text(
                         " Or Continue With",
                         style: GoogleFonts.poppins(
@@ -213,7 +213,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 5,
                       child: Divider(
                         thickness: 1,
                         color: AppColors.Colorq,
