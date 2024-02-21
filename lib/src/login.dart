@@ -69,7 +69,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color:AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -106,7 +106,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color:AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
                       "Forgot Password? ",
                       style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w300,
                           fontStyle: FontStyle.italic),
                     ),
@@ -158,7 +158,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height35,
+                  height: dimension.height45,
                 ),
                 Center(
                     child: Row(
@@ -191,7 +191,7 @@ class _LoginState extends State<Login> {
                   ],
                 )),
                 SizedBox(
-                  height: dimension.height24,
+                  height: dimension.height50,
                 ),
                 Row(
                   children: [
@@ -203,12 +203,12 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Text(
-                        " Or Continue With",
+                        "       Or Continue With  ",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: dimension.font15,
+                            fontSize: dimension.font14,
                             fontWeight: FontWeight.w300),
                       ),
                     ),

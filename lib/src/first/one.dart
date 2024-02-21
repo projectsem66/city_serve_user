@@ -32,7 +32,7 @@ class _OnePageState extends State<OnePage> {
                child: Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: Container(
-                   height: 166,
+                   height: 175,
                    child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
@@ -42,24 +42,24 @@ class _OnePageState extends State<OnePage> {
                        //   color: AppColors.Colorq.withOpacity(0.6),
                        // ),
                        Text(
-                         "Welcome to cityServe service",
+                         "Welcome to CityServe service",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: 24,
                              fontWeight: FontWeight.w400),
                        ),
                        SizedBox(
-                         height: dimension.height20,
+                         height: dimension.height18,
                        ),
                        Text(
-                         "CityServe service - On-demand Home service app with complete solution",
+                         "CityServe service is on-demand home service app with complete solution",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: 15,
                              fontWeight: FontWeight.w300),
                        ),
                        SizedBox(
-                         height: 30,
+                         height: 25,
                        ),
                        Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,

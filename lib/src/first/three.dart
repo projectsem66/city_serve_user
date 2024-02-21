@@ -33,7 +33,7 @@ class _ThreePageState extends State<ThreePage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 155,
+                  height: 175,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -43,7 +43,7 @@ class _ThreePageState extends State<ThreePage> {
                       //   color: AppColors.Colorq.withOpacity(0.6),
                       // ),
                       Text(
-                        "Book a service",
+                        "Book a Service & Facilities",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 24,
@@ -53,14 +53,14 @@ class _ThreePageState extends State<ThreePage> {
                         height: dimension.height20,
                       ),
                       Text(
-                        "Book Service on Your Time\n",
+                        "Book Services on your time\nHurry up..!",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 25,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

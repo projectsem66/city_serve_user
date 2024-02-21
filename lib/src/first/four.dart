@@ -32,7 +32,7 @@ class _FourPageState extends State<FourPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 155,
+                  height: 175,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -52,14 +52,14 @@ class _FourPageState extends State<FourPage> {
                         height: dimension.height20,
                       ),
                       Text(
-                        "Choose the preferable option of payment and get best service",
+                        "Choose the preferable option of Payment and get Best Services",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 25,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

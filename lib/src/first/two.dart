@@ -33,7 +33,7 @@ class _TwoPageState extends State<TwoPage> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 155,
+                  height: 175,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -43,7 +43,7 @@ class _TwoPageState extends State<TwoPage> {
                       //   color: AppColors.Colorq.withOpacity(0.6),
                       // ),
                       Text(
-                        "Find your service",
+                        "Find your Services & Facilities",
                         style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 24,
@@ -54,14 +54,14 @@ class _TwoPageState extends State<TwoPage> {
                         height: dimension.height20,
                       ),
                       Text(
-                        "find a service as per your Preference\n",
+                        "find a service as per your preference and take advantages of it",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 25,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
