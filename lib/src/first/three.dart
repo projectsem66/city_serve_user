@@ -43,7 +43,7 @@ class _ThreePageState extends State<ThreePage> {
                       //   color: AppColors.Colorq.withOpacity(0.6),
                       // ),
                       Text(
-                        "Book a service",
+                        "Book a Service & Facilities",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 24,
@@ -53,7 +53,7 @@ class _ThreePageState extends State<ThreePage> {
                         height: dimension.height20,
                       ),
                       Text(
-                        "Book Service on Your Time\n",
+                        "Book Services on your time\nHurry up..!",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,

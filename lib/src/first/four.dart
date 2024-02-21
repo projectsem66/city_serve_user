@@ -52,7 +52,7 @@ class _FourPageState extends State<FourPage> {
                         height: dimension.height20,
                       ),
                       Text(
-                        "Choose the preferable option of payment and get best service",
+                        "Choose the preferable option of Payment and get Best Services",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,

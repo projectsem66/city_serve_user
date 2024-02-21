@@ -7,7 +7,6 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../navigationBar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
