@@ -25,6 +25,56 @@ List sliderImages = [
 ];
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
+List mostBook = [
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/1u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/2u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/3u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/4u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/5u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/6u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/7u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+  {
+    "name": "Cleaning",
+    "image": "assets/dashboard/mostBook/8u.jpg",
+    "rating": "4.88",
+    "price": "220"
+  },
+];
 
 class _DashboardState extends State<Dashboard> {
   @override
@@ -139,7 +189,6 @@ class _DashboardState extends State<Dashboard> {
                                 _.update();
                                 print(_currentIndex1);
                               });
-
                             },
                             child: Container(
                               height: 75,
@@ -438,7 +487,6 @@ class _DashboardState extends State<Dashboard> {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
-
                                                 decoration: BoxDecoration(
                                                     color: AppColors.Colorq
                                                         .withOpacity(0.5),
@@ -504,7 +552,7 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 * 2,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: 8,
                       itemBuilder: (context, index) {
                         return Container(
                           // height: 300,
@@ -517,16 +565,49 @@ class _DashboardState extends State<Dashboard> {
                                       dimension.height100 + dimension.height20,
                                   width: 120,
                                   decoration: BoxDecoration(
-                                    color: AppColors.Colorq.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              mostBook[index]["image"]))),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
                                 ),
                                 Container(
                                   height: dimension.height80,
                                   width: 120,
                                   decoration: BoxDecoration(
-                                    color: AppColors.Colorq.withOpacity(0.5),
+                                    // color: AppColors.Colorq.withOpacity(0.5),
                                     borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        mostBook[index]['name'],
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height15,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        mostBook[index]['rating'],
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        "₹ ${mostBook[index]['price']}",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height14,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

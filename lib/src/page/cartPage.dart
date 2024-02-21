@@ -1,3 +1,4 @@
+import 'package:city_serve/demo.dart';
 import 'package:city_serve/navigationBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,11 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
         title: Text("Cart"),
+      ),
+      body:Column(
+        children: [
+          booking(),
+        ],
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:city_serve/demo.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,10 +33,12 @@ class _BookingsState extends State<Bookings> {
         centerTitle: false,
         title: Text("Bookings"),
       ),
-      body: Column(
-        children: [
-
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+                    booking(),
+          ],
+        ),
       ),
     );
   }
