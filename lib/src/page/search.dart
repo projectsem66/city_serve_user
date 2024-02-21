@@ -37,7 +37,7 @@ class _SearchPageState extends State<SearchPage> {
                   prefixIcon: Icon(Icons.search, color: AppColors.Colorq),
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintText: "Search here..",
-                  hintStyle: GoogleFonts.amaranth(
+                  hintStyle: GoogleFonts.poppins(
                       color: AppColors.Colorq,
                       fontSize: 17,
                       fontWeight: FontWeight.w300),

@@ -45,7 +45,7 @@ class _CategoryyState extends State<Categoryy> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "AC & Appliance Repair",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w300),
@@ -107,7 +107,7 @@ class _CategoryyState extends State<Categoryy> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Cleaning",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w300),
@@ -169,7 +169,7 @@ class _CategoryyState extends State<Categoryy> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w300),
@@ -231,7 +231,7 @@ class _CategoryyState extends State<Categoryy> {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "AC & Appliance Repair",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 20,
                                   fontWeight: FontWeight.w300),

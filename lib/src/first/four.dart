@@ -24,8 +24,8 @@ class _FourPageState extends State<FourPage> {
             Container(
               height: screenheight(),
               width: screenwidth(),
-              child:
-                  Image(image: AssetImage("assets/four.jpg"), fit: BoxFit.cover),
+              child: Image(
+                  image: AssetImage("assets/four.jpg"), fit: BoxFit.cover),
             ),
             Align(
               alignment: AlignmentDirectional.bottomCenter,
@@ -43,7 +43,7 @@ class _FourPageState extends State<FourPage> {
                       // ),
                       Text(
                         "Payment Gateway",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 24,
                             fontWeight: FontWeight.w300),
@@ -53,7 +53,7 @@ class _FourPageState extends State<FourPage> {
                       ),
                       Text(
                         "Choose the preferable option of payment and get best service",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
@@ -73,7 +73,7 @@ class _FourPageState extends State<FourPage> {
                             },
                             child: Text(
                               "Skip",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w300),
@@ -88,7 +88,7 @@ class _FourPageState extends State<FourPage> {
                             },
                             child: Text(
                               "Next",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: 15,
                                 fontWeight: FontWeight.w300,

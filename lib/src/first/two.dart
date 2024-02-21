@@ -44,7 +44,7 @@ class _TwoPageState extends State<TwoPage> {
                       // ),
                       Text(
                         "Find your service",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 24,
                           fontWeight: FontWeight.w300,
@@ -55,7 +55,7 @@ class _TwoPageState extends State<TwoPage> {
                       ),
                       Text(
                         "find a service as per your Preference\n",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
@@ -75,7 +75,7 @@ class _TwoPageState extends State<TwoPage> {
                             },
                             child: Text(
                               "Skip",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w300),
@@ -90,7 +90,7 @@ class _TwoPageState extends State<TwoPage> {
                             },
                             child: Text(
                               "Next",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: 15,
                                 fontWeight: FontWeight.w300,
