@@ -438,8 +438,7 @@ class _DashboardState extends State<Dashboard> {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
-                                                // height: 40,
-                                                // width: 80,
+
                                                 decoration: BoxDecoration(
                                                     color: AppColors.Colorq
                                                         .withOpacity(0.5),
