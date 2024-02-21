@@ -7,6 +7,8 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../navigationBar.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -53,7 +55,10 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.email_outlined,color: AppColors.Colorq,),
+                      suffixIcon: Icon(
+                        Icons.email_outlined,
+                        color: AppColors.Colorq,
+                      ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
                       labelStyle: GoogleFonts.amaranth(
@@ -90,7 +95,7 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.password,color: AppColors.Colorq),
+                      suffixIcon: Icon(Icons.password, color: AppColors.Colorq),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
                       labelStyle: GoogleFonts.amaranth(
@@ -132,7 +137,7 @@ class _LoginState extends State<Login> {
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
                     print("tapped");
-                    Get.to(() => Dashboard());
+                    Get.to(() => NavigationBarr());
                   },
                   child: Container(
                     height: dimension.height50,
