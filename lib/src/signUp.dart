@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
                 Center(
                   child: Text(
                     "Create Your Account",
-                    style: GoogleFonts.amaranth(
+                    style: GoogleFonts.poppins(
                         color: AppColors.Colorq, fontSize: dimension.height24),
                   ),
                 ),
@@ -63,7 +63,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "First Name",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -99,7 +99,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Last Name",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -135,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -171,7 +171,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Mobile Number",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -207,7 +207,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -243,7 +243,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: InputDecoration(
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Confirm Password",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -277,7 +277,7 @@ class _SignUpState extends State<SignUp> {
                     child: Center(
                       child: Text(
                         "Sign In",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             fontSize: 20, color: Colors.white),
                       ),
                     ),

@@ -1,4 +1,4 @@
-import 'package:city_serve/src/page/dashboard.dart';
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
@@ -31,8 +31,10 @@ class _LoginState extends State<Login> {
                 Center(
                   child: Text(
                     "Login",
-                    style: GoogleFonts.amaranth(
-                        color: AppColors.Colorq, fontSize: dimension.height36),
+                    style: GoogleFonts.poppins(
+                      color: AppColors.Colorq,
+                      fontSize: dimension.height36,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -53,10 +55,13 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.email_outlined,color: AppColors.Colorq,),
+                      suffixIcon: Icon(
+                        Icons.email_outlined,
+                        color: AppColors.Colorq,
+                      ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email Address",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -90,10 +95,10 @@ class _LoginState extends State<Login> {
                       setState(() {});
                     },
                     decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.password,color: AppColors.Colorq),
+                      suffixIcon: Icon(Icons.password, color: AppColors.Colorq),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Password",
-                      labelStyle: GoogleFonts.amaranth(
+                      labelStyle: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300),
@@ -117,7 +122,7 @@ class _LoginState extends State<Login> {
                     Spacer(),
                     Text(
                       "Forgot Password? ",
-                      style: GoogleFonts.amaranth(
+                      style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 18,
                           fontWeight: FontWeight.w300,
@@ -132,7 +137,7 @@ class _LoginState extends State<Login> {
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
                     print("tapped");
-                    Get.to(() => Dashboard());
+                    Get.to(() => NavigationBarr());
                   },
                   child: Container(
                     height: dimension.height50,
@@ -144,7 +149,7 @@ class _LoginState extends State<Login> {
                     child: Center(
                       child: Text(
                         "Sign In",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             fontSize: 20, color: Colors.white),
                       ),
                     ),
@@ -159,7 +164,7 @@ class _LoginState extends State<Login> {
                   children: [
                     Text(
                       "Don't have an account? ",
-                      style: GoogleFonts.amaranth(
+                      style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 15,
                           fontWeight: FontWeight.w300),
@@ -172,7 +177,7 @@ class _LoginState extends State<Login> {
                       },
                       child: Text(
                         "Sign up",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 15,
                           fontWeight: FontWeight.w300,
@@ -199,7 +204,7 @@ class _LoginState extends State<Login> {
                       flex: 1,
                       child: Text(
                         " Or Continue With",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: dimension.font15,
                             fontWeight: FontWeight.w300),
@@ -243,7 +248,7 @@ class _LoginState extends State<Login> {
                       ),
                       Text(
                         "Sign In With Google",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 17,
                             fontWeight: FontWeight.w300),
@@ -281,7 +286,7 @@ class _LoginState extends State<Login> {
                       ),
                       Text(
                         "Sign In With OTP",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: 17,
                           fontWeight: FontWeight.w300,

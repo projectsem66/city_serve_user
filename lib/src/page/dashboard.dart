@@ -5,8 +5,9 @@ import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../btm_controller.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -20,385 +21,731 @@ List sliderImages = [
   "assets/dashboard/slider2.jpg",
   "assets/dashboard/slider3.jpg",
 ];
+BtmController _ = Get.put(BtmController());
+int _currentIndex1 = 0;
 
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CarouselSlider.builder(
-                  carouselController: CarouselController(),
-                  itemCount: 3,
-                  itemBuilder: (context, index, realIndex) {
-                    return Container(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.bottomCenter,
+                children: [
+                  Container(
+                    height: 200,
+                    color: Colors.yellow,
+                    child: CarouselSlider.builder(
+                      carouselController: CarouselController(),
+                      itemCount: 3,
+                      itemBuilder: (context, index, realIndex) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(sliderImages[index]),
+                                fit: BoxFit.cover),
+                          ),
+                        );
+                      },
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        enlargeFactor: 0,
+                        scrollDirection: Axis.horizontal,
+                        autoPlayInterval: Duration(seconds: 8),
+                        autoPlayCurve: Curves.ease,
+                        enableInfiniteScroll: true,
+                        height: dimension.height100 * 2,
+                        viewportFraction: 1,
+                        enlargeCenterPage: true,
+                        autoPlayAnimationDuration: const Duration(seconds: 4),
+                        animateToClosest: true,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            // _currentIndex = index;
+                            print(index);
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
                       decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(sliderImages[index]),
-                              fit: BoxFit.cover),
+                          color: Colors.white.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(7)),
-                    );
-                  },
-                  options: CarouselOptions(
-                    autoPlay: false,
-                    enlargeFactor: 0.2,
-                    scrollDirection: Axis.horizontal,
-                    autoPlayInterval: Duration(seconds: 8),
-                    autoPlayCurve: Curves.ease,
-                    enableInfiniteScroll: true,
-                    height: dimension.height100 * 2,
-                    viewportFraction: 1,
-                    enlargeCenterPage: true,
-                    autoPlayAnimationDuration: const Duration(seconds: 4),
-                    animateToClosest: true,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        // _currentIndex = index;
-                        print(index);
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(7)),
-                  child: TextFormField(
-                    onTap: () {
-                      Get.to(SearchPage());
-
-                    },
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search, color: AppColors.Colorq),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: "Search here..",
-                      hintStyle: GoogleFonts.amaranth(
-                          color: AppColors.Colorq,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w300),
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.Colorq),
-                        borderRadius: BorderRadius.circular(7.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: AppColors.Colorq.withOpacity(0.7)),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 5, bottom: 5),
-                        child: Container(
-                          height: 75,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
+                      child: TextFormField(
+                        onTap: () {
+                          Get.to(SearchPage());
+                        },
+                        keyboardType: TextInputType.text,
+                        cursorColor: Colors.black,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
                         ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 5, bottom: 5),
-                        child: Container(
-                          height: 75,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(right: 5, bottom: 5, top: 5),
-                        child: Container(
-                          height: 75,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, bottom: 5, right: 5, top: 5),
-                        child: Container(
-                          height: 75,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 5, bottom: 5, top: 5),
-                        child: Container(
-                          height: 75,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "Final experience",
-                  style: GoogleFonts.pacifico(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Container(
-                  height: 210,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: dimension.width5),
-                        child: Container(
-                          height: 200,
-                          width: 130,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "Most booked service",
-                  style: GoogleFonts.amaranth(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                SizedBox(
-                  height: dimension.height100 * 2,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        // height: 300,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: dimension.width5),
-                          child: Column(
-                            children: [
-                              Container(
-                                height:
-                                    dimension.height100 + dimension.height20,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: AppColors.Colorq.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                              ),
-                              Container(
-                                height: dimension.height80,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  color: AppColors.Colorq.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                              ),
-                            ],
+                        decoration: InputDecoration(
+                          prefixIcon:
+                              Icon(Icons.search, color: AppColors.Colorq),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          hintText: "Search here..",
+                          hintStyle: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: 17,
+                              fontWeight: FontWeight.w300),
+                          contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: AppColors.Colorq),
+                            borderRadius: BorderRadius.circular(7.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: AppColors.Colorq.withOpacity(0.7)),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "Spa for women",
-                  style: GoogleFonts.amaranth(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                SizedBox(
-                  height: 135,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: dimension.width5),
+                ],
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 5, bottom: 5),
+                      child: Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          setState(() {
+                            _currentIndex1 = 2;
+                            _.currentIndex = 2;
+                            _.update();
+                            print(_currentIndex1);
+                          });
+                          // Get.bottomSheet(
+                          //     isDismissible: true,
+                          //     Container(
+                          //       height: 285,
+                          //       decoration: BoxDecoration(
+                          //           color: Colors.white,
+                          //           borderRadius: BorderRadius.only(
+                          //               topLeft: Radius.circular(10),
+                          //               topRight: Radius.circular(10))),
+                          //       child: Column(
+                          //         crossAxisAlignment:
+                          //             CrossAxisAlignment.start,
+                          //         children: [
+                          //           Padding(
+                          //             padding: const EdgeInsets.all(8.0),
+                          //             child: Text(
+                          //               "Electrician, Plumber & Carpenters",
+                          //               style: GoogleFonts.poppins(
+                          //                   color: AppColors.Colorq,
+                          //                   fontSize: 20,
+                          //                   fontWeight: FontWeight.w300),
+                          //             ),
+                          //           ),
+                          //           Container(
+                          //             height: 245,
+                          //             child: GridView.builder(
+                          //               physics:
+                          //                   NeverScrollableScrollPhysics(),
+                          //               gridDelegate:
+                          //                   SliverGridDelegateWithFixedCrossAxisCount(
+                          //                       crossAxisCount: 3,
+                          //                       childAspectRatio: 1.7),
+                          //               itemCount: 8,
+                          //               itemBuilder: (context, index) {
+                          //                 return Padding(
+                          //                   padding:
+                          //                       const EdgeInsets.all(8.0),
+                          //                   child: Container(
+                          //                     // height: 40,
+                          //                     // width: 80,
+                          //                     decoration: BoxDecoration(
+                          //                         color: AppColors.Colorq
+                          //                             .withOpacity(0.5),
+                          //                         borderRadius:
+                          //                             BorderRadius.circular(
+                          //                                 7)),
+                          //                   ),
+                          //                 );
+                          //               },
+                          //             ),
+                          //           )
+                          //         ],
+                          //       ),
+                          //     ));
+                        },
                         child: Container(
-                          width: 135,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "Cleaning & post control",
-                  style: GoogleFonts.amaranth(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                SizedBox(
-                  height: 145,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: dimension.width5),
-                        child: Container(
-                          width: 145,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "Quick home repairs",
-                  style: GoogleFonts.amaranth(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height25,
-                      fontWeight: FontWeight.w100),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                SizedBox(
-                  height: dimension.height100 * 2,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 135,
-                        // height: 300,
-                        child: Padding(
-                          padding: EdgeInsets.only(right: dimension.width5),
-                          child: Column(
-                            children: [
-                              Container(
-                                height:
-                                    dimension.height100 + dimension.height20,
-                                width: 135,
-                                decoration: BoxDecoration(
-                                  color: AppColors.Colorq.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(7),
+                          height: 75,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Text(
+                                    "Spa for \n men",
+                                    style: GoogleFonts.poppins(fontSize: 17),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                height: dimension.height80,
-                                width: 135,
-                                decoration: BoxDecoration(
-                                  color: AppColors.Colorq.withOpacity(0.5),
-                                  borderRadius: BorderRadius.circular(7),
-                                ),
-                              ),
-                            ],
+                                Spacer(),
+                                Image(
+                                    image: AssetImage(
+                                        "assets/category/category_man.jpg"))
+                              ],
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(7),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Text(
-                  "AC & appliance repairs",
-                  style: GoogleFonts.amaranth(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, bottom: 5),
+                      child: Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {},
+                        child: Container(
+                          height: 75,
+                          decoration: BoxDecoration(
+                              color: AppColors.Colorq.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(7)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                Image(
+                                    image: AssetImage(
+                                        "assets/category/category_women.jpg")),
+                                Spacer(),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 15),
+                                  child: Text(
+                                    "Spa for \nWomen",
+                                    style: GoogleFonts.poppins(fontSize: 17),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(right: 5, bottom: 5, top: 5),
+                      child: Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.bottomSheet(
+                              isDismissible: true,
+                              Container(
+                                height: 285,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Electrician, Plumber & Carpenters",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 245,
+                                      child: GridView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 3,
+                                                childAspectRatio: 1.7),
+                                        itemCount: 8,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                              // height: 40,
+                                              // width: 80,
+                                              decoration: BoxDecoration(
+                                                  color: AppColors.Colorq
+                                                      .withOpacity(0.5),
+                                                  borderRadius:
+                                                      BorderRadius.circular(7)),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ));
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 75,
+                              width: double.maxFinite,
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/category/category_plumber.jpg")),
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(7)),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Cleaning",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 5, bottom: 5, right: 5, top: 5),
+                      child: Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.bottomSheet(
+                              isDismissible: true,
+                              Container(
+                                height: 285,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10))),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Electrician, Plumber & Carpenters",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 245,
+                                      child: GridView.builder(
+                                        physics: NeverScrollableScrollPhysics(),
+                                        gridDelegate:
+                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 3,
+                                                childAspectRatio: 1.7),
+                                        itemCount: 8,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  // height: 40,
+                                                  // width: 80,
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.Colorq
+                                                          .withOpacity(0.5),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ));
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 75,
+                              width: double.maxFinite,
+                              child: Image(
+                                  image: AssetImage(
+                                      "assets/category/category_acc1.png")),
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(7)),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Appliance\n    Repair",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 5, bottom: 5, top: 5),
+                      child: Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.bottomSheet(
+                            isDismissible: true,
+                            Container(
+                              height: 285,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10))),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Electrician, Plumber & Carpenters",
+                                      style: GoogleFonts.poppins(
+                                          color: AppColors.Colorq,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 245,
+                                    child: GridView.builder(
+                                      physics: NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 3,
+                                              childAspectRatio: 1.7),
+                                      itemCount: 8,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            // height: 40,
+                                            // width: 80,
+                                            decoration: BoxDecoration(
+                                                color: AppColors.Colorq
+                                                    .withOpacity(0.5),
+                                                borderRadius:
+                                                    BorderRadius.circular(7)),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 75,
+                              width: double.maxFinite,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Image(
+                                    image: AssetImage(
+                                        "assets/category/category_drill.png")),
+                              ),
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(7)),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Plumber",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Text(
+                "Most booked service",
+                style: GoogleFonts.poppins(
                     color: AppColors.Colorq,
                     fontSize: dimension.height25,
-                    fontWeight: FontWeight.w100,
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                SizedBox(
-                  height: 155,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              SizedBox(
+                height: dimension.height100 * 2,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      // height: 300,
+                      child: Padding(
                         padding: EdgeInsets.only(right: dimension.width5),
-                        child: Container(
-                          width: 145,
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(7)),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: dimension.height100 + dimension.height20,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                color: AppColors.Colorq.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                            ),
+                            Container(
+                              height: dimension.height80,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                color: AppColors.Colorq.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              CarouselSlider.builder(
+                carouselController: CarouselController(),
+                itemCount: 3,
+                itemBuilder: (context, index, realIndex) {
+                  return Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(sliderImages[index]),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(7)),
+                  );
+                },
+                options: CarouselOptions(
+                  autoPlay: false,
+                  enlargeFactor: 0.2,
+                  scrollDirection: Axis.horizontal,
+                  autoPlayInterval: Duration(seconds: 8),
+                  autoPlayCurve: Curves.ease,
+                  enableInfiniteScroll: true,
+                  height: dimension.height100 * 2,
+                  viewportFraction: 1,
+                  enlargeCenterPage: true,
+                  autoPlayAnimationDuration: const Duration(seconds: 4),
+                  animateToClosest: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      // _currentIndex = index;
+                      print(index);
+                    });
+                  },
+                ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Text(
+                "Spa for women",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height25,
+                    fontWeight: FontWeight.w100),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              SizedBox(
+                height: 135,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: dimension.width5),
+                      child: Container(
+                        width: 135,
+                        decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(7)),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Text(
+                "Cleaning & post control",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height25,
+                    fontWeight: FontWeight.w100),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              SizedBox(
+                height: 145,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: dimension.width5),
+                      child: Container(
+                        width: 145,
+                        decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(7)),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Text(
+                "Quick home repairs",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height25,
+                    fontWeight: FontWeight.w100),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              SizedBox(
+                height: dimension.height100 * 2,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 135,
+                      // height: 300,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: dimension.width5),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: dimension.height100 + dimension.height20,
+                              width: 135,
+                              decoration: BoxDecoration(
+                                color: AppColors.Colorq.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                            ),
+                            Container(
+                              height: dimension.height80,
+                              width: 135,
+                              decoration: BoxDecoration(
+                                color: AppColors.Colorq.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              Text(
+                "AC & appliance repairs",
+                style: GoogleFonts.poppins(
+                  color: AppColors.Colorq,
+                  fontSize: dimension.height25,
+                  fontWeight: FontWeight.w100,
+                ),
+              ),
+              SizedBox(
+                height: dimension.height15,
+              ),
+              SizedBox(
+                height: 155,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: dimension.width5),
+                      child: Container(
+                        width: 145,
+                        decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(7)),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

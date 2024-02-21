@@ -32,7 +32,7 @@ class _OnePageState extends State<OnePage> {
                child: Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: Container(
-                   height: 155,
+                   height: 166,
                    child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
@@ -43,17 +43,17 @@ class _OnePageState extends State<OnePage> {
                        // ),
                        Text(
                          "Welcome to cityServe service",
-                         style: GoogleFonts.amaranth(
+                         style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: 24,
-                             fontWeight: FontWeight.w300),
+                             fontWeight: FontWeight.w400),
                        ),
                        SizedBox(
                          height: dimension.height20,
                        ),
                        Text(
                          "CityServe service - On-demand Home service app with complete solution",
-                         style: GoogleFonts.amaranth(
+                         style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: 15,
                              fontWeight: FontWeight.w300),
@@ -72,7 +72,7 @@ class _OnePageState extends State<OnePage> {
                              },
                              child: Text(
                                "Skip",
-                               style: GoogleFonts.amaranth(
+                               style: GoogleFonts.poppins(
                                    color: AppColors.Colorq,
                                    fontSize: 15,
                                    fontWeight: FontWeight.w300),
@@ -86,7 +86,7 @@ class _OnePageState extends State<OnePage> {
                              },
                              child: Text(
                                "Next",
-                               style: GoogleFonts.amaranth(
+                               style: GoogleFonts.poppins(
                                    color: AppColors.Colorq,
                                    fontSize: 15,
                                    fontWeight: FontWeight.w300),

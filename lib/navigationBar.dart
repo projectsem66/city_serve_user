@@ -1,5 +1,6 @@
 import 'package:city_serve/src/page/account.dart';
 import 'package:city_serve/src/page/bookings.dart';
+import 'package:city_serve/src/page/cartPage.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/src/page/studio.dart';
@@ -24,8 +25,9 @@ class _NavigationBarrState extends State<NavigationBarr> {
   final btmNaviScr = [
     Dashboard(),
     Bookings(),
-    Categoryy(),
     Studio(),
+    CartPage(),
+
     Account(),
   ];
 
@@ -54,17 +56,18 @@ class _NavigationBarrState extends State<NavigationBarr> {
             ),
             label: "Bookings",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.category_outlined,
-            ),
-            label: "Category",
-          ),
+
           BottomNavigationBarItem(
             icon: Icon(
               Icons.store_mall_directory_outlined,
             ),
             label: "Studio",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_cart_outlined,
+            ),
+            label: "Cart",
           ),
           BottomNavigationBarItem(
             icon: Icon(

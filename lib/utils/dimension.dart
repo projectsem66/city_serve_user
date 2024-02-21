@@ -216,87 +216,87 @@ class dimension {
   static double width99 =screenwidth() / 3.97;
   static double width100 = screenwidth() / 3.93;
 
-  static TextStyle style10 = GoogleFonts.amaranth(
+  static TextStyle style10 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 80.29,
       fontWeight: FontWeight.w500);
-  static TextStyle style11 = GoogleFonts.amaranth(
+  static TextStyle style11 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 72.99,
       fontWeight: FontWeight.w500);
-  static TextStyle style12 = GoogleFonts.amaranth(
+  static TextStyle style12 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 66.91,
       fontWeight: FontWeight.w500);
-  static TextStyle style13 = GoogleFonts.amaranth(
+  static TextStyle style13 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 61.76,
       fontWeight: FontWeight.w500);
-  static TextStyle style14 = GoogleFonts.amaranth(
+  static TextStyle style14 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 57.35,
       fontWeight: FontWeight.w500);
-  static TextStyle style15 = GoogleFonts.amaranth(
+  static TextStyle style15 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 53.53,
       fontWeight: FontWeight.w500);
-  static TextStyle style16 = GoogleFonts.amaranth(
+  static TextStyle style16 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 50.18,
       fontWeight: FontWeight.w500);
-  static TextStyle style17 = GoogleFonts.amaranth(
+  static TextStyle style17 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 47.23,
       fontWeight: FontWeight.w500);
-  static TextStyle style18 = GoogleFonts.amaranth(
+  static TextStyle style18 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 44.61,
       fontWeight: FontWeight.w500);
-  static TextStyle style19 = GoogleFonts.amaranth(
+  static TextStyle style19 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 42.26,
       fontWeight: FontWeight.w500);
-  static TextStyle style20 = GoogleFonts.amaranth(
+  static TextStyle style20 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 40.15,
       fontWeight: FontWeight.w500);
-  static TextStyle style21 = GoogleFonts.amaranth(
+  static TextStyle style21 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 38.23,
       fontWeight: FontWeight.w500);
-  static TextStyle style22 = GoogleFonts.amaranth(
+  static TextStyle style22 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 36.50,
       fontWeight: FontWeight.w500);
-  static TextStyle style23 = GoogleFonts.amaranth(
+  static TextStyle style23 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 34.91,
       fontWeight: FontWeight.w500);
-  static TextStyle style24 = GoogleFonts.amaranth(
+  static TextStyle style24 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 33.45,
       fontWeight: FontWeight.w500);
-  static TextStyle style25 = GoogleFonts.amaranth(
+  static TextStyle style25 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 32.12,
       fontWeight: FontWeight.w500);
-  static TextStyle style26 = GoogleFonts.amaranth(
+  static TextStyle style26 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 30.88,
       fontWeight: FontWeight.w500);
-  static TextStyle style27 = GoogleFonts.amaranth(
+  static TextStyle style27 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 29.74,
       fontWeight: FontWeight.w500);
-  static TextStyle style28 = GoogleFonts.amaranth(
+  static TextStyle style28 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 28.66,
       fontWeight: FontWeight.w500);
-  static TextStyle style29 = GoogleFonts.amaranth(
+  static TextStyle style29 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 27.69,
       fontWeight: FontWeight.w500);
-  static TextStyle style30 = GoogleFonts.amaranth(
+  static TextStyle style30 = GoogleFonts.poppins(
       color: Colors.black,
       fontSize: screenheight() / 26.76,
       fontWeight: FontWeight.w500);

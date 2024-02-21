@@ -44,7 +44,7 @@ class _ThreePageState extends State<ThreePage> {
                       // ),
                       Text(
                         "Book a service",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 24,
                             fontWeight: FontWeight.w300),
@@ -54,7 +54,7 @@ class _ThreePageState extends State<ThreePage> {
                       ),
                       Text(
                         "Book Service on Your Time\n",
-                        style: GoogleFonts.amaranth(
+                        style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,
                             fontWeight: FontWeight.w300),
@@ -73,7 +73,7 @@ class _ThreePageState extends State<ThreePage> {
                             },
                             child: Text(
                               "Skip",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w300),
@@ -88,7 +88,7 @@ class _ThreePageState extends State<ThreePage> {
                             },
                             child: Text(
                               "Next",
-                              style: GoogleFonts.amaranth(
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w300),

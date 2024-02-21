@@ -17,6 +17,11 @@ class _BookingsState extends State<Bookings> {
         centerTitle: false,
         title: Text("Bookings"),
       ),
+      body: Column(
+        children: [
+
+        ],
+      ),
     );
   }
 }
