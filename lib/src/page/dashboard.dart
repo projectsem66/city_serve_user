@@ -54,7 +54,7 @@ class _DashboardState extends State<Dashboard> {
                         );
                       },
                       options: CarouselOptions(
-                        autoPlay: true,
+                        autoPlay: false,
                         enlargeFactor: 0,
                         scrollDirection: Axis.horizontal,
                         autoPlayInterval: Duration(seconds: 8),
