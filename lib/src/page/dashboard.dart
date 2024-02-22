@@ -106,7 +106,7 @@ class _DashboardState extends State<Dashboard> {
                         );
                       },
                       options: CarouselOptions(
-                        autoPlay: false,
+                        autoPlay: true,
                         enlargeFactor: 0,
                         scrollDirection: Axis.horizontal,
                         autoPlayInterval: Duration(seconds: 8),
@@ -569,7 +569,7 @@ class _DashboardState extends State<Dashboard> {
                                       borderRadius: BorderRadius.circular(7),
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              mostBook[index]["image"]))),
+                                              mostBook[index]["image"]),fit: BoxFit.cover)),
                                   // child: Image(
                                   //   image: AssetImage(mostBook[index]["image"]),
                                   //   fit: BoxFit.cover,
@@ -798,7 +798,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

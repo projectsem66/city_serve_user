@@ -34,10 +34,12 @@ class _CartPageState extends State<CartPage> {
         centerTitle: false,
         title: Text("Cart"),
       ),
-      body:Column(
-        children: [
-          booking(),
-        ],
+      body:SingleChildScrollView(
+        child: Column(
+          children: [
+            booking(),
+          ],
+        ),
       ),
     );
   }
