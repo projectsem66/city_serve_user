@@ -202,7 +202,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     Expanded(
-                      flex: 6,
+                      flex: 7,
                       child: Text(
                         " Or Continue With",
                         style: GoogleFonts.poppins(

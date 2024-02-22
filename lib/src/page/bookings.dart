@@ -11,6 +11,7 @@ class Bookings extends StatefulWidget {
   @override
   State<Bookings> createState() => _BookingsState();
 }
+
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 
@@ -36,7 +37,7 @@ class _BookingsState extends State<Bookings> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-                    booking(),
+            booking(),
           ],
         ),
       ),
