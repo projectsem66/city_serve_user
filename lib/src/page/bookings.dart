@@ -41,13 +41,13 @@ class _BookingsState extends State<Bookings> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                // height: 200,
                 width: double.maxFinite,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: AppColors.Colorq)),
+                    borderRadius: BorderRadius.circular(7),
+                    border: Border.all(color: AppColors.Colorq, width: 1)),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       Row(
@@ -56,8 +56,11 @@ class _BookingsState extends State<Bookings> {
                             height: 100,
                             width: 100,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color: AppColors.Colorq)),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/dashboard/mostBook/1u.jpg")),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
                           ),
                           SizedBox(
                             width: 10,
@@ -66,25 +69,41 @@ class _BookingsState extends State<Bookings> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: AppColors.red.withOpacity(0.4),
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(color: AppColors.red)),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 4),
-                                  child: Text(
-                                    "Pending",
+                              Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColors.red.withOpacity(0.2),
+                                        borderRadius: BorderRadius.circular(7),
+                                        border:
+                                            Border.all(color: AppColors.red)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 4),
+                                      child: Text(
+                                        "Pending",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.red,
+                                            fontSize: dimension.height14,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        dimension.width100 + dimension.width27,
+                                  ),
+                                  Text(
+                                    "#202",
                                     style: GoogleFonts.poppins(
-                                        color: AppColors.red,
+                                        color: AppColors.Colorq,
                                         fontSize: dimension.height14,
                                         fontWeight: FontWeight.w600),
                                   ),
-                                ),
+                                ],
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 10,
                               ),
                               Text(
                                 "Filter Replacement",
@@ -93,32 +112,38 @@ class _BookingsState extends State<Bookings> {
                                     fontSize: dimension.height18,
                                     fontWeight: FontWeight.w500),
                               ),
+                              SizedBox(
+                                height: 30,
+                              ),
                             ],
                           )
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 15,
+                      ),
                       Container(
                         decoration: BoxDecoration(
-                            color: AppColors.Colorq.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(5),
-                            border: Border.all(color: AppColors.Colorq)),
+                          color: AppColors.Colorq.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(7),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Payment : ",
+                                    "Service Charge",
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height14,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
-                                    "₹ 500",
+                                    "₹500",
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height14,
@@ -126,18 +151,41 @@ class _BookingsState extends State<Bookings> {
                                   ),
                                 ],
                               ),
+                              Divider(thickness: 1),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Provider : ",
+                                    "Date & Time",
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height14,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
-                                    "Vedudi",
+                                    "xyz xyz",
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                              ),
+                              Divider(thickness: 1),
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Provider",
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  Text(
+                                    "xyz xyz",
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height14,
@@ -149,7 +197,6 @@ class _BookingsState extends State<Bookings> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),

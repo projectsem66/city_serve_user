@@ -45,7 +45,7 @@ class _FourPageState extends State<FourPage> {
                         "Payment Gateway",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: 24,
+                            fontSize: dimension.height24,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
@@ -55,11 +55,11 @@ class _FourPageState extends State<FourPage> {
                         "Choose the preferable option of Payment and get Best Services",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: 15,
+                            fontSize: dimension.height15  ,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: dimension.height30,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +75,7 @@ class _FourPageState extends State<FourPage> {
                               "Skip",
                               style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
-                                  fontSize: 15,
+                                  fontSize: dimension.height15,
                                   fontWeight: FontWeight.w300),
                             ),
                           ),
@@ -90,7 +90,7 @@ class _FourPageState extends State<FourPage> {
                               "Next",
                               style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
-                                fontSize: 15,
+                                fontSize: dimension.height15,
                                 fontWeight: FontWeight.w300,
                               ),
                             ),

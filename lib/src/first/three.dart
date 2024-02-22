@@ -46,7 +46,7 @@ class _ThreePageState extends State<ThreePage> {
                         "Book a Service & Facilities",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: 24,
+                            fontSize: dimension.height24,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
@@ -56,11 +56,11 @@ class _ThreePageState extends State<ThreePage> {
                         "Book Services on your time\nHurry up..!",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: 15,
+                            fontSize: dimension.height15,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: dimension.height30,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +75,7 @@ class _ThreePageState extends State<ThreePage> {
                               "Skip",
                               style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
-                                  fontSize: 15,
+                                  fontSize: dimension.height15,
                                   fontWeight: FontWeight.w300),
                             ),
                           ),
@@ -90,7 +90,7 @@ class _ThreePageState extends State<ThreePage> {
                               "Next",
                               style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
-                                  fontSize: 15,
+                                  fontSize: dimension.height15,
                                   fontWeight: FontWeight.w300),
                             ),
                           ),

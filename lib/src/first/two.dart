@@ -46,7 +46,7 @@ class _TwoPageState extends State<TwoPage> {
                         "Find your Services & Facilities",
                         style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
-                          fontSize: 24,
+                          fontSize: dimension.height24,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -57,7 +57,7 @@ class _TwoPageState extends State<TwoPage> {
                         "find a service as per your preference and take advantages of it",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: 15,
+                            fontSize: dimension.height15 ,
                             fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
@@ -77,7 +77,7 @@ class _TwoPageState extends State<TwoPage> {
                               "Skip",
                               style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
-                                  fontSize: 15,
+                                  fontSize: dimension.height15,
                                   fontWeight: FontWeight.w300),
                             ),
                           ),
@@ -92,7 +92,7 @@ class _TwoPageState extends State<TwoPage> {
                               "Next",
                               style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
-                                fontSize: 15,
+                                fontSize: dimension.height15,
                                 fontWeight: FontWeight.w300,
                               ),
                             ),

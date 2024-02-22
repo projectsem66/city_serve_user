@@ -32,7 +32,7 @@ class _OnePageState extends State<OnePage> {
                child: Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: Container(
-                   height: 175,
+                   height: dimension.height100+dimension.height100+dimension.height16,
                    child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
@@ -45,7 +45,7 @@ class _OnePageState extends State<OnePage> {
                          "Welcome to CityServe service",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
-                             fontSize: 24,
+                             fontSize: dimension.height24,
                              fontWeight: FontWeight.w400),
                        ),
                        SizedBox(
@@ -55,11 +55,11 @@ class _OnePageState extends State<OnePage> {
                          "CityServe service is on-demand home service app with complete solution",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
-                             fontSize: 15,
+                             fontSize: dimension.height15 ,
                              fontWeight: FontWeight.w300),
                        ),
                        SizedBox(
-                         height: 25,
+                         height: dimension.height25,
                        ),
                        Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,7 +74,7 @@ class _OnePageState extends State<OnePage> {
                                "Skip",
                                style: GoogleFonts.poppins(
                                    color: AppColors.Colorq,
-                                   fontSize: 15,
+                                   fontSize: dimension.height15,
                                    fontWeight: FontWeight.w300),
                              ),
                            ),
@@ -88,7 +88,7 @@ class _OnePageState extends State<OnePage> {
                                "Next",
                                style: GoogleFonts.poppins(
                                    color: AppColors.Colorq,
-                                   fontSize: 15,
+                                   fontSize: dimension.height15,
                                    fontWeight: FontWeight.w300),
                              ),
                            ),
