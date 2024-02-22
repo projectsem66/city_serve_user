@@ -21,13 +21,6 @@ class NavigationBarr extends StatefulWidget {
 class _NavigationBarrState extends State<NavigationBarr> {
   BtmController _ = Get.put(BtmController());
   GlobalKey<ScaffoldState> ScaffoldKey = GlobalKey<ScaffoldState>();
-  int _selectedIndex = 0;
-  List<Widget> pages = const [
-    Text("CS"),
-    Text("CS"),
-    Text("CS"),
-    Text("CS"),
-  ];
   final btmNaviScr = [
     Dashboard(),
     Bookings(),
@@ -40,7 +33,6 @@ class _NavigationBarrState extends State<NavigationBarr> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        // _searchControlle
         print("tapped");
 
         setState(
@@ -65,7 +57,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
             //     children: [
             //       Text(
             //         "Are you sure you want to exit?",
-            //         style: GoogleFonts.ubuntu(
+            //         style: GoogleFonts.poppins(
             //             color: AppColors.Colorq,
             //             fontSize: 18,
             //             fontWeight: FontWeight.w500),
@@ -89,7 +81,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
             //       child: Center(
             //         child: Text(
             //           "Yes",
-            //           style: GoogleFonts.ubuntu(
+            //           style: GoogleFonts.poppins(
             //               color: AppColors.Colorq,
             //               fontSize: 18,
             //               fontWeight: FontWeight.w500),
@@ -111,7 +103,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
             //         child: Center(
             //           child: Text(
             //             "Cancel",
-            //             style: GoogleFonts.ubuntu(
+            //             style: GoogleFonts.poppins(
             //                 color: Colors.white,
             //                 fontSize: 18,
             //                 fontWeight: FontWeight.w500),

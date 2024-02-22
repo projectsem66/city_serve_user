@@ -23,6 +23,14 @@ List sliderImages = [
   "assets/dashboard/slider5.jpg",
   "assets/dashboard/slider7.jpg"
 ];
+List Slider2Images = [
+  "assets/dashboard/2ndSlider/2ndSlider1.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider2.jpeg",
+  "assets/dashboard/2ndSlider/2ndSlider3.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider4.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider5.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider6.jpg",
+];
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 List mostBook = [
@@ -627,7 +635,7 @@ class _DashboardState extends State<Dashboard> {
                       return Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage(sliderImages[index]),
+                                image: AssetImage(Slider2Images[index]),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(7)),
                       );

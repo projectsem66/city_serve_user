@@ -71,6 +71,7 @@ flutter:
     - assets/
     - assets/category/
     - assets/dashboard/mostBook/
+    - assets/dashboard/2ndSlider/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
