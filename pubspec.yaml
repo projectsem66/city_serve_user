@@ -72,6 +72,12 @@ flutter:
     - assets/category/
     - assets/dashboard/mostBook/
     - assets/dashboard/2ndSlider/
+    - assets/dashboard/new&noteworthy/
+    - assets/dashboard/pestControl/
+    - assets/dashboard/quickHomeRepairs/
+    - assets/dashboard/acApplianceRepair/
+    - assets/dashboard/massageMen/
+    - assets/dashboard/spaWomen/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

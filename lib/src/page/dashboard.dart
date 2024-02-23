@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../btm_controller.dart';
+import '../../servicesList/allServices.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -24,65 +25,245 @@ List sliderImages = [
   "assets/dashboard/slider7.jpg"
 ];
 List Slider2Images = [
-  "assets/dashboard/2ndSlider/2ndSlider1.jpg",
-  "assets/dashboard/2ndSlider/2ndSlider2.jpeg",
   "assets/dashboard/2ndSlider/2ndSlider3.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider2.jpeg",
   "assets/dashboard/2ndSlider/2ndSlider4.jpg",
+  "assets/dashboard/2ndSlider/2ndSlider1.jpg",
   "assets/dashboard/2ndSlider/2ndSlider5.jpg",
   "assets/dashboard/2ndSlider/2ndSlider6.jpg",
 ];
-BtmController _ = Get.put(BtmController());
-int _currentIndex1 = 0;
-List mostBook = [
+List newAndNoteworthy = [
   {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/1u.jpg",
-    "rating": "4.88",
-    "price": "220"
+    "name": "Bathroom & Kitchen Cleaning",
+    "image": "assets/dashboard/new&noteworthy/newNdNoteworthy.jpg",
+    "category": "newAndNoteworthy"
   },
   {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/2u.jpg",
-    "rating": "4.88",
-    "price": "220"
+    "name": "Hair Studio for Women",
+    "image": "assets/dashboard/new&noteworthy/newNdNoteworthy2.jpg",
+    "category": "newAndNoteworthy"
   },
   {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/3u.jpg",
-    "rating": "4.88",
-    "price": "220"
-  },
-  {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/4u.jpg",
-    "rating": "4.88",
-    "price": "220"
-  },
-  {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/5u.jpg",
-    "rating": "4.88",
-    "price": "220"
-  },
-  {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/6u.jpg",
-    "rating": "4.88",
-    "price": "220"
-  },
-  {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/7u.jpg",
-    "rating": "4.88",
-    "price": "220"
-  },
-  {
-    "name": "Cleaning",
-    "image": "assets/dashboard/mostBook/8u.jpg",
-    "rating": "4.88",
-    "price": "220"
+    "name": "Ac Service and Repair",
+    "image": "assets/dashboard/new&noteworthy/newNdNoteworthy3.jpg",
+    "category": "newAndNoteworthy"
   },
 ];
+List massageMen = [
+  {
+    "name": "Stress Relief",
+    "image": "assets/dashboard/massageMen/man1.jpg",
+    "category": "massageMen"
+  },
+  {
+    "name": "Pain Relief",
+    "image": "assets/dashboard/massageMen/man2.jpg",
+    "category": "massageMen"
+  },
+];
+List spaWomen = [
+  {
+    "name": "Stress Relief Therapy",
+    "image": "assets/dashboard/spaWomen/women1.jpg",
+    "category": "spaWomen"
+  },
+  {
+    "name": "Pain Relief Therapy",
+    "image": "assets/dashboard/spaWomen/women2.jpg",
+    "category": "spaWomen"
+  },
+  {
+    "name": "Postback Workout",
+    "image": "assets/dashboard/spaWomen/women3.jpg",
+    "category": "spaWomen"
+  },
+];
+List salonWomen = [
+  {
+    "name": "Waxing",
+    "image": "assets/dashboard/spaWomen/women4.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Facial & Cleanup",
+    "image": "assets/dashboard/spaWomen/women5.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Manicure",
+    "image": "assets/dashboard/spaWomen/women6.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Pedicure",
+    "image": "assets/dashboard/spaWomen/women7.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Threading & Face wax",
+    "image": "assets/dashboard/spaWomen/women8.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Bleach & Detan",
+    "image": "assets/dashboard/spaWomen/women9.jpg",
+    "category": "salonWomen"
+  },
+  {
+    "name": "Haircare",
+    "image": "assets/dashboard/spaWomen/women10.jpg",
+    "category": "salonWomen"
+  },
+];
+
+List pestControl = [
+  {
+    "name": "Bathroom & Kitchen Cleaning",
+    "image": "assets/dashboard/pestControl/1x.jpg",
+    "category": "pestControl"
+  },
+  {
+    "name": "Sofa & Carpet Cleaning",
+    "image": "assets/dashboard/pestControl/2x.jpg",
+    "category": "pestControl"
+  },
+];
+List acApplianceRepair = [
+  {
+    "name": "Ac Service & Repair",
+    "image": "assets/dashboard/acApplianceRepair/1y.jpg",
+    "category": "acApplianceRepair"
+  },
+  {
+    "name": "Washing Machine Repair",
+    "image": "assets/dashboard/acApplianceRepair/2y.jpg",
+    "category": "acApplianceRepair"
+  },
+  {
+    "name": "Water Purifier Repair",
+    "image": "assets/dashboard/acApplianceRepair/3y.jpg",
+    "category": "acApplianceRepair"
+  },
+  {
+    "name": "Refrigerator Repair",
+    "image": "assets/dashboard/acApplianceRepair/4y.jpg",
+    "category": "acApplianceRepair"
+  },
+  {
+    "name": "Microwave Repair",
+    "image": "assets/dashboard/acApplianceRepair/5y.jpg",
+    "category": "acApplianceRepair"
+  },
+  {
+    "name": "Chimney Repair",
+    "image": "assets/dashboard/acApplianceRepair/6y.jpg",
+    "category": "acApplianceRepair"
+  },
+];
+List quickHomeRepairs = [
+  {
+    "name": "Tap Repairs",
+    "image": "assets/dashboard/quickHomeRepairs/1z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Washbasin Pipe Leakage",
+    "image": "assets/dashboard/quickHomeRepairs/2z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Drill & Hang (Wall Decor) ",
+    "image": "assets/dashboard/quickHomeRepairs/3z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Switch / Socket Replacement",
+    "image": "assets/dashboard/quickHomeRepairs/4z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Switchboard / Switchbox Repair",
+    "image": "assets/dashboard/quickHomeRepairs/5z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Jet Spray",
+    "image": "assets/dashboard/quickHomeRepairs/6z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+  {
+    "name": "Drawer Channel Repair",
+    "image": "assets/dashboard/quickHomeRepairs/7z.jpg",
+    "rating": "4.88",
+    "price": "220",
+    "category": "quickHomeRepairs"
+  },
+];
+
+BtmController _ = Get.put(BtmController());
+int _currentIndex1 = 0;
+// List mostBook = [
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/1u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/2u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/3u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/4u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/5u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/6u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/7u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+//   {
+//     "name": "Cleaning",
+//     "image": "assets/dashboard/mostBook/8u.jpg",
+//     "rating": "4.88",
+//     "price": "220"
+//   },
+// ];
 
 class _DashboardState extends State<Dashboard> {
   @override
@@ -557,71 +738,84 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: dimension.height100 * 2,
+                    height: dimension.height100 +
+                        dimension.height100 +
+                        dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: 8,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width5),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height:
-                                      dimension.height100 + dimension.height20,
-                                  width: 120,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
+                        if (mostBook[index]["category"] ==
+                            "mostBookedservice") {
+                          return Container(
+                            // height: 300,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(right: dimension.width12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: dimension.height100 +
+                                        dimension.height40,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            AppColors.Colorq.withOpacity(0.5),
+                                        borderRadius: BorderRadius.circular(7),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                mostBook[index]["image"]),
+                                            fit: BoxFit.cover)),
+                                    // child: Image(
+                                    //   image: AssetImage(mostBook[index]["image"]),
+                                    //   fit: BoxFit.cover,
+                                    // ),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    // height: dimension.height80,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                      // color: AppColors.Colorq.withOpacity(0.5),
                                       borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              mostBook[index]["image"]),fit: BoxFit.cover)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                                Container(
-                                  height: dimension.height80,
-                                  width: 120,
-                                  decoration: BoxDecoration(
-                                    // color: AppColors.Colorq.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          mostBook[index]['name'],
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height15,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          "★ ${mostBook[index]['rating']}",
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height13,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        Text(
+                                          "₹ ${mostBook[index]['price']}",
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height14,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        mostBook[index]['name'],
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height15,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Text(
-                                        mostBook[index]['rating'],
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height13,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Text(
-                                        "₹ ${mostBook[index]['price']}",
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height14,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        } else {
+                          return null;
+                        }
                       },
                     ),
                   ),
@@ -630,7 +824,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   CarouselSlider.builder(
                     carouselController: CarouselController(),
-                    itemCount: 3,
+                    itemCount: 6,
                     itemBuilder: (context, index, realIndex) {
                       return Container(
                         decoration: BoxDecoration(
@@ -664,7 +858,7 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   Text(
-                    "Spa for women",
+                    "New & Noteworthy",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
                         fontSize: dimension.height22,
@@ -674,18 +868,59 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: 135,
+                    height: dimension.height100 + dimension.height100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: newAndNoteworthy.length,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(right: dimension.width5),
-                          child: Container(
-                            width: 135,
-                            decoration: BoxDecoration(
-                                color: AppColors.Colorq.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(7)),
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height:
+                                      dimension.height100 + dimension.height40,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              newAndNoteworthy[index]["image"]),
+                                          fit: BoxFit.cover)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  // height: dimension.height80,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                    // color: AppColors.Colorq.withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        newAndNoteworthy[index]['name'],
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height15,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -695,7 +930,7 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   Text(
-                    "Cleaning & post control",
+                    "Cleaning & Pest Control",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
                         fontSize: dimension.height22,
@@ -705,18 +940,47 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: 145,
+                    height: dimension.height100 + dimension.height52,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 2,
+                      itemCount: pestControl.length,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(right: dimension.width5),
-                          child: Container(
-                            width: 145,
-                            decoration: BoxDecoration(
-                                color: AppColors.Colorq.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(7)),
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 140,
+                                  child: Text(
+                                    newAndNoteworthy[index]['name'],
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: dimension.height100,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              pestControl[index]["image"]),
+                                          fit: BoxFit.fill)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -736,33 +1000,71 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: dimension.height100 * 2,
+                    height: dimension.height100 +
+                        dimension.height100 +
+                        dimension.height32,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: quickHomeRepairs.length,
                       itemBuilder: (context, index) {
                         return Container(
-                          width: 135,
                           // height: 300,
                           child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width5),
+                            padding: EdgeInsets.only(right: dimension.width12),
                             child: Column(
                               children: [
                                 Container(
                                   height:
-                                      dimension.height100 + dimension.height20,
-                                  width: 135,
+                                      dimension.height100 + dimension.height40,
+                                  width: 140,
                                   decoration: BoxDecoration(
-                                    color: AppColors.Colorq.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              quickHomeRepairs[index]["image"]),
+                                          fit: BoxFit.cover)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                                SizedBox(
+                                  height: 5,
                                 ),
                                 Container(
-                                  height: dimension.height80,
-                                  width: 135,
+                                  // height: dimension.height80,
+                                  width: 140,
                                   decoration: BoxDecoration(
-                                    color: AppColors.Colorq.withOpacity(0.5),
+                                    // color: AppColors.Colorq.withOpacity(0.5),
                                     borderRadius: BorderRadius.circular(7),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        quickHomeRepairs[index]['name'],
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height15,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        "★ ${quickHomeRepairs[index]['rating']}",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height13,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        "₹ ${quickHomeRepairs[index]['price']}",
+                                        style: GoogleFonts.poppins(
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height14,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -776,29 +1078,242 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height15,
                   ),
                   Text(
-                    "AC & appliance repairs",
+                    "Ac & Appliance Repair",
                     style: GoogleFonts.poppins(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height22,
-                      fontWeight: FontWeight.w400,
-                    ),
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: 155,
+                    height: dimension.height100 + dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 5,
+                      itemCount: acApplianceRepair.length,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(right: dimension.width5),
-                          child: Container(
-                            width: 145,
-                            decoration: BoxDecoration(
-                                color: AppColors.Colorq.withOpacity(0.5),
-                                borderRadius: BorderRadius.circular(7)),
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 140,
+                                  height: 50,
+                                  child: Text(
+                                    acApplianceRepair[index]['name'],
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: dimension.height100,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              acApplianceRepair[index]
+                                                  ["image"]),
+                                          fit: BoxFit.fill)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Massage for Men",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height55,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: massageMen.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 140,
+                                  height: 50,
+                                  child: Text(
+                                    massageMen[index]['name'],
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: dimension.height100,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              massageMen[index]["image"]),
+                                          fit: BoxFit.fill)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Spa for Women",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height55,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: spaWomen.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 140,
+                                  height: 50,
+                                  child: Text(
+                                    spaWomen[index]['name'],
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: dimension.height100,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              spaWomen[index]["image"]),
+                                          fit: BoxFit.fill)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Salon for Women",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height55,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: salonWomen.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          // height: 300,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: dimension.width12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 140,
+                                  height: 50,
+                                  child: Text(
+                                    salonWomen[index]['name'],
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.Colorq,
+                                        fontSize: dimension.height15,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: dimension.height100,
+                                  width: 140,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              salonWomen[index]["image"]),
+                                          fit: BoxFit.fill)),
+                                  // child: Image(
+                                  //   image: AssetImage(mostBook[index]["image"]),
+                                  //   fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },

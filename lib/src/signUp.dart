@@ -1,3 +1,4 @@
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
@@ -265,7 +266,7 @@ class _SignUpState extends State<SignUp> {
                 Bounce(
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
-                    Get.to(Dashboard());
+                    Get.to(NavigationBarr());
                   },
                   child: Container(
                     height: dimension.height50,

@@ -7,6 +7,7 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../navigationBar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -68,7 +69,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color:AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -105,7 +106,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w300),
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey.shade400),
+                        borderSide: BorderSide(color:AppColors.Colorq),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       enabledBorder: OutlineInputBorder(
@@ -125,7 +126,7 @@ class _LoginState extends State<Login> {
                       "Forgot Password? ",
                       style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w300,
                           fontStyle: FontStyle.italic),
                     ),
@@ -157,62 +158,62 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height35,
+                  height: dimension.height45,
                 ),
                 Center(
                     child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
-                    Bounce(
-                      duration: Duration(milliseconds: 400),
-                      onPressed: () {
-                        print("tapped");
-                        Get.to(() => SignUp());
-                      },
-                      child: Text(
-                        "Sign up",
-                        style: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.underline,
-                          fontStyle: FontStyle.italic,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account? ",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300),
                         ),
-                      ),
-                    ),
-                  ],
-                )),
+                        Bounce(
+                          duration: Duration(milliseconds: 400),
+                          onPressed: () {
+                            print("tapped");
+                            Get.to(() => SignUp());
+                          },
+                          child: Text(
+                            "Sign up",
+                            style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.underline,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )),
                 SizedBox(
-                  height: dimension.height24,
+                  height: dimension.height50,
                 ),
                 Row(
                   children: [
                     Expanded(
-                      flex: 5,
+                      flex: 6,
                       child: Divider(
                         thickness: 1,
                         color: AppColors.Colorq,
                       ),
                     ),
                     Expanded(
-                      flex: 7,
+                      flex: 8,
                       child: Text(
                         " Or Continue With",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
-                            fontSize: dimension.font15,
+                            fontSize: dimension.font14,
                             fontWeight: FontWeight.w300),
                       ),
                     ),
                     Expanded(
-                      flex: 5,
+                      flex: 6,
                       child: Divider(
                         thickness: 1,
                         color: AppColors.Colorq,
