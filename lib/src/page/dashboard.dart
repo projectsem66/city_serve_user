@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:city_serve/src/page/search.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
+import 'package:city_serve/widget/serviceContainer.dart';
+import 'package:city_serve/widget/serviceContainer2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
@@ -214,56 +216,6 @@ List quickHomeRepairs = [
 
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
-// List mostBook = [
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/1u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/2u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/3u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/4u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/5u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/6u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/7u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-//   {
-//     "name": "Cleaning",
-//     "image": "assets/dashboard/mostBook/8u.jpg",
-//     "rating": "4.88",
-//     "price": "220"
-//   },
-// ];
 
 class _DashboardState extends State<Dashboard> {
   @override
@@ -743,78 +695,18 @@ class _DashboardState extends State<Dashboard> {
                         dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 8,
+                      itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        if (mostBook[index]["category"] ==
+                        if (allServices[index]["category"] ==
                             "mostBookedservice") {
-                          return Container(
-                            // height: 300,
-                            child: Padding(
-                              padding:
-                                  EdgeInsets.only(right: dimension.width12),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: dimension.height100 +
-                                        dimension.height40,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7),
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                mostBook[index]["image"]),
-                                            fit: BoxFit.cover)),
-                                    // child: Image(
-                                    //   image: AssetImage(mostBook[index]["image"]),
-                                    //   fit: BoxFit.cover,
-                                    // ),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    // height: dimension.height80,
-                                    width: 140,
-                                    decoration: BoxDecoration(
-                                      // color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          mostBook[index]['name'],
-                                          style: GoogleFonts.poppins(
-                                              color: AppColors.Colorq,
-                                              fontSize: dimension.height15,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "★ ${mostBook[index]['rating']}",
-                                          style: GoogleFonts.poppins(
-                                              color: AppColors.Colorq,
-                                              fontSize: dimension.height13,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Text(
-                                          "₹ ${mostBook[index]['price']}",
-                                          style: GoogleFonts.poppins(
-                                              color: AppColors.Colorq,
-                                              fontSize: dimension.height14,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return ServiceContainer(
+                            image: allServices[index]["image"],
+                            srvName: allServices[index]["name"],
+                            srvRating: allServices[index]["rating"],
+                            srvPrice: allServices[index]["price"],
                           );
                         } else {
-                          return null;
+                          return SizedBox();
                         }
                       },
                     ),
@@ -1005,72 +897,19 @@ class _DashboardState extends State<Dashboard> {
                         dimension.height32,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: quickHomeRepairs.length,
+                      itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height:
-                                      dimension.height100 + dimension.height40,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              quickHomeRepairs[index]["image"]),
-                                          fit: BoxFit.cover)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  // height: dimension.height80,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                    // color: AppColors.Colorq.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        quickHomeRepairs[index]['name'],
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height15,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Text(
-                                        "★ ${quickHomeRepairs[index]['rating']}",
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height13,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      Text(
-                                        "₹ ${quickHomeRepairs[index]['price']}",
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height14,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        if (allServices[index]["category"] ==
+                            "quickHomeRepairs") {
+                          return ServiceContainer(
+                            image: allServices[index]["image"],
+                            srvName: allServices[index]["name"],
+                            srvRating: allServices[index]["rating"],
+                            srvPrice: allServices[index]["price"],
+                          );
+                        } else {
+                          return SizedBox();
+                        }
                       },
                     ),
                   ),
@@ -1090,51 +929,18 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height100 + dimension.height55,
                     child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: acApplianceRepair.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 140,
-                                  height: 50,
-                                  child: Text(
-                                    acApplianceRepair[index]['name'],
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  height: dimension.height100,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              acApplianceRepair[index]
-                                                  ["image"]),
-                                          fit: BoxFit.fill)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: allServices.length,
+                        itemBuilder: (context, index) {
+                          if (allServices[index]["category"] ==
+                              "acApplianceRepair") {
+                            return ServiceContainer2(
+                                srvName: allServices[index]["name"],
+                                srvImage: allServices[index]["image"]);
+                          } else {
+                            return SizedBox();
+                          }
+                        }),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -1153,47 +959,15 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 + dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: massageMen.length,
+                      itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 140,
-                                  height: 50,
-                                  child: Text(
-                                    massageMen[index]['name'],
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  height: dimension.height100,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              massageMen[index]["image"]),
-                                          fit: BoxFit.fill)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        if (allServices[index]["category"] == "massageMen") {
+                          return ServiceContainer2(
+                              srvName: allServices[index]["name"],
+                              srvImage: allServices[index]["image"]);
+                        } else {
+                          return SizedBox();
+                        }
                       },
                     ),
                   ),
@@ -1214,47 +988,15 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 + dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: spaWomen.length,
+                      itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 140,
-                                  height: 50,
-                                  child: Text(
-                                    spaWomen[index]['name'],
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  height: dimension.height100,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              spaWomen[index]["image"]),
-                                          fit: BoxFit.fill)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        if (allServices[index]["category"] == "spaWomen") {
+                          return ServiceContainer2(
+                              srvName: allServices[index]["name"],
+                              srvImage: allServices[index]["image"]);
+                        } else {
+                          return SizedBox();
+                        }
                       },
                     ),
                   ),
@@ -1275,47 +1017,15 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 + dimension.height55,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: salonWomen.length,
+                      itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 140,
-                                  height: 50,
-                                  child: Text(
-                                    salonWomen[index]['name'],
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height15,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  height: dimension.height100,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              salonWomen[index]["image"]),
-                                          fit: BoxFit.fill)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
+                        if (allServices[index]["category"] == "salonWomen") {
+                          return ServiceContainer2(
+                              srvName: allServices[index]["name"],
+                              srvImage: allServices[index]["image"]);
+                        } else {
+                          return SizedBox();
+                        }
                       },
                     ),
                   ),
