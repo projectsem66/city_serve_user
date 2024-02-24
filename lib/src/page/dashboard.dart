@@ -679,12 +679,31 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Most booked service",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Most booked service",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -749,12 +768,33 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "New & Noteworthy",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+
+                        "New & Noteworthy",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -821,12 +861,32 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Cleaning & Pest Control",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+                        "Cleaning & Pest Control",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -844,7 +904,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Column(
                               children: [
                                 Container(
-                                  width: 140,
+                                  width: 150,
                                   child: Text(
                                     newAndNoteworthy[index]['name'],
                                     style: GoogleFonts.poppins(
@@ -881,12 +941,32 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Quick home repairs",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+                        "Quick home repairs",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -916,12 +996,32 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Ac & Appliance Repair",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+                        "Ac & Appliance Repair",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -945,12 +1045,32 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Massage for Men",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+                        "Massage for Men",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -974,12 +1094,32 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Spa for Women",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      Text(
+                        "Spa for Women",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -1003,12 +1143,31 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Text(
-                    "Salon for Women",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height22,
-                        fontWeight: FontWeight.w400),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Salon for Women",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height22,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+
+                        },
+                        child: Text(
+                          "See all",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height16,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+
+                    ],
                   ),
                   SizedBox(
                     height: dimension.height15,

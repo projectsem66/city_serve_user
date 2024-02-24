@@ -32,7 +32,7 @@ class _OnePageState extends State<OnePage> {
                child: Padding(
                  padding: const EdgeInsets.all(8.0),
                  child: Container(
-                   height: dimension.height100+dimension.height100+dimension.height16,
+                   height: dimension.height100+dimension.height100,
                    child: Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [

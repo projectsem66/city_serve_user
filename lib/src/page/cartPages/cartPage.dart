@@ -14,11 +14,9 @@ class CartPage extends StatefulWidget {
   @override
   State<CartPage> createState() => _CartPageState();
 }
+
 List cartDetails = [
-  {
-    "srvName":"Ac service & Repair",
-    "srvPrice":"800"
-  }
+  {"srvName": "Ac service & Repair", "srvPrice": "800"}
 ];
 
 BtmController _ = Get.put(BtmController());
@@ -41,7 +39,7 @@ class _CartPageState extends State<CartPage> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text(" Your cart"),
+        title: Text("Your cart"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -83,13 +81,17 @@ class _CartPageState extends State<CartPage> {
                                             fontSize: dimension.height18,
                                             fontWeight: FontWeight.w400),
                                       ),
-                                      SizedBox(height: 15,),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
                                       Container(
                                         decoration: BoxDecoration(
-                                            color: AppColors.red.withOpacity(0.2),
-                                            borderRadius: BorderRadius.circular(7),
-                                            border:
-                                            Border.all(color: AppColors.red)),
+                                            color:
+                                                AppColors.red.withOpacity(0.2),
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                            border: Border.all(
+                                                color: AppColors.red)),
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 6, vertical: 4),
@@ -102,8 +104,6 @@ class _CartPageState extends State<CartPage> {
                                           ),
                                         ),
                                       ),
-
-
                                     ],
                                   ),
                                   Container(
@@ -130,7 +130,7 @@ class _CartPageState extends State<CartPage> {
               Bounce(
                 duration: Duration(milliseconds: 200),
                 onPressed: () {
-                  Get.to(Summary(),transition: Transition.cupertino);
+                  Get.to(Summary(), transition: Transition.cupertino);
                 },
                 child: Container(
                   width: double.maxFinite,

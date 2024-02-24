@@ -1,3 +1,4 @@
+import 'package:city_serve/src/page/cartPages/paymentPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -21,10 +22,6 @@ class _SummaryState extends State<Summary> {
         leading: GestureDetector(
             onTap: () {
               setState(() {
-                // _currentIndex1 = 0;
-                // _.currentIndex = 0;
-                // _.update();
-                // print(_currentIndex1);
                 Get.back();
               });
             },
@@ -76,15 +73,16 @@ class _SummaryState extends State<Summary> {
                           duration: Duration(milliseconds: 200),
                           onPressed: () {
                             Get.bottomSheet(
-                                isDismissible: true,
-                                Container(
-                                  height: 285,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10))),
-                                ),);
+                              isDismissible: true,
+                              Container(
+                                height: 285,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10))),
+                              ),
+                            );
                           },
                           child: Text(
                             "Offers >",
@@ -173,7 +171,9 @@ class _SummaryState extends State<Summary> {
                           fontSize: dimension.height18,
                           fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: dimension.height5,),
+                    SizedBox(
+                      height: dimension.height5,
+                    ),
                     Text(
                       "Free cancellation if done more than 3 hrs before the service or if professional not provided",
                       style: GoogleFonts.poppins(
@@ -221,7 +221,130 @@ class _SummaryState extends State<Summary> {
               Bounce(
                 duration: Duration(milliseconds: 200),
                 onPressed: () {
-                  Get.to(Summary(),transition: Transition.cupertino);
+                  // Get.to(Summary(),transition: Transition.cupertino);
+                  Get.bottomSheet(
+                      isDismissible: true,
+                      Container(
+                        height: dimension.height100 * 2,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                topRight: Radius.circular(10))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, right: 10, left: 10, bottom: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "aaa",
+                                style: GoogleFonts.poppins(
+                                    color: AppColors.Colorq,
+                                    fontSize: dimension.height16,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              Spacer(),
+                              Bounce(
+                                duration: Duration(milliseconds: 200),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Get.bottomSheet(
+                                      isDismissible: true,
+                                      Container(
+                                        height: dimension.height100 * 2,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10))),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 20,
+                                              right: 10,
+                                              left: 10,
+                                              bottom: 20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "aaa",
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize:
+                                                        dimension.height16,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Spacer(),
+                                              Bounce(
+                                                duration:
+                                                    Duration(milliseconds: 200),
+                                                onPressed: () {
+                                                  Get.to(PaymentPage(),
+                                                      transition:
+                                                          Transition.cupertino);
+                                                },
+                                                child: Container(
+                                                  width: double.maxFinite,
+                                                  decoration: BoxDecoration(
+                                                      color: AppColors.Colorq,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              7)),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 10,
+                                                            horizontal: 7),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Proceed to checkout",
+                                                        style:
+                                                            GoogleFonts.poppins(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize:
+                                                                    dimension
+                                                                        .height18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ));
+                                },
+                                child: Container(
+                                  width: double.maxFinite,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq,
+                                      borderRadius: BorderRadius.circular(7)),
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 10, horizontal: 7),
+                                    child: Center(
+                                      child: Text(
+                                        "Proceed",
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.white,
+                                            fontSize: dimension.height18,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ));
                 },
                 child: Container(
                   width: double.maxFinite,
