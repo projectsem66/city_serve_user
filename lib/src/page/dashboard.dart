@@ -295,43 +295,25 @@ class _DashboardState extends State<Dashboard> {
                           Expanded(
                             flex: 5,
                             child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.9),
+                              height: dimension.height43,
+                              decoration: BoxDecoration(color: Colors.white.withOpacity(0.9),
+                                  border: Border.all(color: AppColors.Colorq),
                                   borderRadius: BorderRadius.circular(7)),
-                              child: TextFormField(
-                                onTap: () {
-                                  Get.to(SearchPage());
-                                },
-                                autofocus: false,
-                                keyboardType: TextInputType.text,
-                                cursorColor: Colors.black,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.search,
-                                      color: AppColors.Colorq),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                  hintText: "Search here..",
-                                  hintStyle: GoogleFonts.poppins(
-                                      color: AppColors.Colorq,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w300),
-                                  contentPadding:
-                                      EdgeInsets.fromLTRB(5, 10, 5, 0),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: AppColors.Colorq),
-                                    borderRadius: BorderRadius.circular(7.0),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.7)),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.location_on,color: AppColors.Colorq,),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "Location",
+                                      style: GoogleFonts.poppins(
+                                          fontSize: dimension.height16,
+                                          color: AppColors.Colorq.withOpacity(0.8)),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -341,16 +323,22 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           Expanded(
                             flex: 1,
-                            child: Container(
-                              height: dimension.height43,
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.9),
-                                  borderRadius:
-                                      BorderRadius.circular(dimension.height7),
-                                  border: Border.all(color: AppColors.Colorq)),
-                              child: Icon(
-                                Icons.search,
-                                color: AppColors.Colorq,
+                            child: Bounce(
+                              duration: Duration(milliseconds: 200),
+                              onPressed: () {
+                                Get.to(SearchPage());
+                              },
+                              child: Container(
+                                height: dimension.height43,
+                                decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius:
+                                        BorderRadius.circular(dimension.height7),
+                                    border: Border.all(color: AppColors.Colorq)),
+                                child: Icon(
+                                  Icons.search,
+                                  color: AppColors.Colorq,
+                                ),
                               ),
                             ),
                           ),
