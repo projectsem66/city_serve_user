@@ -82,6 +82,8 @@ flutter:
     - assets/dashboard/massageMen/
     - assets/dashboard/spaWomen/
     - assets/dashboard/studio/
+    - assets/dashboard/studio/menslider/
+    - assets/dashboard/studio/womenslider/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

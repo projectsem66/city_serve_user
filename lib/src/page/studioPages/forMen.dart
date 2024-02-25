@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/colors.dart';
+import '../dashboard.dart';
 import 'mSalon.dart';
 import 'mSpa.dart';
 
@@ -19,6 +21,16 @@ class _ForMenState extends State<ForMen> {
   bool spa = true;
   bool salon = false;
 
+  List mSlider = [
+    "assets/dashboard/studio/menslider/stdmen.jpg",
+    "assets/dashboard/studio/menslider/stdmen2.jpg",
+    "assets/dashboard/studio/menslider/stdmen3.jpg",
+    "assets/dashboard/studio/menslider/stdmen6.jpg",
+    "assets/dashboard/studio/menslider/stdmen4.jpg",
+    "assets/dashboard/studio/menslider/stdmen5.jpg"
+
+
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +53,48 @@ class _ForMenState extends State<ForMen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Container(
+                height: dimension.height100 +
+                    dimension.height100,
+                child: Align(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: CarouselSlider.builder(
+                    carouselController: CarouselController(),
+                    itemCount: mSlider.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(dimension.height7),
+                          image: DecorationImage(
+                              image: AssetImage(mSlider[index]),
+                              fit: BoxFit.cover),
+                        ),
+                      );
+                    },
+                    options: CarouselOptions(
+                      
+                      autoPlay: true,
+                      enlargeFactor: 0,
+                      scrollDirection: Axis.horizontal,
+                      autoPlayInterval: Duration(seconds: 8),
+                      autoPlayCurve: Curves.ease,
+                      enableInfiniteScroll: true,
+                      height: dimension.height100 * 2.5,
+                      viewportFraction: 1,
+                      enlargeCenterPage: true,
+                      autoPlayAnimationDuration: const Duration(seconds: 4),
+                      animateToClosest: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          // _currentIndex = index;
+                          //sliderIndex = index;
+                          print(index);
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

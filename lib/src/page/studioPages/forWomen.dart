@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:city_serve/src/page/studioPages/wSalon.dart';
 import 'package:city_serve/src/page/studioPages/wSpa.dart';
 import 'package:city_serve/src/page/studioPages/wStudio.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/colors.dart';
+import '../dashboard.dart';
 
 class ForWomen extends StatefulWidget {
   const ForWomen({super.key});
@@ -20,6 +22,19 @@ class _ForWomenState extends State<ForWomen> {
   bool spa = true;
   bool salon = false;
   bool studio = false;
+
+  List wSlider = [
+    "assets/dashboard/studio/womenslider/stdslider.jpg",
+    "assets/dashboard/studio/womenslider/stdslider2.jpg",
+    "assets/dashboard/studio/womenslider/stdslider7.jpg",
+    "assets/dashboard/studio/womenslider/stdslider3.jpg",
+    "assets/dashboard/studio/womenslider/stdslider4.jpg",
+    "assets/dashboard/studio/womenslider/stdslider8.jpg",
+    "assets/dashboard/studio/womenslider/stdslider5.jpg",
+    "assets/dashboard/studio/womenslider/stdslider6.jpg",
+    "assets/dashboard/studio/womenslider/stdslider9.jpg",
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +60,47 @@ class _ForWomenState extends State<ForWomen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Container(
+                height: dimension.height100 +
+                    dimension.height100,
+                child: Align(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: CarouselSlider.builder(
+                    carouselController: CarouselController(),
+                    itemCount: wSlider.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(dimension.height7),
+                          image: DecorationImage(
+                              image: AssetImage(wSlider[index],),
+                              fit: BoxFit.cover),
+                        ),
+                      );
+                    },
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      enlargeFactor: 0,
+                      scrollDirection: Axis.horizontal,
+                      autoPlayInterval: Duration(seconds: 8),
+                      autoPlayCurve: Curves.ease,
+                      enableInfiniteScroll: true,
+                      height: dimension.height100 * 2.5,
+                      viewportFraction: 1,
+                      enlargeCenterPage: true,
+                      autoPlayAnimationDuration: const Duration(seconds: 4),
+                      animateToClosest: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          // _currentIndex = index;
+                          //sliderIndex = index;
+                          print(index);
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
