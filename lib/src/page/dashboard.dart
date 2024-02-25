@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:city_serve/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
 import 'package:city_serve/utils/colors.dart';
@@ -294,26 +295,32 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           Expanded(
                             flex: 5,
-                            child: Container(
-                              height: dimension.height43,
-                              decoration: BoxDecoration(color: Colors.white.withOpacity(0.9),
-                                  border: Border.all(color: AppColors.Colorq),
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.location_on,color: AppColors.Colorq,),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "Location",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: dimension.height16,
-                                          color: AppColors.Colorq.withOpacity(0.8)),
-                                    ),
-                                  ],
+                            child: Bounce(
+                              duration: Duration(milliseconds: 200),
+                              onPressed: () {
+                                Get.to(GoogleLocation());
+                              },
+                              child: Container(
+                                height: dimension.height43,
+                                decoration: BoxDecoration(color: Colors.white.withOpacity(0.9),
+                                    border: Border.all(color: AppColors.Colorq),
+                                    borderRadius: BorderRadius.circular(7)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.location_on,color: AppColors.Colorq,),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Location",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: dimension.height16,
+                                            color: AppColors.Colorq.withOpacity(0.8)),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

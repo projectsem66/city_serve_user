@@ -43,7 +43,7 @@ class _ForMenState extends State<ForMen> {
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
         title: Text(
-          "Men",
+          "Studio for Men",
           style: GoogleFonts.poppins(
               color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
         ),
