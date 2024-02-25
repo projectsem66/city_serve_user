@@ -302,22 +302,32 @@ class _DashboardState extends State<Dashboard> {
                               },
                               child: Container(
                                 height: dimension.height43,
-                                decoration: BoxDecoration(color: Colors.white.withOpacity(0.9),
+                                decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
                                     border: Border.all(color: AppColors.Colorq),
                                     borderRadius: BorderRadius.circular(7)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.location_on,color: AppColors.Colorq,),
+                                      Icon(
+                                        Icons.location_on,
+                                        color: AppColors.Colorq,
+                                      ),
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      Text(
-                                        "Location",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: dimension.height16,
-                                            color: AppColors.Colorq.withOpacity(0.8)),
+                                      Container(
+                                        width: 250,
+                                        child: Text(
+                                          currentLocation,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              fontSize: dimension.height16,
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.8)),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -339,9 +349,10 @@ class _DashboardState extends State<Dashboard> {
                                 height: dimension.height43,
                                 decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.9),
-                                    borderRadius:
-                                        BorderRadius.circular(dimension.height7),
-                                    border: Border.all(color: AppColors.Colorq)),
+                                    borderRadius: BorderRadius.circular(
+                                        dimension.height7),
+                                    border:
+                                        Border.all(color: AppColors.Colorq)),
                                 child: Icon(
                                   Icons.search,
                                   color: AppColors.Colorq,

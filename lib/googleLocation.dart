@@ -1,3 +1,4 @@
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +15,11 @@ class GoogleLocation extends StatefulWidget {
   State<GoogleLocation> createState() => _GoogleLocationState();
 }
 
-String ManualAddress = '';
+String currentLocation = '';
 String _currentAddress = "";
 
 class _GoogleLocationState extends State<GoogleLocation> {
-  Position? _currentLocation;
+  Position? fetchLocation;
 
   late bool servicePermission = false;
   late LocationPermission permission;
@@ -41,12 +42,12 @@ class _GoogleLocationState extends State<GoogleLocation> {
   _getAddressFromCordinates() async {
     try {
       List<Placemark> placemarks = await placemarkFromCoordinates(
-          _currentLocation!.latitude, _currentLocation!.longitude);
+          fetchLocation!.latitude, fetchLocation!.longitude);
       Placemark place = placemarks[0];
 
       setState(() {
         _currentAddress =
-            's${place.street}, ${place.subLocality}, ${place.locality}-${place.postalCode}, ${place.country}';
+            '${place.street}, ${place.subLocality}, ${place.locality}-${place.postalCode}, ${place.country}';
         // "${place.street},${place.subAdministrativeArea},${place.subLocality},${place.thoroughfare},${place.postalCode},${place.country},";
         // "${place.street},${place.thoroughfare},${place.subLocality},${place.locality},${place.country},";
       });
@@ -70,7 +71,7 @@ class _GoogleLocationState extends State<GoogleLocation> {
             //   height: 10,
             // ),
             // Text(
-            //     "Latitude = ${_currentLocation?.latitude}; Longitude = ${_currentLocation?.longitude}"),
+            //     "Latitude = ${fetchLocation?.latitude}; Longitude = ${fetchLocation?.longitude}"),
             // SizedBox(
             //   height: 30,
             // ),
@@ -86,220 +87,28 @@ class _GoogleLocationState extends State<GoogleLocation> {
             Bounce(
               duration: Duration(milliseconds: 300),
               onPressed: () async {
-                _currentLocation = await _getCurrentLocation();
+                Get.defaultDialog(
+                  content:CircularProgressIndicator(),
+                );
+                fetchLocation = await _getCurrentLocation();
+
                 await _getAddressFromCordinates();
 
-                print("${_currentLocation}");
-                ManualAddress = _currentAddress;
+                print("${fetchLocation}");
+                currentLocation = _currentAddress;
                 print("${_currentAddress}");
                 Get.offAll(
-                  () => Dashboard(),
-                  arguments: _currentAddress,
+                  () => NavigationBarr(),
+                  // arguments: _currentAddress,
                 );
               },
               child: Center(
                   child: Text(
-                "Get Current Location",
+                "TAp",
                 style: GoogleFonts.poppins(fontSize: 24, color: Colors.white),
               )),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 300),
-            //   onPressed: () {
-            //     showModalBottomSheet(
-            //       backgroundColor: Color(0xfff4ebdc),
-            //       shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadiusDirectional.only(
-            //               topEnd: Radius.circular(20),
-            //               topStart: Radius.circular(20))),
-            //       showDragHandle: true,
-            //       enableDrag: true,
-            //       // enableDrag: true,
-            //       // showDragHandle: true,
-            //       isScrollControlled: true,
-            //
-            //       constraints: BoxConstraints(minHeight: 50, maxHeight: 450),
-            //
-            //       context: context,
-            //       builder: (BuildContext context) {
-            //         return Padding(
-            //           padding: const EdgeInsets.all(8.0),
-            //           child: Column(
-            //             children: [
-            //               TextFormField(
-            //                 controller: te,
-            //
-            //                 // expands: true,
-            //                 maxLines: 3,
-            //                 minLines: 1,
-            //                 autofocus: true,
-            //                 // keyboardType: TextInputType.number,
-            //
-            //                 cursorColor: AppColors.Colorq,
-            //                 style: const TextStyle(
-            //                   fontSize: 18,
-            //                   fontWeight: FontWeight.bold,
-            //                   color: AppColors.Colorq,
-            //                 ),
-            //                 onChanged: (value) {
-            //                   ManualAddress = value;
-            //                   setState(() {});
-            //                 },
-            //                 decoration: InputDecoration(
-            //                   hoverColor: Colors.black,
-            //                   prefixIcon: Icon(
-            //                     Icons.location_on,
-            //                     color: AppColors.Colorq,
-            //                   ),
-            //                   // fillColor: const Color(0xff2C474A),
-            //                   // filled: true,
-            //                   hintText: "Type Address Here",
-            //
-            //                   hintStyle: TextStyle(
-            //                     fontWeight: FontWeight.w500,
-            //                     fontSize: 16,
-            //                     color: AppColors.Colorq.withOpacity(0.9),
-            //                   ),
-            //                   floatingLabelBehavior:
-            //                       FloatingLabelBehavior.never,
-            //                   contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-            //                   border: OutlineInputBorder(
-            //                       borderRadius: BorderRadius.circular(100.0),
-            //                       borderSide:
-            //                           BorderSide(color: AppColors.Colorq)),
-            //
-            //                   focusedBorder: OutlineInputBorder(
-            //                       borderRadius: BorderRadius.circular(100.0),
-            //                       borderSide: BorderSide(
-            //                           color: AppColors.Colorq, width: 2)),
-            //                   enabledBorder: OutlineInputBorder(
-            //                       borderRadius: BorderRadius.circular(100.0),
-            //                       borderSide: BorderSide(
-            //                           color: AppColors.Colorq, width: 2)),
-            //                   // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-            //                   // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-            //                 ),
-            //               ),
-            //               SizedBox(
-            //                 height: 120,
-            //               ),
-            //               Bounce(
-            //                 onPressed: () {
-            //                   _currentAddress = te.text.toString();
-            //                   Get.offAll(Dashboard(), arguments: te.text);
-            //                 },
-            //                 duration: Duration(milliseconds: 300),
-            //                 child: Container(
-            //                   height: 50,
-            //                   width: 220,
-            //                   child: Center(
-            //                       child: Text(
-            //                     "Set Location",
-            //                     style: GoogleFonts.poppins(
-            //                         fontSize: 24, color: Colors.white),
-            //                   )),
-            //                   decoration: BoxDecoration(
-            //                     color: AppColors.Colorq,
-            //                     borderRadius: BorderRadius.circular(25),
-            //                   ),
-            //                 ),
-            //               ),
-            //             ],
-            //             // height: 400,
-            //             // decoration: BoxDecoration(
-            //             //     color: Colors.white,
-            //             //     borderRadius: BorderRadius.only(
-            //             //         topLeft: Radius.circular(20),
-            //             //         topRight: Radius.circular(20))),
-            //             //  Column(
-            //             //   mainAxisAlignment: MainAxisAlignment.start,
-            //             //   mainAxisSize: MainAxisSize.min,
-            //             //   children: <Widget>[
-            //             //     TextFormField(
-            //             //       // expands: true,
-            //             //       maxLines: 3,
-            //             //       minLines: 1,
-            //             //       keyboardType: TextInputType.number,
-            //             //       cursorColor: AppColors.mainBrown,
-            //             //       style: const TextStyle(
-            //             //         fontSize: 18,
-            //             //         fontWeight: FontWeight.bold,
-            //             //         color: AppColors.mainBrown,
-            //             //       ),
-            //             //       onChanged: (value) {
-            //             //         setState(() {});
-            //             //       },
-            //             //       decoration: InputDecoration(
-            //             //         // fillColor: const Color(0xff2C474A),
-            //             //         // filled: true,
-            //             //         hintText: "Type Address Here",
-            //             //
-            //             //         hintStyle: TextStyle(
-            //             //           fontWeight: FontWeight.w500,
-            //             //           fontSize: 16,
-            //             //           color: AppColors.mainBrown.withOpacity(0.9),
-            //             //         ),
-            //             //         floatingLabelBehavior:
-            //             //             FloatingLabelBehavior.never,
-            //             //         contentPadding:
-            //             //             EdgeInsets.fromLTRB(5, 10, 5, 0),
-            //             //         focusedBorder: OutlineInputBorder(
-            //             //             borderRadius: BorderRadius.circular(100.0),
-            //             //             borderSide: BorderSide(
-            //             //                 color: AppColors.mainOrange)),
-            //             //         enabledBorder: OutlineInputBorder(
-            //             //             borderRadius: BorderRadius.circular(100.0),
-            //             //             borderSide:
-            //             //                 BorderSide(color: Color(0xff4c1514))),
-            //             //         // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-            //             //         // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-            //             //       ),
-            //             //     ),
-            //             //     SizedBox(
-            //             //       height: 10,
-            //             //     ),
-            //             //     Container(
-            //             //       height: 50,
-            //             //       width: 300,
-            //             //       child: Center(
-            //             //           child: Text(
-            //             //         "Set Location",
-            //             //         style: GoogleFonts.poppins(
-            //             //             fontSize: 24, color: Colors.white),
-            //             //       )),
-            //             //       decoration: BoxDecoration(
-            //             //         color: AppColors.mainOrange,
-            //             //         borderRadius: BorderRadius.circular(25),
-            //             //       ),
-            //             //     ),
-            //             //   ],
-            //             // ),
-            //           ),
-            //         );
-            //       },
-            //     );
-            //   },
-            //   child: Text(
-            //     "Enter Location Manually",
-            //     style: GoogleFonts.poppins(
-            //         fontSize: 24,
-            //         color: AppColors.Colorq,
-            //         fontWeight: FontWeight.w400),
-            //   ),
-            // ),
-            // ElevatedButton(
-            //     onPressed: () async {
-            //       _currentLocation = await _getCurrentLocation();
-            //       await _getAddressFromCordinates();
-            //
-            //       print("${_currentLocation}");
-            //       print("${_currentAddress}");
-            //       Get.to(()=>bottomNavigation(),arguments: _currentAddress);
-            //     },
-            //     child: Text("get Location"))
+
           ],
         ),
       ),
