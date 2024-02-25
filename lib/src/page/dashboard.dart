@@ -5,6 +5,7 @@ import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:city_serve/widget/serviceContainer.dart';
 import 'package:city_serve/widget/serviceContainer2.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
@@ -217,8 +218,11 @@ List quickHomeRepairs = [
 
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
+CarouselController sliderOne = CarouselController();
 
 class _DashboardState extends State<Dashboard> {
+  int sliderIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -262,6 +266,7 @@ class _DashboardState extends State<Dashboard> {
                         onPageChanged: (index, reason) {
                           setState(() {
                             // _currentIndex = index;
+                            sliderIndex = index;
                             print(index);
                           });
                         },
@@ -271,40 +276,87 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: TextFormField(
-                      onTap: () {
-                        Get.to(SearchPage());
-                      },
-                      keyboardType: TextInputType.text,
-                      cursorColor: Colors.black,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                      ),
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search, color: AppColors.Colorq),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: "Search here..",
-                        hintStyle: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w300),
-                        contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: AppColors.Colorq),
-                          borderRadius: BorderRadius.circular(7.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColors.Colorq.withOpacity(0.7)),
-                          borderRadius: BorderRadius.circular(5.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      DotsIndicator(
+                        dotsCount: 5,
+                        position: sliderIndex,
+                        decorator: DotsDecorator(
+                          activeColor: AppColors.Colorq,
+                          size: const Size.square(9.0),
+                          activeSize: const Size(18.0, 9.0),
+                          activeShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7)),
                         ),
                       ),
-                    ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.9),
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: TextFormField(
+                                onTap: () {
+                                  Get.to(SearchPage());
+                                },
+                                autofocus: false,
+                                keyboardType: TextInputType.text,
+                                cursorColor: Colors.black,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.search,
+                                      color: AppColors.Colorq),
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                  hintText: "Search here..",
+                                  hintStyle: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w300),
+                                  contentPadding:
+                                      EdgeInsets.fromLTRB(5, 10, 5, 0),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: AppColors.Colorq),
+                                    borderRadius: BorderRadius.circular(7.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color:
+                                            AppColors.Colorq.withOpacity(0.7)),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: dimension.width10,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              height: dimension.height43,
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.9),
+                                  borderRadius:
+                                      BorderRadius.circular(dimension.height7),
+                                  border: Border.all(color: AppColors.Colorq)),
+                              child: Icon(
+                                Icons.search,
+                                color: AppColors.Colorq,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -657,7 +709,8 @@ class _DashboardState extends State<Dashboard> {
                                       child: Text(
                                         "View all",
                                         style: GoogleFonts.poppins(
-                                          decoration: TextDecoration.underline,
+                                            decoration:
+                                                TextDecoration.underline,
                                             color: AppColors.Colorq,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500),
@@ -671,7 +724,6 @@ class _DashboardState extends State<Dashboard> {
                                 SizedBox(
                                   height: 5,
                                 ),
-
                               ],
                             ),
                           ),
@@ -694,9 +746,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -705,7 +755,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -773,10 +822,8 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
-
                         "New & Noteworthy",
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
@@ -785,9 +832,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -796,7 +841,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -866,7 +910,6 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
                         "Cleaning & Pest Control",
@@ -877,9 +920,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -888,7 +929,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -946,7 +986,6 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
                         "Quick home repairs",
@@ -957,9 +996,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -968,7 +1005,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -1001,7 +1037,6 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
                         "Ac & Appliance Repair",
@@ -1012,9 +1047,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -1023,7 +1056,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -1050,7 +1082,6 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
                         "Massage for Men",
@@ -1061,9 +1092,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -1072,7 +1101,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -1099,7 +1127,6 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
                       Text(
                         "Spa for Women",
@@ -1110,9 +1137,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -1121,7 +1146,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -1158,9 +1182,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       Bounce(
                         duration: Duration(milliseconds: 200),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           "See all",
                           style: GoogleFonts.poppins(
@@ -1169,7 +1191,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
