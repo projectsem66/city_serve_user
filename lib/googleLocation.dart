@@ -1,6 +1,4 @@
 import 'package:city_serve/navigationBar.dart';
-import 'package:city_serve/src/page/dashboard.dart';
-import 'package:city_serve/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:geocoding/geocoding.dart';
@@ -25,7 +23,6 @@ class _GoogleLocationState extends State<GoogleLocation> {
   late LocationPermission permission;
   TextEditingController te = TextEditingController();
 
-
   Future<Position> _getCurrentLocation() async {
     servicePermission = await Geolocator.isLocationServiceEnabled();
     if (!servicePermission) {
@@ -48,8 +45,6 @@ class _GoogleLocationState extends State<GoogleLocation> {
       setState(() {
         _currentAddress =
             '${place.street}, ${place.subLocality}, ${place.locality}-${place.postalCode}, ${place.country}';
-        // "${place.street},${place.subAdministrativeArea},${place.subLocality},${place.thoroughfare},${place.postalCode},${place.country},";
-        // "${place.street},${place.thoroughfare},${place.subLocality},${place.locality},${place.country},";
       });
     } catch (e) {
       print(e);
@@ -59,25 +54,10 @@ class _GoogleLocationState extends State<GoogleLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffd6c1a8),
+
       body: Center(
         child: Column(
           children: [
-            // Text(
-            //   "Location CoodinateS",
-            //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
-            // SizedBox(
-            //   height: 10,
-            // ),
-            // Text(
-            //     "Latitude = ${fetchLocation?.latitude}; Longitude = ${fetchLocation?.longitude}"),
-            // SizedBox(
-            //   height: 30,
-            // ),
-            //
-            //
-            // Text("${_currentAddress}"),
             Container(
               width: 300,
             ),
@@ -88,7 +68,7 @@ class _GoogleLocationState extends State<GoogleLocation> {
               duration: Duration(milliseconds: 300),
               onPressed: () async {
                 Get.defaultDialog(
-                  content:CircularProgressIndicator(),
+                  content: CircularProgressIndicator(),
                 );
                 fetchLocation = await _getCurrentLocation();
 
@@ -103,12 +83,12 @@ class _GoogleLocationState extends State<GoogleLocation> {
                 );
               },
               child: Center(
-                  child: Text(
-                "TAp",
-                style: GoogleFonts.poppins(fontSize: 24, color: Colors.white),
-              )),
+                child: Text(
+                  "TAp",
+                  style: GoogleFonts.poppins(fontSize: 24, color: Colors.black),
+                ),
+              ),
             ),
-
           ],
         ),
       ),

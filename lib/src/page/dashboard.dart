@@ -650,59 +650,7 @@ class _DashboardState extends State<Dashboard> {
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
                               Get.to(Categoryy());
-                              // Get.bottomSheet(
-                              //   isDismissible: true,
-                              //   Container(
-                              //     height: 285,
-                              //     decoration: BoxDecoration(
-                              //         color: Colors.white,
-                              //         borderRadius: BorderRadius.only(
-                              //             topLeft: Radius.circular(10),
-                              //             topRight: Radius.circular(10))),
-                              //     child: Column(
-                              //       crossAxisAlignment:
-                              //           CrossAxisAlignment.start,
-                              //       children: [
-                              //         Padding(
-                              //           padding: const EdgeInsets.all(8.0),
-                              //           child: Text(
-                              //             "Electrician, Plumber & Carpenters",
-                              //             style: GoogleFonts.poppins(
-                              //                 color: AppColors.Colorq,
-                              //                 fontSize: 20,
-                              //                 fontWeight: FontWeight.w300),
-                              //           ),
-                              //         ),
-                              //         Container(
-                              //           height: 245,
-                              //           child: GridView.builder(
-                              //             physics:
-                              //                 NeverScrollableScrollPhysics(),
-                              //             gridDelegate:
-                              //                 SliverGridDelegateWithFixedCrossAxisCount(
-                              //                     crossAxisCount: 3,
-                              //                     childAspectRatio: 1.7),
-                              //             itemCount: 8,
-                              //             itemBuilder: (context, index) {
-                              //               return Padding(
-                              //                 padding:
-                              //                     const EdgeInsets.all(8.0),
-                              //                 child: Container(
-                              //                   decoration: BoxDecoration(
-                              //                       color: AppColors.Colorq
-                              //                           .withOpacity(0.5),
-                              //                       borderRadius:
-                              //                           BorderRadius.circular(
-                              //                               7)),
-                              //                 ),
-                              //               );
-                              //             },
-                              //           ),
-                              //         )
-                              //       ],
-                              //     ),
-                              //   ),
-                              // );
+
                             },
                             child: Column(
                               children: [
