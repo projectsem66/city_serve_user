@@ -1,5 +1,12 @@
+
+import 'package:city_serve/src/page/studioPages/women/spaPages/addOnsPage.dart';
+import 'package:city_serve/src/page/studioPages/women/spaPages/painRelifePage.dart';
+import 'package:city_serve/src/page/studioPages/women/spaPages/skinCarePage.dart';
+import 'package:city_serve/src/page/studioPages/women/spaPages/stressReliePage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/colors.dart';
@@ -14,19 +21,23 @@ class WSpa extends StatefulWidget {
 List wSpa = [
   {
     "srvName": "Pain relief",
-    "srvImage": "assets/dashboard/studio/spaWomen/1spa.jpg"
+    "srvImage": "assets/dashboard/studio/spaWomen/1spa.jpg",
+    "page": PainRelifePage(),
   },
   {
     "srvName": "Stress relief",
-    "srvImage": "assets/dashboard/studio/spaWomen/2spa.jpg"
+    "srvImage": "assets/dashboard/studio/spaWomen/2spa.jpg",
+    "page": StressReliefPage(),
   },
   {
     "srvName": "Skin care scrub",
-    "srvImage": "assets/dashboard/studio/spaWomen/3spa.jpg"
+    "srvImage": "assets/dashboard/studio/spaWomen/3spa.jpg",
+    "page": SkinCarePage(),
   },
   {
     "srvName": "Add ons",
-    "srvImage": "assets/dashboard/studio/spaWomen/4spa.jpg"
+    "srvImage": "assets/dashboard/studio/spaWomen/4spa.jpg",
+    "page": AddOnsPage(),
   },
 ];
 
@@ -78,29 +89,35 @@ class _WSpaState extends State<WSpa> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.all(dimension.height7),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(dimension.height7),
-                          image: DecorationImage(
-                              image: AssetImage(wSpa[index]["srvImage"]))),
-                    ),
-                    SizedBox(
-                      height: dimension.height5,
-                    ),
-                    Text(
-                      wSpa[index]["srvName"],
-                      style: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: dimension.height16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ],
+                child: Bounce(
+                  duration: Duration(milliseconds: 200),
+                  onPressed: () {
+                    Get.to(wSpa[index]["page"]);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            borderRadius:
+                            BorderRadius.circular(dimension.height7),
+                            image: DecorationImage(
+                                image: AssetImage(wSpa[index]["srvImage"]))),
+                      ),
+                      SizedBox(
+                        height: dimension.height5,
+                      ),
+                      Text(
+                        wSpa[index]["srvName"],
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height16,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

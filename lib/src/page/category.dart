@@ -1,3 +1,5 @@
+import 'package:city_serve/src/page/studioPages/forMen.dart';
+import 'package:city_serve/src/page/studioPages/forWomen.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -31,51 +33,92 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Salon for Men",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 2,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Bounce(
+                                        duration: Duration(milliseconds: 200),
+                                        onPressed: () {
+                                          if (index == 0) {
+                                            mMassage = true;
+                                            mSalon = false;
+                                          }
+                                          if (index == 1) {
+                                            mSalon = true;
+                                            mMassage = false;
+                                          }
+
+                                          Get.back();
+                                          Get.to(ForMen());
+                                        },
+                                        child: Container(
+                                          // height: 40,
+                                          // width: 80,
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.5),
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(
@@ -120,51 +163,96 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Salon for Women",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 3,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Bounce(
+                                        duration: Duration(milliseconds: 200),
+                                        onPressed: () {
+                                          if (index == 0) {
+                                            wSpa = true;
+                                            wSalon = false;
+                                            wStudio = false;
+                                          }
+                                          if (index == 1) {
+                                            wSpa = false;
+                                            wSalon = true;
+                                            wStudio = false;
+                                          }
+                                          if (index == 2) {
+                                            wSpa = false;
+                                            wSalon = false;
+                                            wStudio = true;
+                                          }
+                                          Get.back();
+                                          Get.to(ForWomen());
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.5),
+                                              borderRadius:
+                                                  BorderRadius.circular(7)),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(
@@ -209,51 +297,75 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Cleaning",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 8,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        // height: 40,
+                                        // width: 80,
+                                        decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(
@@ -298,51 +410,75 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Plumber",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 8,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        // height: 40,
+                                        // width: 80,
+                                        decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(
@@ -387,51 +523,75 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "AC & Appliance Repair",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 8,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        // height: 40,
+                                        // width: 80,
+                                        decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(
@@ -476,51 +636,75 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Container(
-                      height: 285,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10))),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Electrician, Plumber & Carpenters",
-                              style: GoogleFonts.poppins(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
                                   color: AppColors.Colorq,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300),
-                            ),
+                                ),
+                                child: Icon(Icons.cancel,
+                                    color: AppColors.white1, size: 30)),
                           ),
-                          Container(
-                            height: 245,
-                            child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3, childAspectRatio: 1.7),
-                              itemCount: 8,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    // height: 40,
-                                    // width: 80,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.5),
-                                        borderRadius: BorderRadius.circular(7)),
-                                  ),
-                                );
-                              },
-                            ),
-                          )
-                        ],
-                      ),
+                        ),
+                        Container(
+                          height: 291,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "Home Painting",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                              Container(
+                                height: 245,
+                                child: GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          childAspectRatio: 1.7),
+                                  itemCount: 8,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        // height: 40,
+                                        // width: 80,
+                                        decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.5),
+                                            borderRadius:
+                                                BorderRadius.circular(7)),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
                     ));
               },
               child: Column(

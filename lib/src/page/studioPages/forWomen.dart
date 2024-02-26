@@ -16,11 +16,11 @@ class ForWomen extends StatefulWidget {
   @override
   State<ForWomen> createState() => _ForWomenState();
 }
-
+bool wSpa = true;
+bool wSalon = false;
+bool wStudio = false;
 class _ForWomenState extends State<ForWomen> {
-  bool spa = true;
-  bool salon = false;
-  bool studio = false;
+
 
   List wSlider = [
     "assets/dashboard/studio/womenslider/stdslider.jpg",
@@ -139,9 +139,9 @@ class _ForWomenState extends State<ForWomen> {
                         child: Bounce(
                           duration: Duration(milliseconds: 200),
                           onPressed: () {
-                            spa = true;
-                            studio = false;
-                            salon = false;
+                            wSpa     = true;
+                            wStudio = false;
+                            wSalon  = false;
                             setState(() {});
                           },
                           child: Container(
@@ -180,7 +180,7 @@ class _ForWomenState extends State<ForWomen> {
                                   Container(
                                     height: dimension.height4,
                                     width: dimension.height80,
-                                    color: spa == true
+                                    color: wSpa == true
                                         ? AppColors.Colorq
                                         : Colors.transparent,
                                   ),
@@ -197,9 +197,9 @@ class _ForWomenState extends State<ForWomen> {
                         child: Bounce(
                           duration: Duration(milliseconds: 200),
                           onPressed: () {
-                            spa = false;
-                            studio = false;
-                            salon = true;
+                            wSpa = false;
+                            wStudio = false;
+                            wSalon = true;
                             setState(() {});
                           },
                           child: Container(
@@ -238,7 +238,7 @@ class _ForWomenState extends State<ForWomen> {
                                   Container(
                                     height: dimension.height4,
                                     width: dimension.height80,
-                                    color: salon == true
+                                    color: wSalon == true
                                         ? AppColors.Colorq
                                         : Colors.transparent,
                                   ),
@@ -253,9 +253,9 @@ class _ForWomenState extends State<ForWomen> {
                       child: Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
-                          spa = false;
-                          studio = true;
-                          salon = false;
+                          wSpa = false;
+                          wStudio = true;
+                          wSalon = false;
                           setState(() {});
                         },
                         child: Container(
@@ -294,7 +294,7 @@ class _ForWomenState extends State<ForWomen> {
                                 Container(
                                   height: dimension.height4,
                                   width: dimension.height80,
-                                  color: studio == true
+                                  color: wStudio == true
                                       ? AppColors.Colorq
                                       : Colors.transparent,
                                 ),
@@ -319,13 +319,13 @@ class _ForWomenState extends State<ForWomen> {
   }
 
   getCategory() {
-    if (spa == true) {
+    if (wSpa == true) {
       return WSpa();
     }
-    if (salon == true) {
+    if (wSalon == true) {
       return WSalon();
     }
-    if (studio == true) {
+    if (wStudio == true) {
       return WStudio();
     }
   }

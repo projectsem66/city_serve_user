@@ -1,3 +1,4 @@
+import 'package:city_serve/googleLocation.dart';
 import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
@@ -139,7 +140,7 @@ class _LoginState extends State<Login> {
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
                     print("tapped");
-                    Get.to(() => NavigationBarr());
+                    Get.to(() => GoogleLocation());
                   },
                   child: Container(
                     height: dimension.height50,

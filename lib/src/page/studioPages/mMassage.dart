@@ -1,10 +1,5 @@
-
-import 'package:city_serve/src/page/studioPages/women/salonPages/bleachPage.dart';
-import 'package:city_serve/src/page/studioPages/women/salonPages/haircarePage.dart';
-import 'package:city_serve/src/page/studioPages/women/salonPages/manicurePage.dart';
-import 'package:city_serve/src/page/studioPages/women/salonPages/painreliefPage.dart';
-import 'package:city_serve/src/page/studioPages/women/salonPages/pedicurePage.dart';
-import 'package:city_serve/src/page/studioPages/women/salonPages/waxingPage.dart';
+import 'package:city_serve/src/page/studioPages/men/massagePages/addOnsPage.dart';
+import 'package:city_serve/src/page/studioPages/men/massagePages/painReliefPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -12,48 +7,40 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/colors.dart';
+import 'men/massagePages/postWorkoutPage.dart';
+import 'men/massagePages/stressReliefPage.dart';
 
-class WSalon extends StatefulWidget {
-  const WSalon({super.key});
+class MMassage extends StatefulWidget {
+  const MMassage({super.key});
 
   @override
-  State<WSalon> createState() => _WSalonState();
+  State<MMassage> createState() => _MMassageState();
 }
 
-List wSalon = [
+List mMassage = [
   {
-    "srvName": "Waxing",
-    "srvImage": "assets/dashboard/studio/salonWomen/1salon.jpg",
-    "page": WaxingPage(),
+    "srvName": "stress relief",
+    "srvImage": "assets/dashboard/studio/massageMen/msgscrl.jpg",
+    "page": StressReliefPage(),
   },
   {
-    "srvName": "Manicure",
-    "srvImage": "assets/dashboard/studio/salonWomen/3salon.jpg",
-    "page": ManicurePage(),
+    "srvName": "pain relief",
+    "srvImage": "assets/dashboard/studio/massageMen/2msgscrl.jpg",
+    "page": PainReliefPage(),
   },
   {
-    "srvName": "Pedicure",
-    "srvImage": "assets/dashboard/studio/salonWomen/4salon.jpg",
-    "page": PedicurePage(),
+    "srvName": "post workout",
+    "srvImage": "assets/dashboard/studio/massageMen/3msgscrl.jpg",
+    "page": PostWorkoutPage(),
   },
   {
-    "srvName": "Bleach & Detan",
-    "srvImage": "assets/dashboard/studio/salonWomen/5salon.jpg",
-    "page": BleachPage(),
-  },
-  {
-    "srvName": "Haircare",
-    "srvImage": "assets/dashboard/studio/salonWomen/6salon.jpg",
-    "page": HaircarePage(),
-  },
-  {
-    "srvName": "Pain relief",
-    "srvImage": "assets/dashboard/studio/salonWomen/7salon.jpg",
-    "page": PainreliefPage(),
+    "srvName": "add ons",
+    "srvImage": "assets/dashboard/studio/massageMen/4msgscrl.jpg",
+    "page": AddOnsPage(),
   },
 ];
 
-class _WSalonState extends State<WSalon> {
+class _MMassageState extends State<MMassage> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -65,7 +52,7 @@ class _WSalonState extends State<WSalon> {
         Padding(
           padding: const EdgeInsets.only(left: 15),
           child: Text(
-            "Salon for Women",
+            "Massage for Men",
             style: GoogleFonts.poppins(
                 color: AppColors.Colorq,
                 fontSize: dimension.height25,
@@ -93,7 +80,7 @@ class _WSalonState extends State<WSalon> {
           height: dimension.height100 * 3 + dimension.height41,
           child: GridView.builder(
             physics: NeverScrollableScrollPhysics(),
-            itemCount: wSalon.length,
+            itemCount: mMassage.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               childAspectRatio: 0.8,
@@ -104,7 +91,7 @@ class _WSalonState extends State<WSalon> {
                 child: Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
-                    Get.to(wSalon[index]["page"]);
+                    Get.to(mMassage[index]["page"]);
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,13 +103,14 @@ class _WSalonState extends State<WSalon> {
                             borderRadius:
                                 BorderRadius.circular(dimension.height7),
                             image: DecorationImage(
-                                image: AssetImage(wSalon[index]["srvImage"]))),
+                                image:
+                                    AssetImage(mMassage[index]["srvImage"]))),
                       ),
                       SizedBox(
                         height: dimension.height5,
                       ),
                       Text(
-                        wSalon[index]["srvName"],
+                        mMassage[index]["srvName"],
                         style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: dimension.height16,

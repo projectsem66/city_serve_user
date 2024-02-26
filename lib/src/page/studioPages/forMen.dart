@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/colors.dart';
 import '../dashboard.dart';
 import 'mSalon.dart';
-import 'mSpa.dart';
+import 'mMassage.dart';
 
 class ForMen extends StatefulWidget {
   const ForMen({super.key});
@@ -16,10 +16,10 @@ class ForMen extends StatefulWidget {
   @override
   State<ForMen> createState() => _ForMenState();
 }
-
+bool mMassage = true;
+bool mSalon = false;
 class _ForMenState extends State<ForMen> {
-  bool spa = true;
-  bool salon = false;
+
 
   List mSlider = [
     "assets/dashboard/studio/menslider/stdmen.jpg",
@@ -102,8 +102,8 @@ class _ForMenState extends State<ForMen> {
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        spa = true;
-                        salon = false;
+                        mMassage = true;
+                        mSalon = false;
                         setState(() {});
                       },
                       child: Container(
@@ -133,7 +133,7 @@ class _ForMenState extends State<ForMen> {
                                 height: dimension.height10,
                               ),
                               Text(
-                                "Spa",
+                                "Massage",
                                 style: GoogleFonts.poppins(
                                     color: AppColors.Colorq,
                                     fontSize: dimension.height18,
@@ -142,7 +142,7 @@ class _ForMenState extends State<ForMen> {
                               Container(
                                 height: dimension.height4,
                                 width: dimension.height80,
-                                color: spa == true
+                                color: mMassage == true
                                     ? AppColors.Colorq
                                     : Colors.transparent,
                               ),
@@ -156,8 +156,7 @@ class _ForMenState extends State<ForMen> {
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        spa = false;
-                        salon = true;
+                        mMassage = false;mSalon = true;
                         setState(() {});
                       },
                       child: Container(
@@ -196,7 +195,7 @@ class _ForMenState extends State<ForMen> {
                               Container(
                                 height: dimension.height4,
                                 width: dimension.height80,
-                                color: salon == true
+                                color: mSalon == true
                                     ? AppColors.Colorq
                                     : Colors.transparent,
                               ),
@@ -220,10 +219,10 @@ class _ForMenState extends State<ForMen> {
   }
 
   getCategory() {
-    if (spa == true) {
-      return MSpa();
+    if (mMassage == true) {
+      return MMassage();
     }
-    if (salon == true) {
+    if (mSalon == true) {
       return MSalon();
     }
   }

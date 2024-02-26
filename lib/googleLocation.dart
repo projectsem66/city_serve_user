@@ -17,6 +17,26 @@ String currentLocation = '';
 String _currentAddress = "";
 
 class _GoogleLocationState extends State<GoogleLocation> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _initializeLocation();
+  }
+  Future<void> _initializeLocation() async {
+    fetchLocation = await _getCurrentLocation();
+    await _getAddressFromCordinates();
+    print("${fetchLocation}");
+    currentLocation = _currentAddress;
+    print("${_currentAddress}");
+    Get.offAll(
+          () => NavigationBarr(),
+      // arguments: _currentAddress,
+    );
+    setState(() {
+      // Update UI with fetched data
+    });
+  }
   Position? fetchLocation;
 
   late bool servicePermission = false;
@@ -83,10 +103,9 @@ class _GoogleLocationState extends State<GoogleLocation> {
                 );
               },
               child: Center(
-                child: Text(
-                  "TAp",
-                  style: GoogleFonts.poppins(fontSize: 24, color: Colors.black),
-                ),
+                child:CircularProgressIndicator(
+
+                )
               ),
             ),
           ],
