@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:city_serve/src/page/account.dart';
 import 'package:city_serve/src/page/bookings.dart';
-import 'package:city_serve/src/page/cartPages/cartPage.dart';
 import 'package:city_serve/src/page/dashboard.dart';
+import 'package:city_serve/src/page/favouritePage.dart';
 import 'package:city_serve/src/page/studio.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
     Dashboard(),
     Bookings(),
     Studio(),
-    CartPage(),
+    FavouritePage(),
     Account(),
   ];
 
@@ -36,12 +36,12 @@ class _NavigationBarrState extends State<NavigationBarr> {
         print("tapped");
 
         setState(
-          () {
+              () {
             _.currentIndex != 0
                 ? _.currentIndex = 0
                 : {
-                    exit(0),
-                  };
+              exit(0),
+            };
             // Get.defaultDialog(
             //   // ScaffoldKey.currentState?.openEndDrawer();
             //   buttonColor: AppColors.Colorq,
@@ -126,9 +126,9 @@ class _NavigationBarrState extends State<NavigationBarr> {
               currentIndex: _.currentIndex,
               showSelectedLabels: true,
               selectedIconTheme:
-                  IconThemeData(color: AppColors.Colorq, shadows: []),
+              IconThemeData(color: AppColors.Colorq, shadows: []),
               unselectedIconTheme:
-                  IconThemeData(color: AppColors.Colorq.withOpacity(0.7)),
+              IconThemeData(color: AppColors.Colorq.withOpacity(0.7)),
               selectedItemColor: AppColors.Colorq,
               items: const [
                 BottomNavigationBarItem(
@@ -150,9 +150,9 @@ class _NavigationBarrState extends State<NavigationBarr> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.shopping_cart_outlined,
+                    Icons.favorite_border,
                   ),
-                  label: "Cart",
+                  label: "Favourite",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
@@ -163,7 +163,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
               ],
               onTap: (index) {
                 setState(
-                  () {
+                      () {
                     print("navigation page:" + _.currentIndex.toString());
                     _.currentIndex = index;
                   },

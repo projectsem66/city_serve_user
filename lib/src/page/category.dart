@@ -523,75 +523,62 @@ class _CategoryyState extends State<Categoryy> {
               onPressed: () {
                 Get.bottomSheet(
                     isDismissible: true,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Bounce(
-                            duration: Duration(milliseconds: 200),
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
+                    Container(
+                      height: 285,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10))),
+                      child: Column(
+                        crossAxisAlignment:
+                        CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Electrician, Plumber & Carpenters",
+                              style: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
-                                ),
-                                child: Icon(Icons.cancel,
-                                    color: AppColors.white1, size: 30)),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300),
+                            ),
                           ),
-                        ),
-                        Container(
-                          height: 291,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(10),
-                                  topRight: Radius.circular(10))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "AC & Appliance Repair",
-                                  style: GoogleFonts.poppins(
-                                      color: AppColors.Colorq,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Container(
-                                height: 245,
-                                child: GridView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 3,
-                                          childAspectRatio: 1.7),
-                                  itemCount: 8,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
+                          Container(
+                            height: 245,
+                            child: GridView.builder(
+                              physics:
+                              NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  childAspectRatio: 1.7),
+                              itemCount: 8,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                  const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
                                         // height: 40,
                                         // width: 80,
                                         decoration: BoxDecoration(
-                                            color: AppColors.Colorq.withOpacity(
-                                                0.5),
+                                            color: AppColors
+                                                .Colorq
+                                                .withOpacity(0.5),
                                             borderRadius:
-                                                BorderRadius.circular(7)),
+                                            BorderRadius
+                                                .circular(7)),
                                       ),
-                                    );
-                                  },
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                     ));
               },
               child: Column(

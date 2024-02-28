@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:city_serve/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
+import 'package:city_serve/src/page/studioPages/forMen.dart';
+import 'package:city_serve/src/page/studioPages/forWomen.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:city_serve/widget/serviceContainer.dart';
@@ -11,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../btm_controller.dart';
 import '../../servicesList/allServices.dart';
 
@@ -383,12 +384,106 @@ class _DashboardState extends State<Dashboard> {
                           child: Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              setState(() {
-                                _currentIndex1 = 2;
-                                _.currentIndex = 2;
-                                _.update();
-                                print(_currentIndex1);
-                              });
+                              Get.bottomSheet(
+                                  isDismissible: true,
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Bounce(
+                                          duration: Duration(milliseconds: 200),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.Colorq,
+                                              ),
+                                              child: Icon(Icons.cancel,
+                                                  color: AppColors.white1,
+                                                  size: 30)),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 291,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10))),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Salon for Men",
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 245,
+                                              child: GridView.builder(
+                                                physics:
+                                                    NeverScrollableScrollPhysics(),
+                                                gridDelegate:
+                                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        childAspectRatio: 1.7),
+                                                itemCount: 2,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Bounce(
+                                                      duration: Duration(
+                                                          milliseconds: 200),
+                                                      onPressed: () {
+                                                        if (index == 0) {
+                                                          mMassage = true;
+                                                          mSalon = false;
+                                                        }
+                                                        if (index == 1) {
+                                                          mSalon = true;
+                                                          mMassage = false;
+                                                        }
+
+                                                        Get.back();
+                                                        Get.to(ForMen());
+                                                      },
+                                                      child: Container(
+                                                        // height: 40,
+                                                        // width: 80,
+                                                        decoration: BoxDecoration(
+                                                            color: AppColors
+                                                                    .Colorq
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        7)),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ));
                             },
                             child: Container(
                               height: 75,
@@ -424,7 +519,112 @@ class _DashboardState extends State<Dashboard> {
                           padding: const EdgeInsets.only(left: 5, bottom: 5),
                           child: Bounce(
                             duration: Duration(milliseconds: 200),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.bottomSheet(
+                                  isDismissible: true,
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Bounce(
+                                          duration: Duration(milliseconds: 200),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.Colorq,
+                                              ),
+                                              child: Icon(Icons.cancel,
+                                                  color: AppColors.white1,
+                                                  size: 30)),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 291,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10))),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Salon for Women",
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 245,
+                                              child: GridView.builder(
+                                                physics:
+                                                    NeverScrollableScrollPhysics(),
+                                                gridDelegate:
+                                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        childAspectRatio: 1.7),
+                                                itemCount: 3,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Bounce(
+                                                      duration: Duration(
+                                                          milliseconds: 200),
+                                                      onPressed: () {
+                                                        if (index == 0) {
+                                                          wSpa = true;
+                                                          wSalon = false;
+                                                          wStudio = false;
+                                                        }
+                                                        if (index == 1) {
+                                                          wSpa = false;
+                                                          wSalon = true;
+                                                          wStudio = false;
+                                                        }
+                                                        if (index == 2) {
+                                                          wSpa = false;
+                                                          wSalon = false;
+                                                          wStudio = true;
+                                                        }
+                                                        Get.back();
+                                                        Get.to(ForWomen());
+                                                      },
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                            color: AppColors
+                                                                    .Colorq
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        7)),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ));
+                            },
                             child: Container(
                               height: 75,
                               decoration: BoxDecoration(
@@ -467,57 +667,84 @@ class _DashboardState extends State<Dashboard> {
                             onPressed: () {
                               Get.bottomSheet(
                                   isDismissible: true,
-                                  Container(
-                                    height: 285,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(10),
-                                            topRight: Radius.circular(10))),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Electrician, Plumber & Carpenters",
-                                            style: GoogleFonts.poppins(
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Bounce(
+                                          duration: Duration(milliseconds: 200),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
                                                 color: AppColors.Colorq,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w300),
-                                          ),
+                                              ),
+                                              child: Icon(Icons.cancel,
+                                                  color: AppColors.white1,
+                                                  size: 30)),
                                         ),
-                                        Container(
-                                          height: 245,
-                                          child: GridView.builder(
-                                            physics:
-                                                NeverScrollableScrollPhysics(),
-                                            gridDelegate:
-                                                SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 3,
-                                                    childAspectRatio: 1.7),
-                                            itemCount: 8,
-                                            itemBuilder: (context, index) {
-                                              return Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Container(
-                                                  // height: 40,
-                                                  // width: 80,
-                                                  decoration: BoxDecoration(
-                                                      color: AppColors.Colorq
-                                                          .withOpacity(0.5),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              7)),
-                                                ),
-                                              );
-                                            },
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                      Container(
+                                        height: 291,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10))),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "Cleaning",
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 245,
+                                              child: GridView.builder(
+                                                physics:
+                                                    NeverScrollableScrollPhysics(),
+                                                gridDelegate:
+                                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 3,
+                                                        childAspectRatio: 1.7),
+                                                itemCount: 8,
+                                                itemBuilder: (context, index) {
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Container(
+                                                      // height: 40,
+                                                      // width: 80,
+                                                      decoration: BoxDecoration(
+                                                          color: AppColors
+                                                                  .Colorq
+                                                              .withOpacity(0.5),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(7)),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ));
                             },
                             child: Column(
@@ -624,8 +851,9 @@ class _DashboardState extends State<Dashboard> {
                                       color: AppColors.Colorq.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(7)),
                                   child: Image(
-                                      image: AssetImage(
-                                          "assets/category/category_acc1.png")),
+                                    image: AssetImage(
+                                        "assets/category/category_acc1.png"),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 5,
@@ -650,7 +878,6 @@ class _DashboardState extends State<Dashboard> {
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
                               Get.to(Categoryy());
-
                             },
                             child: Column(
                               children: [
