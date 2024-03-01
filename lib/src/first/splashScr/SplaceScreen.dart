@@ -1,26 +1,27 @@
-import 'dart:async';
-
-import 'package:city_serve/src/first/one.dart';
-import 'package:city_serve/utils/dimension.dart';
+import 'package:city_serve/src/first/splashScr/splashServices.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class SplashScr extends StatefulWidget {
-  const SplashScr({super.key});
+import '../../../utils/dimension.dart';
+
+class splashScreen extends StatefulWidget {
+  const splashScreen({super.key});
 
   @override
-  State<SplashScr> createState() => _SplashScrState();
+  State<splashScreen> createState() => _splashScreenState();
 }
 
-class _SplashScrState extends State<SplashScr> {
+class _splashScreenState extends State<splashScreen> {
+  splashServices splashScreen = splashServices();
+
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Get.offAll(() => OnePage(),
-            transition: Transition.fade,
-            duration: Duration(milliseconds: 300)));
+    splashScreen.isLogin(context).then((value) {
+      setState(() {
+        //log(userEmail);
+      });
+    });
   }
 
   @override

@@ -2,17 +2,20 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:city_serve/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
+import 'package:city_serve/src/page/serviceDescription.dart';
 import 'package:city_serve/src/page/studioPages/forMen.dart';
 import 'package:city_serve/src/page/studioPages/forWomen.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:city_serve/widget/serviceContainer.dart';
 import 'package:city_serve/widget/serviceContainer2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../btm_controller.dart';
 import '../../servicesList/allServices.dart';
 
@@ -223,6 +226,9 @@ int _currentIndex1 = 0;
 CarouselController sliderOne = CarouselController();
 
 class _DashboardState extends State<Dashboard> {
+
+  final CollectionReference refC =
+  FirebaseFirestore.instance.collection('category');
   int sliderIndex = 0;
 
   @override
@@ -951,11 +957,17 @@ class _DashboardState extends State<Dashboard> {
                       itemBuilder: (context, index) {
                         if (allServices[index]["category"] ==
                             "mostBookedservice") {
-                          return ServiceContainer(
-                            image: allServices[index]["image"],
-                            srvName: allServices[index]["name"],
-                            srvRating: allServices[index]["rating"],
-                            srvPrice: allServices[index]["price"],
+                          return Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.to(ServiceDescription());
+                            },
+                            child: ServiceContainer(
+                              image: allServices[index]["image"],
+                              srvName: allServices[index]["name"],
+                              srvRating: allServices[index]["rating"],
+                              srvPrice: allServices[index]["price"],
+                            ),
                           );
                         } else {
                           return SizedBox();

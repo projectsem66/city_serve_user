@@ -1,14 +1,14 @@
 import 'package:city_serve/googleLocation.dart';
-import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../navigationBar.dart';
+import '../login/Forgotpassword.dart';
+import '../login/util.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -18,6 +18,45 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool spwd = true;
+  bool loading = false;
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  void login() {
+    setState(() {
+      loading = true;
+    });
+    _auth
+        .signInWithEmailAndPassword(
+            email: emailController.text, password: passwordController.text)
+        .then((value) {
+      Utils().tostmessage(value.user!.email.toString());
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => GoogleLocation()));
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      debugPrint(error.toString());
+      Utils().tostmessage(error.toString());
+      setState(() {
+        loading = false;
+      });
+    });
+  }
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,78 +82,133 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: dimension.height50,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(7)),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.email_outlined,
-                        color: AppColors.Colorq,
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.05),
+                            borderRadius: BorderRadius.circular(7)),
+                        child: TextFormField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          cursorColor: Colors.black,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.email_outlined,
+                                color: AppColors.Colorq,
+                              ),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              labelText: "Email Address",
+                              labelStyle: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w300),
+                              contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.Colorq),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              )),
+                          validator: (value) {
+                            bool emailValid = RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value!);
+                            if (value.isEmpty) {
+                              return 'Enter Email';
+                            } else if (!emailValid) {
+                              return 'Enter Valid Email';
+                            }
+                            return null;
+                          },
+                        ),
                       ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Email Address",
-                      labelStyle: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w300),
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color:AppColors.Colorq),
-                        borderRadius: BorderRadius.circular(5.0),
+                      SizedBox(
+                        height: dimension.height15,
                       ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.Colorq.withOpacity(0.05),
+                            borderRadius: BorderRadius.circular(7)),
+                        child: TextFormField(
+                          controller: passwordController,
+                          keyboardType: TextInputType.text,
+                          obscureText: spwd,
+                          cursorColor: Colors.black,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          decoration: InputDecoration(
+                            suffixIcon:
+                                Icon(Icons.password, color: AppColors.Colorq),
+                            floatingLabelBehavior: FloatingLabelBehavior.always,
+                            labelText: "Password",
+                            labelStyle: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w300),
+                            contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.Colorq),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.red),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: AppColors.red),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            suffix: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  spwd = !spwd;
+                                });
+                              },
+                              child: Icon(spwd
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Enter Password';
+                            }
+                            return null;
+                          },
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: dimension.height15,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(7)),
-                  child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                    onChanged: (value) {
-                      setState(() {});
-                    },
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(Icons.password, color: AppColors.Colorq),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Password",
-                      labelStyle: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: 17,
-                          fontWeight: FontWeight.w300),
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color:AppColors.Colorq),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
+                    ],
                   ),
                 ),
                 SizedBox(
@@ -123,13 +217,23 @@ class _LoginState extends State<Login> {
                 Row(
                   children: [
                     Spacer(),
-                    Text(
-                      "Forgot Password? ",
-                      style: GoogleFonts.poppins(
-                          color: AppColors.Colorq,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                          fontStyle: FontStyle.italic),
+                    Bounce(
+                      duration: Duration(milliseconds: 200),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPassword(),
+                            ));
+                      },
+                      child: Text(
+                        "Forgot Password? ",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            fontStyle: FontStyle.italic),
+                      ),
                     ),
                   ],
                 ),
@@ -140,7 +244,10 @@ class _LoginState extends State<Login> {
                   duration: Duration(milliseconds: 400),
                   onPressed: () {
                     print("tapped");
-                    Get.to(() => GoogleLocation());
+
+                    if (_formKey.currentState!.validate()) {
+                      login();
+                    }
                   },
                   child: Container(
                     height: dimension.height50,
@@ -163,34 +270,40 @@ class _LoginState extends State<Login> {
                 ),
                 Center(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't have an account? ",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w300),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: GoogleFonts.poppins(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300),
+                    ),
+                    Bounce(
+                      duration: Duration(milliseconds: 400),
+                      onPressed: () {
+                        print("tapped");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUp(),
+                            ));
+
+                        // Get.to(() => SignUp());
+                      },
+                      child: Text(
+                        "Sign up",
+                        style: GoogleFonts.poppins(
+                          color: AppColors.Colorq,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w300,
+                          decoration: TextDecoration.underline,
+                          fontStyle: FontStyle.italic,
                         ),
-                        Bounce(
-                          duration: Duration(milliseconds: 400),
-                          onPressed: () {
-                            print("tapped");
-                            Get.to(() => SignUp());
-                          },
-                          child: Text(
-                            "Sign up",
-                            style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w300,
-                              decoration: TextDecoration.underline,
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
+                      ),
+                    ),
+                  ],
+                )),
                 SizedBox(
                   height: dimension.height50,
                 ),

@@ -1,22 +1,16 @@
-
-import 'dart:io';
-
+import 'package:city_serve/navigationBar.dart';
+import 'package:city_serve/src/first/splashScr/SplaceScreen.dart';
 import 'package:city_serve/src/first/splashScreen.dart';
+import 'package:city_serve/src/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'login/login_Screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Platform.isAndroid
-      ? await Firebase.initializeApp(
-      options: FirebaseOptions(
-          apiKey: "AIzaSyBold0b5F_onsDHEcPwSfiZoKU9RFMaEPg",
-          appId: "1:545220662127:android:25d016687aed643a2bce9a",
-          messagingSenderId: "545220662127",
-          projectId: "city-serve-db40b"))
-      : await Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

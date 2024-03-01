@@ -1,4 +1,3 @@
-import 'package:city_serve/src/page/cartPages/paymentPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -281,11 +280,8 @@ class _SummaryState extends State<Summary> {
                                               Bounce(
                                                 duration:
                                                     Duration(milliseconds: 200),
-                                                onPressed: () {
-                                                  Get.to(PaymentPage(),
-                                                      transition:
-                                                          Transition.cupertino);
-                                                },
+                                                onPressed: () {},
+
                                                 child: Container(
                                                   width: double.maxFinite,
                                                   decoration: BoxDecoration(

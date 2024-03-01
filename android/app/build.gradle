@@ -2,7 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    id "com.google.gms.google-services"
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -27,9 +27,7 @@ android {
     namespace "com.example.city_serve"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
-    defaultConfig {
-        multiDexEnabled true
-    }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -39,9 +37,11 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.city_serve"
+        multiDexEnabled true
+
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -61,15 +61,6 @@ flutter {
     source '../..'
 }
 dependencies {
-    // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
-
-
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
-    implementation("com.google.firebase:firebase-analytics")
-
-
-    // Add the dependencies for any other desired Firebase products
-    // https://firebase.google.com/docs/android/setup#available-libraries
+    implementation platform('com.google.firebase:firebase-bom:32.7.3')
+    implementation 'com.google.firebase:firebase-analytics'
 }

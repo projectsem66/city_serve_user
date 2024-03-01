@@ -1,3 +1,4 @@
+import 'package:city_serve/src/page/bookingPages/paymentPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -188,7 +189,7 @@ class _BookingSubPageState extends State<BookingSubPage> {
                         color: AppColors.Colorq.withOpacity(0.1),
                       ),
                       child: Padding(
-                        padding:  EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(10.0),
                         child: Row(
                           children: [
                             Row(
@@ -206,7 +207,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                 Container(
                                   width: dimension.height100 * 2,
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Felix Harris",
@@ -267,10 +269,9 @@ class _BookingSubPageState extends State<BookingSubPage> {
                           decoration: BoxDecoration(
                               color: AppColors.Colorq.withOpacity(0.05),
                               borderRadius: BorderRadius.circular(7)),
-                          child:
-
-                          TextFormField(
-                            maxLines: null, // Set to null for unlimited lines or specify a number for a maximum number of lines
+                          child: TextFormField(
+                            maxLines: null,
+                            // Set to null for unlimited lines or specify a number for a maximum number of lines
                             keyboardType: TextInputType.multiline,
                             textInputAction: TextInputAction.newline,
                             cursorColor: Colors.black,
@@ -282,9 +283,9 @@ class _BookingSubPageState extends State<BookingSubPage> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
-                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
                               labelText: "Enter reason here",
-
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 17,
@@ -295,7 +296,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.transparent),
+                                borderSide:
+                                    BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -304,30 +306,29 @@ class _BookingSubPageState extends State<BookingSubPage> {
                       ],
                     ),
                     textConfirm: "Submit",
-                      confirm: TextButton(
-                        onPressed: () async {
-                          // exit(0);
-                        },
-                        child: Container(
-                          height: dimension.height35,
-                          width: dimension.width85,
-                          decoration: BoxDecoration(
+                    confirm: TextButton(
+                      onPressed: () async {
+                        Get.to(PaymentPage());
+                      },
+                      child: Container(
+                        height: dimension.height35,
+                        width: dimension.width85,
+                        decoration: BoxDecoration(
                             color: AppColors.Colorq.withOpacity(0.3),
-                              border:
-                              Border.all(color: AppColors.Colorq, width: 2),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                            child: Text(
-                              "Submit",
-                              style: GoogleFonts.poppins(
-                                  color: AppColors.Colorq,
-                                  fontSize: dimension.height18,
-                                  fontWeight: FontWeight.w500),
-                            ),
+                            border:
+                                Border.all(color: AppColors.Colorq, width: 2),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Text(
+                            "Submit",
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.height18,
+                                fontWeight: FontWeight.w500),
                           ),
                         ),
                       ),
-
+                    ),
                   );
                 },
                 child: Container(
