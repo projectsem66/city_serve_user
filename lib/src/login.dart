@@ -1,10 +1,12 @@
 import 'package:city_serve/googleLocation.dart';
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../login/Forgotpassword.dart';
@@ -318,12 +320,20 @@ class _LoginState extends State<Login> {
                     ),
                     Expanded(
                       flex: 8,
-                      child: Text(
-                        " Or Continue With",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.font14,
-                            fontWeight: FontWeight.w300),
+                      child: Center(
+                        child: Bounce(
+                          duration: Duration(milliseconds: 200),
+                          onPressed:() {
+                            Get.to(NavigationBarr());
+                          },
+                          child: Text(
+                            "Or Continue With",
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.font14,
+                                fontWeight: FontWeight.w300),
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
