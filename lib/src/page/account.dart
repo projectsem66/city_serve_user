@@ -21,28 +21,28 @@ BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 List accountList = [
   {
-    "title":   "My Bookings",
-    "icon":Icons.event_note
+    "title": "My Bookings",
+    "icon": Icons.event_note
   },
   {
-    "title":  "Manage Address",
-    "icon":Icons.location_on
+    "title": "Manage Address",
+    "icon": Icons.location_on
   },
   {
     "title": "Terms and Conditions",
-    "icon":Icons.feed_outlined
+    "icon": Icons.feed_outlined
   },
   {
     "title": "Privacy Policy",
-    "icon":Icons.privacy_tip_outlined
+    "icon": Icons.privacy_tip_outlined
   },
   {
     "title": "About CS",
-    "icon":Icons.auto_fix_high_outlined
+    "icon": Icons.auto_fix_high_outlined
   },
   {
     "title": "Settings",
-    "icon":Icons.settings_suggest_sharp
+    "icon": Icons.settings_suggest_sharp
   },
 ];
 
@@ -78,7 +78,7 @@ class _AccountState extends State<Account> {
                 height: dimension.height100,
                 width: dimension.height100,
                 decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                BoxDecoration(shape: BoxShape.circle, color: Colors.red),
               ),
             ),
             SizedBox(height: dimension.height25,),
@@ -96,7 +96,8 @@ class _AccountState extends State<Account> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(width: 10,),
-                            Icon(accountList[index]["icon"],color: AppColors.Colorq,),
+                            Icon(accountList[index]["icon"],
+                              color: AppColors.Colorq,),
                             SizedBox(width: 15,),
                             Text(
                               accountList[index]["title"],
@@ -111,7 +112,7 @@ class _AccountState extends State<Account> {
                       decoration: BoxDecoration(
                           color: AppColors.Colorq.withOpacity(0.1),
                           borderRadius:
-                              BorderRadius.circular(dimension.height7)),
+                          BorderRadius.circular(dimension.height7)),
                     ),
                   );
                 },

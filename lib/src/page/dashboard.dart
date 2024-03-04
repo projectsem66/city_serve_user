@@ -226,10 +226,39 @@ int _currentIndex1 = 0;
 CarouselController sliderOne = CarouselController();
 
 class _DashboardState extends State<Dashboard> {
+  String c1 = "";
+  var cnameValue;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    // getDataFromFirestore();
+    getDataFromFirestore("abcd");
+    super.initState();
+  }
 
   final CollectionReference refC =
-  FirebaseFirestore.instance.collection('category');
+      FirebaseFirestore.instance.collection('category');
   int sliderIndex = 0;
+  var fieldData;
+
+  getDataFromFirestore(String documentId) async {
+    try {
+      DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+          .collection('category')
+          .doc(documentId) // Use document ID here
+          .get();
+
+      var data = documentSnapshot["cname"];
+
+      // Access the value of the "cname" field
+      cnameValue = data;
+      print(
+          "data :${cnameValue}"); // This will print the value of "cname" field
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -238,6 +267,8 @@ class _DashboardState extends State<Dashboard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Text(fieldData["cname"]),
+
             Stack(
               alignment: AlignmentDirectional.bottomCenter,
               children: [
@@ -369,6 +400,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ],
                       ),
+                      cnameValue == null ? SizedBox() : Text(cnameValue),
                     ],
                   ),
                 ),
@@ -503,11 +535,13 @@ class _DashboardState extends State<Dashboard> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        "Spa for \n men",
-                                        style:
-                                            GoogleFonts.poppins(fontSize: 16),
-                                      ),
+                                      child: cnameValue == null
+                                          ? SizedBox()
+                                          : Text(
+                                        cnameValue,
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 16),
+                                            ),
                                     ),
                                     Spacer(),
                                     Image(

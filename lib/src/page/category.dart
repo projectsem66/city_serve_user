@@ -16,6 +16,12 @@ class Categoryy extends StatefulWidget {
 }
 
 class _CategoryyState extends State<Categoryy> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    getDataFromFirestore();
+    super.initState();
+  }
   String categoryName = "";
 
   final CollectionReference refC =
@@ -25,6 +31,18 @@ class _CategoryyState extends State<Categoryy> {
   //     .collection('category')
   //     .doc(categoryName)
   //     .collection("subcategories");
+  Future<void> getDataFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('category').get();
+
+      for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+        var data = documentSnapshot.data();
+        print(data);
+      }
+    } catch (e) {
+      print("Error fetching data: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -286,12 +304,15 @@ class _CategoryyState extends State<Categoryy> {
                                         height: dimension.height70,
                                         width: dimension.height70,
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                dimension.height7),
-                                            image: DecorationImage(
-                                                image: NetworkImage(
-                                                    documentSnapshot['cimage']),
-                                                fit: BoxFit.cover)),
+                                          borderRadius: BorderRadius.circular(
+                                              dimension.height7),
+                                          image: DecorationImage(
+                                            image: NetworkImage(
+                                              documentSnapshot['cimage'],
+                                            ),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
                                       SizedBox(
                                         width: dimension.height20,
@@ -322,816 +343,817 @@ class _CategoryyState extends State<Categoryy> {
                 },
               ),
             )
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Salon for Men",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 2,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Bounce(
-            //                             duration: Duration(milliseconds: 200),
-            //                             onPressed: () {
-            //                               if (index == 0) {
-            //                                 mMassage = true;
-            //                                 mSalon = false;
-            //                               }
-            //                               if (index == 1) {
-            //                                 mSalon = true;
-            //                                 mMassage = false;
-            //                               }
-            //
-            //                               Get.back();
-            //                               Get.to(ForMen());
-            //                             },
-            //                             child: Container(
-            //                               // height: 40,
-            //                               // width: 80,
-            //                               decoration: BoxDecoration(
-            //                                   color:
-            //                                       AppColors.Colorq.withOpacity(
-            //                                           0.5),
-            //                                   borderRadius:
-            //                                       BorderRadius.circular(7)),
-            //                             ),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(8.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_man(rotate).jpg")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Salon for Men",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Salon for Women",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 3,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Bounce(
-            //                             duration: Duration(milliseconds: 200),
-            //                             onPressed: () {
-            //                               if (index == 0) {
-            //                                 wSpa = true;
-            //                                 wSalon = false;
-            //                                 wStudio = false;
-            //                               }
-            //                               if (index == 1) {
-            //                                 wSpa = false;
-            //                                 wSalon = true;
-            //                                 wStudio = false;
-            //                               }
-            //                               if (index == 2) {
-            //                                 wSpa = false;
-            //                                 wSalon = false;
-            //                                 wStudio = true;
-            //                               }
-            //                               Get.back();
-            //                               Get.to(ForWomen());
-            //                             },
-            //                             child: Container(
-            //                               decoration: BoxDecoration(
-            //                                   color:
-            //                                       AppColors.Colorq.withOpacity(
-            //                                           0.5),
-            //                                   borderRadius:
-            //                                       BorderRadius.circular(7)),
-            //                             ),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(8.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_women.jpg")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Salon for Women",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Cleaning",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 8,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Container(
-            //                             // height: 40,
-            //                             // width: 80,
-            //                             decoration: BoxDecoration(
-            //                                 color: AppColors.Colorq.withOpacity(
-            //                                     0.5),
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(7)),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(8.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_plumber.jpg")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Cleaning",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Plumber",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 8,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Container(
-            //                             // height: 40,
-            //                             // width: 80,
-            //                             decoration: BoxDecoration(
-            //                                 color: AppColors.Colorq.withOpacity(
-            //                                     0.5),
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(7)),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(10.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_drill.png")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Plumber",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Container(
-            //           height: 285,
-            //           decoration: BoxDecoration(
-            //               color: Colors.white,
-            //               borderRadius: BorderRadius.only(
-            //                   topLeft: Radius.circular(10),
-            //                   topRight: Radius.circular(10))),
-            //           child: Column(
-            //             crossAxisAlignment: CrossAxisAlignment.start,
-            //             children: [
-            //               Padding(
-            //                 padding: const EdgeInsets.all(8.0),
-            //                 child: Text(
-            //                   "Electrician, Plumber & Carpenters",
-            //                   style: GoogleFonts.poppins(
-            //                       color: AppColors.Colorq,
-            //                       fontSize: 20,
-            //                       fontWeight: FontWeight.w300),
-            //                 ),
-            //               ),
-            //               Container(
-            //                 height: 245,
-            //                 child: GridView.builder(
-            //                   physics: NeverScrollableScrollPhysics(),
-            //                   gridDelegate:
-            //                       SliverGridDelegateWithFixedCrossAxisCount(
-            //                           crossAxisCount: 3, childAspectRatio: 1.7),
-            //                   itemCount: 8,
-            //                   itemBuilder: (context, index) {
-            //                     return Padding(
-            //                       padding: const EdgeInsets.all(8.0),
-            //                       child: Column(
-            //                         children: [
-            //                           Container(
-            //                             // height: 40,
-            //                             // width: 80,
-            //                             decoration: BoxDecoration(
-            //                                 color: AppColors.Colorq.withOpacity(
-            //                                     0.5),
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(7)),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                     );
-            //                   },
-            //                 ),
-            //               )
-            //             ],
-            //           ),
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(8.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_acc1.png")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Ac & Appliance Repair",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Home Painting",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 8,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Container(
-            //                             // height: 40,
-            //                             // width: 80,
-            //                             decoration: BoxDecoration(
-            //                                 color: AppColors.Colorq.withOpacity(
-            //                                     0.5),
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(7)),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(10.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_paint.jpg")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Home Painting",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: dimension.height10,
-            // ),
-            // Bounce(
-            //   duration: Duration(milliseconds: 200),
-            //   onPressed: () {
-            //     Get.bottomSheet(
-            //         isDismissible: true,
-            //         Column(
-            //           crossAxisAlignment: CrossAxisAlignment.end,
-            //           mainAxisSize: MainAxisSize.min,
-            //           children: [
-            //             Padding(
-            //               padding: const EdgeInsets.all(8.0),
-            //               child: Bounce(
-            //                 duration: Duration(milliseconds: 200),
-            //                 onPressed: () {
-            //                   Get.back();
-            //                 },
-            //                 child: Container(
-            //                     decoration: BoxDecoration(
-            //                       shape: BoxShape.circle,
-            //                       color: AppColors.Colorq,
-            //                     ),
-            //                     child: Icon(Icons.cancel,
-            //                         color: AppColors.white1, size: 30)),
-            //               ),
-            //             ),
-            //             Container(
-            //               height: 291,
-            //               decoration: BoxDecoration(
-            //                   color: Colors.white,
-            //                   borderRadius: BorderRadius.only(
-            //                       topLeft: Radius.circular(10),
-            //                       topRight: Radius.circular(10))),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   Padding(
-            //                     padding: const EdgeInsets.all(8.0),
-            //                     child: Text(
-            //                       "Demo",
-            //                       style: GoogleFonts.poppins(
-            //                           color: AppColors.Colorq,
-            //                           fontSize: 20,
-            //                           fontWeight: FontWeight.w400),
-            //                     ),
-            //                   ),
-            //                   Container(
-            //                     height: 245,
-            //                     child: GridView.builder(
-            //                       physics: NeverScrollableScrollPhysics(),
-            //                       gridDelegate:
-            //                           SliverGridDelegateWithFixedCrossAxisCount(
-            //                               crossAxisCount: 3,
-            //                               childAspectRatio: 1.7),
-            //                       itemCount: 8,
-            //                       itemBuilder: (context, index) {
-            //                         return Padding(
-            //                           padding: const EdgeInsets.all(8.0),
-            //                           child: Container(
-            //                             // height: 40,
-            //                             // width: 80,
-            //                             decoration: BoxDecoration(
-            //                                 color: AppColors.Colorq.withOpacity(
-            //                                     0.5),
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(7)),
-            //                           ),
-            //                         );
-            //                       },
-            //                     ),
-            //                   )
-            //                 ],
-            //               ),
-            //             ),
-            //           ],
-            //         ));
-            //   },
-            //   child: Column(
-            //     children: [
-            //       Container(
-            //         width: double.maxFinite,
-            //         child: Row(
-            //           children: [
-            //             Container(
-            //               height: dimension.height80,
-            //               child: Padding(
-            //                 padding: const EdgeInsets.all(10.0),
-            //                 child: Image(
-            //                     image: AssetImage(
-            //                         "assets/category/category_paint.jpg")),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               width: dimension.height20,
-            //             ),
-            //             Text(
-            //               "Demo ",
-            //               style: GoogleFonts.poppins(
-            //                   color: AppColors.Colorq,
-            //                   fontSize: dimension.height20,
-            //                   fontWeight: FontWeight.w400),
-            //             )
-            //           ],
-            //         ),
-            //         decoration: BoxDecoration(
-            //             color: AppColors.Colorq.withOpacity(0.1),
-            //             borderRadius: BorderRadius.circular(7)),
-            //       ),
-            //     ],
-            //   ),
-            // ),
           ],
         ),
       ),
     );
   }
 }
+
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Salon for Men",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 2,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Bounce(
+//                             duration: Duration(milliseconds: 200),
+//                             onPressed: () {
+//                               if (index == 0) {
+//                                 mMassage = true;
+//                                 mSalon = false;
+//                               }
+//                               if (index == 1) {
+//                                 mSalon = true;
+//                                 mMassage = false;
+//                               }
+//
+//                               Get.back();
+//                               Get.to(ForMen());
+//                             },
+//                             child: Container(
+//                               // height: 40,
+//                               // width: 80,
+//                               decoration: BoxDecoration(
+//                                   color:
+//                                       AppColors.Colorq.withOpacity(
+//                                           0.5),
+//                                   borderRadius:
+//                                       BorderRadius.circular(7)),
+//                             ),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_man(rotate).jpg")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Salon for Men",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Salon for Women",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 3,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Bounce(
+//                             duration: Duration(milliseconds: 200),
+//                             onPressed: () {
+//                               if (index == 0) {
+//                                 wSpa = true;
+//                                 wSalon = false;
+//                                 wStudio = false;
+//                               }
+//                               if (index == 1) {
+//                                 wSpa = false;
+//                                 wSalon = true;
+//                                 wStudio = false;
+//                               }
+//                               if (index == 2) {
+//                                 wSpa = false;
+//                                 wSalon = false;
+//                                 wStudio = true;
+//                               }
+//                               Get.back();
+//                               Get.to(ForWomen());
+//                             },
+//                             child: Container(
+//                               decoration: BoxDecoration(
+//                                   color:
+//                                       AppColors.Colorq.withOpacity(
+//                                           0.5),
+//                                   borderRadius:
+//                                       BorderRadius.circular(7)),
+//                             ),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_women.jpg")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Salon for Women",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Cleaning",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 8,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Container(
+//                             // height: 40,
+//                             // width: 80,
+//                             decoration: BoxDecoration(
+//                                 color: AppColors.Colorq.withOpacity(
+//                                     0.5),
+//                                 borderRadius:
+//                                     BorderRadius.circular(7)),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_plumber.jpg")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Cleaning",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Plumber",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 8,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Container(
+//                             // height: 40,
+//                             // width: 80,
+//                             decoration: BoxDecoration(
+//                                 color: AppColors.Colorq.withOpacity(
+//                                     0.5),
+//                                 borderRadius:
+//                                     BorderRadius.circular(7)),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(10.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_drill.png")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Plumber",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Container(
+//           height: 285,
+//           decoration: BoxDecoration(
+//               color: Colors.white,
+//               borderRadius: BorderRadius.only(
+//                   topLeft: Radius.circular(10),
+//                   topRight: Radius.circular(10))),
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Text(
+//                   "Electrician, Plumber & Carpenters",
+//                   style: GoogleFonts.poppins(
+//                       color: AppColors.Colorq,
+//                       fontSize: 20,
+//                       fontWeight: FontWeight.w300),
+//                 ),
+//               ),
+//               Container(
+//                 height: 245,
+//                 child: GridView.builder(
+//                   physics: NeverScrollableScrollPhysics(),
+//                   gridDelegate:
+//                       SliverGridDelegateWithFixedCrossAxisCount(
+//                           crossAxisCount: 3, childAspectRatio: 1.7),
+//                   itemCount: 8,
+//                   itemBuilder: (context, index) {
+//                     return Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Column(
+//                         children: [
+//                           Container(
+//                             // height: 40,
+//                             // width: 80,
+//                             decoration: BoxDecoration(
+//                                 color: AppColors.Colorq.withOpacity(
+//                                     0.5),
+//                                 borderRadius:
+//                                     BorderRadius.circular(7)),
+//                           ),
+//                         ],
+//                       ),
+//                     );
+//                   },
+//                 ),
+//               )
+//             ],
+//           ),
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(8.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_acc1.png")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Ac & Appliance Repair",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Home Painting",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 8,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Container(
+//                             // height: 40,
+//                             // width: 80,
+//                             decoration: BoxDecoration(
+//                                 color: AppColors.Colorq.withOpacity(
+//                                     0.5),
+//                                 borderRadius:
+//                                     BorderRadius.circular(7)),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(10.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_paint.jpg")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Home Painting",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
+// SizedBox(
+//   height: dimension.height10,
+// ),
+// Bounce(
+//   duration: Duration(milliseconds: 200),
+//   onPressed: () {
+//     Get.bottomSheet(
+//         isDismissible: true,
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.end,
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Bounce(
+//                 duration: Duration(milliseconds: 200),
+//                 onPressed: () {
+//                   Get.back();
+//                 },
+//                 child: Container(
+//                     decoration: BoxDecoration(
+//                       shape: BoxShape.circle,
+//                       color: AppColors.Colorq,
+//                     ),
+//                     child: Icon(Icons.cancel,
+//                         color: AppColors.white1, size: 30)),
+//               ),
+//             ),
+//             Container(
+//               height: 291,
+//               decoration: BoxDecoration(
+//                   color: Colors.white,
+//                   borderRadius: BorderRadius.only(
+//                       topLeft: Radius.circular(10),
+//                       topRight: Radius.circular(10))),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Demo",
+//                       style: GoogleFonts.poppins(
+//                           color: AppColors.Colorq,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.w400),
+//                     ),
+//                   ),
+//                   Container(
+//                     height: 245,
+//                     child: GridView.builder(
+//                       physics: NeverScrollableScrollPhysics(),
+//                       gridDelegate:
+//                           SliverGridDelegateWithFixedCrossAxisCount(
+//                               crossAxisCount: 3,
+//                               childAspectRatio: 1.7),
+//                       itemCount: 8,
+//                       itemBuilder: (context, index) {
+//                         return Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Container(
+//                             // height: 40,
+//                             // width: 80,
+//                             decoration: BoxDecoration(
+//                                 color: AppColors.Colorq.withOpacity(
+//                                     0.5),
+//                                 borderRadius:
+//                                     BorderRadius.circular(7)),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ));
+//   },
+//   child: Column(
+//     children: [
+//       Container(
+//         width: double.maxFinite,
+//         child: Row(
+//           children: [
+//             Container(
+//               height: dimension.height80,
+//               child: Padding(
+//                 padding: const EdgeInsets.all(10.0),
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_paint.jpg")),
+//               ),
+//             ),
+//             SizedBox(
+//               width: dimension.height20,
+//             ),
+//             Text(
+//               "Demo ",
+//               style: GoogleFonts.poppins(
+//                   color: AppColors.Colorq,
+//                   fontSize: dimension.height20,
+//                   fontWeight: FontWeight.w400),
+//             )
+//           ],
+//         ),
+//         decoration: BoxDecoration(
+//             color: AppColors.Colorq.withOpacity(0.1),
+//             borderRadius: BorderRadius.circular(7)),
+//       ),
+//     ],
+//   ),
+// ),
