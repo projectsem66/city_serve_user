@@ -1,6 +1,7 @@
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +23,7 @@ class _CategoryyState extends State<Categoryy> {
     getDataFromFirestore();
     super.initState();
   }
+
   String categoryName = "";
 
   final CollectionReference refC =
@@ -33,7 +35,8 @@ class _CategoryyState extends State<Categoryy> {
   //     .collection("subcategories");
   Future<void> getDataFromFirestore() async {
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('category').get();
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('category').get();
 
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         var data = documentSnapshot.data();
@@ -291,40 +294,45 @@ class _CategoryyState extends State<Categoryy> {
                             },
                             child: Column(
                               children: [
-                                Container(
-                                  width: double.maxFinite,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.1),
-                                      borderRadius: BorderRadius.circular(7)),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        margin:
-                                            EdgeInsets.all(dimension.height7),
-                                        height: dimension.height70,
-                                        width: dimension.height70,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              dimension.height7),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                              documentSnapshot['cimage'],
+                                Animate(
+                                  effects: [ShimmerEffect()],
+                                  child: Container(
+                                    width: double.maxFinite,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            AppColors.Colorq.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(
+                                            dimension.height7)),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          margin:
+                                              EdgeInsets.all(dimension.height7),
+                                          height: dimension.height70,
+                                          width: dimension.height70,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                dimension.height7),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                documentSnapshot['cimage'],
+                                              ),
+                                              fit: BoxFit.cover,
                                             ),
-                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: dimension.height20,
-                                      ),
-                                      Text(
-                                        documentSnapshot['cname'].toString(),
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height20,
-                                            fontWeight: FontWeight.w400),
-                                      )
-                                    ],
+                                        SizedBox(
+                                          width: dimension.height20,
+                                        ),
+                                        Text(
+                                          documentSnapshot['cname'].toString(),
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height20,
+                                              fontWeight: FontWeight.w400),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
