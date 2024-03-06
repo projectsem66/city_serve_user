@@ -1,4 +1,4 @@
-import 'package:city_serve/googleLocation.dart';
+import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
 import 'package:city_serve/utils/colors.dart';
@@ -324,7 +324,7 @@ class _LoginState extends State<Login> {
                         child: Bounce(
                           duration: Duration(milliseconds: 200),
                           onPressed:() {
-                            Get.to(NavigationBarr());
+                            Get.to(GoogleLocation());
                           },
                           child: Text(
                             "Or Continue With",

@@ -2,6 +2,7 @@ import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ServiceDescription extends StatefulWidget {
@@ -25,14 +26,43 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                   height: screenwidth() + dimension.height100 * 0.75,
                   child: Stack(
                     children: [
-                      Container(
-                        height: screenwidth(),
-                        width: screenwidth(),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/1j.jpg"),
-                              fit: BoxFit.cover),
-                        ),
+                      Stack(
+                        children: [
+                          Container(
+                            height: screenwidth(),
+                            width: screenwidth(),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage("assets/1j.jpg"),
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: dimension.height35,
+                                left: dimension.height10),
+                            child: Bounce(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              duration: Duration(milliseconds: 200),
+                              child: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                    child: Icon(
+                                  Icons.arrow_back,
+                                  color: AppColors.Colorq,
+                                  size: dimension.height28,
+                                )),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       Align(
                         alignment: AlignmentDirectional.bottomCenter,

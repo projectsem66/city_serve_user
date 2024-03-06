@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:city_serve/googleLocation.dart';
+import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
 import 'package:city_serve/src/page/serviceDescription.dart';
@@ -411,544 +411,7 @@ class _DashboardState extends State<Dashboard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.only(right: 5, bottom: 5),
-                  //         child: Bounce(
-                  //           duration: Duration(milliseconds: 200),
-                  //           onPressed: () {
-                  //             Get.bottomSheet(
-                  //                 isDismissible: true,
-                  //                 Column(
-                  //                   crossAxisAlignment: CrossAxisAlignment.end,
-                  //                   mainAxisSize: MainAxisSize.min,
-                  //                   children: [
-                  //                     Padding(
-                  //                       padding: const EdgeInsets.all(8.0),
-                  //                       child: Bounce(
-                  //                         duration: Duration(milliseconds: 200),
-                  //                         onPressed: () {
-                  //                           Get.back();
-                  //                         },
-                  //                         child: Container(
-                  //                             decoration: BoxDecoration(
-                  //                               shape: BoxShape.circle,
-                  //                               color: AppColors.Colorq,
-                  //                             ),
-                  //                             child: Icon(Icons.cancel,
-                  //                                 color: AppColors.white1,
-                  //                                 size: 30)),
-                  //                       ),
-                  //                     ),
-                  //                     Container(
-                  //                       height: 291,
-                  //                       decoration: BoxDecoration(
-                  //                           color: Colors.white,
-                  //                           borderRadius: BorderRadius.only(
-                  //                               topLeft: Radius.circular(10),
-                  //                               topRight: Radius.circular(10))),
-                  //                       child: Column(
-                  //                         crossAxisAlignment:
-                  //                             CrossAxisAlignment.start,
-                  //                         children: [
-                  //                           Padding(
-                  //                             padding:
-                  //                                 const EdgeInsets.all(8.0),
-                  //                             child: Text(
-                  //                               "Salon for Men",
-                  //                               style: GoogleFonts.poppins(
-                  //                                   color: AppColors.Colorq,
-                  //                                   fontSize: 20,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                           ),
-                  //                           Container(
-                  //                             height: 245,
-                  //                             child: GridView.builder(
-                  //                               physics:
-                  //                                   NeverScrollableScrollPhysics(),
-                  //                               gridDelegate:
-                  //                                   SliverGridDelegateWithFixedCrossAxisCount(
-                  //                                       crossAxisCount: 3,
-                  //                                       childAspectRatio: 1.7),
-                  //                               itemCount: 2,
-                  //                               itemBuilder: (context, index) {
-                  //                                 return Padding(
-                  //                                   padding:
-                  //                                       const EdgeInsets.all(
-                  //                                           8.0),
-                  //                                   child: Bounce(
-                  //                                     duration: Duration(
-                  //                                         milliseconds: 200),
-                  //                                     onPressed: () {
-                  //                                       if (index == 0) {
-                  //                                         mMassage = true;
-                  //                                         mSalon = false;
-                  //                                       }
-                  //                                       if (index == 1) {
-                  //                                         mSalon = true;
-                  //                                         mMassage = false;
-                  //                                       }
-                  //
-                  //                                       Get.back();
-                  //                                       Get.to(ForMen());
-                  //                                     },
-                  //                                     child: Container(
-                  //                                       // height: 40,
-                  //                                       // width: 80,
-                  //                                       decoration: BoxDecoration(
-                  //                                           color: AppColors
-                  //                                                   .Colorq
-                  //                                               .withOpacity(
-                  //                                                   0.5),
-                  //                                           borderRadius:
-                  //                                               BorderRadius
-                  //                                                   .circular(
-                  //                                                       7)),
-                  //                                     ),
-                  //                                   ),
-                  //                                 );
-                  //                               },
-                  //                             ),
-                  //                           )
-                  //                         ],
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 ));
-                  //           },
-                  //           child: Container(
-                  //             height: 75,
-                  //             decoration: BoxDecoration(
-                  //               color: AppColors.Colorq.withOpacity(0.1),
-                  //               borderRadius: BorderRadius.circular(7),
-                  //             ),
-                  //             child: Padding(
-                  //               padding: const EdgeInsets.all(8.0),
-                  //               child: Row(
-                  //                 children: [
-                  //                   Padding(
-                  //                     padding: const EdgeInsets.only(left: 15),
-                  //                     child: cnameValue == null
-                  //                         ? SizedBox()
-                  //                         : Text(
-                  //                       cnameValue,
-                  //                             style: GoogleFonts.poppins(
-                  //                                 fontSize: 16),
-                  //                           ),
-                  //                   ),
-                  //                   Spacer(),
-                  //                   Image(
-                  //                       image: AssetImage(
-                  //                           "assets/category/category_man.jpg"))
-                  //                 ],
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.only(left: 5, bottom: 5),
-                  //         child: Bounce(
-                  //           duration: Duration(milliseconds: 200),
-                  //           onPressed: () {
-                  //             Get.bottomSheet(
-                  //                 isDismissible: true,
-                  //                 Column(
-                  //                   crossAxisAlignment: CrossAxisAlignment.end,
-                  //                   mainAxisSize: MainAxisSize.min,
-                  //                   children: [
-                  //                     Padding(
-                  //                       padding: const EdgeInsets.all(8.0),
-                  //                       child: Bounce(
-                  //                         duration: Duration(milliseconds: 200),
-                  //                         onPressed: () {
-                  //                           Get.back();
-                  //                         },
-                  //                         child: Container(
-                  //                             decoration: BoxDecoration(
-                  //                               shape: BoxShape.circle,
-                  //                               color: AppColors.Colorq,
-                  //                             ),
-                  //                             child: Icon(Icons.cancel,
-                  //                                 color: AppColors.white1,
-                  //                                 size: 30)),
-                  //                       ),
-                  //                     ),
-                  //                     Container(
-                  //                       height: 291,
-                  //                       decoration: BoxDecoration(
-                  //                           color: Colors.white,
-                  //                           borderRadius: BorderRadius.only(
-                  //                               topLeft: Radius.circular(10),
-                  //                               topRight: Radius.circular(10))),
-                  //                       child: Column(
-                  //                         crossAxisAlignment:
-                  //                             CrossAxisAlignment.start,
-                  //                         children: [
-                  //                           Padding(
-                  //                             padding:
-                  //                                 const EdgeInsets.all(8.0),
-                  //                             child: Text(
-                  //                               "Salon for Women",
-                  //                               style: GoogleFonts.poppins(
-                  //                                   color: AppColors.Colorq,
-                  //                                   fontSize: 20,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                           ),
-                  //                           Container(
-                  //                             height: 245,
-                  //                             child: GridView.builder(
-                  //                               physics:
-                  //                                   NeverScrollableScrollPhysics(),
-                  //                               gridDelegate:
-                  //                                   SliverGridDelegateWithFixedCrossAxisCount(
-                  //                                       crossAxisCount: 3,
-                  //                                       childAspectRatio: 1.7),
-                  //                               itemCount: 3,
-                  //                               itemBuilder: (context, index) {
-                  //                                 return Padding(
-                  //                                   padding:
-                  //                                       const EdgeInsets.all(
-                  //                                           8.0),
-                  //                                   child: Bounce(
-                  //                                     duration: Duration(
-                  //                                         milliseconds: 200),
-                  //                                     onPressed: () {
-                  //                                       if (index == 0) {
-                  //                                         wSpa = true;
-                  //                                         wSalon = false;
-                  //                                         wStudio = false;
-                  //                                       }
-                  //                                       if (index == 1) {
-                  //                                         wSpa = false;
-                  //                                         wSalon = true;
-                  //                                         wStudio = false;
-                  //                                       }
-                  //                                       if (index == 2) {
-                  //                                         wSpa = false;
-                  //                                         wSalon = false;
-                  //                                         wStudio = true;
-                  //                                       }
-                  //                                       Get.back();
-                  //                                       Get.to(ForWomen());
-                  //                                     },
-                  //                                     child: Container(
-                  //                                       decoration: BoxDecoration(
-                  //                                           color: AppColors
-                  //                                                   .Colorq
-                  //                                               .withOpacity(
-                  //                                                   0.5),
-                  //                                           borderRadius:
-                  //                                               BorderRadius
-                  //                                                   .circular(
-                  //                                                       7)),
-                  //                                     ),
-                  //                                   ),
-                  //                                 );
-                  //                               },
-                  //                             ),
-                  //                           )
-                  //                         ],
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 ));
-                  //           },
-                  //           child: Container(
-                  //             height: 75,
-                  //             decoration: BoxDecoration(
-                  //                 color: AppColors.Colorq.withOpacity(0.1),
-                  //                 borderRadius: BorderRadius.circular(7)),
-                  //             child: Padding(
-                  //               padding: const EdgeInsets.all(8.0),
-                  //               child: Row(
-                  //                 children: [
-                  //                   Image(
-                  //                       image: AssetImage(
-                  //                           "assets/category/category_women.jpg")),
-                  //                   Spacer(),
-                  //                   Padding(
-                  //                     padding: const EdgeInsets.only(right: 15),
-                  //                     child: Text(
-                  //                       "Spa for\nWomen",
-                  //                       style:
-                  //                           GoogleFonts.poppins(fontSize: 16),
-                  //                     ),
-                  //                   ),
-                  //                 ],
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-                  // Row(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     Expanded(
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.only(
-                  //             right: 5, bottom: 5, top: 5),
-                  //         child: Bounce(
-                  //           duration: Duration(milliseconds: 200),
-                  //           onPressed: () {
-                  //             Get.bottomSheet(
-                  //                 isDismissible: true,
-                  //                 Column(
-                  //                   crossAxisAlignment: CrossAxisAlignment.end,
-                  //                   mainAxisSize: MainAxisSize.min,
-                  //                   children: [
-                  //                     Padding(
-                  //                       padding: const EdgeInsets.all(8.0),
-                  //                       child: Bounce(
-                  //                         duration: Duration(milliseconds: 200),
-                  //                         onPressed: () {
-                  //                           Get.back();
-                  //                         },
-                  //                         child: Container(
-                  //                             decoration: BoxDecoration(
-                  //                               shape: BoxShape.circle,
-                  //                               color: AppColors.Colorq,
-                  //                             ),
-                  //                             child: Icon(Icons.cancel,
-                  //                                 color: AppColors.white1,
-                  //                                 size: 30)),
-                  //                       ),
-                  //                     ),
-                  //                     Container(
-                  //                       height: 291,
-                  //                       decoration: BoxDecoration(
-                  //                           color: Colors.white,
-                  //                           borderRadius: BorderRadius.only(
-                  //                               topLeft: Radius.circular(10),
-                  //                               topRight: Radius.circular(10))),
-                  //                       child: Column(
-                  //                         crossAxisAlignment:
-                  //                             CrossAxisAlignment.start,
-                  //                         children: [
-                  //                           Padding(
-                  //                             padding:
-                  //                                 const EdgeInsets.all(8.0),
-                  //                             child: Text(
-                  //                               "Cleaning",
-                  //                               style: GoogleFonts.poppins(
-                  //                                   color: AppColors.Colorq,
-                  //                                   fontSize: 20,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                           ),
-                  //                           Container(
-                  //                             height: 245,
-                  //                             child: GridView.builder(
-                  //                               physics:
-                  //                                   NeverScrollableScrollPhysics(),
-                  //                               gridDelegate:
-                  //                                   SliverGridDelegateWithFixedCrossAxisCount(
-                  //                                       crossAxisCount: 3,
-                  //                                       childAspectRatio: 1.7),
-                  //                               itemCount: 8,
-                  //                               itemBuilder: (context, index) {
-                  //                                 return Padding(
-                  //                                   padding:
-                  //                                       const EdgeInsets.all(
-                  //                                           8.0),
-                  //                                   child: Container(
-                  //                                     // height: 40,
-                  //                                     // width: 80,
-                  //                                     decoration: BoxDecoration(
-                  //                                         color: AppColors
-                  //                                                 .Colorq
-                  //                                             .withOpacity(0.5),
-                  //                                         borderRadius:
-                  //                                             BorderRadius
-                  //                                                 .circular(7)),
-                  //                                   ),
-                  //                                 );
-                  //                               },
-                  //                             ),
-                  //                           )
-                  //                         ],
-                  //                       ),
-                  //                     ),
-                  //                   ],
-                  //                 ));
-                  //           },
-                  //           child: Column(
-                  //             children: [
-                  //               Container(
-                  //                 height: 75,
-                  //                 width: double.maxFinite,
-                  //                 child: Image(
-                  //                     image: AssetImage(
-                  //                         "assets/category/category_plumber.jpg")),
-                  //                 decoration: BoxDecoration(
-                  //                     color: AppColors.Colorq.withOpacity(0.1),
-                  //                     borderRadius: BorderRadius.circular(7)),
-                  //               ),
-                  //               SizedBox(
-                  //                 height: 5,
-                  //               ),
-                  //               Text(
-                  //                 "Cleaning",
-                  //                 style: GoogleFonts.poppins(
-                  //                     color: AppColors.Colorq,
-                  //                     fontSize: 16,
-                  //                     fontWeight: FontWeight.w400),
-                  //               )
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.only(
-                  //             left: 5, bottom: 5, right: 5, top: 5),
-                  //         child: Bounce(
-                  //           duration: Duration(milliseconds: 200),
-                  //           onPressed: () {
-                  //             Get.bottomSheet(
-                  //                 isDismissible: true,
-                  //                 Container(
-                  //                   height: 285,
-                  //                   decoration: BoxDecoration(
-                  //                       color: Colors.white,
-                  //                       borderRadius: BorderRadius.only(
-                  //                           topLeft: Radius.circular(10),
-                  //                           topRight: Radius.circular(10))),
-                  //                   child: Column(
-                  //                     crossAxisAlignment:
-                  //                         CrossAxisAlignment.start,
-                  //                     children: [
-                  //                       Padding(
-                  //                         padding: const EdgeInsets.all(8.0),
-                  //                         child: Text(
-                  //                           "Electrician, Plumber & Carpenters",
-                  //                           style: GoogleFonts.poppins(
-                  //                               color: AppColors.Colorq,
-                  //                               fontSize: 20,
-                  //                               fontWeight: FontWeight.w300),
-                  //                         ),
-                  //                       ),
-                  //                       Container(
-                  //                         height: 245,
-                  //                         child: GridView.builder(
-                  //                           physics:
-                  //                               NeverScrollableScrollPhysics(),
-                  //                           gridDelegate:
-                  //                               SliverGridDelegateWithFixedCrossAxisCount(
-                  //                                   crossAxisCount: 3,
-                  //                                   childAspectRatio: 1.7),
-                  //                           itemCount: 8,
-                  //                           itemBuilder: (context, index) {
-                  //                             return Padding(
-                  //                               padding:
-                  //                                   const EdgeInsets.all(8.0),
-                  //                               child: Column(
-                  //                                 children: [
-                  //                                   Container(
-                  //                                     // height: 40,
-                  //                                     // width: 80,
-                  //                                     decoration: BoxDecoration(
-                  //                                         color: AppColors
-                  //                                                 .Colorq
-                  //                                             .withOpacity(0.5),
-                  //                                         borderRadius:
-                  //                                             BorderRadius
-                  //                                                 .circular(7)),
-                  //                                   ),
-                  //                                 ],
-                  //                               ),
-                  //                             );
-                  //                           },
-                  //                         ),
-                  //                       )
-                  //                     ],
-                  //                   ),
-                  //                 ));
-                  //           },
-                  //           child: Column(
-                  //             crossAxisAlignment: CrossAxisAlignment.center,
-                  //             children: [
-                  //               Container(
-                  //                 height: 75,
-                  //                 width: double.maxFinite,
-                  //                 decoration: BoxDecoration(
-                  //                     color: AppColors.Colorq.withOpacity(0.1),
-                  //                     borderRadius: BorderRadius.circular(7)),
-                  //                 child: Image(
-                  //                   image: AssetImage(
-                  //                       "assets/category/category_acc1.png"),
-                  //                 ),
-                  //               ),
-                  //               SizedBox(
-                  //                 height: 5,
-                  //               ),
-                  //               Text(
-                  //                 "Appliance\n    Repair",
-                  //                 style: GoogleFonts.poppins(
-                  //                     color: AppColors.Colorq,
-                  //                     fontSize: 16,
-                  //                     fontWeight: FontWeight.w400),
-                  //               )
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       child: Padding(
-                  //         padding:
-                  //             const EdgeInsets.only(left: 5, bottom: 5, top: 5),
-                  //         child: Bounce(
-                  //           duration: Duration(milliseconds: 200),
-                  //           onPressed: () {
-                  //             Get.to(Categoryy());
-                  //           },
-                  //           child: Column(
-                  //             children: [
-                  //               Container(
-                  //                 height: 75,
-                  //                 width: double.maxFinite,
-                  //                 child: Padding(
-                  //                   padding: const EdgeInsets.all(8.0),
-                  //                   child: Center(
-                  //                     child: Text(
-                  //                       "View all",
-                  //                       style: GoogleFonts.poppins(
-                  //                           decoration:
-                  //                               TextDecoration.underline,
-                  //                           color: AppColors.Colorq,
-                  //                           fontSize: 16,
-                  //                           fontWeight: FontWeight.w500),
-                  //                     ),
-                  //                   ),
-                  //                 ),
-                  //                 decoration: BoxDecoration(
-                  //                     // color: AppColors.Colorq.withOpacity(0.1),
-                  //                     borderRadius: BorderRadius.circular(7)),
-                  //               ),
-                  //               SizedBox(
-                  //                 height: 5,
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+
                   SizedBox(
                     height: dimension.height10,
                   ),
@@ -987,7 +450,7 @@ class _DashboardState extends State<Dashboard> {
                           AsyncSnapshot<QuerySnapshot> streamSnapshot) {
                         if (streamSnapshot.hasData) {
                           return GridView.builder(
-                            physics: BouncingScrollPhysics(),
+                            physics: NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
@@ -1003,8 +466,7 @@ class _DashboardState extends State<Dashboard> {
                                 child: Bounce(
                                   duration: Duration(milliseconds: 200),
                                   onPressed: () {
-                                    categoryName =
-                                        documentSnapshot['cname'].toString();
+                                    categoryName = documentSnapshot.id;
 
                                     Get.bottomSheet(
                                         isDismissible: true,
@@ -1802,3 +1264,541 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 }
+// Row(
+//   children: [
+//     Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.only(right: 5, bottom: 5),
+//         child: Bounce(
+//           duration: Duration(milliseconds: 200),
+//           onPressed: () {
+//             Get.bottomSheet(
+//                 isDismissible: true,
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.end,
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Bounce(
+//                         duration: Duration(milliseconds: 200),
+//                         onPressed: () {
+//                           Get.back();
+//                         },
+//                         child: Container(
+//                             decoration: BoxDecoration(
+//                               shape: BoxShape.circle,
+//                               color: AppColors.Colorq,
+//                             ),
+//                             child: Icon(Icons.cancel,
+//                                 color: AppColors.white1,
+//                                 size: 30)),
+//                       ),
+//                     ),
+//                     Container(
+//                       height: 291,
+//                       decoration: BoxDecoration(
+//                           color: Colors.white,
+//                           borderRadius: BorderRadius.only(
+//                               topLeft: Radius.circular(10),
+//                               topRight: Radius.circular(10))),
+//                       child: Column(
+//                         crossAxisAlignment:
+//                             CrossAxisAlignment.start,
+//                         children: [
+//                           Padding(
+//                             padding:
+//                                 const EdgeInsets.all(8.0),
+//                             child: Text(
+//                               "Salon for Men",
+//                               style: GoogleFonts.poppins(
+//                                   color: AppColors.Colorq,
+//                                   fontSize: 20,
+//                                   fontWeight:
+//                                       FontWeight.w400),
+//                             ),
+//                           ),
+//                           Container(
+//                             height: 245,
+//                             child: GridView.builder(
+//                               physics:
+//                                   NeverScrollableScrollPhysics(),
+//                               gridDelegate:
+//                                   SliverGridDelegateWithFixedCrossAxisCount(
+//                                       crossAxisCount: 3,
+//                                       childAspectRatio: 1.7),
+//                               itemCount: 2,
+//                               itemBuilder: (context, index) {
+//                                 return Padding(
+//                                   padding:
+//                                       const EdgeInsets.all(
+//                                           8.0),
+//                                   child: Bounce(
+//                                     duration: Duration(
+//                                         milliseconds: 200),
+//                                     onPressed: () {
+//                                       if (index == 0) {
+//                                         mMassage = true;
+//                                         mSalon = false;
+//                                       }
+//                                       if (index == 1) {
+//                                         mSalon = true;
+//                                         mMassage = false;
+//                                       }
+//
+//                                       Get.back();
+//                                       Get.to(ForMen());
+//                                     },
+//                                     child: Container(
+//                                       // height: 40,
+//                                       // width: 80,
+//                                       decoration: BoxDecoration(
+//                                           color: AppColors
+//                                                   .Colorq
+//                                               .withOpacity(
+//                                                   0.5),
+//                                           borderRadius:
+//                                               BorderRadius
+//                                                   .circular(
+//                                                       7)),
+//                                     ),
+//                                   ),
+//                                 );
+//                               },
+//                             ),
+//                           )
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ));
+//           },
+//           child: Container(
+//             height: 75,
+//             decoration: BoxDecoration(
+//               color: AppColors.Colorq.withOpacity(0.1),
+//               borderRadius: BorderRadius.circular(7),
+//             ),
+//             child: Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Row(
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.only(left: 15),
+//                     child: cnameValue == null
+//                         ? SizedBox()
+//                         : Text(
+//                       cnameValue,
+//                             style: GoogleFonts.poppins(
+//                                 fontSize: 16),
+//                           ),
+//                   ),
+//                   Spacer(),
+//                   Image(
+//                       image: AssetImage(
+//                           "assets/category/category_man.jpg"))
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     ),
+//     Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.only(left: 5, bottom: 5),
+//         child: Bounce(
+//           duration: Duration(milliseconds: 200),
+//           onPressed: () {
+//             Get.bottomSheet(
+//                 isDismissible: true,
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.end,
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Bounce(
+//                         duration: Duration(milliseconds: 200),
+//                         onPressed: () {
+//                           Get.back();
+//                         },
+//                         child: Container(
+//                             decoration: BoxDecoration(
+//                               shape: BoxShape.circle,
+//                               color: AppColors.Colorq,
+//                             ),
+//                             child: Icon(Icons.cancel,
+//                                 color: AppColors.white1,
+//                                 size: 30)),
+//                       ),
+//                     ),
+//                     Container(
+//                       height: 291,
+//                       decoration: BoxDecoration(
+//                           color: Colors.white,
+//                           borderRadius: BorderRadius.only(
+//                               topLeft: Radius.circular(10),
+//                               topRight: Radius.circular(10))),
+//                       child: Column(
+//                         crossAxisAlignment:
+//                             CrossAxisAlignment.start,
+//                         children: [
+//                           Padding(
+//                             padding:
+//                                 const EdgeInsets.all(8.0),
+//                             child: Text(
+//                               "Salon for Women",
+//                               style: GoogleFonts.poppins(
+//                                   color: AppColors.Colorq,
+//                                   fontSize: 20,
+//                                   fontWeight:
+//                                       FontWeight.w400),
+//                             ),
+//                           ),
+//                           Container(
+//                             height: 245,
+//                             child: GridView.builder(
+//                               physics:
+//                                   NeverScrollableScrollPhysics(),
+//                               gridDelegate:
+//                                   SliverGridDelegateWithFixedCrossAxisCount(
+//                                       crossAxisCount: 3,
+//                                       childAspectRatio: 1.7),
+//                               itemCount: 3,
+//                               itemBuilder: (context, index) {
+//                                 return Padding(
+//                                   padding:
+//                                       const EdgeInsets.all(
+//                                           8.0),
+//                                   child: Bounce(
+//                                     duration: Duration(
+//                                         milliseconds: 200),
+//                                     onPressed: () {
+//                                       if (index == 0) {
+//                                         wSpa = true;
+//                                         wSalon = false;
+//                                         wStudio = false;
+//                                       }
+//                                       if (index == 1) {
+//                                         wSpa = false;
+//                                         wSalon = true;
+//                                         wStudio = false;
+//                                       }
+//                                       if (index == 2) {
+//                                         wSpa = false;
+//                                         wSalon = false;
+//                                         wStudio = true;
+//                                       }
+//                                       Get.back();
+//                                       Get.to(ForWomen());
+//                                     },
+//                                     child: Container(
+//                                       decoration: BoxDecoration(
+//                                           color: AppColors
+//                                                   .Colorq
+//                                               .withOpacity(
+//                                                   0.5),
+//                                           borderRadius:
+//                                               BorderRadius
+//                                                   .circular(
+//                                                       7)),
+//                                     ),
+//                                   ),
+//                                 );
+//                               },
+//                             ),
+//                           )
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ));
+//           },
+//           child: Container(
+//             height: 75,
+//             decoration: BoxDecoration(
+//                 color: AppColors.Colorq.withOpacity(0.1),
+//                 borderRadius: BorderRadius.circular(7)),
+//             child: Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Row(
+//                 children: [
+//                   Image(
+//                       image: AssetImage(
+//                           "assets/category/category_women.jpg")),
+//                   Spacer(),
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 15),
+//                     child: Text(
+//                       "Spa for\nWomen",
+//                       style:
+//                           GoogleFonts.poppins(fontSize: 16),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+//     ),
+//   ],
+// ),
+// Row(
+//   crossAxisAlignment: CrossAxisAlignment.start,
+//   children: [
+//     Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.only(
+//             right: 5, bottom: 5, top: 5),
+//         child: Bounce(
+//           duration: Duration(milliseconds: 200),
+//           onPressed: () {
+//             Get.bottomSheet(
+//                 isDismissible: true,
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.end,
+//                   mainAxisSize: MainAxisSize.min,
+//                   children: [
+//                     Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: Bounce(
+//                         duration: Duration(milliseconds: 200),
+//                         onPressed: () {
+//                           Get.back();
+//                         },
+//                         child: Container(
+//                             decoration: BoxDecoration(
+//                               shape: BoxShape.circle,
+//                               color: AppColors.Colorq,
+//                             ),
+//                             child: Icon(Icons.cancel,
+//                                 color: AppColors.white1,
+//                                 size: 30)),
+//                       ),
+//                     ),
+//                     Container(
+//                       height: 291,
+//                       decoration: BoxDecoration(
+//                           color: Colors.white,
+//                           borderRadius: BorderRadius.only(
+//                               topLeft: Radius.circular(10),
+//                               topRight: Radius.circular(10))),
+//                       child: Column(
+//                         crossAxisAlignment:
+//                             CrossAxisAlignment.start,
+//                         children: [
+//                           Padding(
+//                             padding:
+//                                 const EdgeInsets.all(8.0),
+//                             child: Text(
+//                               "Cleaning",
+//                               style: GoogleFonts.poppins(
+//                                   color: AppColors.Colorq,
+//                                   fontSize: 20,
+//                                   fontWeight:
+//                                       FontWeight.w400),
+//                             ),
+//                           ),
+//                           Container(
+//                             height: 245,
+//                             child: GridView.builder(
+//                               physics:
+//                                   NeverScrollableScrollPhysics(),
+//                               gridDelegate:
+//                                   SliverGridDelegateWithFixedCrossAxisCount(
+//                                       crossAxisCount: 3,
+//                                       childAspectRatio: 1.7),
+//                               itemCount: 8,
+//                               itemBuilder: (context, index) {
+//                                 return Padding(
+//                                   padding:
+//                                       const EdgeInsets.all(
+//                                           8.0),
+//                                   child: Container(
+//                                     // height: 40,
+//                                     // width: 80,
+//                                     decoration: BoxDecoration(
+//                                         color: AppColors
+//                                                 .Colorq
+//                                             .withOpacity(0.5),
+//                                         borderRadius:
+//                                             BorderRadius
+//                                                 .circular(7)),
+//                                   ),
+//                                 );
+//                               },
+//                             ),
+//                           )
+//                         ],
+//                       ),
+//                     ),
+//                   ],
+//                 ));
+//           },
+//           child: Column(
+//             children: [
+//               Container(
+//                 height: 75,
+//                 width: double.maxFinite,
+//                 child: Image(
+//                     image: AssetImage(
+//                         "assets/category/category_plumber.jpg")),
+//                 decoration: BoxDecoration(
+//                     color: AppColors.Colorq.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(7)),
+//               ),
+//               SizedBox(
+//                 height: 5,
+//               ),
+//               Text(
+//                 "Cleaning",
+//                 style: GoogleFonts.poppins(
+//                     color: AppColors.Colorq,
+//                     fontSize: 16,
+//                     fontWeight: FontWeight.w400),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//     Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.only(
+//             left: 5, bottom: 5, right: 5, top: 5),
+//         child: Bounce(
+//           duration: Duration(milliseconds: 200),
+//           onPressed: () {
+//             Get.bottomSheet(
+//                 isDismissible: true,
+//                 Container(
+//                   height: 285,
+//                   decoration: BoxDecoration(
+//                       color: Colors.white,
+//                       borderRadius: BorderRadius.only(
+//                           topLeft: Radius.circular(10),
+//                           topRight: Radius.circular(10))),
+//                   child: Column(
+//                     crossAxisAlignment:
+//                         CrossAxisAlignment.start,
+//                     children: [
+//                       Padding(
+//                         padding: const EdgeInsets.all(8.0),
+//                         child: Text(
+//                           "Electrician, Plumber & Carpenters",
+//                           style: GoogleFonts.poppins(
+//                               color: AppColors.Colorq,
+//                               fontSize: 20,
+//                               fontWeight: FontWeight.w300),
+//                         ),
+//                       ),
+//                       Container(
+//                         height: 245,
+//                         child: GridView.builder(
+//                           physics:
+//                               NeverScrollableScrollPhysics(),
+//                           gridDelegate:
+//                               SliverGridDelegateWithFixedCrossAxisCount(
+//                                   crossAxisCount: 3,
+//                                   childAspectRatio: 1.7),
+//                           itemCount: 8,
+//                           itemBuilder: (context, index) {
+//                             return Padding(
+//                               padding:
+//                                   const EdgeInsets.all(8.0),
+//                               child: Column(
+//                                 children: [
+//                                   Container(
+//                                     // height: 40,
+//                                     // width: 80,
+//                                     decoration: BoxDecoration(
+//                                         color: AppColors
+//                                                 .Colorq
+//                                             .withOpacity(0.5),
+//                                         borderRadius:
+//                                             BorderRadius
+//                                                 .circular(7)),
+//                                   ),
+//                                 ],
+//                               ),
+//                             );
+//                           },
+//                         ),
+//                       )
+//                     ],
+//                   ),
+//                 ));
+//           },
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               Container(
+//                 height: 75,
+//                 width: double.maxFinite,
+//                 decoration: BoxDecoration(
+//                     color: AppColors.Colorq.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(7)),
+//                 child: Image(
+//                   image: AssetImage(
+//                       "assets/category/category_acc1.png"),
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 5,
+//               ),
+//               Text(
+//                 "Appliance\n    Repair",
+//                 style: GoogleFonts.poppins(
+//                     color: AppColors.Colorq,
+//                     fontSize: 16,
+//                     fontWeight: FontWeight.w400),
+//               )
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//     Expanded(
+//       child: Padding(
+//         padding:
+//             const EdgeInsets.only(left: 5, bottom: 5, top: 5),
+//         child: Bounce(
+//           duration: Duration(milliseconds: 200),
+//           onPressed: () {
+//             Get.to(Categoryy());
+//           },
+//           child: Column(
+//             children: [
+//               Container(
+//                 height: 75,
+//                 width: double.maxFinite,
+//                 child: Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: Center(
+//                     child: Text(
+//                       "View all",
+//                       style: GoogleFonts.poppins(
+//                           decoration:
+//                               TextDecoration.underline,
+//                           color: AppColors.Colorq,
+//                           fontSize: 16,
+//                           fontWeight: FontWeight.w500),
+//                     ),
+//                   ),
+//                 ),
+//                 decoration: BoxDecoration(
+//                     // color: AppColors.Colorq.withOpacity(0.1),
+//                     borderRadius: BorderRadius.circular(7)),
+//               ),
+//               SizedBox(
+//                 height: 5,
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//   ],
+// ),

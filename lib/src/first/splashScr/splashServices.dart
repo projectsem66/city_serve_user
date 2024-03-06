@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:city_serve/googleLocation.dart';
+import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

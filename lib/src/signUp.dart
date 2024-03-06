@@ -1,4 +1,4 @@
-import 'package:city_serve/googleLocation.dart';
+import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:firebase_auth/firebase_auth.dart';

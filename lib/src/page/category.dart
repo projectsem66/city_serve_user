@@ -1,3 +1,4 @@
+import 'package:city_serve/src/page/servicesPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,13 @@ class _CategoryyState extends State<Categoryy> {
       appBar: AppBar(
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Category"),
+        title: Text(
+          "Category",
+          style: GoogleFonts.poppins(
+            color: Colors.white,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
@@ -76,8 +83,7 @@ class _CategoryyState extends State<Categoryy> {
                           child: Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              categoryName =
-                                  documentSnapshot['cname'].toString();
+                              categoryName = documentSnapshot.id;
 
                               Get.bottomSheet(
                                   isDismissible: true,
@@ -156,27 +162,22 @@ class _CategoryyState extends State<Categoryy> {
                                                             documentSnapshot =
                                                             streamSnapshot.data!
                                                                 .docs[index];
-                                                        return Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Bounce(
-                                                            duration: Duration(
-                                                                milliseconds:
-                                                                    200),
-                                                            onPressed: () {
-                                                              // if (index == 0) {
-                                                              //   mMassage = true;
-                                                              //   mSalon = false;
-                                                              // }
-                                                              // if (index == 1) {
-                                                              //   mSalon = true;
-                                                              //   mMassage = false;
-                                                              // }
-                                                              //
-                                                              // Get.back();
-                                                              // Get.to(ForMen());
-                                                            },
+                                                        return Bounce(
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  200),
+                                                          onPressed: () {
+                                                            SCname =
+                                                                documentSnapshot['scname']
+                                                                    .toString();
+
+                                                            Get.to(
+                                                                ServicesPage());
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
                                                             child: Column(
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
@@ -240,52 +241,6 @@ class _CategoryyState extends State<Categoryy> {
                                                 },
                                               ),
                                             )
-                                            // GridView.builder(
-                                            //   physics:
-                                            //   NeverScrollableScrollPhysics(),
-                                            //   gridDelegate:
-                                            //   SliverGridDelegateWithFixedCrossAxisCount(
-                                            //       crossAxisCount: 3,
-                                            //       childAspectRatio: 1.7),
-                                            //   itemCount: 2,
-                                            //   itemBuilder: (context, index) {
-                                            //     return Padding(
-                                            //       padding:
-                                            //       const EdgeInsets.all(
-                                            //           8.0),
-                                            //       child: Bounce(
-                                            //         duration: Duration(
-                                            //             milliseconds: 200),
-                                            //         onPressed: () {
-                                            //           // if (index == 0) {
-                                            //           //   mMassage = true;
-                                            //           //   mSalon = false;
-                                            //           // }
-                                            //           // if (index == 1) {
-                                            //           //   mSalon = true;
-                                            //           //   mMassage = false;
-                                            //           // }
-                                            //           //
-                                            //           // Get.back();
-                                            //           // Get.to(ForMen());
-                                            //         },
-                                            //         child: Container(
-                                            //           // height: 40,
-                                            //           // width: 80,
-                                            //           decoration: BoxDecoration(
-                                            //               color: AppColors
-                                            //                   .Colorq
-                                            //                   .withOpacity(
-                                            //                   0.5),
-                                            //               borderRadius:
-                                            //               BorderRadius
-                                            //                   .circular(
-                                            //                   7)),
-                                            //         ),
-                                            //       ),
-                                            //     );
-                                            //   },
-                                            // ),
                                           ],
                                         ),
                                       ),
