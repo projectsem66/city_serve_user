@@ -443,6 +443,7 @@ class _DashboardState extends State<Dashboard> {
                       ]),
                   Container(
                     height: dimension.height100 * 2,
+
                     // color: AppColors.red,
                     child: StreamBuilder(
                       stream: refC.snapshots(),
@@ -810,7 +811,7 @@ class _DashboardState extends State<Dashboard> {
                           return Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              Get.to(ServiceDescription());
+                              Get.to(ServiceDescription(serviceId: 'abc',));
                             },
                             child: ServiceContainer(
                               image: allServices[index]["image"],
