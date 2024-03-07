@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:city_serve/firebaseService/fbRefrences.dart';
 import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
@@ -238,17 +239,15 @@ class _DashboardState extends State<Dashboard> {
     super.initState();
   }
 
-  final CollectionReference refC =
-      FirebaseFirestore.instance.collection('category');
+  // final CollectionReference refC =
+  //     FirebaseFirestore.instance.collection('category');
   int sliderIndex = 0;
   var fieldData;
 
   getDataFromFirestore(String documentId) async {
     try {
-      DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
-          .collection('category')
-          .doc(documentId)
-          .get();
+      DocumentSnapshot documentSnapshot =
+          await refCategory.doc(documentId).get();
 
       var data = documentSnapshot["cname"];
 
@@ -411,7 +410,6 @@ class _DashboardState extends State<Dashboard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   SizedBox(
                     height: dimension.height10,
                   ),
@@ -446,7 +444,7 @@ class _DashboardState extends State<Dashboard> {
 
                     // color: AppColors.red,
                     child: StreamBuilder(
-                      stream: refC.snapshots(),
+                      stream: refCategory.snapshots(),
                       builder: (context,
                           AsyncSnapshot<QuerySnapshot> streamSnapshot) {
                         if (streamSnapshot.hasData) {
@@ -534,10 +532,7 @@ class _DashboardState extends State<Dashboard> {
                                                   Container(
                                                     height: 246,
                                                     child: StreamBuilder(
-                                                      stream: FirebaseFirestore
-                                                          .instance
-                                                          .collection(
-                                                              'category')
+                                                      stream: refCategory
                                                           .doc(categoryName)
                                                           .collection(
                                                               "subcategories")
@@ -811,7 +806,9 @@ class _DashboardState extends State<Dashboard> {
                           return Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              Get.to(ServiceDescription(serviceId: 'abc',));
+                              Get.to(ServiceDescription(
+                                serviceId: 'abc',
+                              ));
                             },
                             child: ServiceContainer(
                               image: allServices[index]["image"],

@@ -1,3 +1,4 @@
+import 'package:city_serve/firebaseService/fbRefrences.dart';
 import 'package:city_serve/src/page/servicesPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,8 +28,8 @@ class _CategoryyState extends State<Categoryy> {
 
   String categoryName = "";
 
-  final CollectionReference refC =
-      FirebaseFirestore.instance.collection('category');
+  // final CollectionReference refC =
+  //     FirebaseFirestore.instance.collection('category');
 
   // final CollectionReference refSC = FirebaseFirestore.instance
   //     .collection('category')
@@ -37,7 +38,7 @@ class _CategoryyState extends State<Categoryy> {
   Future<void> getDataFromFirestore() async {
     try {
       QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('category').get();
+          await refCategory.get();
 
       for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
         var data = documentSnapshot.data();
@@ -69,7 +70,7 @@ class _CategoryyState extends State<Categoryy> {
             Container(
               height: screenheight() - 150,
               child: StreamBuilder(
-                stream: refC.snapshots(),
+                stream: refCategory.snapshots(),
                 builder:
                     (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
                   if (streamSnapshot.hasData) {
@@ -136,9 +137,7 @@ class _CategoryyState extends State<Categoryy> {
                                             Container(
                                               height: 246,
                                               child: StreamBuilder(
-                                                stream: FirebaseFirestore
-                                                    .instance
-                                                    .collection('category')
+                                                stream: refCategory
                                                     .doc(categoryName)
                                                     .collection("subcategories")
                                                     .snapshots(),

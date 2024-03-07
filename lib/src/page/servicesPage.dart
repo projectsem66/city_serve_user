@@ -1,3 +1,4 @@
+import 'package:city_serve/firebaseService/fbRefrences.dart';
 import 'package:city_serve/src/page/serviceDescription.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _ServicesPageState extends State<ServicesPage> {
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
         title: Text(
-          "List",
+          "Services",
           style: GoogleFonts.poppins(
               color: Colors.white, fontWeight: FontWeight.w400),
         ),
@@ -39,11 +40,9 @@ class _ServicesPageState extends State<ServicesPage> {
             // Text(widget.Cname),
             // Text(widget.SCname),
             Container(
-              height: screenheight() -dimension.height100,
+              height: screenheight() - dimension.height100,
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('providerServiceDetails')
-                    .snapshots(),
+                stream: refServices.snapshots(),
                 builder:
                     (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
                   if (streamSnapshot.hasData) {
@@ -57,10 +56,12 @@ class _ServicesPageState extends State<ServicesPage> {
                                 duration: Duration(milliseconds: 200),
                                 onPressed: () {
                                   documentSnapshot.id;
-                                  Get.to(ServiceDescription(serviceId: documentSnapshot.id));
+                                  Get.to(ServiceDescription(
+                                      serviceId: documentSnapshot.id));
                                 },
                                 child: Padding(
-                                  padding:  EdgeInsets.only(bottom: dimension.height7),
+                                  padding: EdgeInsets.only(
+                                      bottom: dimension.height7),
                                   child: Container(
                                     width: double.maxFinite,
                                     decoration: BoxDecoration(
@@ -84,7 +85,8 @@ class _ServicesPageState extends State<ServicesPage> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.spaceEvenly,
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
                                                 children: [
                                                   Text(
                                                     documentSnapshot
@@ -104,7 +106,8 @@ class _ServicesPageState extends State<ServicesPage> {
                                                       Icon(
                                                         Icons.star,
                                                         color: AppColors.Colorq,
-                                                        size: dimension.height20,
+                                                        size:
+                                                            dimension.height20,
                                                       ),
                                                       SizedBox(
                                                         width: 5,
@@ -146,15 +149,16 @@ class _ServicesPageState extends State<ServicesPage> {
                                                                         .w500),
                                                       ),
                                                       Padding(
-                                                        padding:
-                                                            EdgeInsets.symmetric(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
                                                                 horizontal:
                                                                     dimension
                                                                         .height10),
-                                                        child: Icon(Icons.circle,
+                                                        child: Icon(
+                                                            Icons.circle,
                                                             size: 10,
-                                                            color:
-                                                                AppColors.Colorq),
+                                                            color: AppColors
+                                                                .Colorq),
                                                       ),
                                                       Text(
                                                         "2 hrs",
@@ -187,7 +191,8 @@ class _ServicesPageState extends State<ServicesPage> {
                                                                   documentSnapshot
                                                                       .get(
                                                                           "images")),
-                                                              fit: BoxFit.cover),
+                                                              fit:
+                                                                  BoxFit.cover),
                                                           border: Border.all(
                                                               color: AppColors
                                                                   .Colorq,
@@ -205,20 +210,22 @@ class _ServicesPageState extends State<ServicesPage> {
                                                         height: 34,
                                                         width: 65,
                                                         decoration: BoxDecoration(
-                                                            color:
-                                                                AppColors.Colorq,
+                                                            color: AppColors
+                                                                .Colorq,
                                                             borderRadius:
-                                                                BorderRadius.circular(
-                                                                    dimension
-                                                                        .height7)),
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        dimension
+                                                                            .height7)),
                                                         child: Center(
                                                           child: Text(
                                                             "+ Add",
-                                                            overflow: TextOverflow
-                                                                .ellipsis,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
                                                             style: GoogleFonts.poppins(
-                                                                color:
-                                                                    Colors.white,
+                                                                color: Colors
+                                                                    .white,
                                                                 fontSize:
                                                                     dimension
                                                                         .height16,

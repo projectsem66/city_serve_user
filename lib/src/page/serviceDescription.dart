@@ -1,3 +1,4 @@
+import 'package:city_serve/firebaseService/fbRefrences.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +42,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   }
 
   Future<DocumentSnapshot> getDocument() async {
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .collection('providerServiceDetails')
+    DocumentReference documentReference = refServices
         .doc(widget.serviceId);
     getProviderDetails();
 
@@ -63,8 +63,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   }
 
   Future<DocumentSnapshot> getProvider() async {
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .collection('providerDetails')
+    DocumentReference documentReference = refProvider
         .doc(documentSnapshot!.get("providerId"));
 
     return documentReference.get();
