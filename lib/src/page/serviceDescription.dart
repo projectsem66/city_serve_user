@@ -22,18 +22,17 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
 
   @override
   void initState() {
-    super.initState(
-
-    );
-    fetchData();
+    super.initState();
+    print(widget.serviceId);
+    fetchServiceData();
   }
 
-  Future<void> fetchData() async {
+  // for get service details
+  Future<void> fetchServiceData() async {
     try {
       DocumentSnapshot snapshot = await getDocument();
       setState(() {
         documentSnapshot = snapshot;
-
       });
     } catch (e) {
       print('Error retrieving document: $e');
@@ -50,6 +49,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
     return documentReference.get();
   }
 
+  // for get provider details using provider id
   Future<void> getProviderDetails() async {
     try {
       DocumentSnapshot snapshot = await getProvider();
@@ -65,7 +65,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   Future<DocumentSnapshot> getProvider() async {
     DocumentReference documentReference = FirebaseFirestore.instance
         .collection('providerDetails')
-        .doc(documentSnapshot1!.get("providerId"));
+        .doc(documentSnapshot!.get("providerId"));
 
     return documentReference.get();
   }
@@ -153,7 +153,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                         height: dimension.height5,
                                       ),
                                       Text(
-                                        documentSnapshot!.get("subcategory"),
+                                        documentSnapshot!.get("serviceName"),
                                         overflow: TextOverflow.ellipsis,
                                         style: GoogleFonts.poppins(
                                             color: AppColors.Colorq,
@@ -269,49 +269,60 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                             SizedBox(
                               height: dimension.height10,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.circular(dimension.height7),
-                                color: AppColors.Colorq.withOpacity(0.1),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Row(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: dimension.height70,
-                                          width: dimension.height70,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: AppColors.Colorq),
-                                        ),
-                                        SizedBox(
-                                          width: dimension.height15,
-                                        ),
-                                        Container(
-                                          width: dimension.height100 * 2,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                               "",
-                                                style: GoogleFonts.poppins(
-                                                    color: AppColors.Colorq,
-                                                    fontSize:
-                                                        dimension.height20,
-                                                    fontWeight:
-                                                        FontWeight.w500,),
-                                              ),
-                                            ],
+                            Bounce(
+                              duration: Duration(milliseconds: 200),
+                              onPressed: () {
+                                getProviderDetails();
+
+                                setState(() {});
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.circular(dimension.height7),
+                                  color: AppColors.Colorq.withOpacity(0.1),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: Row(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: dimension.height70,
+                                            width: dimension.height70,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppColors.Colorq),
                                           ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                          SizedBox(
+                                            width: dimension.height15,
+                                          ),
+                                          Container(
+                                            width: dimension.height100 * 2,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  documentSnapshot1
+                                                          ?.get("firstName") ??
+                                                      "hello",
+                                                  // myObject?.property ?? 'Default Value'
+                                                  style: GoogleFonts.poppins(
+                                                      color: AppColors.Colorq,
+                                                      fontSize:
+                                                          dimension.height20,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
