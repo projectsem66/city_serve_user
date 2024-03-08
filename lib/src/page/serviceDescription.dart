@@ -1,4 +1,5 @@
 import 'package:city_serve/firebaseService/fbRefrences.dart';
+import 'package:city_serve/src/page/cartPages/summary.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class ServiceDescription extends StatefulWidget {
   State<ServiceDescription> createState() => _ServiceDescriptionState();
 }
 
+String bookServiceId = "";
+String ServiceProviderId="";
 class _ServiceDescriptionState extends State<ServiceDescription> {
   DocumentSnapshot? documentSnapshot;
   DocumentSnapshot? documentSnapshot1;
@@ -25,6 +28,8 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   void initState() {
     super.initState();
     print(widget.serviceId);
+
+    bookServiceId = widget.serviceId;
     fetchServiceData();
   }
 
@@ -42,8 +47,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   }
 
   Future<DocumentSnapshot> getDocument() async {
-    DocumentReference documentReference = refServices
-        .doc(widget.serviceId);
+    DocumentReference documentReference = refServices.doc(widget.serviceId);
     getProviderDetails();
 
     return documentReference.get();
@@ -63,8 +67,10 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   }
 
   Future<DocumentSnapshot> getProvider() async {
-    DocumentReference documentReference = refProvider
-        .doc(documentSnapshot!.get("providerId"));
+    DocumentReference documentReference =
+        refProvider.doc(documentSnapshot!.get("providerId"));
+    ServiceProviderId = documentSnapshot!.get("providerId");
+
 
     return documentReference.get();
   }
@@ -325,6 +331,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: dimension.height100 * 1,
+                            )
                           ],
                         ),
                       )
@@ -337,7 +346,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                     padding: const EdgeInsets.all(8.0),
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(Summary());
+                      },
                       child: Container(
                         height: dimension.height50,
                         width: double.maxFinite,

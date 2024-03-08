@@ -246,6 +246,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                             child: Text(
                                               "● ${documentSnapshot.get("serviceDescription")}",
                                               overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
                                                   fontSize: dimension.height16,

@@ -255,7 +255,7 @@ class _LoginState extends State<Login> {
                     height: dimension.height50,
                     width: double.maxFinite,
                     decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.9),
+                      color: AppColors.Colorq,
                       borderRadius: BorderRadius.circular(7),
                     ),
                     child: Center(
