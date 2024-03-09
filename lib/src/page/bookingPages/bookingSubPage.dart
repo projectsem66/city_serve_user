@@ -1,5 +1,6 @@
-import 'package:city_serve/src/page/bookingPages/paymentPage.dart';
+import 'package:city_serve/src/page/bookings.dart';
 import 'package:city_serve/utils/dimension.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
@@ -8,13 +9,65 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/colors.dart';
 
 class BookingSubPage extends StatefulWidget {
-  const BookingSubPage({super.key});
+  BookingSubPage({super.key});
 
   @override
-  State<BookingSubPage> createState() => _BookingSubPageState();
+  State<BookingSubPage> createState() => _ServiceDescriptionState();
 }
 
-class _BookingSubPageState extends State<BookingSubPage> {
+String bookServiceId = "";
+String ServiceProviderId = "";
+
+class _ServiceDescriptionState extends State<BookingSubPage> {
+  DocumentSnapshot? documentSnapshot;
+  DocumentSnapshot? documentSnapshot1;
+
+  @override
+  void initState() {
+    super.initState();
+
+    fetchBookingData();
+  }
+
+  // for get booking details
+  Future<void> fetchBookingData() async {
+    try {
+      DocumentSnapshot snapshot = await getDocument();
+      setState(() {
+        documentSnapshot = snapshot;
+      });
+    } catch (e) {
+      print('Error retrieving document: $e');
+      // Handle error appropriately
+    }
+  }
+
+  Future<DocumentSnapshot> getDocument() async {
+    DocumentReference documentReference =
+    FirebaseFirestore.instance.collection('bookingg').doc(bookingId);
+    return documentReference.get();
+  }
+
+  // for get service details
+  Future<void> fetchServiceData() async {
+    try {
+      DocumentSnapshot snapshot = await getDocument2();
+      setState(() {
+        documentSnapshot1 = snapshot;
+      });
+    } catch (e) {
+      print('Error retrieving document: $e');
+      // Handle error appropriately
+    }
+  }
+
+  Future<DocumentSnapshot> getDocument2() async {
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('providerServiceDetails')
+        .doc(documentSnapshot?.get("documentSnapshot"));
+    return documentReference.get();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +83,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
         centerTitle: false,
         title: Text("Bookings"),
       ),
-      body: Padding(
+      body: documentSnapshot != null
+          ? Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
@@ -43,12 +97,12 @@ class _BookingSubPageState extends State<BookingSubPage> {
                   children: [
                     Container(
                       width: double.maxFinite,
-                      decoration:
-                          BoxDecoration(color: AppColors.red.withOpacity(0.1)),
+                      decoration: BoxDecoration(
+                          color: AppColors.red.withOpacity(0.1)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          "Waiting for Approval",
+                          documentSnapshot!.get("status").toString(),
                           // Completed == null
                           //  Accepted == null
                           //  Cancelled == Reason of booking cancel
@@ -73,7 +127,7 @@ class _BookingSubPageState extends State<BookingSubPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "#255",
+                          bookingId,
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height17,
@@ -107,7 +161,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                 Text(
                                   "Date : ",
                                   style: GoogleFonts.poppins(
-                                      color: AppColors.Colorq.withOpacity(0.8),
+                                      color: AppColors.Colorq.withOpacity(
+                                          0.8),
                                       fontSize: dimension.height16,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -125,7 +180,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                 Text(
                                   "Time : ",
                                   style: GoogleFonts.poppins(
-                                      color: AppColors.Colorq.withOpacity(0.8),
+                                      color: AppColors.Colorq.withOpacity(
+                                          0.8),
                                       fontSize: dimension.height16,
                                       fontWeight: FontWeight.w500),
                                 ),
@@ -185,7 +241,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(dimension.height7),
+                        borderRadius:
+                        BorderRadius.circular(dimension.height7),
                         color: AppColors.Colorq.withOpacity(0.1),
                       ),
                       child: Padding(
@@ -208,7 +265,7 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                   width: dimension.height100 * 2,
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Felix Harris",
@@ -231,7 +288,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                                   height: dimension.height40,
                                   width: dimension.height40,
                                   decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.3),
+                                      color: AppColors.Colorq.withOpacity(
+                                          0.3),
                                       shape: BoxShape.circle),
                                   child: Icon(Icons.call),
                                 ),
@@ -257,9 +315,11 @@ class _BookingSubPageState extends State<BookingSubPage> {
                     backgroundColor: Colors.white,
                     cancelTextColor: AppColors.Colorq,
                     titleStyle: GoogleFonts.amaranth(
-                        fontSize: dimension.height18, color: AppColors.Colorq),
+                        fontSize: dimension.height18,
+                        color: AppColors.Colorq),
                     titlePadding: EdgeInsets.all(10),
-                    title: "Please give reason for cancelling this booking?",
+                    title:
+                    "Please give reason for cancelling this booking?",
                     contentPadding: EdgeInsets.all(20),
                     // middleText: "Are you sure to delete",
                     content: Column(
@@ -284,20 +344,22 @@ class _BookingSubPageState extends State<BookingSubPage> {
                             },
                             decoration: InputDecoration(
                               floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
+                              FloatingLabelBehavior.always,
                               labelText: "Enter reason here",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 17,
                                   fontWeight: FontWeight.w300),
-                              contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                              contentPadding:
+                              EdgeInsets.fromLTRB(5, 10, 5, 0),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.Colorq),
+                                borderSide:
+                                BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -308,15 +370,15 @@ class _BookingSubPageState extends State<BookingSubPage> {
                     textConfirm: "Submit",
                     confirm: TextButton(
                       onPressed: () async {
-                        Get.to(PaymentPage());
+                        // Get.to(PaymentPage());
                       },
                       child: Container(
                         height: dimension.height35,
                         width: dimension.width85,
                         decoration: BoxDecoration(
                             color: AppColors.Colorq.withOpacity(0.3),
-                            border:
-                                Border.all(color: AppColors.Colorq, width: 2),
+                            border: Border.all(
+                                color: AppColors.Colorq, width: 2),
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
@@ -337,7 +399,8 @@ class _BookingSubPageState extends State<BookingSubPage> {
                       color: AppColors.Colorq,
                       borderRadius: BorderRadius.circular(7)),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                    padding:
+                    EdgeInsets.symmetric(vertical: 10, horizontal: 7),
                     child: Center(
                       child: Text(
                         "Cancel Booking", //==Pending
@@ -356,7 +419,13 @@ class _BookingSubPageState extends State<BookingSubPage> {
             ],
           ),
         ),
-      ),
+      )
+          : CircularProgressIndicator(),
     );
   }
 }
+// Center(
+// child: documentSnapshot != null
+// ? Text(documentSnapshot!.get("images"))
+//     : CircularProgressIndicator(), // Show a loading indicator while fetching data
+// ),

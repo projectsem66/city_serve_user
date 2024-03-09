@@ -3,12 +3,10 @@ import 'dart:developer';
 import 'package:city_serve/src/page/cartPages/addressAndSlot.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 import '../../../utils/colors.dart';
@@ -46,12 +44,13 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
   }
 
   uploadData() async {
-    FirebaseFirestore.instance.collection("bookings").doc("12345").set({
+    FirebaseFirestore.instance.collection("bookingg").add({
       "address": currentLocation,
       "date": DateFormat('dd-MM-yyyy').format(selectedDate!),
       "productServiceDetailsId": bookServiceId,
       "providerId": ServiceProviderId,
       "status": "pending",
+      "userId":"123456",
       "time": selectedTime!.format(context)
     }).then((value) {
       log("User Uploaded");

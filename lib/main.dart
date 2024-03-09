@@ -2,6 +2,7 @@ import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/first/splashScr/SplaceScreen.dart';
 import 'package:city_serve/src/first/splashScreen.dart';
 import 'package:city_serve/src/login.dart';
+import 'package:city_serve/src/page/bookings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: splashScreen(),
+      home: SplashScr(),
     );
   }
 }

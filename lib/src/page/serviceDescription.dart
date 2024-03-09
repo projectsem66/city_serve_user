@@ -49,7 +49,6 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   Future<DocumentSnapshot> getDocument() async {
     DocumentReference documentReference = refServices.doc(widget.serviceId);
     getProviderDetails();
-
     return documentReference.get();
   }
 

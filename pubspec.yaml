@@ -55,6 +55,18 @@ dependencies:
   sign_in_button: ^3.2.0
   google_sign_in: ^6.1.6
   fluttertoast: ^8.2.4
+  intl: ^0.17.0
+  image_picker: ^1.0.7
+  country_picker: ^2.0.20
+  pinput: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo/CSlogo.png"
+
+
 
 dev_dependencies:
   flutter_test:
