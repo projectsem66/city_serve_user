@@ -13,31 +13,27 @@ class splashScreen extends StatefulWidget {
 class _splashScreenState extends State<splashScreen> {
   splashServices splashScreen = splashServices();
 
-  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    splashScreen.isLogin(context).then((value) {
-      setState(() {
-        //log(userEmail);
-      });
-    });
+    splashScreen.isLogin(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Container(
-          height: screenheight(),
-          width: screenwidth(),
-          child: Container(
-            height: dimension.height30,
-            width: dimension.height30,
-            child: Image(
-              image: AssetImage("assets/logo/CityServeTextAnim.gif"),
-            ),
+      backgroundColor: Colors.white,
+      body: Container(
+        height: screenheight(),
+        width: screenwidth(),
+        child: Container(
+          height: dimension.height30,
+          width: dimension.height30,
+          child: Image(
+            image: AssetImage("assets/logo/CityServeTextAnim.gif"),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

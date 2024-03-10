@@ -19,7 +19,8 @@ class ServiceDescription extends StatefulWidget {
 }
 
 String bookServiceId = "";
-String ServiceProviderId="";
+String ServiceProviderId = "";
+
 class _ServiceDescriptionState extends State<ServiceDescription> {
   DocumentSnapshot? documentSnapshot;
   DocumentSnapshot? documentSnapshot1;
@@ -70,9 +71,14 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
         refProvider.doc(documentSnapshot!.get("providerId"));
     ServiceProviderId = documentSnapshot!.get("providerId");
 
-
     return documentReference.get();
   }
+
+  bool like = false;
+  final CollectionReference refUser = FirebaseFirestore.instance
+      .collection('userDetails')
+      .doc("234")
+      .collection("favourites");
 
   @override
   Widget build(BuildContext context) {
@@ -103,132 +109,181 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                 Padding(
                                   padding: EdgeInsets.only(
                                       top: dimension.height35,
-                                      left: dimension.height10),
-                                  child: Bounce(
-                                    onPressed: () {
-                                      Get.back();
-                                    },
-                                    duration: Duration(milliseconds: 200),
-                                    child: Container(
-                                      height: 40,
-                                      width: 40,
-                                      decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.1),
-                                        shape: BoxShape.circle,
+                                      left: dimension.height10,
+                                      right: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Bounce(
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        duration: Duration(milliseconds: 200),
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.1),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Center(
+                                              child: Icon(
+                                            Icons.arrow_back,
+                                            color: AppColors.Colorq,
+                                            size: dimension.height28,
+                                          )),
+                                        ),
                                       ),
-                                      child: Center(
-                                          child: Icon(
-                                        Icons.arrow_back,
-                                        color: AppColors.Colorq,
-                                        size: dimension.height28,
-                                      )),
-                                    ),
+                                      Bounce(
+                                        onPressed: () {
+                                          like = !like;
+                                          like == true
+                                              ? refUser
+                                                  .doc(widget.serviceId)
+                                                  .set({
+                                                  "serviceId": widget.serviceId
+                                                })
+                                              : refUser
+                                                  .doc(widget.serviceId)
+                                                  .delete();
+
+                                          setState(() {});
+                                        },
+                                        duration: Duration(milliseconds: 200),
+                                        child: Container(
+                                          height: 40,
+                                          width: 40,
+                                          decoration: BoxDecoration(
+                                            color: AppColors.Colorq.withOpacity(
+                                                0.1),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Center(
+                                            child: like == true
+                                                ? Icon(
+                                                    Icons.favorite,
+                                                    color: AppColors.red,
+                                                    size: dimension.height26,
+                                                  )
+                                                : Icon(
+                                                    Icons.favorite_border,
+                                                    color: AppColors.red,
+                                                    size: dimension.height26,
+                                                  ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                             Align(
                               alignment: AlignmentDirectional.bottomCenter,
-                              child: Container(
-                                height: dimension.height100 * 1.69,
-                                width: dimension.height100 * 3.5,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(dimension.height7),
-                                  border: Border.all(color: AppColors.Colorq),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        documentSnapshot!.get("category"),
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            color: Colors.black54,
-                                            fontSize: dimension.height15,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      SizedBox(
-                                        height: dimension.height5,
-                                      ),
-                                      Text(
-                                        documentSnapshot!.get("serviceName"),
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height18,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      SizedBox(
-                                        height: dimension.height4,
-                                      ),
-                                      Text(
-                                        "₹500",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height16,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                      SizedBox(
-                                        height: dimension.height4,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Duration",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.black54,
-                                                fontSize: dimension.height16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                          Text(
-                                            "50 min",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.Colorq,
-                                                fontSize: dimension.height16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Ratings",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: GoogleFonts.poppins(
-                                                color: Colors.black54,
-                                                fontSize: dimension.height16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            Icons.star_outlined,
-                                            size: dimension.height16,
-                                            color: Colors.orange,
-                                          ),
-                                          Text(
-                                            "4.5",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: GoogleFonts.poppins(
-                                                color: AppColors.Colorq,
-                                                fontSize: dimension.height16,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: dimension.height15),
+                                child: Container(
+                                  height: dimension.height100 * 1.69,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        dimension.height7),
+                                    border: Border.all(color: AppColors.Colorq),
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          documentSnapshot!.get("category"),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              color: Colors.black54,
+                                              fontSize: dimension.height15,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          height: dimension.height5,
+                                        ),
+                                        Text(
+                                          documentSnapshot!.get("serviceName"),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height18,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          height: dimension.height4,
+                                        ),
+                                        Text(
+                                          "₹500",
+                                          overflow: TextOverflow.ellipsis,
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height16,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                        SizedBox(
+                                          height: dimension.height4,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Duration",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.black54,
+                                                  fontSize: dimension.height16,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              "50 min",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: GoogleFonts.poppins(
+                                                  color: AppColors.Colorq,
+                                                  fontSize: dimension.height16,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Ratings",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.black54,
+                                                  fontSize: dimension.height16,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Spacer(),
+                                            Icon(
+                                              Icons.star_outlined,
+                                              size: dimension.height16,
+                                              color: Colors.orange,
+                                            ),
+                                            Text(
+                                              "4.5",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: GoogleFonts.poppins(
+                                                  color: AppColors.Colorq,
+                                                  fontSize: dimension.height16,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

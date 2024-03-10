@@ -1,3 +1,4 @@
+import 'package:city_serve/src/authentication/login_eith_phone_number.dart';
 import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/signUp.dart';
@@ -12,7 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../login/Forgotpassword.dart';
 import '../login/util.dart';
-import 'otp_page.dart';
+import 'authentication/otp_page.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -36,42 +37,42 @@ class _LoginState extends State<Login> {
   );
   final TextEditingController phoneController = TextEditingController();
 
-  Future<void> signInWithPhoneNumber(String phoneNumber) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
+  // Future<void> signInWithPhoneNumber(String phoneNumber) async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //
+  //   await auth.verifyPhoneNumber(
+  //     phoneNumber: phoneNumber,
+  //     verificationCompleted: (PhoneAuthCredential credential) async {
+  //       await auth.signInWithCredential(credential);
+  //     },
+  //     verificationFailed: (FirebaseAuthException e) {},
+  //     codeSent: (String verificationId, int? resendToken) async {
+  //       String smsCode = ''; //get sms code from user
+  //       PhoneAuthCredential credential = PhoneAuthProvider.credential(
+  //         verificationId: verificationId,
+  //         smsCode: smsCode,
+  //       );
+  //       Get.to(OtpPage(), arguments: [verificationId]);
+  //       await auth.signInWithCredential(credential);
+  //     },
+  //     codeAutoRetrievalTimeout: (String verificationId) {},
+  //   );
+  // }
 
-    await auth.verifyPhoneNumber(
-      phoneNumber: phoneNumber,
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await auth.signInWithCredential(credential);
-      },
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) async {
-        String smsCode = ''; //get sms code from user
-        PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: verificationId,
-          smsCode: smsCode,
-        );
-        Get.to(OtpPage(), arguments: [verificationId]);
-        await auth.signInWithCredential(credential);
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
-
-  void _userLogin() async {
-    String mobile = phoneController.text;
-    if (mobile == "") {
-      // print(screenWidth.toString());
-
-      Get.snackbar(
-        "Please enter the mobile number!",
-        "To get OTP ",
-        colorText: AppColors.Colorq,
-      );
-    } else {
-      signInWithPhoneNumber("+${selectedCountry.phoneCode}$mobile");
-    }
-  }
+  // void _userLogin() async {
+  //   String mobile = phoneController.text;
+  //   if (mobile == "") {
+  //     // print(screenWidth.toString());
+  //
+  //     Get.snackbar(
+  //       "Please enter the mobile number!",
+  //       "To get OTP ",
+  //       colorText: AppColors.Colorq,
+  //     );
+  //   } else {
+  //     signInWithPhoneNumber("+${selectedCountry.phoneCode}$mobile");
+  //   }
+  // }
   bool spwd = true;
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
@@ -440,138 +441,140 @@ class _LoginState extends State<Login> {
                 Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
-                    Get.bottomSheet(
-                      isDismissible: true,
-                      Container(
-                        height: 250,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                topRight: Radius.circular(10))),
-                        child: Column(
-                          children: [
-                            SizedBox(height: dimension.height20,),
-                            Text(
-                              "Enter your mobile number to proceed",
-                              style: GoogleFonts.ubuntu(
-                                  color: AppColors.Colorq,
-                                  fontSize: dimension.height16,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
-                              child: TextFormField(
-                                keyboardType: TextInputType.number,
-                                cursorColor: AppColors.Colorq,
-                                controller: phoneController,
-                                style:  TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.Colorq,
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    phoneController.text = value;
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  // fillColor: const Color(0xff2C474A),
-                                  // filled: true,
-                                  hintText: "Mobile number",
+                    // Get.bottomSheet(
+                    //   isDismissible: true,
+                    //   Container(
+                    //     height: 250,
+                    //     decoration: BoxDecoration(
+                    //         color: Colors.white,
+                    //         borderRadius: BorderRadius.only(
+                    //             topLeft: Radius.circular(10),
+                    //             topRight: Radius.circular(10))),
+                    //     child: Column(
+                    //       children: [
+                    //         SizedBox(height: dimension.height20,),
+                    //         Text(
+                    //           "Enter your mobile number to proceed",
+                    //           style: GoogleFonts.ubuntu(
+                    //               color: AppColors.Colorq,
+                    //               fontSize: dimension.height16,
+                    //               fontWeight: FontWeight.w600),
+                    //         ),
+                    //         SizedBox(
+                    //           height: 25,
+                    //         ),
+                    //         Container(
+                    //           margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
+                    //           child: TextFormField(
+                    //             keyboardType: TextInputType.number,
+                    //             cursorColor: AppColors.Colorq,
+                    //             controller: phoneController,
+                    //             style:  TextStyle(
+                    //               fontSize: 18,
+                    //               fontWeight: FontWeight.bold,
+                    //               color: AppColors.Colorq,
+                    //             ),
+                    //             onChanged: (value) {
+                    //               setState(() {
+                    //                 phoneController.text = value;
+                    //               });
+                    //             },
+                    //             decoration: InputDecoration(
+                    //               // fillColor: const Color(0xff2C474A),
+                    //               // filled: true,
+                    //               hintText: "Mobile number",
+                    //
+                    //               hintStyle: TextStyle(
+                    //                 fontWeight: FontWeight.w500,
+                    //                 fontSize: 16,
+                    //                 color: AppColors.Colorq.withOpacity(0.9),
+                    //               ),
+                    //               floatingLabelBehavior: FloatingLabelBehavior.never,
+                    //               contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                    //               focusedBorder: OutlineInputBorder(
+                    //                   borderRadius: BorderRadius.circular(100.0),
+                    //                   borderSide:
+                    //                   BorderSide(color: AppColors.Colorq)),
+                    //               enabledBorder: OutlineInputBorder(
+                    //                   borderRadius: BorderRadius.circular(dimension.height7),
+                    //                   borderSide: BorderSide(color: AppColors.Colorq)),
+                    //               // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
+                    //               // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
+                    //               prefixIcon: Container(
+                    //                 padding: const EdgeInsets.all(8.0),
+                    //                 child: InkWell(
+                    //                   onTap: () {
+                    //                     showCountryPicker(
+                    //                         context: context,
+                    //                         countryListTheme: const CountryListThemeData(
+                    //                           bottomSheetHeight: 550,
+                    //                         ),
+                    //                         onSelect: (value) {
+                    //                           setState(() {
+                    //                             selectedCountry = value;
+                    //                           });
+                    //                         });
+                    //                   },
+                    //                   child: Container(
+                    //                     padding: const EdgeInsets.all(8.0),
+                    //                     child: Text(
+                    //                       "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
+                    //                       style: const TextStyle(
+                    //                         fontSize: 18,
+                    //                         color: AppColors.Colorq,
+                    //                         fontWeight: FontWeight.bold,
+                    //                       ),
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //               suffixIcon: phoneController.text.length > 9
+                    //                   ? Container(
+                    //                 height: 25,
+                    //                 width: 25,
+                    //                 margin: const EdgeInsets.all(10.0),
+                    //                 decoration: const BoxDecoration(
+                    //                   shape: BoxShape.circle,
+                    //                   color: Colors.green,
+                    //                 ),
+                    //                 child: const Icon(
+                    //                   Icons.done,
+                    //                   color: Colors.white,
+                    //                   size: 20,
+                    //                 ),
+                    //               )
+                    //                   : null,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //         SizedBox(
+                    //           height: 25,
+                    //         ),
+                    //         Bounce(
+                    //           duration: Duration(milliseconds: 300),
+                    //           onPressed: _userLogin,
+                    //           child: Container(
+                    //             height: 50,
+                    //             width: 200,
+                    //             decoration: BoxDecoration(
+                    //                 color: AppColors.Colorq,
+                    //                 borderRadius: BorderRadius.circular(26)),
+                    //             child: Center(
+                    //                 child: Text(
+                    //                   "Continue",
+                    //                   style: GoogleFonts.ubuntu(
+                    //                       color: Colors.white,
+                    //                       fontSize: dimension.height16,
+                    //                       fontWeight: FontWeight.w500),
+                    //                 )),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // );
+                    Get.to( LoginWithPhoneNumber());
 
-                                  hintStyle: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16,
-                                    color: AppColors.Colorq.withOpacity(0.9),
-                                  ),
-                                  floatingLabelBehavior: FloatingLabelBehavior.never,
-                                  contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(100.0),
-                                      borderSide:
-                                      BorderSide(color: AppColors.Colorq)),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(dimension.height7),
-                                      borderSide: BorderSide(color: AppColors.Colorq)),
-                                  // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-                                  // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-                                  prefixIcon: Container(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: () {
-                                        showCountryPicker(
-                                            context: context,
-                                            countryListTheme: const CountryListThemeData(
-                                              bottomSheetHeight: 550,
-                                            ),
-                                            onSelect: (value) {
-                                              setState(() {
-                                                selectedCountry = value;
-                                              });
-                                            });
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            color: AppColors.Colorq,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  suffixIcon: phoneController.text.length > 9
-                                      ? Container(
-                                    height: 25,
-                                    width: 25,
-                                    margin: const EdgeInsets.all(10.0),
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.green,
-                                    ),
-                                    child: const Icon(
-                                      Icons.done,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  )
-                                      : null,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Bounce(
-                              duration: Duration(milliseconds: 300),
-                              onPressed: _userLogin,
-                              child: Container(
-                                height: 50,
-                                width: 200,
-                                decoration: BoxDecoration(
-                                    color: AppColors.Colorq,
-                                    borderRadius: BorderRadius.circular(26)),
-                                child: Center(
-                                    child: Text(
-                                      "Continue",
-                                      style: GoogleFonts.ubuntu(
-                                          color: Colors.white,
-                                          fontSize: dimension.height16,
-                                          fontWeight: FontWeight.w500),
-                                    )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
                   },
                   child: Container(
                     height: dimension.height50,

@@ -4,20 +4,29 @@ import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
-import '../utils/colors.dart';
-import 'monoAuth.dart';
+import '../../login/round_button.dart';
+import '../../utils/colors.dart';
+import '../signUp2.dart';
 
 class OtpPage extends StatefulWidget {
+  final String verificatioId;
+
+  const OtpPage({super.key, required this.verificatioId});
+
   @override
   _OtpPageState createState() => _OtpPageState();
 }
 
+FirebaseAuth auth = FirebaseAuth.instance;
+String MonoAuthUid="";
+
 class _OtpPageState extends State<OtpPage> {
+  bool loading = false;
+
   final TextEditingController _firstController = TextEditingController();
   final TextEditingController _secondController = TextEditingController();
   final TextEditingController _thirdController = TextEditingController();
@@ -25,8 +34,8 @@ class _OtpPageState extends State<OtpPage> {
   final TextEditingController _fifthController = TextEditingController();
   final TextEditingController _sixthController = TextEditingController();
   String? otpCode;
-  final String verificationId = Get.arguments[0];
-  FirebaseAuth auth = FirebaseAuth.instance;
+
+  // final String verificationId = Get.arguments[0];
 
   @override
   void dispose() {
@@ -49,7 +58,6 @@ class _OtpPageState extends State<OtpPage> {
           verificationId: verificationId, smsCode: userOtp);
       User? user = (await auth.signInWithCredential(creds)).user;
       if (user != null) {
-
         Get.off(NavigationBarr());
       }
     } on FirebaseAuthException catch (e) {
@@ -57,19 +65,6 @@ class _OtpPageState extends State<OtpPage> {
         e.message.toString(),
         "Try again",
         colorText: AppColors.Colorq,
-      );
-    }
-  }
-
-  void _login() {
-    if (otpCode != null) {
-      verifyOtp(verificationId, otpCode!);
-    } else {
-      Get.snackbar(
-        "Enter 6-Digit code",
-        "To log into the app",
-        colorText: AppColors.Colorq,
-        // backgroundColor: AppColors.mainOrange.withOpacity(0.3),
       );
     }
   }
@@ -112,13 +107,13 @@ class _OtpPageState extends State<OtpPage> {
                         fontSize: dimension.height18,
                         fontWeight: FontWeight.w500),
                   ),
-                  Text(
-                    phoneController.text,
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height18,
-                        fontWeight: FontWeight.w500),
-                  ),
+                  // Text(
+                  //   phoneController.text,
+                  //   style: GoogleFonts.poppins(
+                  //       color: AppColors.Colorq,
+                  //       fontSize: dimension.height18,
+                  //       fontWeight: FontWeight.w500),
+                  // ),
                   Center(
                     child: Pinput(
                       length: 6,
@@ -157,27 +152,28 @@ class _OtpPageState extends State<OtpPage> {
                   ),
                   SizedBox(height: dimension.height30),
                   Center(
-                    child: Bounce(
-                      onPressed: _login,
-                      duration: Duration(milliseconds: 300),
-                      child: Container(
-                        height: dimension.height50,
-                        width: dimension.height100 * 1.6,
-                        decoration: BoxDecoration(
-                            border:
-                                Border.all(color: AppColors.Colorq, width: 2),
-                            color: AppColors.Colorq,
-                            borderRadius:
-                                BorderRadius.circular(dimension.height7)),
-                        child: Center(
-                          child: Text(
-                            "Verify",
-                            style: GoogleFonts.amaranth(
-                                fontSize: dimension.height20,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
+                    child: RoundButton(
+                      title: "verify",
+                      loding: loading,
+                      onTap: () async {
+                        setState(() {
+                          loading = true;
+                        });
+                        final credential = PhoneAuthProvider.credential(
+                          verificationId: widget.verificatioId,
+                          smsCode: otpCode.toString(),
+                        );
+                        try {
+                          await auth.signInWithCredential(credential);
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignUp2()));
+                          print("aaaaaaaaaaaaaaa"+auth.currentUser!.uid.toString());
+                          MonoAuthUid = auth.currentUser!.uid.toString();
+                        } catch (e) {}
+                      },
                     ),
                   ),
                   // ElevatedButton(
@@ -187,20 +183,7 @@ class _OtpPageState extends State<OtpPage> {
                   //       'SIGN IN',
                   //       style: TextStyle(fontSize: 14, color: Colors.white),
                   //     )),
-                  const SizedBox(height: 60),
-                  Text(
-                    "Didn't receive any code?",
-                    style: GoogleFonts.amaranth(
-                        fontSize: 16, color: AppColors.Colorq),
-                  ),
-
-                  const SizedBox(height: 5),
-                  Text(
-                    "Resend Code",
-                    style: GoogleFonts.amaranth(
-                        fontSize: 23, color: AppColors.Colorq),
-                  ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 60),
                 ],
               ),
             ),
