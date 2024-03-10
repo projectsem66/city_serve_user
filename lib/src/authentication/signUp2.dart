@@ -13,9 +13,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../login/util.dart';
-import '../utils/colors.dart';
-import 'authentication/otp_page.dart';
+import '../../utils/colors.dart';
+import 'otp_page.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({super.key});

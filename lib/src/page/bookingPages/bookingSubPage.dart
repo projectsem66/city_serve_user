@@ -1,4 +1,4 @@
-import 'package:city_serve/src/page/bookings.dart';
+import 'package:city_serve/src/page/bookingPages/bookings.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

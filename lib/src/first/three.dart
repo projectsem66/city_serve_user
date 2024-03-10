@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
-import '../login.dart';
+import '../authentication/login.dart';
 
 class ThreePage extends StatefulWidget {
   const ThreePage({super.key});
@@ -69,7 +69,7 @@ class _ThreePageState extends State<ThreePage> {
                             duration: Duration(milliseconds: 400),
                             onPressed: () {
                               print("tapped");
-                              Get.to(() => Login(),transition: Transition.downToUp);
+                              Get.off(() => Login(),transition: Transition.downToUp);
                             },
                             child: Text(
                               "Skip",

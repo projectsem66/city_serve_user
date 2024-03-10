@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
-import '../login.dart';
+import '../authentication/login.dart';
 
 class FourPage extends StatefulWidget {
   const FourPage({super.key});
@@ -68,7 +68,7 @@ class _FourPageState extends State<FourPage> {
                             duration: Duration(milliseconds: 400),
                             onPressed: () {
                               print("tapped");
-                              Get.to(() => Login(),
+                              Get.off(() => Login(),
                                   transition: Transition.downToUp);
                             },
                             child: Text(
@@ -83,7 +83,7 @@ class _FourPageState extends State<FourPage> {
                             duration: Duration(milliseconds: 400),
                             onPressed: () {
                               print("tapped");
-                              Get.to(() => Login(),
+                              Get.off(() => Login(),
                                   transition: Transition.downToUp);
                             },
                             child: Text(

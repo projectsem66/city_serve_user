@@ -15,15 +15,19 @@ class AddressAndSlot extends StatefulWidget {
   @override
   State<AddressAndSlot> createState() => _AddressAndSlotState();
 }
+
 DateTime? selectedDate;
 TimeOfDay? selectedTime;
+String bookingAddress = "";
+
 class _AddressAndSlotState extends State<AddressAndSlot> {
   bool isChecked = false;
   int selectedValue = 1;
-
+  TextEditingController _addressController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
+
       onDatePickerModeChange: (value) {
         setState(() {});
       },
@@ -52,6 +56,8 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -122,36 +128,35 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
                           activeColor: AppColors.Colorq,
                           title: Container(
                             decoration: BoxDecoration(
-                                color: AppColors.themColor.withOpacity(0.05),
+                                color: AppColors.Colorq.withOpacity(0.05),
                                 borderRadius: BorderRadius.circular(7)),
                             child: TextFormField(
-                              // controller: _addressController,
-                              // maxLines: 2,
-                              cursorColor: Colors.black,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                              ),
-                              // controller: passwordController,
+                              controller: _addressController,
                               keyboardType: TextInputType.text,
-                              // obscureText: spwd,
-                              // obscureText: true,
-
+                              cursorColor: Colors.black,
+                              maxLines: null,
+                              minLines: 1,
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w400),
+                              onChanged: (value) {
+                                setState(() {});
+                              },
                               decoration: InputDecoration(
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
                                 hintText:
                                     "Flat no./ Residency/ Street/ Area/ City....",
                                 hintStyle: GoogleFonts.poppins(
-                                    fontSize: dimension.height16,
-                                    color: AppColors.Colorq.withOpacity(0.5)),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                labelStyle:
-                                    TextStyle(color: AppColors.themColor),
+                                    color: AppColors.Colorq.withOpacity(0.5),
+                                    fontSize: dimension.height14,
+                                    fontWeight: FontWeight.w400),
                                 contentPadding:
                                     EdgeInsets.fromLTRB(5, 10, 5, 0),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide:
-                                      BorderSide(color: AppColors.themColor),
+                                      BorderSide(color: AppColors.Colorq),
                                   borderRadius: BorderRadius.circular(5.0),
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -160,12 +165,6 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
                                   borderRadius: BorderRadius.circular(5.0),
                                 ),
                               ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Enter Address';
-                                }
-                                return null;
-                              },
                             ),
                           ),
                           value: 2,
@@ -293,12 +292,24 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height100 * 2.9,
+                  height: dimension.height100 * 2.6,
                 ),
                 Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
-                      Get.to(ConfirmBooking());
+                    selectedValue == 1
+                        ? bookingAddress = currentLocation
+                        : bookingAddress = _addressController.text.toString();
+                    if (bookingAddress == "") {
+                      Get.snackbar("Enter required field", "Enter address",
+                          colorText: Colors.white);
+                    } else if (selectedDate == null && selectedTime == null) {
+                      Get.snackbar("Enter required field", "Select Date & Time",
+                          colorText: Colors.white);
+                    } else {
+                      Get.to(ConfirmBooking(),
+                          transition: Transition.cupertino);
+                    }
                   },
                   child: Container(
                     width: double.maxFinite,

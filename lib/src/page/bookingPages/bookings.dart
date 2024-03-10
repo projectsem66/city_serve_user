@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../btm_controller.dart';
+import '../../../btm_controller.dart';
 
 class Bookings extends StatefulWidget {
   const Bookings({super.key});

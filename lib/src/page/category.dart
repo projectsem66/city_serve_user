@@ -169,7 +169,7 @@ class _CategoryyState extends State<Categoryy> {
                                                             SCname =
                                                                 documentSnapshot['scname']
                                                                     .toString();
-
+                                                            Get.back();
                                                             Get.to(
                                                                 ServicesPage());
                                                           },
@@ -259,31 +259,40 @@ class _CategoryyState extends State<Categoryy> {
                                             dimension.height7)),
                                     child: Row(
                                       children: [
-                                        Container(
-                                          margin:
-                                              EdgeInsets.all(dimension.height7),
-                                          height: dimension.height70,
-                                          width: dimension.height70,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                                dimension.height7),
-                                            image: DecorationImage(
-                                              image: NetworkImage(
-                                                documentSnapshot['cimage'],
+
+                                        Expanded(
+                                          flex:2,
+                                          child: Container(
+                                            margin:
+                                                EdgeInsets.all(dimension.height7),
+                                            height: dimension.height70,
+                                            width: dimension.height70,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(
+                                                  dimension.height7),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  documentSnapshot['cimage'],
+                                                ),
+                                                fit: BoxFit.cover,
                                               ),
-                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
                                         SizedBox(
                                           width: dimension.height20,
                                         ),
-                                        Text(
-                                          documentSnapshot['cname'].toString(),
-                                          style: GoogleFonts.poppins(
-                                              color: AppColors.Colorq,
-                                              fontSize: dimension.height20,
-                                              fontWeight: FontWeight.w400),
+                                        Expanded(
+                                          flex:6,
+                                          child: Text(
+                                            documentSnapshot['cname'].toString(),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.Colorq,
+                                                fontSize: dimension.height18,
+                                                fontWeight: FontWeight.w400),
+                                          ),
                                         )
                                       ],
                                     ),

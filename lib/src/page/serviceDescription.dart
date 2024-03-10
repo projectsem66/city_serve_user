@@ -401,7 +401,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        Get.to(Summary());
+                        Get.to(Summary(),transition: Transition.circularReveal);
                       },
                       child: Container(
                         height: dimension.height50,

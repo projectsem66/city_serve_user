@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/colors.dart';
-import '../login.dart';
+import '../authentication/login.dart';
 
 class TwoPage extends StatefulWidget {
   const TwoPage({super.key});
@@ -70,7 +70,7 @@ class _TwoPageState extends State<TwoPage> {
                             duration: Duration(milliseconds: 400),
                             onPressed: () {
                               print("tapped");
-                              Get.to(() => Login(),
+                              Get.off(() => Login(),
                                   transition: Transition.downToUp);
                             },
                             child: Text(

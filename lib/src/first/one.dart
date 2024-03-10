@@ -1,11 +1,12 @@
 import 'package:city_serve/src/first/two.dart';
-import 'package:city_serve/src/login.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../authentication/login.dart';
 
 class OnePage extends StatefulWidget {
   const OnePage({super.key});
@@ -68,7 +69,7 @@ class _OnePageState extends State<OnePage> {
                              duration: Duration(milliseconds: 400),
                              onPressed: () {
                                print("tapped");
-                               Get.to(() => Login(),transition: Transition.downToUp);
+                               Get.off(() => Login(),transition: Transition.downToUp);
                              },
                              child: Text(
                                "Skip",

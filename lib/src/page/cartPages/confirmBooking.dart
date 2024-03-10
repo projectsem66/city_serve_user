@@ -45,12 +45,12 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
 
   uploadData() async {
     FirebaseFirestore.instance.collection("bookingg").add({
-      "address": currentLocation,
+      "address": bookingAddress,
       "date": DateFormat('dd-MM-yyyy').format(selectedDate!),
       "productServiceDetailsId": bookServiceId,
       "providerId": ServiceProviderId,
       "status": "pending",
-      "userId":"123456",
+      "userId": "123456",
       "time": selectedTime!.format(context)
     }).then((value) {
       log("User Uploaded");
@@ -112,239 +112,214 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Text("spid${ServiceProviderId}"),
-            Text(
-              "Ac & Appliance Repair",
-              style: GoogleFonts.poppins(
-                  color: AppColors.Colorq,
-                  fontSize: dimension.height18,
-                  fontWeight: FontWeight.w500),
-            ),
-            Row(
-              children: [
-                Text(
-                  "Price :",
-                  style: GoogleFonts.poppins(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height18,
-                      fontWeight: FontWeight.w500),
-                ),
-                SizedBox(
-                  width: dimension.height7,
-                ),
-                Text(
-                  "₹200",
-                  style: GoogleFonts.poppins(
-                      color: AppColors.Colorq,
-                      fontSize: dimension.height18,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-            Container(
-              // color: Colors.yellowAccent,
-              height: screenheight() - dimension.height100 * 2.6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Text("spid${ServiceProviderId}"),
+              Text(
+                "Ac & Appliance Repair",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height18,
+                    fontWeight: FontWeight.w500),
+              ),
+              Row(
                 children: [
-                  SizedBox(
-                    height: dimension.height15,
+                  Text(
+                    "Price :",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height18,
+                        fontWeight: FontWeight.w500),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: AppColors.Colorq),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Center(
-                              child: Icon(
-                            Icons.percent,
-                            color: Colors.white,
-                          )),
+                  SizedBox(
+                    width: dimension.height7,
+                  ),
+                  Text(
+                    "₹200",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+              Container(
+                // color: Colors.yellowAccent,
+                height: screenheight() - dimension.height100 * 2.6,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: dimension.height15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: AppColors.Colorq),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Center(
+                                child: Icon(
+                              Icons.percent,
+                              color: Colors.white,
+                            )),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: dimension.height10,
-                      ),
-                      Text(
-                        "Coupons and Offers",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Spacer(),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {
-                          Get.bottomSheet(
-                            isDismissible: true,
-                            Container(
-                              height: 285,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10))),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Offers >",
+                        SizedBox(
+                          width: dimension.height10,
+                        ),
+                        Text(
+                          "Coupons and Offers",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
                               fontWeight: FontWeight.w500),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: dimension.height30,
-                  ),
-                  Text(
-                    "Payment Summary",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height18,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Item total",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Text(
-                        "₹700",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Coupon discount",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Text(
-                        "₹70",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Total",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Text(
-                        "₹770",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height18,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: dimension.height30),
-                  Text(
-                    "Cancellation & Reschedule  Policy",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height18,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: dimension.height5,
-                  ),
-                  Text(
-                    "Free cancellation if done more than 3 hrs before the service or if professional not provided",
-                    style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height16,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  Bounce(
-                    duration: Duration(milliseconds: 200),
-                    onPressed: () {
-                      Get.bottomSheet(
-                          isDismissible: true,
-                          Container(
-                            height: dimension.height100 * 2,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10))),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, right: 10, left: 10),
-                              child: Text(
-                                "You will be charged a cancellation fee if you cancel or reschedule your appointment without giving a minimum of 3 hrs notice prior to the start of the appointment. The cancellation fee will be up to 100 rs of the amount. Thank you! ",
-                                style: GoogleFonts.poppins(
-                                    color: AppColors.Colorq,
-                                    fontSize: dimension.height16,
-                                    fontWeight: FontWeight.w400),
+                        Spacer(),
+                        Bounce(
+                          duration: Duration(milliseconds: 200),
+                          onPressed: () {
+                            Get.bottomSheet(
+                              isDismissible: true,
+                              Container(
+                                height: 285,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10))),
                               ),
-                            ),
-                          ));
-                    },
-                    child: Text(
-                      "Learn more",
+                            );
+                          },
+                          child: Text(
+                            "Offers >",
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.height18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: dimension.height30,
+                    ),
+                    Text(
+                      "Payment Summary",
                       style: GoogleFonts.poppins(
-                          decoration: TextDecoration.underline,
+                          color: AppColors.Colorq,
+                          fontSize: dimension.height18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Item total",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          "₹700",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Coupon discount",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          "₹70",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          "₹770",
+                          style: GoogleFonts.poppins(
+                              color: AppColors.Colorq,
+                              fontSize: dimension.height18,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: dimension.height30),
+                    Text(
+                      "Cancellation & Reschedule  Policy",
+                      style: GoogleFonts.poppins(
+                          color: AppColors.Colorq,
+                          fontSize: dimension.height18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    SizedBox(
+                      height: dimension.height5,
+                    ),
+                    Text(
+                      "Free cancellation if done more than 3 hrs before the service or if professional not provided",
+                      style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: dimension.height16,
                           fontWeight: FontWeight.w400),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.home,
-                      color: AppColors.Colorq,
-                      size: dimension.height26,
-                    ),
-                    SizedBox(
-                      width: dimension.height10,
-                    ),
-                    Container(
-                      width: screenwidth() - dimension.width55,
+                    Bounce(
+                      duration: Duration(milliseconds: 200),
+                      onPressed: () {
+                        Get.bottomSheet(
+                            isDismissible: true,
+                            Container(
+                              height: dimension.height100 * 2,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10))),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 20, right: 10, left: 10),
+                                child: Text(
+                                  "You will be charged a cancellation fee if you cancel or reschedule your appointment without giving a minimum of 3 hrs notice prior to the start of the appointment. The cancellation fee will be up to 100 rs of the amount. Thank you! ",
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: dimension.height16,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ));
+                      },
                       child: Text(
-                        '${currentLocation}',
-                        overflow: TextOverflow.ellipsis,
+                        "Learn more",
                         style: GoogleFonts.poppins(
+                            decoration: TextDecoration.underline,
                             color: AppColors.Colorq,
                             fontSize: dimension.height16,
                             fontWeight: FontWeight.w400),
@@ -352,65 +327,97 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.access_time_sharp,
-                      color: AppColors.Colorq,
-                      size: dimension.height26,
-                    ),
-                    SizedBox(
-                      width: dimension.height10,
-                    ),
-                    Text(
-                      '${DateFormat('dd-MM-yyyy').format(selectedDate!)} - ',
-                      style: GoogleFonts.poppins(
-                        color: AppColors.Colorq,
-                        fontSize: dimension.height16,
-                        fontWeight: FontWeight.w400,
+              ),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Icon(
+                          Icons.home,
+                          color: AppColors.Colorq,
+                          size: dimension.height26,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '${selectedTime!.format(context)}',
-                      style: GoogleFonts.poppins(
+                      SizedBox(
+                        width: dimension.height10,
+                      ),
+                      Expanded(
+                        flex: 10,
+                        child: Container(
+                          child: Text(
+                            '${bookingAddress}',
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.height16,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.access_time_sharp,
+                        color: AppColors.Colorq,
+                        size: dimension.height26,
+                      ),
+                      SizedBox(
+                        width: dimension.height10,
+                      ),
+                      Text(
+                        '${DateFormat('dd-MM-yyyy').format(selectedDate!)} - ',
+                        style: GoogleFonts.poppins(
                           color: AppColors.Colorq,
                           fontSize: dimension.height16,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: dimension.height10,
-                ),
-                Bounce(
-                  duration: Duration(milliseconds: 200),
-                  onPressed: () {
-                    // Get.to(AddressAndSlot(), transition: Transition.cupertino);
-                    addcategory(bookServiceId);
-                  },
-                  child: Container(
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                        color: AppColors.Colorq,
-                        borderRadius: BorderRadius.circular(7)),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 7),
-                      child: Center(
-                        child: Text(
-                          "Confirm Booking",
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: dimension.height18,
-                              fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        '${selectedTime!.format(context)}',
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height16,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: dimension.height10,
+                  ),
+                  Bounce(
+                    duration: Duration(milliseconds: 200),
+                    onPressed: () {
+                      // Get.to(AddressAndSlot(), transition: Transition.cupertino);
+                      addcategory(bookServiceId);
+                    },
+                    child: Container(
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                          color: AppColors.Colorq,
+                          borderRadius: BorderRadius.circular(7)),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                        child: Center(
+                          child: Text(
+                            "Confirm Booking",
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: dimension.height18,
+                                fontWeight: FontWeight.w400),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

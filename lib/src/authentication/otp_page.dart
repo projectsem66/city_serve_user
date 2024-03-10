@@ -1,6 +1,7 @@
 // import 'package:burger_bite/pages/userName.dart';
 // import 'package:burger_bite/utils/colors.dart';
 import 'package:city_serve/navigationBar.dart';
+import 'package:city_serve/src/authentication/signUp2.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../login/round_button.dart';
+import '../../utils/round_button.dart';
 import '../../utils/colors.dart';
-import '../signUp2.dart';
 
 class OtpPage extends StatefulWidget {
   final String verificatioId;

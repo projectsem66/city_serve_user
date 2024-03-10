@@ -39,8 +39,7 @@ class _ServicesPageState extends State<ServicesPage> {
           children: [
             // Text(widget.Cname),
             // Text(widget.SCname),
-            Container(
-              height: screenheight() - dimension.height100,
+            Expanded(
               child: StreamBuilder(
                 stream: refServices.snapshots(),
                 builder:
@@ -57,7 +56,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                 onPressed: () {
                                   documentSnapshot.id;
                                   Get.to(ServiceDescription(
-                                      serviceId: documentSnapshot.id));
+                                      serviceId: documentSnapshot.id),transition: Transition.downToUp);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(

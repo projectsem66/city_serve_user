@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../login/round_button.dart';
-import '../../login/util.dart';
+import '../../utils/round_button.dart';
 import '../../utils/colors.dart';
+import '../../utils/util.dart';
 import 'otp_page.dart';
 import 'verify_code.dart';
 

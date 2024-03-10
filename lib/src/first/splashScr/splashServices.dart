@@ -2,12 +2,9 @@ import 'dart:async';
 
 import 'package:city_serve/src/first/one.dart';
 import 'package:city_serve/src/location/googleLocation.dart';
-import 'package:city_serve/src/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../../login/login_Screen.dart';
-
+import 'package:get/get.dart';
 
 class splashServices {
   Future<void> isLogin(BuildContext context) async {
@@ -18,14 +15,14 @@ class splashServices {
     if (user != null) {
       // userEmail = user!.email ?? '';
       Timer(
-          const Duration(seconds: 3),
-          () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => GoogleLocation())));
+        const Duration(seconds: 3),
+        () => Get.off(GoogleLocation()),
+      );
     } else {
       Timer(
-          const Duration(seconds: 3),
-          () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => OnePage())));
+        const Duration(seconds: 3),
+        () => Get.off(OnePage())
+      );
     }
   }
 }

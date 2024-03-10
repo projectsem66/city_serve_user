@@ -1,5 +1,4 @@
 import 'package:city_serve/src/location/googleLocation.dart';
-import 'package:city_serve/src/login.dart';
 import 'package:city_serve/src/page/account/TandC.dart';
 import 'package:city_serve/src/page/account/aboutCs.dart';
 import 'package:city_serve/src/page/account/privacyP.dart';
@@ -12,8 +11,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../btm_controller.dart';
-import '../../../login/util.dart';
 import '../../../utils/colors.dart';
+import '../../../utils/util.dart';
+import '../../authentication/login.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
