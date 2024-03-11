@@ -1,6 +1,7 @@
 import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/page/account/TandC.dart';
 import 'package:city_serve/src/page/account/aboutCs.dart';
+import 'package:city_serve/src/page/account/editProfile.dart';
 import 'package:city_serve/src/page/account/privacyP.dart';
 import 'package:city_serve/src/page/account/settings.dart';
 import 'package:city_serve/utils/dimension.dart';
@@ -67,11 +68,17 @@ class _AccountState extends State<Account> {
               height: dimension.height25,
             ),
             Center(
-              child: Container(
-                height: dimension.height100,
-                width: dimension.height100,
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+              child: Bounce(
+                duration: Duration(milliseconds: 200),
+                onPressed: () {
+                  Get.to(EditProfile());
+                },
+                child: Container(
+                  height: dimension.height100,
+                  width: dimension.height100,
+                  decoration:
+                      BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                ),
               ),
             ),
             SizedBox(

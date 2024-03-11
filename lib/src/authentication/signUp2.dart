@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:city_serve/src/location/googleLocation.dart';
-import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,10 +21,12 @@ class SignUp2 extends StatefulWidget {
   @override
   State<SignUp2> createState() => _SignUp2State();
 }
+
 final _fnamecon = TextEditingController();
 final _lnamecon = TextEditingController();
 final _emailcon = TextEditingController();
 final _monocon = TextEditingController();
+
 class _SignUp2State extends State<SignUp2> {
   File? pickedImage;
   bool spwd = true;
@@ -164,26 +165,26 @@ class _SignUp2State extends State<SignUp2> {
                     children: [
                       pickedImage != null
                           ? Container(
-                        height: dimension.height60 * 2,
-                        width: dimension.height60 * 2,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: FileImage(pickedImage!),
-                                fit: BoxFit.cover),
-                            shape: BoxShape.circle,
-                            color: AppColors.Colorq.withOpacity(0.05)),
-                      )
+                              height: dimension.height60 * 2,
+                              width: dimension.height60 * 2,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: FileImage(pickedImage!),
+                                      fit: BoxFit.cover),
+                                  shape: BoxShape.circle,
+                                  color: AppColors.Colorq.withOpacity(0.05)),
+                            )
                           : Container(
-                        height: dimension.height60 * 2,
-                        width: dimension.height60 * 2,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                AssetImage("images/addCategoryy.png"),
-                                fit: BoxFit.cover),
-                            shape: BoxShape.circle,
-                            color: AppColors.Colorq.withOpacity(0.05)),
-                      ),
+                              height: dimension.height60 * 2,
+                              width: dimension.height60 * 2,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage("images/addCategoryy.png"),
+                                      fit: BoxFit.cover),
+                                  shape: BoxShape.circle,
+                                  color: AppColors.Colorq.withOpacity(0.05)),
+                            ),
                       Container(
                         margin: EdgeInsets.only(
                             top: dimension.height65, left: dimension.height80),
@@ -239,7 +240,7 @@ class _SignUp2State extends State<SignUp2> {
                             },
                             decoration: InputDecoration(
                               floatingLabelBehavior:
-                              FloatingLabelBehavior.always,
+                                  FloatingLabelBehavior.always,
                               labelText: "First Name",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
@@ -252,7 +253,7 @@ class _SignUp2State extends State<SignUp2> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.transparent),
+                                    BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -284,7 +285,7 @@ class _SignUp2State extends State<SignUp2> {
                             },
                             decoration: InputDecoration(
                               floatingLabelBehavior:
-                              FloatingLabelBehavior.always,
+                                  FloatingLabelBehavior.always,
                               labelText: "Last Name",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
@@ -297,7 +298,7 @@ class _SignUp2State extends State<SignUp2> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.transparent),
+                                    BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -329,7 +330,7 @@ class _SignUp2State extends State<SignUp2> {
                             },
                             decoration: InputDecoration(
                               floatingLabelBehavior:
-                              FloatingLabelBehavior.always,
+                                  FloatingLabelBehavior.always,
                               labelText: "Email Address",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
@@ -342,13 +343,13 @@ class _SignUp2State extends State<SignUp2> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.transparent),
+                                    BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
                             validator: (value) {
                               bool emailValid = RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                   .hasMatch(value!);
                               if (value.isEmpty) {
                                 return 'Enter Email Address';
@@ -379,7 +380,7 @@ class _SignUp2State extends State<SignUp2> {
                             },
                             decoration: InputDecoration(
                               floatingLabelBehavior:
-                              FloatingLabelBehavior.always,
+                                  FloatingLabelBehavior.always,
                               labelText: "Mobile Number",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
@@ -392,7 +393,7 @@ class _SignUp2State extends State<SignUp2> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.transparent),
+                                    BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -404,7 +405,6 @@ class _SignUp2State extends State<SignUp2> {
                             },
                           ),
                         ),
-
                         SizedBox(
                           height: dimension.height20,
                         ),

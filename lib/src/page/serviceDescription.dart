@@ -20,6 +20,11 @@ class ServiceDescription extends StatefulWidget {
 
 String bookServiceId = "";
 String ServiceProviderId = "";
+String serviceImg = "";
+String serviceName = "";
+String serviceDuration = "";
+String providerName = "";
+String servicePrice = "";
 
 class _ServiceDescriptionState extends State<ServiceDescription> {
   DocumentSnapshot? documentSnapshot;
@@ -69,8 +74,6 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   Future<DocumentSnapshot> getProvider() async {
     DocumentReference documentReference =
         refProvider.doc(documentSnapshot!.get("providerId"));
-    ServiceProviderId = documentSnapshot!.get("providerId");
-
     return documentReference.get();
   }
 
@@ -222,7 +225,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                           height: dimension.height4,
                                         ),
                                         Text(
-                                          "₹500",
+                                          documentSnapshot!.get("servicePrice"),
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.poppins(
                                               color: AppColors.Colorq,
@@ -245,7 +248,8 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              "50 min",
+                                              documentSnapshot!
+                                                  .get("serviceDuration"),
                                               overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
@@ -401,7 +405,15 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        Get.to(Summary(),transition: Transition.circularReveal);
+                        serviceImg = documentSnapshot!.get("images");
+                        serviceName = documentSnapshot!.get("serviceName");
+                        servicePrice = documentSnapshot!.get("servicePrice");
+                        serviceDuration =
+                            documentSnapshot!.get("serviceDuration");
+                        providerName = documentSnapshot1?.get("firstName");
+                        ServiceProviderId = documentSnapshot!.get("providerId");
+                        Get.to(Summary(),
+                            transition: Transition.circularReveal);
                       },
                       child: Container(
                         height: dimension.height50,

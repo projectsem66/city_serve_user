@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/page/cartPages/addressAndSlot.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,8 +10,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../../btm_controller.dart';
 import '../../../utils/colors.dart';
-import '../../location/googleLocation.dart';
 import '../serviceDescription.dart';
 
 class ConfirmBooking extends StatefulWidget {
@@ -19,6 +20,11 @@ class ConfirmBooking extends StatefulWidget {
   @override
   State<ConfirmBooking> createState() => _ConfirmBookingState();
 }
+
+BtmController _ = Get.put(BtmController());
+
+int _currentIndex1 = 0;
+int _currentIndex = 0;
 
 class _ConfirmBookingState extends State<ConfirmBooking> {
   addcategory(String bookServiceId) async {
@@ -49,9 +55,14 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       "date": DateFormat('dd-MM-yyyy').format(selectedDate!),
       "productServiceDetailsId": bookServiceId,
       "providerId": ServiceProviderId,
-      "status": "pending",
+      "status": "Pending",
       "userId": "123456",
-      "time": selectedTime!.format(context)
+      "time": selectedTime!.format(context),
+      " serviceImg": serviceImg,
+      " serviceName": serviceName,
+      " serviceDuration": serviceDuration,
+      " providerName": providerName,
+      " servicePrice": servicePrice,
     }).then((value) {
       log("User Uploaded");
     });
@@ -393,6 +404,13 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                     onPressed: () {
                       // Get.to(AddressAndSlot(), transition: Transition.cupertino);
                       addcategory(bookServiceId);
+                      Get.to(NavigationBarr());
+                      setState(() {
+                        _currentIndex1 = 1;
+                        _.currentIndex = 1;
+                        _.update();
+                        print(_currentIndex1);
+                      });
                     },
                     child: Container(
                       width: double.maxFinite,

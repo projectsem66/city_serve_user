@@ -55,8 +55,10 @@ class _ServicesPageState extends State<ServicesPage> {
                                 duration: Duration(milliseconds: 200),
                                 onPressed: () {
                                   documentSnapshot.id;
-                                  Get.to(ServiceDescription(
-                                      serviceId: documentSnapshot.id),transition: Transition.downToUp);
+                                  Get.to(
+                                      ServiceDescription(
+                                          serviceId: documentSnapshot.id),
+                                      transition: Transition.downToUp);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(
@@ -112,17 +114,15 @@ class _ServicesPageState extends State<ServicesPage> {
                                                         width: 5,
                                                       ),
                                                       Text(
-                                                        "4.2",
+                                                        documentSnapshot.id,
                                                         style:
                                                             GoogleFonts.poppins(
-                                                                color: Colors
-                                                                    .black54,
-                                                                fontSize:
-                                                                    dimension
-                                                                        .height17,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                          color: Colors.black54,
+                                                          fontSize: dimension
+                                                              .height17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
