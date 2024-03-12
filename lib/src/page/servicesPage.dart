@@ -1,4 +1,5 @@
 import 'package:city_serve/firebaseService/fbRefrences.dart';
+import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/serviceDescription.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:lottie/lottie.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimension.dart';
 
-String SCname = "";
 String Cname = "";
 
 class ServicesPage extends StatefulWidget {
@@ -50,7 +50,7 @@ class _ServicesPageState extends State<ServicesPage> {
                       itemBuilder: (context, index) {
                         final DocumentSnapshot documentSnapshot =
                             streamSnapshot.data!.docs[index];
-                        return documentSnapshot["subcategory"] == SCname
+                        return documentSnapshot["section"] == sectionName
                             ? Bounce(
                                 duration: Duration(milliseconds: 200),
                                 onPressed: () {
@@ -266,7 +266,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                 ),
                               )
                             // documentSnapshot.get("subcategory")
-                            : SizedBox();
+                            : Text("no service");
                       },
                     );
                   }

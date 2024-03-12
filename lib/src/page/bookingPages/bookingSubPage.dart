@@ -411,9 +411,10 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                       child: Text(
                                         "Submit",
                                         style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height18,
-                                            fontWeight: FontWeight.w500),
+                                          color: AppColors.Colorq,
+                                          fontSize: dimension.height18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
