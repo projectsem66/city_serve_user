@@ -122,8 +122,9 @@ class _BookingsState extends State<Bookings> {
                                             width: 100,
                                             decoration: BoxDecoration(
                                               image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/dashboard/mostBook/1u.jpg")),
+                                                  image: NetworkImage(
+                                                      documentSnapshot.get(
+                                                          " serviceImg"))),
                                               borderRadius:
                                               BorderRadius.circular(
                                                   7),
@@ -205,7 +206,8 @@ class _BookingsState extends State<Bookings> {
                                                 height: 10,
                                               ),
                                               Text(
-                                                "Filter Replacement",
+                                                documentSnapshot.get(
+                                                    " serviceName"),
                                                 style:
                                                 GoogleFonts.poppins(
                                                     color: AppColors
@@ -257,7 +259,8 @@ class _BookingsState extends State<Bookings> {
                                                             .w500),
                                                   ),
                                                   Text(
-                                                    "₹500",
+                                                    "₹${documentSnapshot.get(
+                                                        " servicePrice")}",
                                                     style: GoogleFonts.poppins(
                                                         color: AppColors
                                                             .Colorq,

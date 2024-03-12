@@ -125,14 +125,14 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 "Booking ID",
                                 style: GoogleFonts.poppins(
                                     color: AppColors.Colorq,
-                                    fontSize: dimension.height17,
+                                    fontSize: dimension.height15,
                                     fontWeight: FontWeight.w500),
                               ),
                               Text(
                                 bookingId,
                                 style: GoogleFonts.poppins(
                                     color: AppColors.Colorq,
-                                    fontSize: dimension.height17,
+                                    fontSize: dimension.height15,
                                     fontWeight: FontWeight.w500),
                               ),
                             ],
@@ -203,8 +203,8 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 width: 100,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          "assets/dashboard/mostBook/1u.jpg")),
+                                      image: NetworkImage(documentSnapshot
+                                          ?.get(" serviceImg"))),
                                   borderRadius: BorderRadius.circular(7),
                                 ),
                               ),
@@ -424,7 +424,10 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 ? ""
                                 : documentSnapshot?.get("status") == "Completed"
                                     ? Get.to(PaymentPage())
-                                    : "";
+                                    : documentSnapshot?.get("status") ==
+                                            "In progress"
+                                        ? ""
+                                        : "";
                         // Get.to(Summary(), transition: Transition.cupertino);
                       },
                       child: Container(
@@ -447,7 +450,10 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                       : documentSnapshot?.get("status") ==
                                               "Completed"
                                           ? "Pay Now"
-                                          : "", //==Pending
+                                          : documentSnapshot?.get("status") ==
+                                                  "In progress"
+                                              ? ""
+                                              : "", //==Pending
                               // Completed == pay now
                               //  Accepted == cancel booking
                               //  Cancelled == null
