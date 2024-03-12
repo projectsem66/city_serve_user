@@ -8,6 +8,7 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../utils/colors.dart';
 
 class Categoryy extends StatefulWidget {
@@ -16,10 +17,12 @@ class Categoryy extends StatefulWidget {
   @override
   State<Categoryy> createState() => _CategoryyState();
 }
+
 String categoryName = "";
 String subCategoryname = "";
 
 String sectionName = "";
+
 class _CategoryyState extends State<Categoryy> {
   @override
   void initState() {
@@ -27,8 +30,6 @@ class _CategoryyState extends State<Categoryy> {
     getDataFromFirestore();
     super.initState();
   }
-
-
 
   // final CollectionReference refC =
   //     FirebaseFirestore.instance.collection('category');
@@ -163,8 +164,10 @@ class _CategoryyState extends State<Categoryy> {
                                                             milliseconds: 200),
                                                         onPressed: () {
                                                           subCategoryname =
-                                                              documentSnapshot.id;
-                                                          print(subCategoryname);
+                                                              documentSnapshot
+                                                                  .id;
+                                                          print(
+                                                              subCategoryname);
                                                           print(categoryName);
                                                           Get.back();
                                                           Get.bottomSheet(
@@ -218,24 +221,28 @@ class _CategoryyState extends State<Categoryy> {
                                                                         topRight:
                                                                             Radius.circular(10))),
                                                                 child: Column(
+                                                                  crossAxisAlignment: CrossAxisAlignment.start,
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
                                                                   children: [
-                                                                    Text(
-                                                                      subCategoryname,
-                                                                      style: GoogleFonts.poppins(
-                                                                          color: AppColors
-                                                                              .Colorq,
-                                                                          fontSize: dimension
-                                                                              .height20,
-                                                                          fontWeight:
-                                                                              FontWeight.w400),
+                                                                    Padding(
+                                                                      padding: const EdgeInsets.all(8.0),
+                                                                      child: Text(
+                                                                        subCategoryname,
+                                                                        style: GoogleFonts.poppins(
+                                                                            color: AppColors
+                                                                                .Colorq,
+                                                                            fontSize: dimension
+                                                                                .height20,
+                                                                            fontWeight:
+                                                                                FontWeight.w400),
+                                                                      ),
                                                                     ),
                                                                     Container(
                                                                       height: dimension
                                                                               .height100 *
-                                                                          2.99,
+                                                                          2,
                                                                       decoration: BoxDecoration(
                                                                           color: Colors
                                                                               .white,
@@ -267,7 +274,7 @@ class _CategoryyState extends State<Categoryy> {
                                                                                   return Bounce(
                                                                                     duration: Duration(milliseconds: 200),
                                                                                     onPressed: () {
-                                                                                      sectionName=documentSnapshot.id;
+                                                                                      sectionName = documentSnapshot.id;
                                                                                       Get.back();
                                                                                       Get.to(ServicesPage());
                                                                                     },
@@ -287,11 +294,13 @@ class _CategoryyState extends State<Categoryy> {
                                                                                             height: dimension.height45,
                                                                                             child: Padding(
                                                                                               padding: const EdgeInsets.symmetric(horizontal: 10),
-                                                                                              child: Text(
-                                                                                                documentSnapshot['sname'].toString(),
-                                                                                                maxLines: 2,
-                                                                                                overflow: TextOverflow.ellipsis,
-                                                                                                style: GoogleFonts.poppins(color: AppColors.Colorq, fontSize: dimension.height14, fontWeight: FontWeight.w400),
+                                                                                              child: Center(
+                                                                                                child: Text(
+                                                                                                  documentSnapshot['sname'].toString(),
+                                                                                                  maxLines: 2,
+                                                                                                  overflow: TextOverflow.ellipsis,
+                                                                                                  style: GoogleFonts.poppins(color: AppColors.Colorq, fontSize: dimension.height14, fontWeight: FontWeight.w400),
+                                                                                                ),
                                                                                               ),
                                                                                             ),
                                                                                           ),

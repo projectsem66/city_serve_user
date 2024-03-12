@@ -4,6 +4,7 @@ import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/page/category.dart';
 import 'package:city_serve/src/page/search.dart';
 import 'package:city_serve/src/page/serviceDescription.dart';
+import 'package:city_serve/src/page/servicesPage.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:city_serve/widget/serviceContainer.dart';
@@ -468,233 +469,306 @@ class _DashboardState extends State<Dashboard> {
                                     categoryName = documentSnapshot.id;
 
                                     Get.bottomSheet(
-                                        isDismissible: true,
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Bounce(
-                                                duration:
-                                                    Duration(milliseconds: 200),
-                                                onPressed: () {
-                                                  Get.back();
-                                                },
-                                                child: Container(
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      color: AppColors.Colorq,
-                                                    ),
-                                                    child: Icon(Icons.cancel,
-                                                        color: AppColors.white1,
-                                                        size: 30)),
-                                              ),
-                                            ),
-                                            Container(
-                                              height:
-                                                  dimension.height100 * 2.99,
-                                              decoration: BoxDecoration(
-                                                  color: Colors.white,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10))),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: Text(
-                                                      documentSnapshot['cname']
-                                                          .toString(),
-                                                      style:
-                                                          GoogleFonts.poppins(
-                                                              color: AppColors
-                                                                  .Colorq,
-                                                              fontSize:
-                                                                  dimension
-                                                                      .height20,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                    ),
+                                      isDismissible: true,
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Bounce(
+                                              duration:
+                                                  Duration(milliseconds: 200),
+                                              onPressed: () {
+                                                Get.back();
+                                              },
+                                              child: Container(
+                                                  decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: AppColors.Colorq,
                                                   ),
-                                                  Container(
-                                                    height: 246,
-                                                    child: StreamBuilder(
-                                                      stream: refCategory
-                                                          .doc(categoryName)
-                                                          .collection(
-                                                              "subcategories")
-                                                          .snapshots(),
-                                                      builder: (context,
-                                                          AsyncSnapshot<
-                                                                  QuerySnapshot>
-                                                              streamSnapshot) {
-                                                        if (streamSnapshot
-                                                            .hasData) {
-                                                          return GridView
-                                                              .builder(
-                                                            itemCount:
+                                                  child: Icon(Icons.cancel,
+                                                      color: AppColors.white1,
+                                                      size: 30)),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: dimension.height100 * 2.99,
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10),
+                                                    topRight:
+                                                        Radius.circular(10))),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    documentSnapshot['cname']
+                                                        .toString(),
+                                                    style: GoogleFonts.poppins(
+                                                        color: AppColors.Colorq,
+                                                        fontSize:
+                                                            dimension.height20,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 246,
+                                                  child: StreamBuilder(
+                                                    stream: refCategory
+                                                        .doc(categoryName)
+                                                        .collection(
+                                                            "subcategories")
+                                                        .snapshots(),
+                                                    builder: (context,
+                                                        AsyncSnapshot<
+                                                                QuerySnapshot>
+                                                            streamSnapshot) {
+                                                      if (streamSnapshot
+                                                          .hasData) {
+                                                        return GridView.builder(
+                                                          itemCount:
+                                                              streamSnapshot
+                                                                  .data!
+                                                                  .docs
+                                                                  .length,
+                                                          gridDelegate:
+                                                              SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  crossAxisCount:
+                                                                      3,
+                                                                  childAspectRatio:
+                                                                      0.92
+                                                                  // Number of columns
+                                                                  ),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            final DocumentSnapshot
+                                                                documentSnapshot =
                                                                 streamSnapshot
-                                                                    .data!
-                                                                    .docs
-                                                                    .length,
-                                                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                                                crossAxisCount:
-                                                                    3,
-                                                                childAspectRatio:
-                                                                    0.92
-                                                                // Number of columns
-                                                                ),
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              final DocumentSnapshot
-                                                                  documentSnapshot =
-                                                                  streamSnapshot
-                                                                          .data!
-                                                                          .docs[
-                                                                      index];
-                                                              return Padding(
+                                                                        .data!
+                                                                        .docs[
+                                                                    index];
+                                                            return Bounce(
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      200),
+                                                              onPressed: () {
+                                                                subCategoryname =
+                                                                    documentSnapshot
+                                                                        .id;
+                                                                print(
+                                                                    subCategoryname);
+                                                                print(
+                                                                    categoryName);
+                                                                Get.back();
+                                                                Get.bottomSheet(
+                                                                    Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .end,
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .all(
+                                                                          8.0),
+                                                                      child:
+                                                                          Bounce(
+                                                                        duration:
+                                                                            Duration(milliseconds: 200),
+                                                                        onPressed:
+                                                                            () {
+                                                                          Get.back();
+                                                                        },
+                                                                        child: Container(
+                                                                            decoration: BoxDecoration(
+                                                                              shape: BoxShape.circle,
+                                                                              color: AppColors.Colorq,
+                                                                            ),
+                                                                            child: Icon(Icons.cancel, color: AppColors.white1, size: 30)),
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      height: dimension
+                                                                              .height100 *
+                                                                          2.99,
+                                                                      decoration: BoxDecoration(
+                                                                          color: Colors
+                                                                              .white,
+                                                                          borderRadius: BorderRadius.only(
+                                                                              topLeft: Radius.circular(10),
+                                                                              topRight: Radius.circular(10))),
+                                                                      child:
+                                                                          Column(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.start,
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8.0),
+                                                                            child:
+                                                                                Text(
+                                                                              subCategoryname,
+                                                                              style: GoogleFonts.poppins(color: AppColors.Colorq, fontSize: dimension.height20, fontWeight: FontWeight.w400),
+                                                                            ),
+                                                                          ),
+                                                                          Container(
+                                                                            height:
+                                                                                dimension.height100 * 2,
+                                                                            decoration:
+                                                                                BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))),
+                                                                            child:
+                                                                                Container(
+                                                                              height: 246,
+                                                                              child: StreamBuilder(
+                                                                                stream: refCategory.doc(categoryName).collection("subcategories").doc(subCategoryname).collection("sections").snapshots(),
+                                                                                builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                                                                                  if (streamSnapshot.hasData) {
+                                                                                    return GridView.builder(
+                                                                                      itemCount: streamSnapshot.data!.docs.length,
+                                                                                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.92
+                                                                                          // Number of columns
+                                                                                          ),
+                                                                                      itemBuilder: (context, index) {
+                                                                                        final DocumentSnapshot documentSnapshot = streamSnapshot.data!.docs[index];
+                                                                                        return Bounce(
+                                                                                          duration: Duration(milliseconds: 200),
+                                                                                          onPressed: () {
+                                                                                            sectionName = documentSnapshot.id;
+                                                                                            Get.back();
+                                                                                            Get.to(ServicesPage());
+                                                                                          },
+                                                                                          child: Padding(
+                                                                                            padding: const EdgeInsets.all(8.0),
+                                                                                            child: Column(
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                                              children: [
+                                                                                                Container(
+                                                                                                    height: 70,
+                                                                                                    width: 70,
+                                                                                                    decoration: BoxDecoration(
+                                                                                                      borderRadius: BorderRadius.circular(dimension.height7),
+                                                                                                      image: DecorationImage(image: NetworkImage(documentSnapshot['simage'].toString()), fit: BoxFit.cover),
+                                                                                                    )),
+                                                                                                Container(
+                                                                                                  height: dimension.height45,
+                                                                                                  child: Padding(
+                                                                                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                                                                                    child: Center(
+                                                                                                      child: Text(
+                                                                                                        documentSnapshot['sname'].toString(),
+                                                                                                        maxLines: 2,
+                                                                                                        overflow: TextOverflow.ellipsis,
+                                                                                                        style: GoogleFonts.poppins(color: AppColors.Colorq, fontSize: dimension.height14, fontWeight: FontWeight.w400),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                      shrinkWrap: true,
+                                                                                    );
+                                                                                  }
+
+                                                                                  return const Center(
+                                                                                    child: CircularProgressIndicator(),
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        ],
+                                                                      ),
+                                                                    )
+                                                                  ],
+                                                                ));
+                                                                // Get.to(
+                                                                //     ServicesPage());
+                                                              },
+                                                              child: Padding(
                                                                 padding:
                                                                     const EdgeInsets
                                                                         .all(
                                                                         8.0),
-                                                                child: Bounce(
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          200),
-                                                                  onPressed:
-                                                                      () {
-                                                                    // if (index == 0) {
-                                                                    //   mMassage = true;
-                                                                    //   mSalon = false;
-                                                                    // }
-                                                                    // if (index == 1) {
-                                                                    //   mSalon = true;
-                                                                    //   mMassage = false;
-                                                                    // }
-                                                                    //
-                                                                    // Get.back();
-                                                                    // Get.to(ForMen());
-                                                                  },
-                                                                  child: Column(
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .spaceBetween,
-                                                                    children: [
-                                                                      Container(
-                                                                          height:
-                                                                              70,
-                                                                          width:
-                                                                              70,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(dimension.height7),
-                                                                            image:
-                                                                                DecorationImage(image: NetworkImage(documentSnapshot['scimage'].toString()), fit: BoxFit.cover),
-                                                                          )),
-                                                                      Container(
+                                                                child: Column(
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Container(
                                                                         height:
-                                                                            dimension.height45,
+                                                                            70,
+                                                                        width:
+                                                                            70,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(dimension.height7),
+                                                                          image: DecorationImage(
+                                                                              image: NetworkImage(documentSnapshot['scimage'].toString()),
+                                                                              fit: BoxFit.cover),
+                                                                        )),
+                                                                    Container(
+                                                                      height: dimension
+                                                                          .height45,
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                            horizontal:
+                                                                                10),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .symmetric(
-                                                                              horizontal: 10),
-                                                                          child:
-                                                                              Text(
-                                                                            documentSnapshot['scname'].toString(),
-                                                                            maxLines:
-                                                                                2,
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            style: GoogleFonts.poppins(
-                                                                                color: AppColors.Colorq,
-                                                                                fontSize: dimension.height14,
-                                                                                fontWeight: FontWeight.w400),
-                                                                          ),
+                                                                            Text(
+                                                                          documentSnapshot['scname']
+                                                                              .toString(),
+                                                                          maxLines:
+                                                                              2,
+                                                                          overflow:
+                                                                              TextOverflow.ellipsis,
+                                                                          style: GoogleFonts.poppins(
+                                                                              color: AppColors.Colorq,
+                                                                              fontSize: dimension.height14,
+                                                                              fontWeight: FontWeight.w400),
                                                                         ),
                                                                       ),
-                                                                    ],
-                                                                  ),
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                              );
-                                                            },
-                                                            shrinkWrap: true,
-                                                          );
-                                                        }
-
-                                                        return const Center(
-                                                          child:
-                                                              CircularProgressIndicator(),
+                                                              ),
+                                                            );
+                                                          },
+                                                          shrinkWrap: true,
                                                         );
-                                                      },
-                                                    ),
-                                                  )
-                                                  // GridView.builder(
-                                                  //   physics:
-                                                  //   NeverScrollableScrollPhysics(),
-                                                  //   gridDelegate:
-                                                  //   SliverGridDelegateWithFixedCrossAxisCount(
-                                                  //       crossAxisCount: 3,
-                                                  //       childAspectRatio: 1.7),
-                                                  //   itemCount: 2,
-                                                  //   itemBuilder: (context, index) {
-                                                  //     return Padding(
-                                                  //       padding:
-                                                  //       const EdgeInsets.all(
-                                                  //           8.0),
-                                                  //       child: Bounce(
-                                                  //         duration: Duration(
-                                                  //             milliseconds: 200),
-                                                  //         onPressed: () {
-                                                  //           // if (index == 0) {
-                                                  //           //   mMassage = true;
-                                                  //           //   mSalon = false;
-                                                  //           // }
-                                                  //           // if (index == 1) {
-                                                  //           //   mSalon = true;
-                                                  //           //   mMassage = false;
-                                                  //           // }
-                                                  //           //
-                                                  //           // Get.back();
-                                                  //           // Get.to(ForMen());
-                                                  //         },
-                                                  //         child: Container(
-                                                  //           // height: 40,
-                                                  //           // width: 80,
-                                                  //           decoration: BoxDecoration(
-                                                  //               color: AppColors
-                                                  //                   .Colorq
-                                                  //                   .withOpacity(
-                                                  //                   0.5),
-                                                  //               borderRadius:
-                                                  //               BorderRadius
-                                                  //                   .circular(
-                                                  //                   7)),
-                                                  //         ),
-                                                  //       ),
-                                                  //     );
-                                                  //   },
-                                                  // ),
-                                                ],
-                                              ),
+                                                      }
+
+                                                      return const Center(
+                                                        child:
+                                                            CircularProgressIndicator(),
+                                                      );
+                                                    },
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                          ],
-                                        ));
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   },
                                   child: Animate(
                                     effects: [ShimmerEffect()],
