@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:city_serve/navigationBar.dart';
+import 'package:city_serve/src/authentication/otp_page.dart';
 import 'package:city_serve/src/page/cartPages/addressAndSlot.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -56,13 +57,14 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       "productServiceDetailsId": bookServiceId,
       "providerId": ServiceProviderId,
       "status": "Pending",
-      "userId": "123456",
+      "userId": auth.currentUser?.uid.toString(),
       "time": selectedTime!.format(context),
       " serviceImg": serviceImg,
       " serviceName": serviceName,
       " serviceDuration": serviceDuration,
       " providerName": providerName,
       " servicePrice": servicePrice,
+      "providerMoNo":providerMoNo
     }).then((value) {
       log("User Uploaded");
     });

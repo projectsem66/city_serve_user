@@ -4,6 +4,7 @@ import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +30,12 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
 
     fetchBookingData();
   }
-
+  callProviderNumber(String phoneNumber) async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(phoneNumber);
+    if (!res!) {
+      // Handle error
+    }
+  }
   // for get booking details
   Future<void> fetchBookingData() async {
     try {
@@ -279,7 +285,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                             ),
                                             Text(
                                               documentSnapshot
-                                                  ?.get(" providerName"),
+                                                  ?.get("providerMoNo"),
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
                                                   fontSize: dimension.height18,
@@ -288,14 +294,21 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                           ],
                                         ),
                                       ),
-                                      Container(
-                                        height: dimension.height40,
-                                        width: dimension.height40,
-                                        decoration: BoxDecoration(
-                                            color: AppColors.Colorq.withOpacity(
-                                                0.3),
-                                            shape: BoxShape.circle),
-                                        child: Icon(Icons.call),
+                                      Bounce(
+                                        onPressed: () {
+                                          callProviderNumber( documentSnapshot
+                                              ?.get("providerMoNo"));
+                                        },
+                                        duration: Duration(milliseconds: 200),
+                                        child: Container(
+                                          height: dimension.height40,
+                                          width: dimension.height40,
+                                          decoration: BoxDecoration(
+                                              color: AppColors.Colorq.withOpacity(
+                                                  0.3),
+                                              shape: BoxShape.circle),
+                                          child: Icon(Icons.call),
+                                        ),
                                       ),
                                     ],
                                   )

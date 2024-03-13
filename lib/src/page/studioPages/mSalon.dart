@@ -69,7 +69,7 @@ class _MSalonState extends State<MSalon> {
         Padding(
           padding: const EdgeInsets.only(left: 15),
           child: Text(
-            "Massage for Men",
+            "Salon for Men",
             style: GoogleFonts.poppins(
                 color: AppColors.Colorq,
                 fontSize: dimension.height25,

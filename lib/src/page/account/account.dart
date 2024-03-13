@@ -5,6 +5,7 @@ import 'package:city_serve/src/page/account/editProfile.dart';
 import 'package:city_serve/src/page/account/privacyP.dart';
 import 'package:city_serve/src/page/account/settings.dart';
 import 'package:city_serve/utils/dimension.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -37,8 +38,33 @@ List accountList = [
   {"title": "About CS", "icon": Icons.auto_fix_high_outlined, "page":AboutCS()},
   {"title": "Settings", "icon": Icons.settings_suggest_sharp, "page":Settings()},
 ];
+// DocumentSnapshot? userData;
 
 class _AccountState extends State<Account> {
+  // Future<void> fetchServiceData() async {
+  //   try {
+  //     DocumentSnapshot snapshot = await getDocument2();
+  //     setState(() {
+  //       userData = snapshot;
+  //     });
+  //   } catch (e) {
+  //     print('Error retrieving document: $e');
+  //     // Handle error appropriately
+  //   }
+  // }
+  //
+  // Future<DocumentSnapshot> getDocument2() async {
+  //   DocumentReference documentReference = FirebaseFirestore.instance
+  //       .collection('providerServiceDetails')
+  //       .doc(auth.currentUser?.uid);
+  //   return documentReference.get();
+  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
@@ -77,7 +103,7 @@ class _AccountState extends State<Account> {
                   height: dimension.height100,
                   width: dimension.height100,
                   decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                      BoxDecoration(shape: BoxShape.circle, color: Colors.red,image: DecorationImage(image: NetworkImage(""))),
                 ),
               ),
             ),

@@ -82,160 +82,166 @@ class _ServicesPageState extends State<ServicesPage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  Text(
-                                                    documentSnapshot
-                                                        .get("serviceName"),
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors.Colorq,
-                                                        fontSize:
-                                                            dimension.height20,
-                                                        fontWeight:
-                                                            FontWeight.w500),
-                                                  ),
-                                                  SizedBox(
-                                                    height: dimension.height5,
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.star,
-                                                        color: AppColors.Colorq,
-                                                        size:
-                                                            dimension.height20,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        documentSnapshot.id,
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                          color: Colors.black54,
-                                                          fontSize: dimension
-                                                              .height17,
+                                              Expanded(
+                                                flex:5,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      documentSnapshot
+                                                          .get("serviceName"),
+                                                      maxLines: 2,
+                                                      style: GoogleFonts.poppins(
+                                                          color: AppColors.Colorq,
+                                                          fontSize:
+                                                              dimension.height20,
                                                           fontWeight:
-                                                              FontWeight.w500,
+                                                              FontWeight.w500),
+                                                    ),
+                                                    SizedBox(
+                                                      height: dimension.height5,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.star,
+                                                          color: AppColors.Colorq,
+                                                          size:
+                                                              dimension.height20,
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: dimension.height5,
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                        SizedBox(
+                                                          width: 5,
+                                                        ),
+                                                        Text(
+                                                          documentSnapshot.id,
+                                                          style:
+                                                              GoogleFonts.poppins(
+                                                            color: Colors.black54,
+                                                            fontSize: dimension
+                                                                .height17,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: dimension.height5,
+                                                    ),
+                                                    Row(
+
+                                                      children: [
+                                                        Text(
+                                                          "₹${documentSnapshot.get("servicePrice")}",
+                                                          style:
+                                                              GoogleFonts.poppins(
+                                                                  color: AppColors
+                                                                      .Colorq,
+                                                                  fontSize:
+                                                                      dimension
+                                                                          .height18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                        Padding(
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      dimension
+                                                                          .height10),
+                                                          child: Icon(
+                                                              Icons.circle,
+                                                              size: 10,
+                                                              color: AppColors
+                                                                  .Colorq),
+                                                        ),
+                                                        Text(
+                                                          "2 hrs",
+                                                          style:
+                                                              GoogleFonts.poppins(
+                                                                  color: Colors
+                                                                      .black54,
+                                                                  fontSize:
+                                                                      dimension
+                                                                          .height18,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                flex:2,
+
+                                                child: Container(
+                                                  height: 120,
+                                                  width: 100,
+                                                  child: Stack(
                                                     children: [
-                                                      Text(
-                                                        "₹${documentSnapshot.get("servicePrice")}",
-                                                        style:
-                                                            GoogleFonts.poppins(
+                                                      Container(
+                                                        height: 100,
+                                                        width: 100,
+                                                        decoration: BoxDecoration(
+                                                            image: DecorationImage(
+                                                                image: NetworkImage(
+                                                                    documentSnapshot
+                                                                        .get(
+                                                                            "images")),
+                                                                fit:
+                                                                    BoxFit.cover),
+                                                            border: Border.all(
                                                                 color: AppColors
                                                                     .Colorq,
-                                                                fontSize:
+                                                                width: 2),
+                                                            borderRadius:
+                                                                BorderRadius.circular(
                                                                     dimension
-                                                                        .height18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
+                                                                        .height7)),
                                                       ),
-                                                      Padding(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    dimension
-                                                                        .height10),
-                                                        child: Icon(
-                                                            Icons.circle,
-                                                            size: 10,
-                                                            color: AppColors
-                                                                .Colorq),
-                                                      ),
-                                                      Text(
-                                                        "2 hrs",
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                                color: Colors
-                                                                    .black54,
-                                                                fontSize:
-                                                                    dimension
-                                                                        .height18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                              Container(
-                                                height: 120,
-                                                width: 100,
-                                                child: Stack(
-                                                  children: [
-                                                    Container(
-                                                      height: 100,
-                                                      width: 100,
-                                                      decoration: BoxDecoration(
-                                                          image: DecorationImage(
-                                                              image: NetworkImage(
-                                                                  documentSnapshot
-                                                                      .get(
-                                                                          "images")),
-                                                              fit:
-                                                                  BoxFit.cover),
-                                                          border: Border.all(
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional
+                                                                .bottomCenter,
+                                                        child: Container(
+                                                          height: 34,
+                                                          width: 65,
+                                                          decoration: BoxDecoration(
                                                               color: AppColors
                                                                   .Colorq,
-                                                              width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  dimension
-                                                                      .height7)),
-                                                    ),
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional
-                                                              .bottomCenter,
-                                                      child: Container(
-                                                        height: 34,
-                                                        width: 65,
-                                                        decoration: BoxDecoration(
-                                                            color: AppColors
-                                                                .Colorq,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        dimension
-                                                                            .height7)),
-                                                        child: Center(
-                                                          child: Text(
-                                                            "+ Add",
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            style: GoogleFonts.poppins(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize:
-                                                                    dimension
-                                                                        .height16,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          dimension
+                                                                              .height7)),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "+ Add",
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                              style: GoogleFonts.poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      dimension
+                                                                          .height16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               )
                                             ],
@@ -266,7 +272,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                 ),
                               )
                             // documentSnapshot.get("subcategory")
-                            : Text("no service");
+                            : SizedBox();
                       },
                     );
                   }

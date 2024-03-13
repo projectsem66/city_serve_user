@@ -1,10 +1,14 @@
+import 'package:city_serve/src/authentication/login.dart';
 import 'package:city_serve/utils/dimension.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../utils/colors.dart';
+import '../../authentication/otp_page.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -14,6 +18,16 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  void deleteUser() async {
+    try {
+      User user = FirebaseAuth.instance.currentUser!;
+      await user.delete();
+      print("User deleted successfully");
+    } catch (e) {
+      print("Failed to delete user: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,19 +76,27 @@ class _SettingsState extends State<Settings> {
                   textConfirm: "Yes",
                   textCancel: "Noo",
                   confirm: TextButton(
-                    onPressed: () async {},
+                    onPressed: () async {
+                      FirebaseFirestore.instance
+                          .collection('userDetails')
+                          .doc(auth.currentUser?.uid)
+                          .delete();
+                      deleteUser();
+                      Get.to(Login());
+                    },
                     child: Container(
                       height: 40,
                       width: 90,
                       decoration: BoxDecoration(
-                          // color: AppColors.orange,
-                          border: Border.all(color: AppColors.Colorq, width: 2),
-                          borderRadius: BorderRadius.circular(10)),
+                        color: AppColors.Colorq,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+
                       child: Center(
                         child: Text(
-                          "No",
+                          "Yes",
                           style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
+                              color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.w500),
                         ),
@@ -89,14 +111,14 @@ class _SettingsState extends State<Settings> {
                         height: 40,
                         width: 90,
                         decoration: BoxDecoration(
-                          color: AppColors.Colorq,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                          // color: AppColors.orange,
+                            border: Border.all(color: AppColors.Colorq, width: 2),
+                            borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
-                            "Yes",
+                            "No",
                             style: GoogleFonts.poppins(
-                                color: Colors.white,
+                                color: AppColors.Colorq,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500),
                           ),

@@ -1,12 +1,18 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:city_serve/src/authentication/otp_page.dart';
+import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../utils/colors.dart';
 import '../../../utils/round_button.dart';
 
 class EditProfile extends StatefulWidget {
@@ -29,7 +35,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    print("NihNNQqf7UZVklmIum0gJPcVxsi2");
+    print(auth.currentUser?.uid);
     // Call a method to fetch user data from Firestore
     fetchUserData();
   }
@@ -68,13 +74,13 @@ class _EditProfileState extends State<EditProfile> {
 
   Future<void> updateProfileImageUrl(String imageUrl) async {
     try {
-      if ("NihNNQqf7UZVklmIum0gJPcVxsi2" == null) {
+      if (auth.currentUser?.uid == null) {
         throw Exception('User not logged in');
       }
       await FirebaseFirestore.instance
-          .collection('providerDetails')
-          .doc("NihNNQqf7UZVklmIum0gJPcVxsi2")
-          .update({'image': imageUrl});
+          .collection('userDetails')
+          .doc(auth.currentUser?.uid)
+          .update({'uimage': imageUrl});
       setState(() {
         profileImageUrl = imageUrl;
       });
@@ -82,13 +88,13 @@ class _EditProfileState extends State<EditProfile> {
       print('Error updating profile image URL: $error');
     }
   }
-
+  String userPicUrl="";
   Future<String?> uploadImage() async {
     try {
       if (pickedImage != null) {
         String id = FirebaseAuth.instance.currentUser!.uid;
         UploadTask uploadTask = FirebaseStorage.instance
-            .ref("providerProfilePics")
+            .ref("userProfilePics")
             .child(id.toString())
             .putFile(
                 pickedImage!,
@@ -97,8 +103,8 @@ class _EditProfileState extends State<EditProfile> {
                   customMetadata: {'picked-file-path': pickedImage!.path},
                 ));
         TaskSnapshot taskSnapshot = await uploadTask;
-        String url = await taskSnapshot.ref.getDownloadURL();
-        return url;
+         userPicUrl = await taskSnapshot.ref.getDownloadURL();
+        return userPicUrl;
       }
     } catch (error) {
       print('Error uploading image: $error');
@@ -109,12 +115,12 @@ class _EditProfileState extends State<EditProfile> {
   // Method to fetch user data from Firestore
   void fetchUserData() async {
     try {
-      if ("NihNNQqf7UZVklmIum0gJPcVxsi2" == null) {
+      if (auth.currentUser?.uid == null) {
         throw Exception('User not logged in');
       }
       DocumentSnapshot userData = await FirebaseFirestore.instance
           .collection('userDetails')
-          .doc("NihNNQqf7UZVklmIum0gJPcVxsi2")
+          .doc(auth.currentUser?.uid)
           .get();
       if (userData.exists) {
         setState(() {
@@ -141,12 +147,13 @@ class _EditProfileState extends State<EditProfile> {
       // Update user data in Firestore
       await FirebaseFirestore.instance
           .collection('userDetails')
-          .doc("NihNNQqf7UZVklmIum0gJPcVxsi2")
+          .doc(auth.currentUser?.uid)
           .update({
         'fname': firstNameController.text,
-        'lnamelname': lastNameController.text,
+        'lname': lastNameController.text,
         'emailid': emailController.text,
         'mono': phoneController.text,
+        "uimage":userPicUrl
       });
 
       // Upload the picked image to Firebase Storage
@@ -166,7 +173,7 @@ class _EditProfileState extends State<EditProfile> {
   Future<void> updateUserProfile() async {
     try {
       // Update user profile data in Firestore
-      await updateUserData();
+
 
       // Upload the picked image to Firebase Storage
       String? imageUrl = await uploadImage();
@@ -183,6 +190,18 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:  AppBar(
+        leading: GestureDetector(
+            onTap: () {
+              setState(() {
+                Get.back();
+              });
+            },
+            child: Icon(Icons.arrow_back)),
+        backgroundColor: AppColors.Colorq,
+        centerTitle: false,
+        title: Text("Edit Profile"),
+      ),
         body: SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -191,13 +210,51 @@ class _EditProfileState extends State<EditProfile> {
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox(height: 50),
             Center(
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      showAlertBox();
-                    },
-                    child: Container(
+              child: Bounce(
+                onPressed: () {
+                  showAlertBox();
+
+                },
+                duration: Duration(milliseconds: 200),
+                child: Stack(
+                  children: [
+
+                    Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey
+                            .withOpacity(0.2), // Change color as needed
+                      ),
+                      child: Center(
+                        child: pickedImage != null || profileImageUrl != null
+                            ? Container(
+                                height: 120,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: pickedImage != null
+                                        ? FileImage(pickedImage!)
+                                        : (profileImageUrl != null
+                                            ? NetworkImage(profileImageUrl!)
+                                            : AssetImage(
+                                                    'assets/image/profile.png')
+                                                as ImageProvider<Object>),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              )
+                            : Icon(
+                                Icons.account_circle,
+                                size: 120,
+                                color: Colors.grey
+                                    .withOpacity(0.5), // Change color as needed
+                              ),
+                      ),
+                    ),
+                    Container(
                       margin: EdgeInsets.only(top: 65, left: 80),
                       height: 50,
                       width: 50,
@@ -207,56 +264,15 @@ class _EditProfileState extends State<EditProfile> {
                       child: Icon(
                         Icons.camera_enhance,
                         size: 30,
-                        color: Colors.blue, // Change color as needed
+                        color: AppColors.Colorq, // Change color as needed
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 120,
-                    width: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey
-                          .withOpacity(0.2), // Change color as needed
-                    ),
-                    child: Center(
-                      child: pickedImage != null || profileImageUrl != null
-                          ? Container(
-                              height: 120,
-                              width: 120,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                  image: pickedImage != null
-                                      ? FileImage(pickedImage!)
-                                      : (profileImageUrl != null
-                                          ? NetworkImage(profileImageUrl!)
-                                          : AssetImage(
-                                                  'assets/image/profile.png')
-                                              as ImageProvider<Object>),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            )
-                          : Icon(
-                              Icons.account_circle,
-                              size: 120,
-                              color: Colors.grey
-                                  .withOpacity(0.5), // Change color as needed
-                            ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 20),
-            Center(
-              child: Text("Hello Provider"),
-            ),
-            SizedBox(height: 5),
-            Center(
-              child: Text("Create Your Account For Better Experience!"),
-            ),
+
+
             SizedBox(height: 30),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,22 +288,22 @@ class _EditProfileState extends State<EditProfile> {
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blue, // Change color as needed
+                      color: AppColors.Colorq, // Change color as needed
                     ),
                     controller: firstNameController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.person_outline,
-                        color: Colors.blue, // Change color as needed
+                        color: AppColors.Colorq, // Change color as needed
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "First Name",
-                      labelStyle: TextStyle(color: Colors.blue),
+                      labelStyle: TextStyle(color: AppColors.Colorq),
                       // Change color as needed
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         // Change color as needed
                         borderRadius: BorderRadius.circular(5.0),
                       ),
@@ -310,22 +326,22 @@ class _EditProfileState extends State<EditProfile> {
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blue, // Change color as needed
+                      color: AppColors.Colorq, // Change color as needed
                     ),
                     controller: lastNameController,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.person_outline,
-                        color: Colors.blue, // Change color as needed
+                        color: AppColors.Colorq, // Change color as needed
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Last Name",
-                      labelStyle: TextStyle(color: Colors.blue),
+                      labelStyle: TextStyle(color: AppColors.Colorq),
                       // Change color as needed
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         // Change color as needed
                         borderRadius: BorderRadius.circular(5.0),
                       ),
@@ -348,22 +364,22 @@ class _EditProfileState extends State<EditProfile> {
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blue, // Change color as needed
+                      color: AppColors.Colorq, // Change color as needed
                     ),
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.email_outlined,
-                        color: Colors.blue, // Change color as needed
+                        color: AppColors.Colorq, // Change color as needed
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Email",
-                      labelStyle: TextStyle(color: Colors.blue),
+                      labelStyle: TextStyle(color: AppColors.Colorq),
                       // Change color as needed
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         // Change color as needed
                         borderRadius: BorderRadius.circular(5.0),
                       ),
@@ -387,28 +403,28 @@ class _EditProfileState extends State<EditProfile> {
                     cursorColor: Colors.black,
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blue, // Change color as needed
+                      color: AppColors.Colorq, // Change color as needed
                     ),
                     // keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       suffixIcon: Icon(
                         Icons.call_outlined,
-                        color: Colors.blue, // Change color as needed
+                        color: AppColors.Colorq, // Change color as needed
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       labelText: "Phone Number",
                       hintStyle: TextStyle(
-                        color: Colors.blue.withOpacity(0.5),
+                        color: AppColors.Colorq.withOpacity(0.5),
                         // Change color as needed
                         fontWeight: FontWeight.w400,
                         fontSize: 14,
                       ),
                       hintText: " Example : +91 2356897410",
-                      labelStyle: TextStyle(color: Colors.blue),
+                      labelStyle: TextStyle(color: AppColors.Colorq),
                       // Change color as needed
                       contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: BorderSide(color: AppColors.Colorq),
                         // Change color as needed
                         borderRadius: BorderRadius.circular(5.0),
                       ),
@@ -420,14 +436,29 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ),
                 SizedBox(height: 40),
-                RoundButton(
-                  title: 'SignUp',
-                  // loading: loading,
-                  onTap: () async {
-                    // Update user data in Firestore
-                    await updateUserProfile();
+                Bounce(
+                  duration: Duration(milliseconds: 200),
+                  onPressed: () async{
+                    await updateUserData();
+                    Get.back();
                   },
+                  child: Container(
+                    height: dimension.height50,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: AppColors.Colorq.withOpacity(0.9),
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Update",
+                        style: GoogleFonts.poppins(
+                            fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ),
                 ),
+
                 SizedBox(height: 20),
               ],
             ),

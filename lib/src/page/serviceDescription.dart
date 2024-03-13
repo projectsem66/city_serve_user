@@ -1,7 +1,9 @@
 import 'package:city_serve/firebaseService/fbRefrences.dart';
+import 'package:city_serve/src/authentication/otp_page.dart';
 import 'package:city_serve/src/page/cartPages/summary.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -26,8 +28,48 @@ String serviceName = "";
 String serviceDuration = "";
 String providerName = "";
 String servicePrice = "";
-
+String providerMoNo = "";
+String currentUid="";
 class _ServiceDescriptionState extends State<ServiceDescription> {
+  @override
+
+  User? _user;
+  List<String> _favoriteItems = [];
+
+
+  void _getUser() {
+    _user = auth.currentUser;
+    if (_user != null) {
+      _getFavoriteItems();
+    }
+  }
+
+  Future<void> _getFavoriteItems() async {
+    final DocumentSnapshot userDoc =
+    await FirebaseFirestore.instance
+        .collection('userDetails')
+        .doc(auth.currentUser?.uid).get();
+    setState(() {
+      _favoriteItems = List<String>.from(
+          (userDoc.data() as Map<String, dynamic>)['favoriteItems']);
+    });
+  }
+
+  Future<void> _toggleFavoriteItem(String itemId) async {
+    setState(() {
+      if (_favoriteItems.contains(itemId)) {
+        _favoriteItems.remove(itemId);
+      } else {
+        _favoriteItems.add(itemId);
+      }
+    });
+
+    await FirebaseFirestore.instance
+        .collection('userDetails')
+        .doc(auth.currentUser?.uid)
+        .update({'favoriteItems': _favoriteItems});
+  }
+
   // late final String phoneNumber;
 
 
@@ -44,9 +86,10 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   void initState() {
     super.initState();
     print(widget.serviceId);
-
+    _getUser();
     bookServiceId = widget.serviceId;
     fetchServiceData();
+    // currentUid = auth.currentUser.uid;
   }
 
   // for get service details
@@ -86,15 +129,16 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
         refProvider.doc(documentSnapshot!.get("providerId"));
     return documentReference.get();
   }
-
   bool like = false;
-  final CollectionReference refUser = FirebaseFirestore.instance
+  final CollectionReference refFav = FirebaseFirestore.instance
       .collection('userDetails')
-      .doc("234")
+      .doc(auth.currentUser?.uid)
       .collection("favourites");
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: documentSnapshot != null
           ? Stack(
@@ -151,17 +195,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                       ),
                                       Bounce(
                                         onPressed: () {
-                                          like = !like;
-                                          like == true
-                                              ? refUser
-                                                  .doc(widget.serviceId)
-                                                  .set({
-                                                  "serviceId": widget.serviceId
-                                                })
-                                              : refUser
-                                                  .doc(widget.serviceId)
-                                                  .delete();
-
+                                          _toggleFavoriteItem(widget.serviceId);
                                           setState(() {});
                                         },
                                         duration: Duration(milliseconds: 200),
@@ -174,17 +208,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                             shape: BoxShape.circle,
                                           ),
                                           child: Center(
-                                            child: like == true
-                                                ? Icon(
-                                                    Icons.favorite,
-                                                    color: AppColors.red,
-                                                    size: dimension.height26,
-                                                  )
-                                                : Icon(
-                                                    Icons.favorite_border,
-                                                    color: AppColors.red,
-                                                    size: dimension.height26,
-                                                  ),
+
+                                            child:  _favoriteItems.contains(widget.serviceId)?
+                                            Icon(Icons.favorite,color: AppColors.red,):Icon(Icons.favorite_border,color: AppColors.red,),
                                           ),
                                         ),
                                       ),
@@ -332,6 +358,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                               height: dimension.height15,
                             ),
                             Text(
+
                               "About Provider",
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.poppins(
@@ -448,6 +475,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                             documentSnapshot!.get("serviceDuration");
                         providerName = documentSnapshot1?.get("firstName");
                         ServiceProviderId = documentSnapshot!.get("providerId");
+                        providerMoNo = documentSnapshot!.get("providerPhoneNumber");
                         Get.to(Summary(),
                             transition: Transition.circularReveal);
                       },
