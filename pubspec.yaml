@@ -61,6 +61,7 @@ dependencies:
   pinput: ^3.0.1
   flutter_launcher_icons: ^0.13.1
 
+
 flutter_icons:
   android: true
   ios: true

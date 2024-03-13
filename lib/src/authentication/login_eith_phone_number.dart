@@ -16,7 +16,7 @@ class LoginWithPhoneNumber extends StatefulWidget {
   @override
   State<LoginWithPhoneNumber> createState() => _LoginWithPhoneNumberState();
 }
-
+String authMoNo = "";
 class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
   bool  loading = false;
   final phoneNumberController = TextEditingController();
@@ -88,10 +88,10 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(7.0),
                         borderSide:
-                        BorderSide(color: AppColors.Colorq)),
+                        BorderSide(color: AppColors.Colorq,width: 2)),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(7.0),
-                        borderSide: BorderSide(color: Color(0xff4c1514))),
+                        borderSide: BorderSide(color: AppColors.Colorq.withOpacity(0.7))),
                     // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
                     // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
                     prefixIcon: Container(
@@ -154,6 +154,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
               RoundButton(title: "Login",
                 loding: loading,
                 onTap: () {
+                  authMoNo = phoneNumberController.text.toString();
                 setState(() {
                   loading = true;
                 });

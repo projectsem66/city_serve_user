@@ -13,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../utils/colors.dart';
+import 'login_eith_phone_number.dart';
 import 'otp_page.dart';
 
 class SignUp2 extends StatefulWidget {
@@ -25,7 +26,6 @@ class SignUp2 extends StatefulWidget {
 final _fnamecon = TextEditingController();
 final _lnamecon = TextEditingController();
 final _emailcon = TextEditingController();
-final _monocon = TextEditingController();
 
 class _SignUp2State extends State<SignUp2> {
   File? pickedImage;
@@ -122,7 +122,7 @@ class _SignUp2State extends State<SignUp2> {
   uploadData() async {
     UploadTask uploadtask = FirebaseStorage.instance
         .ref("userimg")
-        .child("${_monocon.text}")
+        .child("${authMoNo}")
         .putFile(pickedImage!, SettableMetadata(contentType: 'image/jpeg'));
     TaskSnapshot taskSnapshot = await uploadtask;
     String url = await taskSnapshot.ref.getDownloadURL();
@@ -131,7 +131,7 @@ class _SignUp2State extends State<SignUp2> {
       "uimage": url,
       "lname": _lnamecon.text.toString(),
       "emailid": _emailcon.text.toString(),
-      "mono": _monocon.text.toString(),
+      "mono": authMoNo,
     }).then((value) {
       log("User Uploaded");
       Get.to(GoogleLocation());
@@ -363,51 +363,7 @@ class _SignUp2State extends State<SignUp2> {
                         SizedBox(
                           height: dimension.height12,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: AppColors.Colorq.withOpacity(0.05),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: TextFormField(
-                            controller: _monocon,
-                            keyboardType: TextInputType.text,
-                            cursorColor: Colors.black,
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                            onChanged: (value) {
-                              setState(() {});
-                            },
-                            decoration: InputDecoration(
-                              floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
-                              labelText: "Mobile Number",
-                              labelStyle: GoogleFonts.poppins(
-                                  color: AppColors.Colorq,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w300),
-                              contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.Colorq),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Enter Mobile Number';
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: dimension.height20,
-                        ),
+
                       ],
                     )),
                 SizedBox(

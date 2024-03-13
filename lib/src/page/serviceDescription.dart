@@ -4,6 +4,7 @@ import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,6 +28,15 @@ String providerName = "";
 String servicePrice = "";
 
 class _ServiceDescriptionState extends State<ServiceDescription> {
+  // late final String phoneNumber;
+
+
+  callProviderNumber(String phoneNumber) async {
+    bool? res = await FlutterPhoneDirectCaller.callNumber(phoneNumber);
+    if (!res!) {
+      // Handle error
+    }
+  }
   DocumentSnapshot? documentSnapshot;
   DocumentSnapshot? documentSnapshot1;
 
@@ -355,6 +365,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                             height: dimension.height70,
                                             width: dimension.height70,
                                             decoration: BoxDecoration(
+                                              image: DecorationImage(image: NetworkImage(documentSnapshot!.get("providerImage"))),
                                                 shape: BoxShape.circle,
                                                 color: AppColors.Colorq),
                                           ),
@@ -368,8 +379,17 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  documentSnapshot1
-                                                          ?.get("firstName") ??
+                                                  documentSnapshot!.get("providerName") ??
+                                                      "hello",
+                                                  // myObject?.property ?? 'Default Value'
+                                                  style: GoogleFonts.poppins(
+                                                      color: AppColors.Colorq,
+                                                      fontSize:
+                                                          dimension.height20,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),Text(
+                                                  documentSnapshot!.get("providerPhoneNumber") ??
                                                       "hello",
                                                   // myObject?.property ?? 'Default Value'
                                                   style: GoogleFonts.poppins(
@@ -380,6 +400,22 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                                           FontWeight.w500),
                                                 ),
                                               ],
+                                            ),
+                                          ),
+                                          Bounce(
+                                            onPressed: () {
+                                              // phoneNumber = documentSnapshot!.get("providerPhoneNumber");
+                                              callProviderNumber(documentSnapshot!.get("providerPhoneNumber"));
+                                            },
+                                            duration: Duration(milliseconds: 200),
+                                            child: Container(
+                                              height: dimension.height40,
+                                              width: dimension.height40,
+                                              decoration: BoxDecoration(
+                                                  color: AppColors.Colorq.withOpacity(
+                                                      0.3),
+                                                  shape: BoxShape.circle),
+                                              child: Icon(Icons.call),
                                             ),
                                           ),
                                         ],

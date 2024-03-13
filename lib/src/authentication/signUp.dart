@@ -14,6 +14,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../utils/colors.dart';
+import '../../utils/util.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -33,27 +34,27 @@ class _SignUpState extends State<SignUp> {
   final _passwordcon = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // void signup() {
-  //   setState(() {
-  //     loading = true;
-  //   });
-  //   _auth
-  //       .createUserWithEmailAndPassword(
-  //           email: _emailcon.text.toString(),
-  //           password: _passwordcon.text.toString())
-  //       .then((value) {
-  //     Navigator.push(
-  //         context, MaterialPageRoute(builder: (context) => GoogleLocation()));
-  //     setState(() {
-  //       loading = false;
-  //     });
-  //   }).onError((error, stackTrace) {
-  //     Utils().tostmessage(error.toString());
-  //     setState(() {
-  //       loading = false;
-  //     });
-  //   });
-  // }
+  void signup() {
+    setState(() {
+      loading = true;
+    });
+    _auth
+        .createUserWithEmailAndPassword(
+            email: _emailcon.text.toString(),
+            password: _passwordcon.text.toString())
+        .then((value) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => GoogleLocation()));
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      Utils().tostmessage(error.toString());
+      setState(() {
+        loading = false;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -95,7 +96,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  addcategory(String cName) async {
+  addUser(String cName) async {
     if (cName == null && pickedImage == null) {
       return showDialog(
         context: context,
@@ -124,7 +125,7 @@ class _SignUpState extends State<SignUp> {
         .putFile(pickedImage!, SettableMetadata(contentType: 'image/jpeg'));
     TaskSnapshot taskSnapshot = await uploadtask;
     String url = await taskSnapshot.ref.getDownloadURL();
-    FirebaseFirestore.instance.collection("userDetails").doc("12").set({
+    FirebaseFirestore.instance.collection("userDetails").doc(_auth.currentUser?.uid).set({
       "fname": _fnamecon.text.toString(),
       "uimage": url,
       "lname": _lnamecon.text.toString(),
@@ -133,6 +134,7 @@ class _SignUpState extends State<SignUp> {
       "password": _passwordcon.text.toString()
     }).then((value) {
       log("User Uploaded");
+      Get.off(GoogleLocation());
     });
     // await _collectionReference
     //     .doc(_cname.toString())
@@ -471,8 +473,8 @@ class _SignUpState extends State<SignUp> {
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // signup();
-                      addcategory(_fnamecon.text.toString());
+                      signup();
+                      addUser(_fnamecon.text.toString());
                     }
                   },
                   child: Container(

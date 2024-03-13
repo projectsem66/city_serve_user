@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:city_serve/src/page/account/account.dart';
+import 'package:city_serve/src/page/bookingPages/booking.dart';
 import 'package:city_serve/src/page/bookingPages/bookings.dart';
 import 'package:city_serve/src/page/dashboard.dart';
 import 'package:city_serve/src/page/favouritePage.dart';
@@ -25,7 +26,7 @@ class _NavigationBarrState extends State<NavigationBarr> {
     Dashboard(),
     Bookings(),
     Studio(),
-    FavouritePage(),
+    Booking(),
     Account(),
   ];
 

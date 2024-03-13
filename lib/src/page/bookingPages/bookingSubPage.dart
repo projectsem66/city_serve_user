@@ -309,164 +309,374 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                         ],
                       ),
                     ),
-                    Bounce(
-                      duration: Duration(milliseconds: 200),
-                      onPressed: () {
-                        documentSnapshot?.get("status") == "Pending" ||
-                                documentSnapshot?.get("status") == "Accepted"
-                            ? Get.defaultDialog(
-                                // ScaffoldKey.currentState?.openEndDrawer();
-                                buttonColor: AppColors.Colorq,
-                                backgroundColor: Colors.white,
-                                cancelTextColor: AppColors.Colorq,
-                                titleStyle: GoogleFonts.amaranth(
-                                    fontSize: dimension.height18,
-                                    color: AppColors.Colorq),
-                                titlePadding: EdgeInsets.all(10),
-                                title:
-                                    "Please give reason for cancelling this booking?",
-                                contentPadding: EdgeInsets.all(20),
-                                // middleText: "Are you sure to delete",
-                                content: Column(
-                                  children: [
-                                    Container(
-                                      // height: dimension.height30,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.Colorq.withOpacity(
-                                              0.05),
-                                          borderRadius:
-                                              BorderRadius.circular(7)),
-                                      child: TextFormField(
-                                        maxLines: null,
-                                        controller: _reasonController,
-                                        // Set to null for unlimited lines or specify a number for a maximum number of lines
-                                        keyboardType: TextInputType.multiline,
-                                        textInputAction:
-                                            TextInputAction.newline,
-                                        cursorColor: Colors.black,
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.black,
-                                        ),
-                                        onChanged: (value) {
-                                          setState(() {});
-                                        },
-                                        decoration: InputDecoration(
-                                          floatingLabelBehavior:
-                                              FloatingLabelBehavior.always,
-                                          labelText: "Enter reason here",
-                                          labelStyle: GoogleFonts.poppins(
-                                              color: AppColors.Colorq,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w300),
-                                          contentPadding:
-                                              EdgeInsets.fromLTRB(5, 10, 5, 0),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: AppColors.Colorq),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                          ),
-                                        ),
-                                      ),
+                    // Bounce(
+                    //   duration: Duration(milliseconds: 200),
+                    //   onPressed: () {
+                    //     documentSnapshot?.get("status") == "Pending" ||
+                    //             documentSnapshot?.get("status") == "Accepted"
+                    //         ? Get.defaultDialog(
+                    //             // ScaffoldKey.currentState?.openEndDrawer();
+                    //             buttonColor: AppColors.Colorq,
+                    //             backgroundColor: Colors.white,
+                    //             cancelTextColor: AppColors.Colorq,
+                    //             titleStyle: GoogleFonts.amaranth(
+                    //                 fontSize: dimension.height18,
+                    //                 color: AppColors.Colorq),
+                    //             titlePadding: EdgeInsets.all(10),
+                    //             title:
+                    //                 "Please give reason for cancelling this booking?",
+                    //             contentPadding: EdgeInsets.all(20),
+                    //             // middleText: "Are you sure to delete",
+                    //             content: Column(
+                    //               children: [
+                    //                 Container(
+                    //                   // height: dimension.height30,
+                    //                   decoration: BoxDecoration(
+                    //                       color: AppColors.Colorq.withOpacity(
+                    //                           0.05),
+                    //                       borderRadius:
+                    //                           BorderRadius.circular(7)),
+                    //                   child: TextFormField(
+                    //                     maxLines: null,
+                    //                     controller: _reasonController,
+                    //                     // Set to null for unlimited lines or specify a number for a maximum number of lines
+                    //                     keyboardType: TextInputType.multiline,
+                    //                     textInputAction:
+                    //                         TextInputAction.newline,
+                    //                     cursorColor: Colors.black,
+                    //                     style: TextStyle(
+                    //                       fontSize: 18,
+                    //                       color: Colors.black,
+                    //                     ),
+                    //                     onChanged: (value) {
+                    //                       setState(() {});
+                    //                     },
+                    //                     decoration: InputDecoration(
+                    //                       floatingLabelBehavior:
+                    //                           FloatingLabelBehavior.always,
+                    //                       labelText: "Enter reason here",
+                    //                       labelStyle: GoogleFonts.poppins(
+                    //                           color: AppColors.Colorq,
+                    //                           fontSize: 17,
+                    //                           fontWeight: FontWeight.w300),
+                    //                       contentPadding:
+                    //                           EdgeInsets.fromLTRB(5, 10, 5, 0),
+                    //                       focusedBorder: OutlineInputBorder(
+                    //                         borderSide: BorderSide(
+                    //                             color: AppColors.Colorq),
+                    //                         borderRadius:
+                    //                             BorderRadius.circular(5.0),
+                    //                       ),
+                    //                       enabledBorder: OutlineInputBorder(
+                    //                         borderSide: BorderSide(
+                    //                             color: Colors.transparent),
+                    //                         borderRadius:
+                    //                             BorderRadius.circular(5.0),
+                    //                       ),
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //             textConfirm: "Submit",
+                    //             confirm: TextButton(
+                    //               onPressed: () async {
+                    //                 FirebaseFirestore.instance
+                    //                     .collection('bookingg')
+                    //                     .doc(bookingId)
+                    //                     .update({
+                    //                   "cancelReason":
+                    //                       _reasonController.text.toString()
+                    //                 });
+                    //                 FirebaseFirestore.instance
+                    //                     .collection('bookingg')
+                    //                     .doc(bookingId)
+                    //                     .update({"status": "Cancelled"});
+                    //                 setState(() {});
+                    //                 Get.back();
+                    //                 Get.back();
+                    //                 // Get.to(PaymentPage());
+                    //               },
+                    //               child: Container(
+                    //                 height: dimension.height35,
+                    //                 width: dimension.width85,
+                    //                 decoration: BoxDecoration(
+                    //                     color:
+                    //                         AppColors.Colorq.withOpacity(0.3),
+                    //                     border: Border.all(
+                    //                         color: AppColors.Colorq, width: 2),
+                    //                     borderRadius:
+                    //                         BorderRadius.circular(10)),
+                    //                 child: Center(
+                    //                   child: Text(
+                    //                     "Submit",
+                    //                     style: GoogleFonts.poppins(
+                    //                       color: AppColors.Colorq,
+                    //                       fontSize: dimension.height18,
+                    //                       fontWeight: FontWeight.w500,
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           )
+                    //         : documentSnapshot?.get("status") == "Cancelled"
+                    //             ? ""
+                    //             : documentSnapshot?.get("status") == "Completed"
+                    //                 ? Get.to(PaymentPage())
+                    //                 : documentSnapshot?.get("status") ==
+                    //                         "In progress"
+                    //                     ? ""
+                    //                     : "";
+                    //     // Get.to(Summary(), transition: Transition.cupertino);
+                    //   },
+                    //   child: Container(
+                    //     width: double.maxFinite,
+                    //     decoration: BoxDecoration(
+                    //         color: AppColors.Colorq,
+                    //         borderRadius: BorderRadius.circular(7)),
+                    //     child: Padding(
+                    //       padding:
+                    //           EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                    //       child: Center(
+                    //         child: Text(
+                    //           documentSnapshot?.get("status") == "Pending" ||
+                    //                   documentSnapshot?.get("status") ==
+                    //                       "Accepted"
+                    //               ? "Cancel Booking"
+                    //               : documentSnapshot?.get("status") ==
+                    //                       "Cancelled"
+                    //                   ? "Order is cancelled"
+                    //                   : documentSnapshot?.get("status") ==
+                    //                           "Completed"
+                    //                       ? "Pay Now"
+                    //                       : documentSnapshot?.get("status") ==
+                    //                               "In progress"
+                    //                           ? ""
+                    //                           : "", //==Pending
+                    //           // Completed == pay now
+                    //           //  Accepted == cancel booking
+                    //           //  Cancelled == null
+                    //           style: GoogleFonts.poppins(
+                    //             color: Colors.white,
+                    //             fontSize: dimension.height18,
+                    //             fontWeight: FontWeight.w400,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    if (documentSnapshot?.get("status") == "Pending" ||
+                        documentSnapshot?.get("status") == "Accepted")
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.defaultDialog(
+                            // ScaffoldKey.currentState?.openEndDrawer();
+                            buttonColor: AppColors.Colorq,
+                            backgroundColor: Colors.white,
+                            cancelTextColor: AppColors.Colorq,
+                            titleStyle: GoogleFonts.amaranth(
+                                fontSize: dimension.height18,
+                                color: AppColors.Colorq),
+                            titlePadding: EdgeInsets.all(10),
+                            title:
+                                "Please give reason for cancelling this booking?",
+                            contentPadding: EdgeInsets.all(20),
+                            // middleText: "Are you sure to delete",
+                            content: Column(
+                              children: [
+                                Container(
+                                  // height: dimension.height30,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.Colorq.withOpacity(0.05),
+                                      borderRadius: BorderRadius.circular(7)),
+                                  child: TextFormField(
+                                    maxLines: null,
+                                    controller: _reasonController,
+                                    // Set to null for unlimited lines or specify a number for a maximum number of lines
+                                    keyboardType: TextInputType.multiline,
+                                    textInputAction: TextInputAction.newline,
+                                    cursorColor: Colors.black,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
                                     ),
-                                  ],
-                                ),
-                                textConfirm: "Submit",
-                                confirm: TextButton(
-                                  onPressed: () async {
-                                    FirebaseFirestore.instance
-                                        .collection('bookingg')
-                                        .doc(bookingId)
-                                        .update({
-                                      "cancelReason":
-                                          _reasonController.text.toString()
-                                    });
-                                    FirebaseFirestore.instance
-                                        .collection('bookingg')
-                                        .doc(bookingId)
-                                        .update({"status": "Cancelled"});
-                                    setState(() {});
-                                    Get.back();
-                                    Get.back();
-                                    // Get.to(PaymentPage());
-                                  },
-                                  child: Container(
-                                    height: dimension.height35,
-                                    width: dimension.width85,
-                                    decoration: BoxDecoration(
-                                        color:
-                                            AppColors.Colorq.withOpacity(0.3),
-                                        border: Border.all(
-                                            color: AppColors.Colorq, width: 2),
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Center(
-                                      child: Text(
-                                        "Submit",
-                                        style: GoogleFonts.poppins(
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                    decoration: InputDecoration(
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                      labelText: "Enter reason here",
+                                      labelStyle: GoogleFonts.poppins(
                                           color: AppColors.Colorq,
-                                          fontSize: dimension.height18,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w300),
+                                      contentPadding:
+                                          EdgeInsets.fromLTRB(5, 10, 5, 0),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: AppColors.Colorq),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
                                       ),
                                     ),
                                   ),
                                 ),
-                              )
-                            : documentSnapshot?.get("status") == "Cancelled"
-                                ? ""
-                                : documentSnapshot?.get("status") == "Completed"
-                                    ? Get.to(PaymentPage())
-                                    : documentSnapshot?.get("status") ==
-                                            "In progress"
-                                        ? ""
-                                        : "";
-                        // Get.to(Summary(), transition: Transition.cupertino);
-                      },
-                      child: Container(
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                            color: AppColors.Colorq,
-                            borderRadius: BorderRadius.circular(7)),
-                        child: Padding(
-                          padding:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 7),
-                          child: Center(
-                            child: Text(
-                              documentSnapshot?.get("status") == "Pending" ||
-                                      documentSnapshot?.get("status") ==
-                                          "Accepted"
-                                  ? "Cancel Booking"
-                                  : documentSnapshot?.get("status") ==
-                                          "Cancelled"
-                                      ? "Order is cancelled"
-                                      : documentSnapshot?.get("status") ==
-                                              "Completed"
-                                          ? "Pay Now"
-                                          : documentSnapshot?.get("status") ==
-                                                  "In progress"
-                                              ? ""
-                                              : "", //==Pending
-                              // Completed == pay now
-                              //  Accepted == cancel booking
-                              //  Cancelled == null
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: dimension.height18,
-                                fontWeight: FontWeight.w400,
+                              ],
+                            ),
+                            textConfirm: "Submit",
+                            confirm: TextButton(
+                              onPressed: () async {
+                                FirebaseFirestore.instance
+                                    .collection('bookingg')
+                                    .doc(bookingId)
+                                    .update({
+                                  "cancelReason":
+                                      _reasonController.text.toString()
+                                });
+                                FirebaseFirestore.instance
+                                    .collection('bookingg')
+                                    .doc(bookingId)
+                                    .update({"status": "Cancelled"});
+                                setState(() {});
+                                Get.back();
+                                Get.back();
+                                // Get.to(PaymentPage());
+                              },
+                              child: Container(
+                                height: dimension.height35,
+                                width: dimension.width85,
+                                decoration: BoxDecoration(
+                                    color: AppColors.Colorq.withOpacity(0.3),
+                                    border: Border.all(
+                                        color: AppColors.Colorq, width: 2),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Text(
+                                    "Submit",
+                                    style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: dimension.height18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: double.maxFinite,
+                          decoration: BoxDecoration(
+                              color: AppColors.Colorq,
+                              borderRadius: BorderRadius.circular(7)),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 7),
+                            child: Center(
+                              child: Text(
+                                "Cancel booking",
+                                //==Pending
+                                // Completed == pay now
+                                //  Accepted == cancel booking
+                                //  Cancelled == null
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
+                    if (documentSnapshot?.get("status") == "Cancelled")
+                      SizedBox(),
+                    if (documentSnapshot?.get("status") == "In Progress")
+                      Text("Service in progress"),
+                    if (documentSnapshot?.get("status") == "is Done?")
+                      Row(
+                        children: [
+                          Text("Service is Done?"),
+                          Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection('bookingg')
+                                  .doc(bookingId)
+                                  .update({"status": "Completed"});
+                              setState(() {});
+                            },
+                            child: Container(
+                              width: 200,
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq,
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: Padding(
+                                padding:
+                                EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                                child: Center(
+                                  child: Text(
+                                    "Done",
+                                    //==Pending
+                                    // Completed == pay now
+                                    //  Accepted == cancel booking
+                                    //  Cancelled == null
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: dimension.height18,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    if (documentSnapshot?.get("status") == "Completed")
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.to(PaymentPage());
+                        },
+                        child: Container(
+                          width: double.maxFinite,
+                          decoration: BoxDecoration(
+                              color: AppColors.Colorq,
+                              borderRadius: BorderRadius.circular(7)),
+                          child: Padding(
+                            padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                            child: Center(
+                              child: Text(
+                                "Pay Now",
+                                //==Pending
+                                // Completed == pay now
+                                //  Accepted == cancel booking
+                                //  Cancelled == null
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (documentSnapshot?.get("status") == "Paid")
+                      Text("Service in Completed")
+
                   ],
                 ),
               ),

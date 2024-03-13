@@ -1,4 +1,5 @@
 import 'package:city_serve/src/page/bookingPages/bookingSubPage.dart';
+import 'package:city_serve/src/page/bookingPages/bookingSubpagee.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,11 +11,11 @@ import 'package:lottie/lottie.dart';
 
 import '../../../btm_controller.dart';
 
-class Bookings extends StatefulWidget {
-  const Bookings({super.key});
+class Booking extends StatefulWidget {
+  const Booking({super.key});
 
   @override
-  State<Bookings> createState() => _BookingsState();
+  State<Booking> createState() => _BookingsState();
 }
 
 String bookingId = "";
@@ -40,7 +41,7 @@ Future<List<Map<String, dynamic>>> getProvidersWithUserId() async {
   return providersList;
 }
 
-class _BookingsState extends State<Bookings> {
+class _BookingsState extends State<Booking> {
   @override
   void initState() {
     // TODO: implement initState
@@ -87,11 +88,11 @@ class _BookingsState extends State<Bookings> {
                           final DocumentSnapshot documentSnapshot =
                           streamSnapshot.data!.docs[index];
 
-                          return documentSnapshot.get("userId") == "123456"
+                          return documentSnapshot.get("providerId") == "tXVmL9cViQfpUtJ0etcJ0LQ3YRY2"
                               ? Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              Get.to(BookingSubPage());
+                              Get.to(BookingSubPagee());
                               bookingId = documentSnapshot.id;
                               print(bookingId);
                               //   servicename
