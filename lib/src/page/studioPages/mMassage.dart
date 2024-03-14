@@ -84,26 +84,25 @@ class _MMassageState extends State<MMassage> {
           height: dimension.height100 * 3 + dimension.height41,
           child: StreamBuilder(
             stream: refCategory
-                .doc("Salon Prime for Kids & Men")
+                .doc("Women's Salon & Spa")
                 .collection("subcategories")
-                .doc("Massage for Men")
+                .doc("Hair Studio for Women")
                 .collection("sections")
                 .snapshots(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+            builder:
+                (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
               if (streamSnapshot.hasData) {
                 return GridView.builder(
                   itemCount: streamSnapshot.data!.docs.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 0.92,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.92
+                    // Number of columns
                   ),
                   itemBuilder: (context, index) {
-                    final DocumentSnapshot documentSnapshot =
-                        streamSnapshot.data!.docs[index];
+                    final DocumentSnapshot documentSnapshot = streamSnapshot.data!.docs[index];
                     return Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        sectionName = documentSnapshot.id;
+                        sectionName=documentSnapshot.id;
                         Get.back();
                         Get.to(ServicesPage());
                       },
@@ -116,27 +115,18 @@ class _MMassageState extends State<MMassage> {
                                 height: 70,
                                 width: 70,
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(dimension.height7),
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          documentSnapshot['simage']
-                                              .toString()),
-                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(dimension.height7),
+                                  image: DecorationImage(image: NetworkImage(documentSnapshot['simage'].toString()), fit: BoxFit.cover),
                                 )),
                             Container(
                               height: dimension.height45,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Text(
                                   documentSnapshot['sname'].toString(),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
-                                  style: GoogleFonts.poppins(
-                                      color: AppColors.Colorq,
-                                      fontSize: dimension.height14,
-                                      fontWeight: FontWeight.w400),
+                                  style: GoogleFonts.poppins(color: AppColors.Colorq, fontSize: dimension.height14, fontWeight: FontWeight.w400),
                                 ),
                               ),
                             ),

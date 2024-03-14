@@ -84,12 +84,12 @@ class _WSpaState extends State<WSpa> {
           ),
           height: dimension.height100 * 3 + dimension.height41,
           child:StreamBuilder(
-            stream: refCategory
-                .doc("men")
-                .collection("subcategories")
-                .doc("women")
-                .collection("sections")
-                .snapshots(),
+            stream:  refCategory
+        .doc("Women's Salon & Spa")
+        .collection("subcategories")
+        .doc("Spa for Women")
+        .collection("sections")
+        .snapshots(),
             builder:
                 (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
               if (streamSnapshot.hasData) {

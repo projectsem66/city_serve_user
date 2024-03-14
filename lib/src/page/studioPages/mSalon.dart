@@ -97,9 +97,9 @@ class _MSalonState extends State<MSalon> {
           height: dimension.height100 * 3 + dimension.height41,
           child: StreamBuilder(
             stream: refCategory
-                .doc("men")
+                .doc("Salon Prime for Kids & Men")
                 .collection("subcategories")
-                .doc("women")
+                .doc("Salon for Kids & Men")
                 .collection("sections")
                 .snapshots(),
             builder:

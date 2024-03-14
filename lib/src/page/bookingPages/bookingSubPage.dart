@@ -17,12 +17,10 @@ class BookingSubPage extends StatefulWidget {
   State<BookingSubPage> createState() => _ServiceDescriptionState();
 }
 
-String bookServiceId = "";
-String ServiceProviderId = "";
+
 
 class _ServiceDescriptionState extends State<BookingSubPage> {
   DocumentSnapshot? documentSnapshot;
-  DocumentSnapshot? documentSnapshot1;
 
   @override
   void initState() {
@@ -52,26 +50,6 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
   Future<DocumentSnapshot> getDocument() async {
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection('bookingg').doc(bookingId);
-    return documentReference.get();
-  }
-
-  // for get service details
-  Future<void> fetchServiceData() async {
-    try {
-      DocumentSnapshot snapshot = await getDocument2();
-      setState(() {
-        documentSnapshot1 = snapshot;
-      });
-    } catch (e) {
-      print('Error retrieving document: $e');
-      // Handle error appropriately
-    }
-  }
-
-  Future<DocumentSnapshot> getDocument2() async {
-    DocumentReference documentReference = FirebaseFirestore.instance
-        .collection('providerServiceDetails')
-        .doc(documentSnapshot?.get("documentSnapshot"));
     return documentReference.get();
   }
 
@@ -660,6 +638,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
+
                           Get.to(PaymentPage());
                         },
                         child: Container(

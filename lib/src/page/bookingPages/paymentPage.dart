@@ -1,3 +1,5 @@
+import 'package:city_serve/navigationBar.dart';
+import 'package:city_serve/src/page/bookingPages/gpayPayment.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -13,19 +15,13 @@ class PaymentPage extends StatefulWidget {
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
+int selectedValue = 1;
+int? btnState = 1;
+
 class _PaymentPageState extends State<PaymentPage> {
   @override
   Widget build(BuildContext context) {
     String selectedPaymentMode = '';
-
-    List<String> paymentModes = [
-      "Cash / UPI on Delivery",
-      "Credit / Debit Card",
-      "Amazon Pay Wallet",
-      "Paytm Wallet",
-      "PhonePe"
-    ];
-    String _selectedValue = 'Option 1';
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -124,7 +120,6 @@ class _PaymentPageState extends State<PaymentPage> {
                         ),
                       ],
                     ),
-                    Divider(thickness: 1),
                   ],
                 ),
               ),
@@ -143,49 +138,60 @@ class _PaymentPageState extends State<PaymentPage> {
               height: dimension.height15,
             ),
             Column(
-              children: paymentModes.map((mode) {
-                return Padding(
+              children: [
+                Padding(
                   padding: const EdgeInsets.only(bottom: 1),
                   child: Column(
                     children: [
                       RadioListTile(
                         activeColor: AppColors.Colorq,
-
-                        // Color for the selected radio button
                         title: Text(
-                          mode, // Display the payment mode as the title
+                          "Cash on Delivery",
                           style: GoogleFonts.poppins(
-                            fontSize: dimension.height18,
                             color: AppColors.Colorq,
+                            fontSize: dimension.height16,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
-                        value: mode,
-                        groupValue: selectedPaymentMode,
+                        value: 1,
+                        groupValue: selectedValue,
                         onChanged: (value) {
-                          selectedPaymentMode = value.toString();
-                          setState(() {});
+                          btnState = value;
+                          setState(() {
+                            selectedValue = value!;
+                          });
                         },
                       ),
                     ],
                   ),
-                );
-              }).toList(),
+                ),
+                RadioListTile(
+                  activeColor: AppColors.Colorq,
+                  title: Text(
+                    "Pay via UPI ID",
+                    style: GoogleFonts.poppins(
+                      color: AppColors.Colorq,
+                      fontSize: dimension.height16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  value: 2,
+                  groupValue: selectedValue,
+                  onChanged: (value) {
+                    btnState = value;
+                    setState(() {
+                      selectedValue = value!;
+                    });
+                  },
+                ),
+              ],
             ),
             Spacer(),
             Bounce(
               duration: Duration(milliseconds: 300),
               onPressed: () {
-                if (selectedPaymentMode == "") {
-                  // Show a snackbar if no payment mode is selected
-                  Get.snackbar(
-                    "Please select Payment Mode",
-                    "for payment",
-                    colorText: Colors.white,
-                  );
-                } else {
-                  // Navigate to the next screen or perform the next action
-                  // Get.to(OrderDetail());
-                }
+                btnState==1?
+                Get.off(NavigationBarr()):btnState==2?Get.to(UpiPage()):"";
               },
               child: Container(
                 height: 50,
@@ -196,7 +202,8 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 child: Center(
                   child: Text(
-                    "Next",
+                    btnState==1?
+                    "Done":btnState==2?"Next":"",
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       color: Colors.white,

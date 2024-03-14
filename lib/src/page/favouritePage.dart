@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../btm_controller.dart';
 import '../../firebaseService/fbRefrences.dart';
 import '../../utils/colors.dart';
 import '../authentication/otp_page.dart';
@@ -18,7 +19,8 @@ class FavouritePage extends StatefulWidget {
   @override
   State<FavouritePage> createState() => _FavouritePageState();
 }
-
+BtmController _ = Get.put(BtmController());
+int _currentIndex1 = 0;
 class _FavouritePageState extends State<FavouritePage> {
 
   List<String> _favoriteItems = [];
@@ -46,10 +48,10 @@ class _FavouritePageState extends State<FavouritePage> {
         leading: GestureDetector(
             onTap: () {
               setState(() {
-                // _currentIndex1 = 0;
-                // _.currentIndex = 0;
-                // _.update();
-                // print(_currentIndex1);
+                _currentIndex1 = 0;
+                _.currentIndex = 0;
+                _.update();
+                print(_currentIndex1);
               });
             },
             child: Icon(Icons.arrow_back)),

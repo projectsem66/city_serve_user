@@ -96,9 +96,9 @@ class _WSalonState extends State<WSalon> {
           height: dimension.height100 * 3 + dimension.height41,
           child: StreamBuilder(
             stream: refCategory
-                .doc("men")
+                .doc("Women's Salon & Spa")
                 .collection("subcategories")
-                .doc("women")
+                .doc("Salon for Women")
                 .collection("sections")
                 .snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {

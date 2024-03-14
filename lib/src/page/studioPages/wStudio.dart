@@ -109,9 +109,9 @@ class _WStudioState extends State<WStudio> {
           height: dimension.height100 * 3 + dimension.height41,
           child:StreamBuilder(
             stream: refCategory
-                .doc("men")
+                .doc("Women's Salon & Spa")
                 .collection("subcategories")
-                .doc("women")
+                .doc("Hair Studio for Women")
                 .collection("sections")
                 .snapshots(),
             builder:

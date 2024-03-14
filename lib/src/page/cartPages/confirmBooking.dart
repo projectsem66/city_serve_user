@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/authentication/otp_page.dart';
 import 'package:city_serve/src/page/cartPages/addressAndSlot.dart';
+import 'package:city_serve/src/page/cartPages/summary.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +151,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                     width: dimension.height7,
                   ),
                   Text(
-                    "₹200",
+                    "₹$itemPrice",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
                         fontSize: dimension.height18,
@@ -239,7 +240,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          "₹700",
+                          "₹${itemPrice}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -258,7 +259,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          "₹70",
+                          "₹${couponDis}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,

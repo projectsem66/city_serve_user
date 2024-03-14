@@ -1,5 +1,6 @@
 import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/src/page/cartPages/addressAndSlot.dart';
+import 'package:city_serve/src/page/serviceDescription.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -15,8 +16,17 @@ class Summary extends StatefulWidget {
   @override
   State<Summary> createState() => _SummaryState();
 }
+String total = "";
+int couponDis =20;
+int itemPrice =0;
 
 class _SummaryState extends State<Summary> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    itemPrice =int.parse(serviceDetailsSS?.get("servicePrice")) ;
+  }
 
 
   bool isChecked = false;
@@ -125,7 +135,7 @@ class _SummaryState extends State<Summary> {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "₹700",
+                            "₹${itemPrice}",
                             style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: dimension.height18,
@@ -144,7 +154,7 @@ class _SummaryState extends State<Summary> {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "₹70",
+                            "₹${couponDis}",
                             style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: dimension.height18,
@@ -164,7 +174,7 @@ class _SummaryState extends State<Summary> {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "₹770",
+                           "₹${(itemPrice+couponDis).toString()}",
                             style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: dimension.height18,
@@ -230,7 +240,7 @@ class _SummaryState extends State<Summary> {
                 Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
-
+                    total = (itemPrice+couponDis).toString();
                     Get.to(AddressAndSlot(),transition: Transition.cupertino);
                     // showModalBottomSheet(
                     //   isDismissible: true,

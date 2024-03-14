@@ -5,7 +5,7 @@ import 'package:city_serve/src/page/account/editProfile.dart';
 import 'package:city_serve/src/page/account/privacyP.dart';
 import 'package:city_serve/src/page/account/settings.dart';
 import 'package:city_serve/utils/dimension.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
@@ -30,41 +30,58 @@ List accountList = [
   {
     "title": "Manage Address",
     "icon": Icons.location_on,
-    "page":GoogleLocation()
+    "page": GoogleLocation()
   },
-  {"title": "Terms and Conditions", "icon": Icons.feed_outlined,    "page":TandC()
+  {
+    "title": "Terms and Conditions",
+    "icon": Icons.feed_outlined,
+    "page": TandC()
   },
-  {"title": "Privacy Policy", "icon": Icons.privacy_tip_outlined, "page":PrivacyP()},
-  {"title": "About CS", "icon": Icons.auto_fix_high_outlined, "page":AboutCS()},
-  {"title": "Settings", "icon": Icons.settings_suggest_sharp, "page":Settings()},
+  {
+    "title": "Privacy Policy",
+    "icon": Icons.privacy_tip_outlined,
+    "page": PrivacyP()
+  },
+  {
+    "title": "About CS",
+    "icon": Icons.auto_fix_high_outlined,
+    "page": AboutCS()
+  },
+  {
+    "title": "Settings",
+    "icon": Icons.settings_suggest_sharp,
+    "page": Settingss()
+  },
 ];
-// DocumentSnapshot? userData;
+DocumentSnapshot? userData;
 
 class _AccountState extends State<Account> {
-  // Future<void> fetchServiceData() async {
-  //   try {
-  //     DocumentSnapshot snapshot = await getDocument2();
-  //     setState(() {
-  //       userData = snapshot;
-  //     });
-  //   } catch (e) {
-  //     print('Error retrieving document: $e');
-  //     // Handle error appropriately
-  //   }
-  // }
-  //
-  // Future<DocumentSnapshot> getDocument2() async {
-  //   DocumentReference documentReference = FirebaseFirestore.instance
-  //       .collection('providerServiceDetails')
-  //       .doc(auth.currentUser?.uid);
-  //   return documentReference.get();
-  // }
+  Future<void> fetchUserData() async {
+    try {
+      DocumentSnapshot snapshot = await getDocument2();
+      setState(() {
+        userData = snapshot;
+      });
+    } catch (e) {
+      print('Error retrieving document: $e');
+      // Handle error appropriately
+    }
+  }
+
+  Future<DocumentSnapshot> getDocument2() async {
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('userDetails')
+        .doc(auth.currentUser?.uid);
+    return documentReference.get();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
+    fetchUserData();
   }
+
   FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
@@ -94,16 +111,41 @@ class _AccountState extends State<Account> {
               height: dimension.height25,
             ),
             Center(
-              child: Bounce(
-                duration: Duration(milliseconds: 200),
-                onPressed: () {
-                  Get.to(EditProfile());
-                },
-                child: Container(
-                  height: dimension.height100,
-                  width: dimension.height100,
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: Colors.red,image: DecorationImage(image: NetworkImage(""))),
+              child: Container(
+                height: dimension.height100,
+                width: dimension.height100,
+                child: Bounce(
+                  duration: Duration(milliseconds: 200),
+                  onPressed: () {
+                    Get.to(EditProfile());
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: dimension.height100,
+                        width: dimension.height100,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: NetworkImage(userData?.get("uimage")),
+                                fit: BoxFit.cover)),
+                      ),
+                      Align(
+                          alignment:  AlignmentDirectional.bottomEnd,
+                          child: Container(
+                            height: dimension.height30,
+                            width: dimension.height30,
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.7),
+
+                                  shape: BoxShape.circle
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(3.0),
+                                child: Icon(Icons.edit,color: Colors.white,size: 20,),
+                              )))
+                    ],
+                  )
                 ),
               ),
             ),
@@ -152,7 +194,9 @@ class _AccountState extends State<Account> {
                     borderRadius: BorderRadius.circular(dimension.height7)),
               ),
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Expanded(
               child: ListView.builder(
                 itemCount: accountList.length,
@@ -162,9 +206,7 @@ class _AccountState extends State<Account> {
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
                       onPressed: () {
-                        Get.to( accountList[index]["page"]);
-
-
+                        Get.to(accountList[index]["page"]);
                       },
                       child: Container(
                         width: double.maxFinite,
