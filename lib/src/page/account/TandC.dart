@@ -1,6 +1,7 @@
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../utils/colors.dart';
 
@@ -55,15 +56,16 @@ class _TandCState extends State<TandC> {
                             Text("City Serve India Limited,\nOffice no 1003 to 1007, B wing, \nBehind Royal Palace, \nMeera Road, Andheri(East), \nMumbai - 401104.",style: GoogleFonts.poppins(
                                 fontSize: 17
                             ),),
+
                             SizedBox(height:  10,),
-//                             GestureDetector(
-//                               onTap: () {
-//                                 launchUrlString('https://.com/');
-//                               },
-//                               child: Text("E-mail id : projectsem66@gmail.com",style: GoogleFonts.poppins(
-//                                   fontSize: 17
-//                               ),),
-//                             ),
+                            GestureDetector(
+                              onTap: () {
+                                launchUrlString('https://.com/');
+                              },
+                              child: Text("E-mail id : projectsem66@gmail.com",style: GoogleFonts.poppins(
+                                  fontSize: 17
+                              ),),
+                            ),
                             SizedBox(height:  20,),
             ],
           ),

@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../firebaseService/fbRefrences.dart';
 import '../../../utils/colors.dart';
+import 'bookings.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -223,6 +224,11 @@ class _PaymentPageState extends State<PaymentPage> {
                 paymentAmount = bookServiceRef?.get("totalPrice")+0.00;
                 providerUPIid = getProviderUPIref?.get("upiId");
                 print("upi----------${providerUPIid}");
+                btnState==1?
+                FirebaseFirestore.instance
+                    .collection('bookingg')
+                    .doc(bookingId)
+                    .update({"status": "Paid"}):"";
                 btnState==1?
                 Get.off(NavigationBarr()):btnState==2?Get.to(UpiPage()):"";
               },

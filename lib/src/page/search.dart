@@ -23,7 +23,7 @@ class _SearchPageState extends State<SearchPage> {
 
   void _searchServices(String query) {
     _servicesCollection
-        .where('serviceName', isGreaterThanOrEqualTo: query)
+        .where('serviceName', isEqualTo: query)
         .get()
         .then((QuerySnapshot querySnapshot) {
       setState(() {

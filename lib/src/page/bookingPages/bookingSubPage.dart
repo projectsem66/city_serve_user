@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -51,7 +52,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
         FirebaseFirestore.instance.collection('bookingg').doc(bookingId);
     return documentReference.get();
   }
-
+double serviceRating = 0.0;
   @override
   Widget build(BuildContext context) {
     TextEditingController _reasonController = TextEditingController();
@@ -670,7 +671,110 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                         ),
                       ),
                     if (bookServiceRef?.get("status") == "Paid")
-                      Text("Service in Completed")
+                      Bounce(
+                        duration: Duration(milliseconds: 200),
+                        onPressed: () {
+                          Get.defaultDialog(
+                            // ScaffoldKey.currentState?.openEndDrawer();
+                            buttonColor: AppColors.Colorq,
+                            backgroundColor: Colors.white,
+                            cancelTextColor: AppColors.Colorq,
+                            titleStyle: GoogleFonts.poppins(
+                                fontSize: dimension.height18,
+                                color: AppColors.Colorq),
+                            titlePadding: EdgeInsets.all(10),
+                            title:
+                            "Rate now",
+
+                            contentPadding: EdgeInsets.all(20),
+                            // middleText: "Are you sure to delete",
+                            content: Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  child: RatingBar.builder(
+                                    initialRating: 0,
+                                    minRating: 1,
+                                    direction: Axis.horizontal,
+                                    allowHalfRating: true,
+                                    itemCount: 5,
+                                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                    itemBuilder: (context, _) => Icon(
+                                      Icons.star,
+                                      color: Colors.amber,
+                                    ),
+                                    onRatingUpdate: (rating) {
+                                      serviceRating=rating;
+                                      setState(() {});
+
+                                      print(serviceRating);
+                                    },
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                            textConfirm: "Submit",
+                            confirm: TextButton(
+                              onPressed: () async {
+                                // FirebaseFirestore.instance
+                                //     .collection('providerServiceDetails')
+                                //     .doc(bookServiceRef?.get("productServiceDetailsId"))
+                                //     .set({
+                                //   "serviceRating": bookServiceRef?.get("serviceRating")+1+serviceRating,
+                                //   "ratingUser":bookServiceRef?.get("ratingUser")+1
+                                // });
+                                // Get.back();
+                                Get.back();
+                                // Get.to(PaymentPage());
+                              },
+                              child: Container(
+                                height: dimension.height35,
+                                width: dimension.width85,
+                                decoration: BoxDecoration(
+                                    color: AppColors.Colorq.withOpacity(0.3),
+                                    border: Border.all(
+                                        color: AppColors.Colorq, width: 2),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Text(
+                                    "Submit",
+                                    style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: dimension.height18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: double.maxFinite,
+                          decoration: BoxDecoration(
+                              color: AppColors.Colorq,
+                              borderRadius: BorderRadius.circular(7)),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 7),
+                            child: Center(
+                              child: Text(
+                                "Rate Now",
+                                //==Pending
+                                // Completed == pay now
+                                //  Accepted == cancel booking
+                                //  Cancelled == null
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
 
                   ],
                 ),
@@ -679,6 +783,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
           : CircularProgressIndicator(),
     );
   }
+
 }
 // Center(
 // child: documentSnapshot != null
