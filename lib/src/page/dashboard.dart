@@ -381,7 +381,7 @@ class _DashboardState extends State<Dashboard> {
                             child: Bounce(
                               duration: Duration(milliseconds: 200),
                               onPressed: () {
-                                Get.to(SearchPage());
+                                Get.to(SearchScreen());
                               },
                               child: Container(
                                 height: dimension.height43,
