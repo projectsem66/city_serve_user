@@ -9,8 +9,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../utils/round_button.dart';
 import '../../utils/colors.dart';
+import '../../utils/round_button.dart';
 
 class OtpPage extends StatefulWidget {
   final String verificatioId;
@@ -22,7 +22,6 @@ class OtpPage extends StatefulWidget {
 }
 
 FirebaseAuth auth = FirebaseAuth.instance;
-String MonoAuthUid="";
 
 class _OtpPageState extends State<OtpPage> {
   bool loading = false;
@@ -166,12 +165,10 @@ class _OtpPageState extends State<OtpPage> {
                         try {
                           await auth.signInWithCredential(credential);
 
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignUp2()));
-                          print("aaaaaaaaaaaaaaa"+auth.currentUser!.uid.toString());
-                          MonoAuthUid = auth.currentUser!.uid.toString();
+                       Get.off(SignUp2());
+                          print("aaaaaaaaaaaaaaa" +
+                              auth.currentUser!.uid.toString());
+                          authUid = auth.currentUser!.uid.toString();
                         } catch (e) {}
                       },
                     ),

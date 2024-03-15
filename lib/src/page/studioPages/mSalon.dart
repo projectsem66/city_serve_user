@@ -96,12 +96,12 @@ class _MSalonState extends State<MSalon> {
           ),
           height: dimension.height100 * 3 + dimension.height41,
           child: StreamBuilder(
-            stream: refCategory
-                .doc("Salon Prime for Kids & Men")
-                .collection("subcategories")
-                .doc("Salon for Kids & Men")
-                .collection("sections")
-                .snapshots(),
+            stream:refCategory
+        .doc("Salon Prime for kids & men")
+        .collection("subcategories")
+        .doc("Salon for Kids & Men")
+        .collection("sections")
+        .snapshots(),
             builder:
                 (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
               if (streamSnapshot.hasData) {

@@ -23,30 +23,30 @@ BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 List<Map<String, dynamic>> providersList = [];
 
-Future<List<Map<String, dynamic>>> getProvidersWithUserId() async {
-  try {
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-        .collection('providerDetails')
-        .where('userId', isEqualTo: "P6kTweWzOnUTxp2O2j2ieNNtsax1")
-        .get();
-    print("object: ${querySnapshot.docs}");
-    querySnapshot.docs.forEach((doc) {
-      Map<String, dynamic> providerData = doc.data() as Map<String, dynamic>;
-      providersList.add(providerData);
-    });
-  } catch (e) {
-    print('Error getting providers: $e');
-  }
-
-  return providersList;
-}
+// Future<List<Map<String, dynamic>>> getProvidersWithUserId() async {
+//   try {
+//     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+//         .collection('providerDetails')
+//         .where('userId', isEqualTo: "P6kTweWzOnUTxp2O2j2ieNNtsax1")
+//         .get();
+//     print("object: ${querySnapshot.docs}");
+//     querySnapshot.docs.forEach((doc) {
+//       Map<String, dynamic> providerData = doc.data() as Map<String, dynamic>;
+//       providersList.add(providerData);
+//     });
+//   } catch (e) {
+//     print('Error getting providers: $e');
+//   }
+//
+//   return providersList;
+// }
 
 class _BookingsState extends State<Bookings> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getProvidersWithUserId();
+    // getProvidersWithUserId();
   }
 
   @override

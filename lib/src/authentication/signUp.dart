@@ -134,7 +134,6 @@ class _SignUpState extends State<SignUp> {
       "password": _passwordcon.text.toString()
     }).then((value) {
       log("User Uploaded");
-      Get.off(GoogleLocation());
     });
     // await _collectionReference
     //     .doc(_cname.toString())

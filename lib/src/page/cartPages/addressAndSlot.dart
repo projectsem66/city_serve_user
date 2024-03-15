@@ -19,11 +19,13 @@ class AddressAndSlot extends StatefulWidget {
 DateTime? selectedDate;
 TimeOfDay? selectedTime;
 String bookingAddress = "";
+String bookingDescription = "No description";
 
 class _AddressAndSlotState extends State<AddressAndSlot> {
   bool isChecked = false;
   int selectedValue = 1;
   TextEditingController _addressController = TextEditingController();
+  TextEditingController _descriptionController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -292,11 +294,77 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
                   ),
                 ),
                 SizedBox(
-                  height: dimension.height100 * 2.6,
+                  height: dimension.height15,
+                ),
+                Card(
+                  elevation: 5,
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      Text(
+                      "Enter Booking Description",
+                      style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height16,
+                        fontWeight: FontWeight.w500,
+                      ),),
+                        SizedBox(
+                          height: dimension.height10,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.Colorq.withOpacity(0.05),
+                              borderRadius: BorderRadius.circular(7)),
+                          child: TextFormField(
+                            controller: _descriptionController,
+                            keyboardType: TextInputType.text,
+                            cursorColor: Colors.black,
+                            maxLines: null,
+                            minLines: 1,
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.height18,
+                                fontWeight: FontWeight.w400),
+                            onChanged: (value) {
+                              setState(() {});
+                            },
+                            decoration: InputDecoration(
+                              floatingLabelBehavior:
+                              FloatingLabelBehavior.always,
+                              hintText:
+                              "Enter booking description here",
+                              hintStyle: GoogleFonts.poppins(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+                                  fontSize: dimension.height14,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                              EdgeInsets.fromLTRB(5, 10, 5, 0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                BorderSide(color: AppColors.Colorq),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: dimension.height100 *1.8,
                 ),
                 Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
+                    bookingDescription = _descriptionController.text.toString();
                     selectedValue == 1
                         ? bookingAddress = currentLocation
                         : bookingAddress = _addressController.text.toString();

@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../btm_controller.dart';
 import '../../../utils/colors.dart';
@@ -74,7 +75,27 @@ class _AccountState extends State<Account> {
         .doc(auth.currentUser?.uid);
     return documentReference.get();
   }
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
 
+// Create an instance of GoogleSignIn
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+// Implement logout function
+  Future<void> _handleSignOut() async {
+    try {
+      // Sign out from Firebase Authentication
+      await _auth.signOut();
+
+      // Sign out from Google Sign-In
+      await _googleSignIn.signOut();
+
+      // Print a message to indicate successful logout
+      print("User signed out");
+    } catch (error) {
+      // Handle error if sign out fails
+      print("Error signing out: $error");
+    }
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -83,6 +104,7 @@ class _AccountState extends State<Account> {
   }
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +150,8 @@ class _AccountState extends State<Account> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: NetworkImage(userData?.get("uimage")),
-                                fit: BoxFit.cover)),
+                                fit: BoxFit.cover)
+                        ),
                       ),
                       Align(
                           alignment:  AlignmentDirectional.bottomEnd,
@@ -249,6 +272,7 @@ class _AccountState extends State<Account> {
               child: Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
+                    _handleSignOut();
                     auth.signOut().then((value) {
                       Get.off(Login());
                     }).onError((error, stackTrace) {

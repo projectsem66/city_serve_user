@@ -17,9 +17,10 @@ class LoginWithPhoneNumber extends StatefulWidget {
   State<LoginWithPhoneNumber> createState() => _LoginWithPhoneNumberState();
 }
 String authMoNo = "";
+final phoneNumberController = TextEditingController();
+
 class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
   bool  loading = false;
-  final phoneNumberController = TextEditingController();
   final auth =FirebaseAuth.instance;
   Country selectedCountry = Country(
     phoneCode: "91",

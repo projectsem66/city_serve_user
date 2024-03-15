@@ -228,6 +228,11 @@ class _GoogleLocationState extends State<GoogleLocation> {
                           borderRadius: BorderRadius.circular(5.0),
                         ),
                       ),
+
+                      onChanged: (value) {
+                        currentLocation = _addressController.text.toString();
+
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Enter Password';
@@ -244,12 +249,15 @@ class _GoogleLocationState extends State<GoogleLocation> {
                     onPressed: () {
                       print("tapped");
                       // _initializeLocation();
-                      currentLocation = _addressController.text.toString();
-                      print("${_currentAddress}");
-                      Get.offAll(
-                        () => NavigationBarr(),
-                        // arguments: _currentAddress,
-                      );
+                      if (currentLocation == "") {
+                        Get.snackbar("Enter required field", "Enter address",
+                            colorText: Colors.white);
+                      } else {
+                        print("${_currentAddress}");
+                        Get.offAll(
+                          () => NavigationBarr(),
+                        );
+                      }
                     },
                     child: Container(
                       height: dimension.height50,

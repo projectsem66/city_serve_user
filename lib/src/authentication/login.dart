@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:city_serve/src/authentication/login_eith_phone_number.dart';
 import 'package:city_serve/src/authentication/signUp.dart';
+import 'package:city_serve/src/authentication/signUp2.dart';
 import 'package:city_serve/src/location/googleLocation.dart';
 import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
@@ -11,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../utils/util.dart';
 import 'Forgotpassword.dart';
@@ -21,6 +23,8 @@ class Login extends StatefulWidget {
   @override
   State<Login> createState() => _LoginState();
 }
+String crrUserEmail = "";
+// final emailController = TextEditingController();
 
 class _LoginState extends State<Login> {
   Country selectedCountry = Country(
@@ -109,6 +113,30 @@ class _LoginState extends State<Login> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<User?> _handleSignIn() async {
+    try {
+      GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      if (googleSignInAccount != null) {
+        GoogleSignInAuthentication googleAuth =
+        await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+        final User? user = authResult.user;
+        crrUserEmail = user!.email.toString();
+        return user;
+
+      }
+    } catch (error) {
+      print(error);
+    }
+    return null;
   }
 
   @override
@@ -411,38 +439,54 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: dimension.height40,
                   ),
-                  Container(
-                    height: dimension.height50,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                        color: AppColors.Colorq.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: dimension.height80,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.black12),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Image.asset("assets/logo/googleLogo.png",
-                                  height: dimension.height50),
+                  Bounce(
+                    duration: Duration(milliseconds: 200),
+                    onPressed: ()
+                    async {
+                      User? user = await _handleSignIn();
+                      if (user != null) {
+                        authUid = user.uid;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUp2(),
+                          ),
+                        );
+                      }
+                    },
+                    child: Container(
+                      height: dimension.height50,
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                          color: AppColors.Colorq.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(7)),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: dimension.height80,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle, color: Colors.black12),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Image.asset("assets/logo/googleLogo.png",
+                                    height: dimension.height50),
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: dimension.width28,
-                        ),
-                        Text(
-                          "Sign In With Google",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w300),
-                        )
-                      ],
+                          SizedBox(
+                            width: dimension.width28,
+                          ),
+                          Text(
+                            "Sign In With Google",
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w300),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -451,138 +495,7 @@ class _LoginState extends State<Login> {
                   Bounce(
                     duration: Duration(milliseconds: 200),
                     onPressed: () {
-                      // Get.bottomSheet(
-                      //   isDismissible: true,
-                      //   Container(
-                      //     height: 250,
-                      //     decoration: BoxDecoration(
-                      //         color: Colors.white,
-                      //         borderRadius: BorderRadius.only(
-                      //             topLeft: Radius.circular(10),
-                      //             topRight: Radius.circular(10))),
-                      //     child: Column(
-                      //       children: [
-                      //         SizedBox(height: dimension.height20,),
-                      //         Text(
-                      //           "Enter your mobile number to proceed",
-                      //           style: GoogleFonts.ubuntu(
-                      //               color: AppColors.Colorq,
-                      //               fontSize: dimension.height16,
-                      //               fontWeight: FontWeight.w600),
-                      //         ),
-                      //         SizedBox(
-                      //           height: 25,
-                      //         ),
-                      //         Container(
-                      //           margin: EdgeInsets.fromLTRB(20, 5, 20, 10),
-                      //           child: TextFormField(
-                      //             keyboardType: TextInputType.number,
-                      //             cursorColor: AppColors.Colorq,
-                      //             controller: phoneController,
-                      //             style:  TextStyle(
-                      //               fontSize: 18,
-                      //               fontWeight: FontWeight.bold,
-                      //               color: AppColors.Colorq,
-                      //             ),
-                      //             onChanged: (value) {
-                      //               setState(() {
-                      //                 phoneController.text = value;
-                      //               });
-                      //             },
-                      //             decoration: InputDecoration(
-                      //               // fillColor: const Color(0xff2C474A),
-                      //               // filled: true,
-                      //               hintText: "Mobile number",
-                      //
-                      //               hintStyle: TextStyle(
-                      //                 fontWeight: FontWeight.w500,
-                      //                 fontSize: 16,
-                      //                 color: AppColors.Colorq.withOpacity(0.9),
-                      //               ),
-                      //               floatingLabelBehavior: FloatingLabelBehavior.never,
-                      //               contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      //               focusedBorder: OutlineInputBorder(
-                      //                   borderRadius: BorderRadius.circular(100.0),
-                      //                   borderSide:
-                      //                   BorderSide(color: AppColors.Colorq)),
-                      //               enabledBorder: OutlineInputBorder(
-                      //                   borderRadius: BorderRadius.circular(dimension.height7),
-                      //                   borderSide: BorderSide(color: AppColors.Colorq)),
-                      //               // errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-                      //               // focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(100.0), borderSide: BorderSide(color: Colors.red, width: 2.0)),
-                      //               prefixIcon: Container(
-                      //                 padding: const EdgeInsets.all(8.0),
-                      //                 child: InkWell(
-                      //                   onTap: () {
-                      //                     showCountryPicker(
-                      //                         context: context,
-                      //                         countryListTheme: const CountryListThemeData(
-                      //                           bottomSheetHeight: 550,
-                      //                         ),
-                      //                         onSelect: (value) {
-                      //                           setState(() {
-                      //                             selectedCountry = value;
-                      //                           });
-                      //                         });
-                      //                   },
-                      //                   child: Container(
-                      //                     padding: const EdgeInsets.all(8.0),
-                      //                     child: Text(
-                      //                       "${selectedCountry.flagEmoji} + ${selectedCountry.phoneCode}",
-                      //                       style: const TextStyle(
-                      //                         fontSize: 18,
-                      //                         color: AppColors.Colorq,
-                      //                         fontWeight: FontWeight.bold,
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //               suffixIcon: phoneController.text.length > 9
-                      //                   ? Container(
-                      //                 height: 25,
-                      //                 width: 25,
-                      //                 margin: const EdgeInsets.all(10.0),
-                      //                 decoration: const BoxDecoration(
-                      //                   shape: BoxShape.circle,
-                      //                   color: Colors.green,
-                      //                 ),
-                      //                 child: const Icon(
-                      //                   Icons.done,
-                      //                   color: Colors.white,
-                      //                   size: 20,
-                      //                 ),
-                      //               )
-                      //                   : null,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           height: 25,
-                      //         ),
-                      //         Bounce(
-                      //           duration: Duration(milliseconds: 300),
-                      //           onPressed: _userLogin,
-                      //           child: Container(
-                      //             height: 50,
-                      //             width: 200,
-                      //             decoration: BoxDecoration(
-                      //                 color: AppColors.Colorq,
-                      //                 borderRadius: BorderRadius.circular(26)),
-                      //             child: Center(
-                      //                 child: Text(
-                      //                   "Continue",
-                      //                   style: GoogleFonts.ubuntu(
-                      //                       color: Colors.white,
-                      //                       fontSize: dimension.height16,
-                      //                       fontWeight: FontWeight.w500),
-                      //                 )),
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // );
+
                       Get.to(LoginWithPhoneNumber());
                     },
                     child: Container(

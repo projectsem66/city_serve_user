@@ -1,19 +1,21 @@
-
-
-
 import 'package:city_serve/utils/dimension.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:upi_india/upi_india.dart';
 
 import '../../../utils/colors.dart';
-
+import 'bookings.dart';
 
 class UpiPage extends StatefulWidget {
   @override
   _UpiPageState createState() => _UpiPageState();
 }
+
+String providerUPIid = "";
+double paymentAmount = 0;
 
 class _UpiPageState extends State<UpiPage> {
   Future<UpiResponse>? _transaction;
@@ -45,11 +47,11 @@ class _UpiPageState extends State<UpiPage> {
   Future<UpiResponse> initiateTransaction(UpiApp app) async {
     return _upiIndia.startTransaction(
       app: app,
-      receiverUpiId: "up2181959-1@oksbi",
-      receiverName: 'Umang Patel',
+      receiverUpiId: providerUPIid,
+      receiverName: 'City Serve Provider',
       transactionRefId: 'TestingUpiIndiaPlugin',
-      transactionNote: 'Not actual. Just an example.',
-      amount: 1.00,
+      transactionNote: 'Payment for CityServe Service',
+      amount: paymentAmount,
     );
   }
 
@@ -70,39 +72,37 @@ class _UpiPageState extends State<UpiPage> {
           physics: BouncingScrollPhysics(),
           child: Wrap(
             children: apps!.map<Widget>((UpiApp app) {
-              return GestureDetector(
-                onTap: () {
+              return Bounce(
+                duration: Duration(milliseconds: 200),
+                onPressed: () {
                   _transaction = initiateTransaction(app);
                   setState(() {});
                 },
-                child: Container(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 100,
-                        width: 100,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.memory(
-                              app.icon,
-                              height: 60,
-                              width: 60,
-                            ),
-                          ],
-                        ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.memory(
+                            app.icon,
+                            height: 60,
+                            width: 60,
+                          ),
+                        ],
                       ),
-                      Text(
-                        app.name,
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height20,
-                            fontWeight: FontWeight.w500),
-                      ),
-
-                    ],
-                  ),
+                    ),
+                    Text(
+                      app.name,
+                      style: GoogleFonts.poppins(
+                          color: AppColors.Colorq,
+                          fontSize: dimension.height20,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
               );
             }).toList(),
@@ -130,6 +130,10 @@ class _UpiPageState extends State<UpiPage> {
     switch (status) {
       case UpiPaymentStatus.SUCCESS:
         print('Transaction Successful');
+        FirebaseFirestore.instance
+            .collection('bookingg')
+            .doc(bookingId)
+            .update({"status": "Paid"});
         break;
       case UpiPaymentStatus.SUBMITTED:
         print('Transaction Submitted');
@@ -151,9 +155,9 @@ class _UpiPageState extends State<UpiPage> {
           Text("$title: ", style: header),
           Flexible(
               child: Text(
-                body,
-                style: value,
-              )),
+            body,
+            style: value,
+          )),
         ],
       ),
     );
@@ -182,7 +186,8 @@ class _UpiPageState extends State<UpiPage> {
           Expanded(
             child: FutureBuilder(
               future: _transaction,
-              builder: (BuildContext context, AsyncSnapshot<UpiResponse> snapshot) {
+              builder:
+                  (BuildContext context, AsyncSnapshot<UpiResponse> snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   if (snapshot.hasError) {
                     return Center(

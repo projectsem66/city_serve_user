@@ -18,9 +18,9 @@ class BookingSubPage extends StatefulWidget {
 }
 
 
+DocumentSnapshot? bookServiceRef;
 
 class _ServiceDescriptionState extends State<BookingSubPage> {
-  DocumentSnapshot? documentSnapshot;
 
   @override
   void initState() {
@@ -39,11 +39,10 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
     try {
       DocumentSnapshot snapshot = await getDocument();
       setState(() {
-        documentSnapshot = snapshot;
+        bookServiceRef = snapshot;
       });
     } catch (e) {
       print('Error retrieving document: $e');
-      // Handle error appropriately
     }
   }
 
@@ -69,7 +68,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
         centerTitle: false,
         title: Text("Bookings"),
       ),
-      body: documentSnapshot != null
+      body: bookServiceRef != null
           ? Padding(
               padding: const EdgeInsets.all(8.0),
               child: SingleChildScrollView(
@@ -88,7 +87,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                documentSnapshot!.get("status").toString(),
+                                bookServiceRef!.get("status").toString(),
                                 // Completed == null
                                 //  Accepted == null
                                 //  Cancelled == Reason of booking cancel
@@ -133,7 +132,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    documentSnapshot?.get(" serviceName"),
+                                    bookServiceRef?.get(" serviceName"),
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height18,
@@ -153,7 +152,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       Text(
-                                        documentSnapshot?.get("date"),
+                                        bookServiceRef?.get("date"),
                                         style: GoogleFonts.poppins(
                                             color: AppColors.Colorq,
                                             fontSize: dimension.height16,
@@ -172,7 +171,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       Text(
-                                        documentSnapshot?.get("time"),
+                                        bookServiceRef?.get("time"),
                                         style: GoogleFonts.poppins(
                                             color: AppColors.Colorq,
                                             fontSize: dimension.height16,
@@ -187,7 +186,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 width: 100,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(documentSnapshot
+                                      image: NetworkImage(bookServiceRef
                                           ?.get(" serviceImg"))),
                                   borderRadius: BorderRadius.circular(7),
                                 ),
@@ -206,7 +205,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            "xyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+                            bookServiceRef?.get("bookingDescription"),
                             style: GoogleFonts.poppins(
                                 color: AppColors.Colorq.withOpacity(0.8),
                                 fontSize: dimension.height16,
@@ -254,7 +253,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              documentSnapshot
+                                              bookServiceRef
                                                   ?.get(" providerName"),
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
@@ -262,7 +261,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                                   fontWeight: FontWeight.w500),
                                             ),
                                             Text(
-                                              documentSnapshot
+                                              bookServiceRef
                                                   ?.get("providerMoNo"),
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
@@ -274,7 +273,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                       ),
                                       Bounce(
                                         onPressed: () {
-                                          callProviderNumber( documentSnapshot
+                                          callProviderNumber( bookServiceRef
                                               ?.get("providerMoNo"));
                                         },
                                         duration: Duration(milliseconds: 200),
@@ -458,8 +457,8 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                     //     ),
                     //   ),
                     // ),
-                    if (documentSnapshot?.get("status") == "Pending" ||
-                        documentSnapshot?.get("status") == "Accepted")
+                    if (bookServiceRef?.get("status") == "Pending" ||
+                        bookServiceRef?.get("status") == "Accepted")
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
@@ -590,11 +589,11 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           ),
                         ),
                       ),
-                    if (documentSnapshot?.get("status") == "Cancelled")
+                    if (bookServiceRef?.get("status") == "Cancelled")
                       SizedBox(),
-                    if (documentSnapshot?.get("status") == "In Progress")
+                    if (bookServiceRef?.get("status") == "In Progress")
                       Text("Service in progress"),
-                    if (documentSnapshot?.get("status") == "is Done?")
+                    if (bookServiceRef?.get("status") == "is Done?")
                       Row(
                         children: [
                           Text("Service is Done?"),
@@ -605,6 +604,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                   .collection('bookingg')
                                   .doc(bookingId)
                                   .update({"status": "Completed"});
+                              fetchBookingData();
                               setState(() {});
                             },
                             child: Container(
@@ -634,12 +634,15 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           ),
                         ],
                       ),
-                    if (documentSnapshot?.get("status") == "Completed")
+                    if (bookServiceRef?.get("status") == "Completed")
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
 
+
                           Get.to(PaymentPage());
+
+
                         },
                         child: Container(
                           width: double.maxFinite,
@@ -666,7 +669,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           ),
                         ),
                       ),
-                    if (documentSnapshot?.get("status") == "Paid")
+                    if (bookServiceRef?.get("status") == "Paid")
                       Text("Service in Completed")
 
                   ],

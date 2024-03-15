@@ -20,6 +20,7 @@ class ServiceDescription extends StatefulWidget {
   @override
   State<ServiceDescription> createState() => _ServiceDescriptionState();
 }
+
 DocumentSnapshot? serviceDetailsSS;
 DocumentSnapshot? documentSnapshot1;
 String bookServiceId = "";
@@ -30,13 +31,12 @@ String serviceDuration = "";
 String providerName = "";
 String servicePrice = "";
 String providerMoNo = "";
-String currentUid="";
+String currentUid = "";
+
 class _ServiceDescriptionState extends State<ServiceDescription> {
   @override
-
   User? _user;
   List<String> _favoriteItems = [];
-
 
   void _getUser() {
     _user = auth.currentUser;
@@ -46,10 +46,10 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
   }
 
   Future<void> _getFavoriteItems() async {
-    final DocumentSnapshot userDoc =
-    await FirebaseFirestore.instance
+    final DocumentSnapshot userDoc = await FirebaseFirestore.instance
         .collection('userDetails')
-        .doc(auth.currentUser?.uid).get();
+        .doc(auth.currentUser?.uid)
+        .get();
     setState(() {
       _favoriteItems = List<String>.from(
           (userDoc.data() as Map<String, dynamic>)['favoriteItems']);
@@ -73,14 +73,12 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
 
   // late final String phoneNumber;
 
-
   callProviderNumber(String phoneNumber) async {
     bool? res = await FlutterPhoneDirectCaller.callNumber(phoneNumber);
     if (!res!) {
       // Handle error
     }
   }
-
 
   @override
   void initState() {
@@ -130,16 +128,15 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
         refProvider.doc(serviceDetailsSS!.get("providerId"));
     return documentReference.get();
   }
+
   bool like = false;
   final CollectionReference refFav = FirebaseFirestore.instance
       .collection('userDetails')
       .doc(auth.currentUser?.uid)
       .collection("favourites");
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: serviceDetailsSS != null
           ? Stack(
@@ -209,9 +206,16 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                             shape: BoxShape.circle,
                                           ),
                                           child: Center(
-
-                                            child:  _favoriteItems.contains(widget.serviceId)?
-                                            Icon(Icons.favorite,color: AppColors.red,):Icon(Icons.favorite_border,color: AppColors.red,),
+                                            child: _favoriteItems
+                                                    .contains(widget.serviceId)
+                                                ? Icon(
+                                                    Icons.favorite,
+                                                    color: AppColors.red,
+                                                  )
+                                                : Icon(
+                                                    Icons.favorite_border,
+                                                    color: AppColors.red,
+                                                  ),
                                           ),
                                         ),
                                       ),
@@ -359,7 +363,6 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                               height: dimension.height15,
                             ),
                             Text(
-
                               "About Provider",
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.poppins(
@@ -393,7 +396,11 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                             height: dimension.height70,
                                             width: dimension.height70,
                                             decoration: BoxDecoration(
-                                              image: DecorationImage(image: NetworkImage(serviceDetailsSS!.get("providerImage"))),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(
+                                                        serviceDetailsSS!.get(
+                                                            "providerImage")),
+                                                    fit: BoxFit.cover),
                                                 shape: BoxShape.circle,
                                                 color: AppColors.Colorq),
                                           ),
@@ -407,7 +414,8 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  serviceDetailsSS!.get("providerName") ??
+                                                  serviceDetailsSS!.get(
+                                                          "providerName") ??
                                                       "hello",
                                                   // myObject?.property ?? 'Default Value'
                                                   style: GoogleFonts.poppins(
@@ -416,8 +424,10 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                                           dimension.height20,
                                                       fontWeight:
                                                           FontWeight.w500),
-                                                ),Text(
-                                                  serviceDetailsSS!.get("providerPhoneNumber") ??
+                                                ),
+                                                Text(
+                                                  serviceDetailsSS!.get(
+                                                          "providerPhoneNumber") ??
                                                       "hello",
                                                   // myObject?.property ?? 'Default Value'
                                                   style: GoogleFonts.poppins(
@@ -433,15 +443,18 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                           Bounce(
                                             onPressed: () {
                                               // phoneNumber = documentSnapshot!.get("providerPhoneNumber");
-                                              callProviderNumber(serviceDetailsSS!.get("providerPhoneNumber"));
+                                              callProviderNumber(
+                                                  serviceDetailsSS!.get(
+                                                      "providerPhoneNumber"));
                                             },
-                                            duration: Duration(milliseconds: 200),
+                                            duration:
+                                                Duration(milliseconds: 200),
                                             child: Container(
                                               height: dimension.height40,
                                               width: dimension.height40,
                                               decoration: BoxDecoration(
-                                                  color: AppColors.Colorq.withOpacity(
-                                                      0.3),
+                                                  color: AppColors.Colorq
+                                                      .withOpacity(0.3),
                                                   shape: BoxShape.circle),
                                               child: Icon(Icons.call),
                                             ),
@@ -468,7 +481,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                     padding: const EdgeInsets.all(8.0),
                     child: Bounce(
                       duration: Duration(milliseconds: 200),
-                      onPressed: () async{
+                      onPressed: () async {
                         getProviderDetails();
 
                         serviceImg = serviceDetailsSS!.get("images");
@@ -476,10 +489,11 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                         servicePrice = serviceDetailsSS!.get("servicePrice");
                         serviceDuration =
                             serviceDetailsSS!.get("serviceDuration");
-                         providerName = documentSnapshot1?.get("firstName");
+                        providerName = serviceDetailsSS?.get("providerName");
                         ServiceProviderId = serviceDetailsSS!.get("providerId");
-                        providerMoNo = serviceDetailsSS!.get("providerPhoneNumber");
-                         Get.to(Summary(),
+                        providerMoNo =
+                            serviceDetailsSS!.get("providerPhoneNumber");
+                        Get.to(Summary(),
                             transition: Transition.circularReveal);
                       },
                       child: Container(

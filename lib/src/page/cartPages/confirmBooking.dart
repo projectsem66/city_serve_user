@@ -29,7 +29,7 @@ int _currentIndex1 = 0;
 int _currentIndex = 0;
 
 class _ConfirmBookingState extends State<ConfirmBooking> {
-  addcategory(String bookServiceId) async {
+  addBooking(String bookServiceId) async {
     if (bookServiceId == null) {
       return showDialog(
         context: context,
@@ -65,7 +65,9 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       " serviceDuration": serviceDuration,
       " providerName": providerName,
       " servicePrice": servicePrice,
-      "providerMoNo":providerMoNo
+      "providerMoNo": providerMoNo,
+      "totalPrice":itemPrice - couponDis,
+      "bookingDescription":bookingDescription,
     }).then((value) {
       log("User Uploaded");
     });
@@ -279,7 +281,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          "₹770",
+                          "₹${(itemPrice - couponDis).toString()}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -406,7 +408,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                     duration: Duration(milliseconds: 200),
                     onPressed: () {
                       // Get.to(AddressAndSlot(), transition: Transition.cupertino);
-                      addcategory(bookServiceId);
+                      addBooking(bookServiceId);
                       Get.to(NavigationBarr());
                       setState(() {
                         _currentIndex1 = 1;

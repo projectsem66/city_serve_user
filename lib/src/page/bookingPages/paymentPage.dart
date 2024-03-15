@@ -1,11 +1,14 @@
 import 'package:city_serve/navigationBar.dart';
-import 'package:city_serve/src/page/bookingPages/gpayPayment.dart';
+import 'package:city_serve/src/page/bookingPages/bookingSubPage.dart';
+import 'package:city_serve/src/page/bookingPages/UPIpage.dart';
 import 'package:city_serve/utils/dimension.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../firebaseService/fbRefrences.dart';
 import '../../../utils/colors.dart';
 
 class PaymentPage extends StatefulWidget {
@@ -17,8 +20,35 @@ class PaymentPage extends StatefulWidget {
 
 int selectedValue = 1;
 int? btnState = 1;
+DocumentSnapshot? getProviderUPIref;
+
 
 class _PaymentPageState extends State<PaymentPage> {
+
+  // for get provider details using provider id
+  Future<void> getProviderDetails() async {
+    try {
+      DocumentSnapshot snapshot = await getProvider();
+      setState(() {
+        getProviderUPIref = snapshot;
+      });
+    } catch (e) {
+      print('Error retrieving document: $e');
+      // Handle error appropriately
+    }
+  }
+
+  Future<DocumentSnapshot> getProvider() async {
+    DocumentReference documentReference =
+    refProvider.doc(bookServiceRef?.get("providerId"));
+    return documentReference.get();
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getProviderDetails();
+  }
   @override
   Widget build(BuildContext context) {
     String selectedPaymentMode = '';
@@ -112,7 +142,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "₹45",
+                         "₹${bookServiceRef?.get("totalPrice")}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -190,6 +220,9 @@ class _PaymentPageState extends State<PaymentPage> {
             Bounce(
               duration: Duration(milliseconds: 300),
               onPressed: () {
+                paymentAmount = bookServiceRef?.get("totalPrice")+0.00;
+                providerUPIid = getProviderUPIref?.get("upiId");
+                print("upi----------${providerUPIid}");
                 btnState==1?
                 Get.off(NavigationBarr()):btnState==2?Get.to(UpiPage()):"";
               },

@@ -37,6 +37,34 @@ class _TandCState extends State<TandC> {
                     fontSize: dimension.height16,
                     fontWeight: FontWeight.w400),
               ),
+              SizedBox(height:  15,),
+                            Text("CONTACT US :",style: GoogleFonts.poppins(
+                                fontSize: 19,
+                                fontWeight: FontWeight.w500
+                            ),),
+                            SizedBox(height:  10,),
+                            Text("Please feel free to contact us with any comments, questions ot suggestions. You might have regarding the Information described in the applications. ",style: GoogleFonts.poppins(
+                                fontSize: 17
+                            ),),
+                            SizedBox(height:  15,),
+                            Text("You may contact us at :",style: GoogleFonts.poppins(
+                                fontSize: 19,
+                                fontWeight: FontWeight.w500
+                            ),),
+                            SizedBox(height:  10,),
+                            Text("City Serve India Limited,\nOffice no 1003 to 1007, B wing, \nBehind Royal Palace, \nMeera Road, Andheri(East), \nMumbai - 401104.",style: GoogleFonts.poppins(
+                                fontSize: 17
+                            ),),
+                            SizedBox(height:  10,),
+//                             GestureDetector(
+//                               onTap: () {
+//                                 launchUrlString('https://.com/');
+//                               },
+//                               child: Text("E-mail id : projectsem66@gmail.com",style: GoogleFonts.poppins(
+//                                   fontSize: 17
+//                               ),),
+//                             ),
+                            SizedBox(height:  20,),
             ],
           ),
         ),

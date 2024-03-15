@@ -174,7 +174,7 @@ class _SummaryState extends State<Summary> {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                           "₹${(itemPrice+couponDis).toString()}",
+                           "₹${(itemPrice-couponDis).toString()}",
                             style: GoogleFonts.poppins(
                                 color: AppColors.Colorq,
                                 fontSize: dimension.height18,

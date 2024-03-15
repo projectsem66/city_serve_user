@@ -13,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../utils/colors.dart';
+import 'login.dart';
 import 'login_eith_phone_number.dart';
 import 'otp_page.dart';
 
@@ -22,6 +23,7 @@ class SignUp2 extends StatefulWidget {
   @override
   State<SignUp2> createState() => _SignUp2State();
 }
+String authUid = "";
 
 final _fnamecon = TextEditingController();
 final _lnamecon = TextEditingController();
@@ -33,37 +35,7 @@ class _SignUp2State extends State<SignUp2> {
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
 
-  // void signup() {
-  //   setState(() {
-  //     loading = true;
-  //   });
-  //   _auth
-  //       .createUserWithEmailAndPassword(
-  //           email: _emailcon.text.toString(),
-  //           password: _passwordcon.text.toString())
-  //       .then((value) {
-  //     Navigator.push(
-  //         context, MaterialPageRoute(builder: (context) => GoogleLocation()));
-  //     setState(() {
-  //       loading = false;
-  //     });
-  //   }).onError((error, stackTrace) {
-  //     Utils().tostmessage(error.toString());
-  //     setState(() {
-  //       loading = false;
-  //     });
-  //   });
-  // }
-
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   super.dispose();
-  //   _emailcon.dispose();
-  //   _passwordcon.dispose();
-  // }
 
   showAlertBox() {
     return showDialog(
@@ -126,12 +98,12 @@ class _SignUp2State extends State<SignUp2> {
         .putFile(pickedImage!, SettableMetadata(contentType: 'image/jpeg'));
     TaskSnapshot taskSnapshot = await uploadtask;
     String url = await taskSnapshot.ref.getDownloadURL();
-    FirebaseFirestore.instance.collection("userDetails").doc(MonoAuthUid).set({
+    FirebaseFirestore.instance.collection("userDetails").doc(authUid).set({
       "fname": _fnamecon.text.toString(),
       "uimage": url,
       "lname": _lnamecon.text.toString(),
-      "emailid": _emailcon.text.toString(),
-      "mono": authMoNo,
+      "emailid":crrUserEmail==""? _emailcon.text.toString():crrUserEmail,
+      "mono":authMoNo==""? phoneNumberController.text.toString():authMoNo,
     }).then((value) {
       log("User Uploaded");
       Get.to(GoogleLocation());
@@ -310,16 +282,73 @@ class _SignUp2State extends State<SignUp2> {
                             },
                           ),
                         ),
+
+                        if (crrUserEmail =="")
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: dimension.height12,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.05),
+                                  borderRadius: BorderRadius.circular(7)),
+                              child: TextFormField(
+                                controller: _emailcon,
+                                keyboardType: TextInputType.emailAddress,
+                                cursorColor: Colors.black,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                                decoration: InputDecoration(
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                  labelText: "Email Address",
+                                  labelStyle: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w300),
+                                  contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: AppColors.Colorq),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ),
+                                validator: (value) {
+                                  bool emailValid = RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(value!);
+                                  if (value.isEmpty) {
+                                    return 'Enter Email Address';
+                                  } else if (!emailValid) {
+                                    return 'Enter Valid Email';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                         SizedBox(
                           height: dimension.height12,
                         ),
+                        if (authMoNo=="")
                         Container(
                           decoration: BoxDecoration(
                               color: AppColors.Colorq.withOpacity(0.05),
                               borderRadius: BorderRadius.circular(7)),
                           child: TextFormField(
-                            controller: _emailcon,
-                            keyboardType: TextInputType.emailAddress,
+                            controller: phoneNumberController,
+                            keyboardType: TextInputType.number,
                             cursorColor: Colors.black,
                             style: TextStyle(
                               fontSize: 18,
@@ -331,7 +360,7 @@ class _SignUp2State extends State<SignUp2> {
                             decoration: InputDecoration(
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
-                              labelText: "Email Address",
+                              labelText: "Mobile Number",
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 17,
@@ -348,22 +377,13 @@ class _SignUp2State extends State<SignUp2> {
                               ),
                             ),
                             validator: (value) {
-                              bool emailValid = RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                  .hasMatch(value!);
-                              if (value.isEmpty) {
-                                return 'Enter Email Address';
-                              } else if (!emailValid) {
-                                return 'Enter Valid Email';
+                              if (value!.isEmpty) {
+                                return 'Enter Mobile Number';
                               }
                               return null;
                             },
                           ),
                         ),
-                        SizedBox(
-                          height: dimension.height12,
-                        ),
-
                       ],
                     )),
                 SizedBox(
