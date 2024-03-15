@@ -18,23 +18,23 @@ class BookingSubPage extends StatefulWidget {
   State<BookingSubPage> createState() => _ServiceDescriptionState();
 }
 
-
 DocumentSnapshot? bookServiceRef;
 
 class _ServiceDescriptionState extends State<BookingSubPage> {
-
   @override
   void initState() {
     super.initState();
 
     fetchBookingData();
   }
+
   callProviderNumber(String phoneNumber) async {
     bool? res = await FlutterPhoneDirectCaller.callNumber(phoneNumber);
     if (!res!) {
       // Handle error
     }
   }
+
   // for get booking details
   Future<void> fetchBookingData() async {
     try {
@@ -52,7 +52,9 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
         FirebaseFirestore.instance.collection('bookingg').doc(bookingId);
     return documentReference.get();
   }
-double serviceRating = 0.0;
+
+  double serviceRating = 0.0;
+
   @override
   Widget build(BuildContext context) {
     TextEditingController _reasonController = TextEditingController();
@@ -187,8 +189,8 @@ double serviceRating = 0.0;
                                 width: 100,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(bookServiceRef
-                                          ?.get(" serviceImg"))),
+                                      image: NetworkImage(
+                                          bookServiceRef?.get(" serviceImg"))),
                                   borderRadius: BorderRadius.circular(7),
                                 ),
                               ),
@@ -274,7 +276,7 @@ double serviceRating = 0.0;
                                       ),
                                       Bounce(
                                         onPressed: () {
-                                          callProviderNumber( bookServiceRef
+                                          callProviderNumber(bookServiceRef
                                               ?.get("providerMoNo"));
                                         },
                                         duration: Duration(milliseconds: 200),
@@ -282,8 +284,9 @@ double serviceRating = 0.0;
                                           height: dimension.height40,
                                           width: dimension.height40,
                                           decoration: BoxDecoration(
-                                              color: AppColors.Colorq.withOpacity(
-                                                  0.3),
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.3),
                                               shape: BoxShape.circle),
                                           child: Icon(Icons.call),
                                         ),
@@ -614,8 +617,8 @@ double serviceRating = 0.0;
                                   color: AppColors.Colorq,
                                   borderRadius: BorderRadius.circular(7)),
                               child: Padding(
-                                padding:
-                                EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 7),
                                 child: Center(
                                   child: Text(
                                     "Done",
@@ -639,11 +642,7 @@ double serviceRating = 0.0;
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
-
-
                           Get.to(PaymentPage());
-
-
                         },
                         child: Container(
                           width: double.maxFinite,
@@ -651,8 +650,8 @@ double serviceRating = 0.0;
                               color: AppColors.Colorq,
                               borderRadius: BorderRadius.circular(7)),
                           child: Padding(
-                            padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 7),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 7),
                             child: Center(
                               child: Text(
                                 "Pay Now",
@@ -670,7 +669,7 @@ double serviceRating = 0.0;
                           ),
                         ),
                       ),
-                    if (bookServiceRef?.get("status") == "Paid")
+                    if (bookServiceRef?.get("status") == "Rated")
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
@@ -683,8 +682,7 @@ double serviceRating = 0.0;
                                 fontSize: dimension.height18,
                                 color: AppColors.Colorq),
                             titlePadding: EdgeInsets.all(10),
-                            title:
-                            "Rate now",
+                            title: "Rate now",
 
                             contentPadding: EdgeInsets.all(20),
                             // middleText: "Are you sure to delete",
@@ -698,32 +696,40 @@ double serviceRating = 0.0;
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
                                     itemCount: 5,
-                                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                                    itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 4.0),
                                     itemBuilder: (context, _) => Icon(
                                       Icons.star,
                                       color: Colors.amber,
                                     ),
                                     onRatingUpdate: (rating) {
-                                      serviceRating=rating;
+                                      serviceRating = rating;
                                       setState(() {});
 
                                       print(serviceRating);
                                     },
                                   ),
                                 ),
-
                               ],
                             ),
                             textConfirm: "Submit",
                             confirm: TextButton(
                               onPressed: () async {
-                                // FirebaseFirestore.instance
-                                //     .collection('providerServiceDetails')
-                                //     .doc(bookServiceRef?.get("productServiceDetailsId"))
-                                //     .set({
-                                //   "serviceRating": bookServiceRef?.get("serviceRating")+1+serviceRating,
-                                //   "ratingUser":bookServiceRef?.get("ratingUser")+1
-                                // });
+                                FirebaseFirestore.instance
+                                    .collection('providerServiceDetails')
+                                    .doc(bookServiceRef
+                                        ?.get("productServiceDetailsId"))
+                                    .update({
+                                  "serviceRating":
+                                      FieldValue.increment(serviceRating),
+                                  "ratingUsers": FieldValue.increment(1)
+                                });
+                                FirebaseFirestore.instance
+                                    .collection('bookingg')
+                                    .doc(bookingId)
+                                    .update({"status": "Rated"});
+                                fetchBookingData();
+                                setState(() {});
                                 // Get.back();
                                 Get.back();
                                 // Get.to(PaymentPage());
@@ -774,7 +780,7 @@ double serviceRating = 0.0;
                             ),
                           ),
                         ),
-                      )
+                      ),
 
                   ],
                 ),
@@ -783,7 +789,6 @@ double serviceRating = 0.0;
           : CircularProgressIndicator(),
     );
   }
-
 }
 // Center(
 // child: documentSnapshot != null

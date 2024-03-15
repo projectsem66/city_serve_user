@@ -48,8 +48,13 @@ class _ServicesPageState extends State<ServicesPage> {
                     return ListView.builder(
                       itemCount: streamSnapshot.data!.docs.length,
                       itemBuilder: (context, index) {
+
                         final DocumentSnapshot documentSnapshot =
                             streamSnapshot.data!.docs[index];
+                        // double serviceRating = documentSnapshot.get("serviceRating");
+                        // double ratingUsers = documentSnapshot.get("ratingUsers");
+                        // double result = serviceRating / ratingUsers;
+                        // print(result);
                         return documentSnapshot["section"] == sectionName
                             ? Bounce(
                                 duration: Duration(milliseconds: 200),
@@ -83,7 +88,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Expanded(
-                                                flex:5,
+                                                flex: 5,
                                                 child: Column(
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
@@ -95,12 +100,16 @@ class _ServicesPageState extends State<ServicesPage> {
                                                       documentSnapshot
                                                           .get("serviceName"),
                                                       maxLines: 2,
-                                                      style: GoogleFonts.poppins(
-                                                          color: AppColors.Colorq,
-                                                          fontSize:
-                                                              dimension.height20,
-                                                          fontWeight:
-                                                              FontWeight.w500),
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color: AppColors
+                                                                  .Colorq,
+                                                              fontSize:
+                                                                  dimension
+                                                                      .height20,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
                                                     ),
                                                     SizedBox(
                                                       height: dimension.height5,
@@ -109,18 +118,20 @@ class _ServicesPageState extends State<ServicesPage> {
                                                       children: [
                                                         Icon(
                                                           Icons.star,
-                                                          color: AppColors.Colorq,
-                                                          size:
-                                                              dimension.height20,
+                                                          color:
+                                                              AppColors.Colorq,
+                                                          size: dimension
+                                                              .height20,
                                                         ),
                                                         SizedBox(
                                                           width: 5,
                                                         ),
                                                         Text(
-                                                          documentSnapshot.id,
-                                                          style:
-                                                              GoogleFonts.poppins(
-                                                            color: Colors.black54,
+                                                          'result',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                            color:
+                                                                Colors.black54,
                                                             fontSize: dimension
                                                                 .height17,
                                                             fontWeight:
@@ -133,20 +144,18 @@ class _ServicesPageState extends State<ServicesPage> {
                                                       height: dimension.height5,
                                                     ),
                                                     Row(
-
                                                       children: [
                                                         Text(
                                                           "₹${documentSnapshot.get("servicePrice")}",
-                                                          style:
-                                                              GoogleFonts.poppins(
-                                                                  color: AppColors
-                                                                      .Colorq,
-                                                                  fontSize:
-                                                                      dimension
-                                                                          .height18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
+                                                          style: GoogleFonts.poppins(
+                                                              color: AppColors
+                                                                  .Colorq,
+                                                              fontSize:
+                                                                  dimension
+                                                                      .height18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
                                                         ),
                                                         Padding(
                                                           padding: EdgeInsets
@@ -162,16 +171,15 @@ class _ServicesPageState extends State<ServicesPage> {
                                                         ),
                                                         Text(
                                                           "2 hrs",
-                                                          style:
-                                                              GoogleFonts.poppins(
-                                                                  color: Colors
-                                                                      .black54,
-                                                                  fontSize:
-                                                                      dimension
-                                                                          .height18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500),
+                                                          style: GoogleFonts.poppins(
+                                                              color: Colors
+                                                                  .black54,
+                                                              fontSize:
+                                                                  dimension
+                                                                      .height18,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
                                                         ),
                                                       ],
                                                     ),
@@ -179,8 +187,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                                 ),
                                               ),
                                               Expanded(
-                                                flex:2,
-
+                                                flex: 2,
                                                 child: Container(
                                                   height: 120,
                                                   width: 100,
@@ -195,16 +202,17 @@ class _ServicesPageState extends State<ServicesPage> {
                                                                     documentSnapshot
                                                                         .get(
                                                                             "images")),
-                                                                fit:
-                                                                    BoxFit.cover),
+                                                                fit: BoxFit
+                                                                    .cover),
                                                             border: Border.all(
                                                                 color: AppColors
                                                                     .Colorq,
                                                                 width: 2),
                                                             borderRadius:
-                                                                BorderRadius.circular(
-                                                                    dimension
-                                                                        .height7)),
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        dimension
+                                                                            .height7)),
                                                       ),
                                                       Align(
                                                         alignment:
