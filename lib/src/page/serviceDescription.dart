@@ -134,9 +134,12 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
       .collection('userDetails')
       .doc(auth.currentUser?.uid)
       .collection("favourites");
-
+  num serviceRating = serviceDetailsSS?.get("serviceRating");
+  num ratingUsers = serviceDetailsSS?.get("ratingUsers");
+  // double result = serviceRating / ratingUsers;
   @override
   Widget build(BuildContext context) {
+    num res = serviceRating /ratingUsers;
     return Scaffold(
       body: serviceDetailsSS != null
           ? Stack(
@@ -318,7 +321,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                               color: Colors.orange,
                                             ),
                                             Text(
-                                              "4.5",
+                                              '${res}(${(ratingUsers)})',
                                               overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,

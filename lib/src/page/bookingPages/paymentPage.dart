@@ -1,6 +1,6 @@
 import 'package:city_serve/navigationBar.dart';
-import 'package:city_serve/src/page/bookingPages/bookingSubPage.dart';
 import 'package:city_serve/src/page/bookingPages/UPIpage.dart';
+import 'package:city_serve/src/page/bookingPages/bookingSubPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +22,9 @@ class PaymentPage extends StatefulWidget {
 int selectedValue = 1;
 int? btnState = 1;
 DocumentSnapshot? getProviderUPIref;
-
+int tip = 0;
 
 class _PaymentPageState extends State<PaymentPage> {
-
   // for get provider details using provider id
   Future<void> getProviderDetails() async {
     try {
@@ -41,15 +40,17 @@ class _PaymentPageState extends State<PaymentPage> {
 
   Future<DocumentSnapshot> getProvider() async {
     DocumentReference documentReference =
-    refProvider.doc(bookServiceRef?.get("providerId"));
+        refProvider.doc(bookServiceRef?.get("providerId"));
     return documentReference.get();
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     getProviderDetails();
   }
+
   @override
   Widget build(BuildContext context) {
     String selectedPaymentMode = '';
@@ -123,7 +124,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "₹45",
+                          "₹${tip}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -143,7 +144,7 @@ class _PaymentPageState extends State<PaymentPage> {
                               fontWeight: FontWeight.w500),
                         ),
                         Text(
-                         "₹${bookServiceRef?.get("totalPrice")}",
+                          "₹${bookServiceRef?.get("totalPrice")}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -218,19 +219,162 @@ class _PaymentPageState extends State<PaymentPage> {
               ],
             ),
             Spacer(),
+            Text(
+              "Add tip:",
+              style: GoogleFonts.poppins(
+                  color: AppColors.Colorq,
+                  fontSize: dimension.height16,
+                  fontWeight: FontWeight.w500),
+            ),
+            Container(
+              height: 50,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Bounce(
+                        onPressed: () {
+                          tip = 10;
+                          setState(() {
+
+                          });
+                        },
+                        duration: Duration(milliseconds: 200),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.Colorq,width: 2),
+                              borderRadius:
+                                  BorderRadius.circular(dimension.height7)),
+                          child: Center(
+                            child: Text(
+                              "₹10",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Bounce(
+                        onPressed: () {
+                          tip = 10;
+                          setState(() {
+
+                          });
+                        },
+                        duration: Duration(milliseconds: 200),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.Colorq,width: 2),
+                              borderRadius:
+                                  BorderRadius.circular(dimension.height7)),
+                          child: Center(
+                            child: Text(
+                              "₹20",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                 Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Bounce(
+                        onPressed: () {
+                          tip = 10;
+                          setState(() {
+
+                          });
+                        },
+                        duration: Duration(milliseconds: 200),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.Colorq,width: 2),
+                              borderRadius:
+                                  BorderRadius.circular(dimension.height7)),
+                          child: Center(
+                            child: Text(
+                              "₹30",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                 Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Bounce(
+                        onPressed: () {
+                          tip = 10;
+                          setState(() {
+
+                          });
+                        },
+                        duration: Duration(milliseconds: 200),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.Colorq,width: 2),
+                              borderRadius:
+                                  BorderRadius.circular(dimension.height7)),
+                          child: Center(
+                            child: Text(
+                              "₹40",
+                              style: GoogleFonts.poppins(
+                                  color: AppColors.Colorq,
+                                  fontSize: dimension.height18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Bounce(
               duration: Duration(milliseconds: 300),
               onPressed: () {
-                paymentAmount = bookServiceRef?.get("totalPrice")+0.00;
+                paymentAmount = bookServiceRef?.get("totalPrice") + 0.00;
                 providerUPIid = getProviderUPIref?.get("upiId");
                 print("upi----------${providerUPIid}");
-                btnState==1?
-                FirebaseFirestore.instance
-                    .collection('bookingg')
-                    .doc(bookingId)
-                    .update({"status": "Paid"}):"";
-                btnState==1?
-                Get.off(NavigationBarr()):btnState==2?Get.to(UpiPage()):"";
+                btnState == 1
+                    ? FirebaseFirestore.instance
+                        .collection('bookingg')
+                        .doc(bookingId)
+                        .update({"status": "Paid"})
+                    : "";
+                btnState == 1
+                    ? Get.off(NavigationBarr())
+                    : btnState == 2
+                        ? Get.to(UpiPage())
+                        : "";
               },
               child: Container(
                 height: 50,
@@ -241,8 +385,11 @@ class _PaymentPageState extends State<PaymentPage> {
                 ),
                 child: Center(
                   child: Text(
-                    btnState==1?
-                    "Done":btnState==2?"Next":"",
+                    btnState == 1
+                        ? "Done"
+                        : btnState == 2
+                            ? "Next"
+                            : "",
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       color: Colors.white,

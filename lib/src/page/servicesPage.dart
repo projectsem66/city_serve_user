@@ -51,10 +51,10 @@ class _ServicesPageState extends State<ServicesPage> {
 
                         final DocumentSnapshot documentSnapshot =
                             streamSnapshot.data!.docs[index];
-                        // double serviceRating = documentSnapshot.get("serviceRating");
-                        // double ratingUsers = documentSnapshot.get("ratingUsers");
-                        // double result = serviceRating / ratingUsers;
-                        // print(result);
+                        num serviceRating = documentSnapshot.get("serviceRating");
+                        num ratingUsers = documentSnapshot.get("ratingUsers");
+                        double result = serviceRating / ratingUsers;
+                        print(result);
                         return documentSnapshot["section"] == sectionName
                             ? Bounce(
                                 duration: Duration(milliseconds: 200),
@@ -127,13 +127,13 @@ class _ServicesPageState extends State<ServicesPage> {
                                                           width: 5,
                                                         ),
                                                         Text(
-                                                          'result',
+                                                          '${result}(${(ratingUsers)})',
                                                           style: GoogleFonts
                                                               .poppins(
                                                             color:
                                                                 Colors.black54,
                                                             fontSize: dimension
-                                                                .height17,
+                                                                .height16,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                           ),
