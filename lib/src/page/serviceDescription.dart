@@ -1,14 +1,20 @@
+import 'dart:convert';
+
 import 'package:city_serve/firebaseService/fbRefrences.dart';
 import 'package:city_serve/src/authentication/otp_page.dart';
 import 'package:city_serve/src/page/cartPages/summary.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emailjs/emailjs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server/gmail.dart';
 
 import '../../utils/colors.dart';
 
@@ -32,7 +38,119 @@ String providerName = "";
 String servicePrice = "";
 String providerMoNo = "";
 String currentUid = "";
+String providerImg = "";
 
+// Future<int> sendEmail() async {
+//   try {
+//     final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+//     const serviceId = "service_ghou07f";
+//     const templateId = "template_nq97y76";
+//     const userId = "uF3GpmwgmWRD7J8pc";
+//
+//     final response = await http.post(
+//       url,
+//       headers: {'Content-Type': 'application/json'},
+//       body: json.encode({
+//         "service_id": serviceId,
+//         "template_id": templateId,
+//         "template_params": {
+//           "from_name": "Your Name",
+//           "to_name": "Recipient's Name",
+//           "status": "Accepted"
+//         }
+//       }),
+//     );
+//
+//     print('Email sent. Response status code: ${response.statusCode}');
+//     return response.statusCode;
+//   } catch (e) {
+//     print('Error sending email: $e');
+//     return -1;
+//   }
+// }
+// Future<bool> sendEmail1(dynamic templateParams) async {
+//   try {
+//     await EmailJS.send(
+//       'service_ghou07f',
+//       'template_nq97y76',
+//
+//       templateParams,
+//       const Options(
+//         publicKey: 'uF3GpmwgmWRD7J8pc',
+//       ),
+//     );
+//     print('SUCCESS!');
+//     return true;
+//   } catch (error) {
+//     if (error is EmailJSResponseStatus) {
+//       print('ERROR... ${error.status}: ${error.text}');
+//     }
+//     print(error.toString());
+//     return false;
+//   }
+// }
+Future<void> Send_mail() async {
+  var Service_id = 'service_ghou07f';
+  var Template_id = 'template_nq97y76';
+  var User_id = 'uF3GpmwgmWRD7J8pc';
+  var recipientEmail = 'aniketpandavap@gmail.com';
+
+  var response = await http.post(
+    Uri.parse('https://api.emailjs.com/api/v1.0/email/send'),
+    headers: {
+      'origin': 'http:localhost',
+      'Content-Type': 'application/json',
+    },
+    body: jsonEncode({
+      'service_id': Service_id,
+      'user_id': User_id,
+      'template_id': Template_id,
+
+      'template_params': {
+        'name': 'jawad',
+        'message': 'This is just a test email',
+        'sender_email': 'aniketpandavap@gmail.com',
+      },
+      'recipient_email': recipientEmail,
+
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    print('Email sent successfully');
+  } else {
+    print('Failed to send email. Status code: ${response.statusCode}');
+  }
+}
+
+
+
+// Future<bool> sendEmail(dynamic templateParams) async {
+//   try {
+//     await EmailJS.send(
+//       'service_ghou07f',
+//       'template_nq97y76',
+//       templateParams,
+//       const Options(
+//         publicKey: 'uF3GpmwgmWRD7J8pc',
+//       ),
+//     );
+//     print('SUCCESS!');
+//     return true;
+//   } catch (error) {
+//     if (error is EmailJSResponseStatus) {
+//       print('ERROR... ${error.status}: ${error.text}');
+//     }
+//     print(error.toString());
+//     return false;
+//   }
+// }
+dynamic templateParams = {
+  'name': 'jawad',
+  'message': 'This is just a test email',
+  'sender_email': 'aniketpandavap@gmail.com',
+  'recipient_email': 'aniketpandav0711@gmail.com', // Specify recipient's email
+};
 class _ServiceDescriptionState extends State<ServiceDescription> {
   @override
   User? _user;
@@ -44,6 +162,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
       _getFavoriteItems();
     }
   }
+
 
   Future<void> _getFavoriteItems() async {
     final DocumentSnapshot userDoc = await FirebaseFirestore.instance
@@ -88,6 +207,8 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
     bookServiceId = widget.serviceId;
     fetchServiceData();
     getProviderDetails();
+    // sendEmail();
+    setState(() {});
     // currentUid = auth.currentUser.uid;
   }
 
@@ -134,12 +255,14 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
       .collection('userDetails')
       .doc(auth.currentUser?.uid)
       .collection("favourites");
-  num serviceRating = serviceDetailsSS?.get("serviceRating");
-  num ratingUsers = serviceDetailsSS?.get("ratingUsers");
+
   // double result = serviceRating / ratingUsers;
   @override
   Widget build(BuildContext context) {
-    num res = serviceRating /ratingUsers;
+
+    num serviceRating = serviceDetailsSS?.get("serviceRating");
+    num ratingUsers = serviceDetailsSS?.get("ratingUsers");
+    num res = serviceRating / ratingUsers;
     return Scaffold(
       body: serviceDetailsSS != null
           ? Stack(
@@ -321,7 +444,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                               color: Colors.orange,
                                             ),
                                             Text(
-                                              '${res}(${(ratingUsers)})',
+                                              '${res}(${(ratingUsers.round())})',
                                               overflow: TextOverflow.ellipsis,
                                               style: GoogleFonts.poppins(
                                                   color: AppColors.Colorq,
@@ -380,7 +503,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                               duration: Duration(milliseconds: 200),
                               onPressed: () {
                                 getProviderDetails();
-
+                                Send_mail();
+                                // sendEmail(templateParams);
+                                // sendEmail1(templateParams);
                                 setState(() {});
                               },
                               child: Container(
@@ -496,7 +621,11 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                         ServiceProviderId = serviceDetailsSS!.get("providerId");
                         providerMoNo =
                             serviceDetailsSS!.get("providerPhoneNumber");
-                        Get.to(Summary(),
+                        providerImg = serviceDetailsSS!.get("providerImage");
+                        itemPrice =
+                            int.parse(serviceDetailsSS?.get("servicePrice"));
+
+                        Get.to(SummaryPage(),
                             transition: Transition.circularReveal);
                       },
                       child: Container(

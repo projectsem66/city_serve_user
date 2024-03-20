@@ -118,7 +118,7 @@ class _ForWomenState extends State<ForWomen> {
                           ),
                           child: Center(
                               child: Icon(
-                            Icons.arrow_back,
+                            Icons.arrow_back_ios_outlined,
                             color: AppColors.Colorq,
                             size: dimension.height28,
                           )),

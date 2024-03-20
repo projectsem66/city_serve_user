@@ -43,135 +43,40 @@ List Slider2Images = [
   "assets/dashboard/2ndSlider/2ndSlider5.jpg",
   "assets/dashboard/2ndSlider/2ndSlider6.jpg",
 ];
-List newAndNoteworthy = [
+List Slider2service = [
+  "186",
+  "23",
+  "160",
+  "224",
+  "111",
+  "79",
+];
+
+List newAndNoteworthySC = [
   {
     "name": "Bathroom & Kitchen Cleaning",
     "image": "assets/dashboard/new&noteworthy/newNdNoteworthy.jpg",
-    "category": "newAndNoteworthy"
+    "category": "Cleaning",
+    "subCategory": "Bathroom & Kitchen cleaning",
   },
   {
     "name": "Hair Studio for Women",
     "image": "assets/dashboard/new&noteworthy/newNdNoteworthy2.jpg",
-    "category": "newAndNoteworthy"
+    "category": "Women's Salon & Spa",
+    "subCategory": "Hair Studio for Women"
   },
   {
     "name": "Ac Service and Repair",
     "image": "assets/dashboard/new&noteworthy/newNdNoteworthy3.jpg",
-    "category": "newAndNoteworthy"
-  },
-];
-List massageMen = [
-  {
-    "name": "Stress Relief",
-    "image": "assets/dashboard/massageMen/man1.jpg",
-    "category": "massageMen"
-  },
-  {
-    "name": "Pain Relief",
-    "image": "assets/dashboard/massageMen/man2.jpg",
-    "category": "massageMen"
-  },
-];
-List spaWomen = [
-  {
-    "name": "Stress Relief Therapy",
-    "image": "assets/dashboard/spaWomen/women1.jpg",
-    "category": "spaWomen"
-  },
-  {
-    "name": "Pain Relief Therapy",
-    "image": "assets/dashboard/spaWomen/women2.jpg",
-    "category": "spaWomen"
-  },
-  {
-    "name": "Postback Workout",
-    "image": "assets/dashboard/spaWomen/women3.jpg",
-    "category": "spaWomen"
-  },
-];
-List salonWomen = [
-  {
-    "name": "Waxing",
-    "image": "assets/dashboard/spaWomen/women4.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Facial & Cleanup",
-    "image": "assets/dashboard/spaWomen/women5.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Manicure",
-    "image": "assets/dashboard/spaWomen/women6.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Pedicure",
-    "image": "assets/dashboard/spaWomen/women7.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Threading & Face wax",
-    "image": "assets/dashboard/spaWomen/women8.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Bleach & Detan",
-    "image": "assets/dashboard/spaWomen/women9.jpg",
-    "category": "salonWomen"
-  },
-  {
-    "name": "Haircare",
-    "image": "assets/dashboard/spaWomen/women10.jpg",
-    "category": "salonWomen"
+    "category": "AC & Appliance Repair",
+    "subCategory": "AC Repair & Service"
   },
 ];
 
-List pestControl = [
-  {
-    "name": "Bathroom & Kitchen Cleaning",
-    "image": "assets/dashboard/pestControl/1x.jpg",
-    "category": "pestControl"
-  },
-  {
-    "name": "Sofa & Carpet Cleaning",
-    "image": "assets/dashboard/pestControl/2x.jpg",
-    "category": "pestControl"
-  },
-];
-List acApplianceRepair = [
-  {
-    "name": "Ac Service & Repair",
-    "image": "assets/dashboard/acApplianceRepair/1y.jpg",
-    "category": "acApplianceRepair"
-  },
-  {
-    "name": "Washing Machine Repair",
-    "image": "assets/dashboard/acApplianceRepair/2y.jpg",
-    "category": "acApplianceRepair"
-  },
-  {
-    "name": "Water Purifier Repair",
-    "image": "assets/dashboard/acApplianceRepair/3y.jpg",
-    "category": "acApplianceRepair"
-  },
-  {
-    "name": "Refrigerator Repair",
-    "image": "assets/dashboard/acApplianceRepair/4y.jpg",
-    "category": "acApplianceRepair"
-  },
-  {
-    "name": "Microwave Repair",
-    "image": "assets/dashboard/acApplianceRepair/5y.jpg",
-    "category": "acApplianceRepair"
-  },
-  {
-    "name": "Chimney Repair",
-    "image": "assets/dashboard/acApplianceRepair/6y.jpg",
-    "category": "acApplianceRepair"
-  },
-];
-List quickHomeRepairs = [
+List mostBookServices = ["56","111",  "160", "110", "127", "33", "166", "161"];
+List quickHomeRepair2 = ["127", "65", "149", "59", "58"];
+
+List quickHomeRepair = [
   {
     "name": "Tap Repairs",
     "image": "assets/dashboard/quickHomeRepairs/1z.jpg",
@@ -222,12 +127,96 @@ List quickHomeRepairs = [
     "category": "quickHomeRepairs"
   },
 ];
-
+List cleaningAndPest = [
+  {
+    "name": "Bathroom & Kitchen Cleaning",
+    "image": "assets/dashboard/pestControl/1x.jpg",
+    "category": "Cleaning",
+    "subCategory": "Bathroom & Kitchen cleaning",
+  },
+  {
+    "name": "Sofa & Carpet Cleaning",
+    "image": "assets/dashboard/pestControl/2x.jpg",
+    "category": "Cleaning",
+    "subCategory": "Sofa & Carpet Cleaning",
+  },
+];
+List acApplianceRepair = [
+  {
+    "name": "Ac Service & Repair",
+    "image": "assets/dashboard/acApplianceRepair/1y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "AC Repair & Service"
+  },
+  {
+    "name": "Washing Machine Repair",
+    "image": "assets/dashboard/acApplianceRepair/2y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "Washing Machine Repair"
+  },
+  {
+    "name": "Water Purifier Repair",
+    "image": "assets/dashboard/acApplianceRepair/3y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "Water Purifier"
+  },
+  {
+    "name": "Refrigerator Repair",
+    "image": "assets/dashboard/acApplianceRepair/4y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "Refrigerator Repair"
+  },
+  {
+    "name": "Microwave Repair",
+    "image": "assets/dashboard/acApplianceRepair/5y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "Microwave Repair"
+  },
+  {
+    "name": "Chimney Repair",
+    "image": "assets/dashboard/acApplianceRepair/6y.jpg",
+    "category": "AC & Appliance Repair",
+    "subCategory": "Chimney Repair"
+  },
+];
+List massageForMen2 = ["168", "166"];
+List massageForMen = [
+  {
+    "name": "Stress Relief",
+    "image": "assets/dashboard/massageMen/man1.jpg",
+    "category": "Salon Prime for kids & men",
+    "subCategory": "Massage for Men",
+    "section": "Stress Relief"
+  },
+  {
+    "name": "Pain Relief",
+    "image": "assets/dashboard/massageMen/man2.jpg",
+    "category": "Salon Prime for kids & men",
+    "subCategory": "Massage for Men",
+    "section": "Pain Relief"
+  }
+];
 BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 CarouselController sliderOne = CarouselController();
 
 class _DashboardState extends State<Dashboard> {
+  List Slider2service = [
+    "186",
+    // Rejuvenating Eye Treatment
+
+
+    "224",
+    // bleach
+    "160",
+    // haircut for men
+    "111",
+    // intense bathroom cleaning
+    "79",
+    // fan installation
+    "23",
+  //   Anti - Rust Deep Clean Ac Service
+  ];
   String c1 = "";
   var cnameValue;
 
@@ -291,7 +280,7 @@ class _DashboardState extends State<Dashboard> {
                         );
                       },
                       options: CarouselOptions(
-                        autoPlay: true,
+                        autoPlay: false,
                         enlargeFactor: 0,
                         scrollDirection: Axis.horizontal,
                         autoPlayInterval: Duration(seconds: 8),
@@ -830,10 +819,11 @@ class _DashboardState extends State<Dashboard> {
                           );
                         }
                         return Center(
-                          child: Container(
-                              width: 100,
-                              child: Lottie.asset(
-                                  "assets/lottie/cityServeLoading.json")),
+                          child: CircularProgressIndicator(
+                            color: AppColors.Colorq,
+                            strokeCap: StrokeCap.round,
+
+                          ),
                         );
                       },
                     ),
@@ -841,28 +831,12 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Most booked service",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Most booked service",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -870,30 +844,54 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height100 +
                         dimension.height100 +
-                        dimension.height55,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: allServices.length,
-                      itemBuilder: (context, index) {
-                        if (allServices[index]["category"] ==
-                            "mostBookedservice") {
-                          return Bounce(
-                            duration: Duration(milliseconds: 200),
-                            onPressed: () {
-                              Get.to(ServiceDescription(
-                                serviceId: 'abc',
-                              ));
+                        dimension.height65,
+                    child: StreamBuilder(
+                      stream: refServices.snapshots(),
+                      builder: (context,
+                          AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                        if (streamSnapshot.hasData) {
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: streamSnapshot.data!.docs.length,
+                            itemBuilder: (context, index) {
+                              final DocumentSnapshot documentSnapshot =
+                                  streamSnapshot.data!.docs[index];
+                              num serviceRating =
+                                  documentSnapshot.get("serviceRating");
+                              num ratingUsers =
+                                  documentSnapshot.get("ratingUsers");
+                              double result = serviceRating / ratingUsers;
+                              return mostBookServices
+                                      .contains(documentSnapshot.id)
+                                  ? Bounce(
+                                      duration: Duration(milliseconds: 200),
+                                      onPressed: () {
+                                        Get.to(ServiceDescription(
+                                          serviceId: documentSnapshot.id,
+                                        ));
+                                      },
+                                      child: ServiceContainer(
+                                        image: documentSnapshot.get("images"),
+                                        srvName:
+                                            documentSnapshot.get("serviceName"),
+                                        srvRating:
+                                            '${result}(${(ratingUsers.round())})',
+                                        srvPrice:
+                                            "${documentSnapshot.get("servicePrice")}",
+                                      ),
+                                    )
+                                  // documentSnapshot.get("subcategory")
+                                  : SizedBox();
                             },
-                            child: ServiceContainer(
-                              image: allServices[index]["image"],
-                              srvName: allServices[index]["name"],
-                              srvRating: allServices[index]["rating"],
-                              srvPrice: allServices[index]["price"],
-                            ),
                           );
-                        } else {
-                          return SizedBox();
                         }
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.Colorq,
+                            strokeCap: StrokeCap.round,
+
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -903,13 +901,23 @@ class _DashboardState extends State<Dashboard> {
                   CarouselSlider.builder(
                     carouselController: CarouselController(),
                     itemCount: 6,
+
                     itemBuilder: (context, index, realIndex) {
-                      return Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(Slider2Images[index]),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(7)),
+
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(ServiceDescription(
+                            serviceId: Slider2service[index],
+                          ));
+                        },
+                        child: Container(
+
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(Slider2Images[index]),
+                                  fit: BoxFit.fill),
+                              borderRadius: BorderRadius.circular(7)),
+                        ),
                       );
                     },
                     options: CarouselOptions(
@@ -935,28 +943,12 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "New & Noteworthy",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "New & Noteworthy",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -965,55 +957,230 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 + dimension.height100,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: newAndNoteworthy.length,
+                      itemCount: newAndNoteworthySC.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height:
-                                      dimension.height100 + dimension.height40,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              newAndNoteworthy[index]["image"]),
-                                          fit: BoxFit.cover)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  // height: dimension.height80,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                    // color: AppColors.Colorq.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(7),
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        newAndNoteworthy[index]['name'],
-                                        style: GoogleFonts.poppins(
+                        return Bounce(
+                          duration: Duration(milliseconds: 200),
+                          onPressed: () {
+                            Get.bottomSheet(
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Bounce(
+                                      duration: Duration(milliseconds: 200),
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
                                             color: AppColors.Colorq,
-                                            fontSize: dimension.height15,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ],
+                                          ),
+                                          child: Icon(Icons.cancel,
+                                              color: AppColors.white1,
+                                              size: 30)),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    height: dimension.height100 * 2.99,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10),
+                                            topRight: Radius.circular(10))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            newAndNoteworthySC[index]
+                                                ["subCategory"],
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.Colorq,
+                                                fontSize: dimension.height20,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: dimension.height100 * 2,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(10),
+                                                  topRight:
+                                                      Radius.circular(10))),
+                                          child: Container(
+                                            height: 246,
+                                            child: StreamBuilder(
+                                              stream: refCategory
+                                                  .doc(newAndNoteworthySC[index]
+                                                      ["category"])
+                                                  .collection("subcategories")
+                                                  .doc(newAndNoteworthySC[index]
+                                                      ["subCategory"])
+                                                  .collection("sections")
+                                                  .snapshots(),
+                                              builder: (context,
+                                                  AsyncSnapshot<QuerySnapshot>
+                                                      streamSnapshot) {
+                                                if (streamSnapshot.hasData) {
+                                                  return GridView.builder(
+                                                    itemCount: streamSnapshot
+                                                        .data!.docs.length,
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                            crossAxisCount: 3,
+                                                            childAspectRatio:
+                                                                0.92
+                                                            // Number of columns
+                                                            ),
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      final DocumentSnapshot
+                                                          documentSnapshot =
+                                                          streamSnapshot.data!
+                                                              .docs[index];
+                                                      return Bounce(
+                                                        duration: Duration(
+                                                            milliseconds: 200),
+                                                        onPressed: () {
+                                                          sectionName =
+                                                              documentSnapshot
+                                                                  .id;
+                                                          Get.back();
+                                                          Get.to(
+                                                              ServicesPage());
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Container(
+                                                                  height: 70,
+                                                                  width: 70,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            dimension.height7),
+                                                                    image: DecorationImage(
+                                                                        image: NetworkImage(documentSnapshot['simage']
+                                                                            .toString()),
+                                                                        fit: BoxFit
+                                                                            .cover),
+                                                                  )),
+                                                              Container(
+                                                                height: dimension
+                                                                    .height45,
+                                                                child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          10),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      documentSnapshot[
+                                                                              'sname']
+                                                                          .toString(),
+                                                                      maxLines:
+                                                                          2,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      style: GoogleFonts.poppins(
+                                                                          color: AppColors
+                                                                              .Colorq,
+                                                                          fontSize: dimension
+                                                                              .height14,
+                                                                          fontWeight:
+                                                                              FontWeight.w400),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    shrinkWrap: true,
+                                                  );
+                                                }
+
+                                                return const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                            setState(() {});
+                          },
+                          child: Container(
+                            // height: 300,
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(right: dimension.width12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: dimension.height100 +
+                                        dimension.height40,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            AppColors.Colorq.withOpacity(0.5),
+                                        borderRadius: BorderRadius.circular(7),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                newAndNoteworthySC[index]
+                                                    ["image"]),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Container(
+                                    // height: dimension.height80,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                      // color: AppColors.Colorq.withOpacity(0.5),
+                                      borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          newAndNoteworthySC[index]['name'],
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height15,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -1023,28 +1190,12 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Cleaning & Pest Control",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Cleaning & Pest Control",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -1053,10 +1204,183 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 + dimension.height52,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: pestControl.length,
+                      itemCount: cleaningAndPest.length,
                       itemBuilder: (context, index) {
-                        return Container(
-                          // height: 300,
+                        return Bounce(
+                          duration: Duration(milliseconds: 200),
+                          onPressed: () {
+                            Get.bottomSheet(
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Bounce(
+                                      duration: Duration(milliseconds: 200),
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: AppColors.Colorq,
+                                          ),
+                                          child: Icon(Icons.cancel,
+                                              color: AppColors.white1,
+                                              size: 30)),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: dimension.height100 * 2.99,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10),
+                                            topRight: Radius.circular(10))),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            cleaningAndPest[index]
+                                                ["subCategory"],
+                                            style: GoogleFonts.poppins(
+                                                color: AppColors.Colorq,
+                                                fontSize: dimension.height20,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: dimension.height100 * 2,
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(10),
+                                                  topRight:
+                                                      Radius.circular(10))),
+                                          child: Container(
+                                            height: 246,
+                                            child: StreamBuilder(
+                                              stream: refCategory
+                                                  .doc(cleaningAndPest[index]
+                                                      ["category"])
+                                                  .collection("subcategories")
+                                                  .doc(cleaningAndPest[index]
+                                                      ["subCategory"])
+                                                  .collection("sections")
+                                                  .snapshots(),
+                                              builder: (context,
+                                                  AsyncSnapshot<QuerySnapshot>
+                                                      streamSnapshot) {
+                                                if (streamSnapshot.hasData) {
+                                                  return GridView.builder(
+                                                    itemCount: streamSnapshot
+                                                        .data!.docs.length,
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                            crossAxisCount: 3,
+                                                            childAspectRatio:
+                                                                0.92
+                                                            // Number of columns
+                                                            ),
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      final DocumentSnapshot
+                                                          documentSnapshot =
+                                                          streamSnapshot.data!
+                                                              .docs[index];
+                                                      return Bounce(
+                                                        duration: Duration(
+                                                            milliseconds: 200),
+                                                        onPressed: () {
+                                                          sectionName =
+                                                              documentSnapshot
+                                                                  .id;
+                                                          Get.back();
+                                                          Get.to(
+                                                              ServicesPage());
+                                                        },
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Container(
+                                                                  height: 70,
+                                                                  width: 70,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            dimension.height7),
+                                                                    image: DecorationImage(
+                                                                        image: NetworkImage(documentSnapshot['simage']
+                                                                            .toString()),
+                                                                        fit: BoxFit
+                                                                            .cover),
+                                                                  )),
+                                                              Container(
+                                                                height: dimension
+                                                                    .height45,
+                                                                child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                      .symmetric(
+                                                                      horizontal:
+                                                                          10),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      documentSnapshot[
+                                                                              'sname']
+                                                                          .toString(),
+                                                                      maxLines:
+                                                                          2,
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      style: GoogleFonts.poppins(
+                                                                          color: AppColors
+                                                                              .Colorq,
+                                                                          fontSize: dimension
+                                                                              .height14,
+                                                                          fontWeight:
+                                                                              FontWeight.w400),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    shrinkWrap: true,
+                                                  );
+                                                }
+
+                                                return const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                            setState(() {});
+                          },
                           child: Padding(
                             padding: EdgeInsets.only(right: dimension.width12),
                             child: Column(
@@ -1064,7 +1388,7 @@ class _DashboardState extends State<Dashboard> {
                                 Container(
                                   width: 150,
                                   child: Text(
-                                    newAndNoteworthy[index]['name'],
+                                    cleaningAndPest[index]['name'],
                                     style: GoogleFonts.poppins(
                                         color: AppColors.Colorq,
                                         fontSize: dimension.height15,
@@ -1082,7 +1406,7 @@ class _DashboardState extends State<Dashboard> {
                                       borderRadius: BorderRadius.circular(7),
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              pestControl[index]["image"]),
+                                              cleaningAndPest[index]["image"]),
                                           fit: BoxFit.fill)),
                                   // child: Image(
                                   //   image: AssetImage(mostBook[index]["image"]),
@@ -1099,28 +1423,12 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Quick home repairs",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Quick home repairs",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
@@ -1129,17 +1437,306 @@ class _DashboardState extends State<Dashboard> {
                     height: dimension.height100 +
                         dimension.height100 +
                         dimension.height32,
+                    child: StreamBuilder(
+                      stream: refServices.snapshots(),
+                      builder: (context,
+                          AsyncSnapshot<QuerySnapshot> streamSnapshot) {
+                        if (streamSnapshot.hasData) {
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: streamSnapshot.data!.docs.length,
+                            itemBuilder: (context, index) {
+                              final DocumentSnapshot documentSnapshot =
+                                  streamSnapshot.data!.docs[index];
+                              return quickHomeRepair2
+                                      .contains(documentSnapshot.id)
+                                  ? ServiceContainer(
+                                      image: documentSnapshot.get("images"),
+                                      srvName:
+                                          documentSnapshot.get("serviceName"),
+                                      srvRating: documentSnapshot
+                                          .get("ratingUsers")
+                                          .toString(),
+                                      srvPrice:
+                                          documentSnapshot.get("servicePrice"),
+                                    )
+                                  : SizedBox();
+                            },
+                          );
+                        }
+                        return Center(
+                          child:CircularProgressIndicator(
+                            color: AppColors.Colorq,
+                            strokeCap: StrokeCap.round,
+
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Ac & Appliance Repair",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height65,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: acApplianceRepair.length,
+                        itemBuilder: (context, index) {
+                          return Bounce(
+                            duration: Duration(milliseconds: 200),
+                            onPressed: () {
+                              Get.bottomSheet(
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Bounce(
+                                        duration: Duration(milliseconds: 200),
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        child: Container(
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: AppColors.Colorq,
+                                            ),
+                                            child: Icon(Icons.cancel,
+                                                color: AppColors.white1,
+                                                size: 30)),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: dimension.height100 * 2.99,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              topRight: Radius.circular(10))),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              acApplianceRepair[index]
+                                                  ["subCategory"],
+                                              style: GoogleFonts.poppins(
+                                                  color: AppColors.Colorq,
+                                                  fontSize: dimension.height20,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: dimension.height100 * 2,
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10),
+                                                    topRight:
+                                                        Radius.circular(10))),
+                                            child: Container(
+                                              height: 246,
+                                              child: StreamBuilder(
+                                                stream: refCategory
+                                                    .doc(
+                                                        acApplianceRepair[index]
+                                                            ["category"])
+                                                    .collection("subcategories")
+                                                    .doc(
+                                                        acApplianceRepair[index]
+                                                            ["subCategory"])
+                                                    .collection("sections")
+                                                    .snapshots(),
+                                                builder: (context,
+                                                    AsyncSnapshot<QuerySnapshot>
+                                                        streamSnapshot) {
+                                                  if (streamSnapshot.hasData) {
+                                                    return GridView.builder(
+                                                      itemCount: streamSnapshot
+                                                          .data!.docs.length,
+                                                      gridDelegate:
+                                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                                              crossAxisCount: 3,
+                                                              childAspectRatio:
+                                                                  0.92
+                                                              // Number of columns
+                                                              ),
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        final DocumentSnapshot
+                                                            documentSnapshot =
+                                                            streamSnapshot.data!
+                                                                .docs[index];
+                                                        return Bounce(
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  200),
+                                                          onPressed: () {
+                                                            sectionName =
+                                                                documentSnapshot
+                                                                    .id;
+                                                            Get.back();
+                                                            Get.to(
+                                                                ServicesPage());
+                                                          },
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Container(
+                                                                    height: 70,
+                                                                    width: 70,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              dimension.height7),
+                                                                      image: DecorationImage(
+                                                                          image: NetworkImage(documentSnapshot['simage']
+                                                                              .toString()),
+                                                                          fit: BoxFit
+                                                                              .cover),
+                                                                    )),
+                                                                Container(
+                                                                  height: dimension
+                                                                      .height45,
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            10),
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Text(
+                                                                        documentSnapshot['sname']
+                                                                            .toString(),
+                                                                        maxLines:
+                                                                            2,
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                        style: GoogleFonts.poppins(
+                                                                            color:
+                                                                                AppColors.Colorq,
+                                                                            fontSize: dimension.height14,
+                                                                            fontWeight: FontWeight.w400),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      shrinkWrap: true,
+                                                    );
+                                                  }
+
+                                                  return const Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                              setState(() {});
+                            },
+                            child: ServiceContainer2(
+                                srvName: acApplianceRepair[index]["name"],
+                                srvImage: acApplianceRepair[index]["image"]),
+                          );
+                        }),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Massage for Men",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height65,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: massageForMen.length,
+                        itemBuilder: (context, index) {
+                          return Bounce(
+                            onPressed: () {
+                              sectionName = massageForMen[index]["section"];
+                              Get.to(ServicesPage());
+                            },
+                            duration: Duration(milliseconds: 200),
+                            child: ServiceContainer2(
+                                srvName: massageForMen[index]["name"],
+                                srvImage: massageForMen[index]["image"]),
+                          );
+                        }),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Spa for Women",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height65,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: allServices.length,
                       itemBuilder: (context, index) {
-                        if (allServices[index]["category"] ==
-                            "quickHomeRepairs") {
-                          return ServiceContainer(
-                            image: allServices[index]["image"],
-                            srvName: allServices[index]["name"],
-                            srvRating: allServices[index]["rating"],
-                            srvPrice: allServices[index]["price"],
+                        if (allServices[index]["category"] == "spaWomen") {
+                          return Bounce(
+                            onPressed: () {
+                              sectionName = allServices[index]["section"];
+                              Get.to(ServicesPage());
+                            },
+                            duration: Duration(milliseconds: 200),
+                            child: ServiceContainer2(
+                                srvName: allServices[index]["name"],
+                                srvImage: allServices[index]["image"]),
                           );
                         } else {
                           return SizedBox();
@@ -1150,177 +1747,73 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height15,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Ac & Appliance Repair",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Salon for Women",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
                     height: dimension.height15,
                   ),
                   SizedBox(
-                    height: dimension.height100 + dimension.height55,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: allServices.length,
-                        itemBuilder: (context, index) {
-                          if (allServices[index]["category"] ==
-                              "acApplianceRepair") {
-                            return ServiceContainer2(
-                                srvName: allServices[index]["name"],
-                                srvImage: allServices[index]["image"]);
-                          } else {
-                            return SizedBox();
-                          }
-                        }),
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Massage for Men",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  SizedBox(
-                    height: dimension.height100 + dimension.height55,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: allServices.length,
-                      itemBuilder: (context, index) {
-                        if (allServices[index]["category"] == "massageMen") {
-                          return ServiceContainer2(
-                              srvName: allServices[index]["name"],
-                              srvImage: allServices[index]["image"]);
-                        } else {
-                          return SizedBox();
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Spa for Women",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  SizedBox(
-                    height: dimension.height100 + dimension.height55,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: allServices.length,
-                      itemBuilder: (context, index) {
-                        if (allServices[index]["category"] == "spaWomen") {
-                          return ServiceContainer2(
-                              srvName: allServices[index]["name"],
-                              srvImage: allServices[index]["image"]);
-                        } else {
-                          return SizedBox();
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Salon for Women",
-                        style: GoogleFonts.poppins(
-                            color: AppColors.Colorq,
-                            fontSize: dimension.height22,
-                            fontWeight: FontWeight.w400),
-                      ),
-                      Bounce(
-                        duration: Duration(milliseconds: 200),
-                        onPressed: () {},
-                        child: Text(
-                          "See all",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height16,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
-                  SizedBox(
-                    height: dimension.height100 + dimension.height55,
+                    height: dimension.height100 + dimension.height65,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: allServices.length,
                       itemBuilder: (context, index) {
                         if (allServices[index]["category"] == "salonWomen") {
-                          return ServiceContainer2(
-                              srvName: allServices[index]["name"],
-                              srvImage: allServices[index]["image"]);
+                          return Bounce(
+                            onPressed: () {
+                              sectionName = allServices[index]["section"];
+                              Get.to(
+                                ServicesPage(),
+                              );
+                            },
+                            duration: Duration(milliseconds: 200),
+                            child: ServiceContainer2(
+                                srvName: allServices[index]["name"],
+                                srvImage: allServices[index]["image"]),
+                          );
+                        } else {
+                          return SizedBox();
+                        }
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  Text(
+                    "Salon for Kids & Men",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height22,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
+                  ),
+                  SizedBox(
+                    height: dimension.height100 + dimension.height65,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: allServices.length,
+                      itemBuilder: (context, index) {
+                        if (allServices[index]["category"] == "men") {
+                          return Bounce(
+                            onPressed: () {
+                              sectionName = allServices[index]["name"];
+                              Get.to(
+                                ServicesPage(),
+                              );
+                            },
+                            duration: Duration(milliseconds: 200),
+                            child: ServiceContainer2(
+                                srvName: allServices[index]["name"],
+                                srvImage: allServices[index]["image"]),
+                          );
                         } else {
                           return SizedBox();
                         }

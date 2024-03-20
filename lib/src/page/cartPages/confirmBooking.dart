@@ -11,6 +11,7 @@ import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../btm_controller.dart';
 import '../../../utils/colors.dart';
@@ -66,10 +67,11 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       " providerName": providerName,
       " servicePrice": servicePrice,
       "providerMoNo": providerMoNo,
-      "totalPrice":itemPrice - couponDis,
+      "providerImg":providerImg,
+      "totalPrice":(itemPrice - itemPrice*0.1).toDouble(),
       "bookingDescription":bookingDescription,
     }).then((value) {
-      log("User Uploaded");
+      log("Booking Uploaded");
     });
     // await _collectionReference
     //     .doc(_cname.toString())
@@ -167,59 +169,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: dimension.height15,
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: AppColors.Colorq),
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Center(
-                                child: Icon(
-                              Icons.percent,
-                              color: Colors.white,
-                            )),
-                          ),
-                        ),
-                        SizedBox(
-                          width: dimension.height10,
-                        ),
-                        Text(
-                          "Coupons and Offers",
-                          style: GoogleFonts.poppins(
-                              color: AppColors.Colorq,
-                              fontSize: dimension.height18,
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Spacer(),
-                        Bounce(
-                          duration: Duration(milliseconds: 200),
-                          onPressed: () {
-                            Get.bottomSheet(
-                              isDismissible: true,
-                              Container(
-                                height: 285,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10))),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Offers >",
-                            style: GoogleFonts.poppins(
-                                color: AppColors.Colorq,
-                                fontSize: dimension.height18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ],
-                    ),
+
                     SizedBox(
                       height: dimension.height30,
                     ),
@@ -254,14 +204,14 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Coupon discount",
+                          "Discount",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          "₹${couponDis}",
+                          "₹${(itemPrice*0.1).toStringAsFixed(2)}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -281,7 +231,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                               fontWeight: FontWeight.w400),
                         ),
                         Text(
-                          "₹${(itemPrice - couponDis).toString()}",
+                          "₹${(itemPrice -itemPrice*0.1).toString()}",
                           style: GoogleFonts.poppins(
                               color: AppColors.Colorq,
                               fontSize: dimension.height18,
@@ -407,15 +357,40 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                   Bounce(
                     duration: Duration(milliseconds: 200),
                     onPressed: () {
-                      // Get.to(AddressAndSlot(), transition: Transition.cupertino);
                       addBooking(bookServiceId);
-                      Get.to(NavigationBarr());
-                      setState(() {
-                        _currentIndex1 = 1;
-                        _.currentIndex = 1;
-                        _.update();
-                        print(_currentIndex1);
+                      // Get.to(AddressAndSlot(), transition: Transition.cupertino);
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Service Booked',
+                                  style: GoogleFonts.poppins(
+                                      color: AppColors.Colorq,
+                                      fontSize: dimension.height18,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                Lottie.asset("assets/lottie/Done.json"),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                      Future.delayed(Duration(seconds: 3), () {
+                        Get.to(NavigationBarr());
+                        setState(() {
+                          _currentIndex1 = 1;
+                          _.currentIndex = 1;
+                          _.update();
+                          print(_currentIndex1);
+                        });
                       });
+
+
                     },
                     child: Container(
                       width: double.maxFinite,

@@ -31,7 +31,7 @@ class ServiceContainer extends StatelessWidget {
                   color: AppColors.Colorq.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(7),
                   image: DecorationImage(
-                      image: AssetImage(image), fit: BoxFit.cover)),
+                      image: NetworkImage(image), fit: BoxFit.cover)),
               // child: Image(
               //   image: AssetImage(mostBook[index]["image"]),
               //   fit: BoxFit.cover,
@@ -52,6 +52,8 @@ class ServiceContainer extends StatelessWidget {
                 children: [
                   Text(
                     srvName,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
                         fontSize: dimension.height15,

@@ -101,6 +101,8 @@ class _AccountState extends State<Account> {
     // TODO: implement initState
     super.initState();
     fetchUserData();
+    setState(() {
+    });
   }
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -272,12 +274,80 @@ class _AccountState extends State<Account> {
               child: Bounce(
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
-                    _handleSignOut();
-                    auth.signOut().then((value) {
-                      Get.off(Login());
-                    }).onError((error, stackTrace) {
-                      Utils().tostmessage(error.toString());
-                    });
+                    Get.defaultDialog(
+                      // ScaffoldKey.currentState?.openEndDrawer();
+                      buttonColor: AppColors.Colorq,
+                      backgroundColor: Colors.white,
+                      cancelTextColor: AppColors.Colorq,
+                      titleStyle: GoogleFonts.amaranth(
+                          fontSize: 28, color: AppColors.Colorq),
+                      titlePadding: EdgeInsets.all(10),
+                      title: "Log Out",
+                      // contentPadding: EdgeInsets.all(),
+                      // middleText: "Are you sure to delete",
+                      content: Column(
+                        children: [
+                          Text(
+                            "Are you sure you want to Log out?",
+                            style: GoogleFonts.poppins(
+                                color: AppColors.Colorq,
+                                fontSize: dimension.height17,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      textConfirm: "Yes",
+                      textCancel: "Noo",
+                      confirm: TextButton(
+                        onPressed: () async {
+                          _handleSignOut();
+                          auth.signOut().then((value) {
+                            Get.off(Login());
+                          }).onError((error, stackTrace) {
+                            Utils().tostmessage(error.toString());
+                          });
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 90,
+                          decoration: BoxDecoration(
+                            color: AppColors.Colorq,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+
+                          child: Center(
+                            child: Text(
+                              "Yes",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
+                      ),
+                      cancel: TextButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Container(
+                            height: 40,
+                            width: 90,
+                            decoration: BoxDecoration(
+                              // color: AppColors.orange,
+                                border: Border.all(color: AppColors.Colorq, width: 2),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                              child: Text(
+                                "No",
+                                style: GoogleFonts.poppins(
+                                    color: AppColors.Colorq,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          )),
+                    );
                   },
                   child: Container(
                     height: dimension.height40,

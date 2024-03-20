@@ -153,17 +153,9 @@ class _EditProfileState extends State<EditProfile> {
         'lname': lastNameController.text,
         'emailid': emailController.text,
         'mono': phoneController.text,
-        "uimage":userPicUrl
       });
 
-      // Upload the picked image to Firebase Storage
-      if (pickedImage != null) {
-        String? imageUrl = await uploadImage();
-        // Update the profile image URL in Firestore
-        if (imageUrl != null) {
-          await updateProfileImageUrl(imageUrl);
-        }
-      }
+
     } catch (error) {
       print('Error updating user data: $error');
       throw error;
@@ -478,12 +470,12 @@ class _EditProfileState extends State<EditProfile> {
       setState(() {
         pickedImage = tempImage;
       });
-      // Upload the picked image to Firebase Storage
+
       String? imageUrl = await uploadImage();
-      // Update the profile image URL in Firestore
       if (imageUrl != null) {
         await updateProfileImageUrl(imageUrl);
       }
+
     } catch (ex) {
       log(ex.toString());
       print(ex.toString());

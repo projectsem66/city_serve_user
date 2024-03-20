@@ -464,8 +464,10 @@ class _CategoryyState extends State<Categoryy> {
                   return Center(
                     child: Container(
                         width: 200,
-                        child: Lottie.asset(
-                            "assets/lottie/cityServeLoading.json")),
+                        child: CircularProgressIndicator(
+                          strokeCap: StrokeCap.round,
+                          color: AppColors.Colorq,
+                        )),
                   );
                 },
               ),

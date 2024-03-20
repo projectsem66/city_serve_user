@@ -130,7 +130,7 @@ class _CartPageState extends State<CartPage> {
               Bounce(
                 duration: Duration(milliseconds: 200),
                 onPressed: () {
-                  Get.to(Summary(), transition: Transition.cupertino);
+                  Get.to(SummaryPage(), transition: Transition.cupertino);
                 },
                 child: Container(
                   width: double.maxFinite,

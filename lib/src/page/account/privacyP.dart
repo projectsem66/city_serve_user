@@ -1,7 +1,6 @@
 import 'package:city_serve/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../utils/colors.dart';
 
@@ -15,15 +14,14 @@ class PrivacyP extends StatefulWidget {
 class _PrivacyPState extends State<PrivacyP> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
         title: Text(
           "Privacy Policy",
-           style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontWeight: FontWeight.w400),
+          style: GoogleFonts.poppins(
+              color: Colors.white, fontWeight: FontWeight.w400),
         ),
       ),
       body: SingleChildScrollView(
@@ -39,39 +37,63 @@ class _PrivacyPState extends State<PrivacyP> {
                     fontSize: dimension.height16,
                     fontWeight: FontWeight.w400),
               ),
-              SizedBox(height:  15,),
-              Text("CONTACT US :",style: GoogleFonts.poppins(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w500
-              ),),
-              SizedBox(height:  10,),
-              Text("Please feel free to contact us with any comments, questions ot suggestions. You might have regarding the Information described in the applications. ",style: GoogleFonts.poppins(
-                  fontSize: 17
-              ),),
-              SizedBox(height:  15,),
-              Text("You may contact us at :",style: GoogleFonts.poppins(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w500
-              ),),
-              SizedBox(height:  10,),
-              Text("City Serve India Limited,\nOffice no 1003 to 1007, B wing, \nBehind Royal Palace, \nMeera Road, Andheri(East), \nMumbai - 401104.",style: GoogleFonts.poppins(
-                  fontSize: 17
-              ),),
-              SizedBox(height:  10,),
-              GestureDetector(
-                onTap: () {
-                  launchUrlString('https://.com/');
-                },
-                child: Text("E-mail id : projectsem66@gmail.com",style: GoogleFonts.poppins(
-                    fontSize: 17
-                ),),
+              SizedBox(
+                height: 15,
               ),
-              SizedBox(height:  20,),
+              Text(
+                "CONTACT US :",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height16,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Please feel free to contact us with any comments, questions ot suggestions. You might have regarding the Information described in the applications. ",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height16,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "You may contact us at :",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height16,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "City Serve,\nOffice no 1003 to 1007, B wing, \nBehind Royal Palace, \nVip road, Vesu (South west) \nSurat - 395007",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height16,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "E-mail id : projectsem66@gmail.com",
+                style: GoogleFonts.poppins(
+                    color: AppColors.Colorq,
+                    fontSize: dimension.height16,
+                    fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           ),
         ),
       ),
-
     );
   }
 }

@@ -62,8 +62,8 @@ class _StudioState extends State<Studio> {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                    "assets/dashboard/studio/menstd.jpg"),
-                                fit: BoxFit.fill),
+                                    "assets/dashboard/studio/pr2.jpg"),
+                                fit: BoxFit.cover),
                             color: AppColors.Colorq.withOpacity(0.1),
                             borderRadius:
                                 BorderRadius.circular(dimension.height7)),
@@ -114,8 +114,8 @@ class _StudioState extends State<Studio> {
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                    "assets/dashboard/studio/womenstd.jpg"),
-                                fit: BoxFit.fill),
+                                    "assets/dashboard/studio/pr15.jpg"),
+                                fit: BoxFit.cover),
                             color: AppColors.Colorq.withOpacity(0.1),
                             borderRadius:
                                 BorderRadius.circular(dimension.height7)),

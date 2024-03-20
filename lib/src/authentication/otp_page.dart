@@ -11,6 +11,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/round_button.dart';
+import 'login_eith_phone_number.dart';
 
 class OtpPage extends StatefulWidget {
   final String verificatioId;
@@ -96,15 +97,41 @@ class _OtpPageState extends State<OtpPage> {
           child: Center(
             child: SafeArea(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: dimension.height30,
+                  ),
                   Text(
-                    "Verify details",
+                    "OTP Verification",
                     style: GoogleFonts.poppins(
                         color: AppColors.Colorq,
-                        fontSize: dimension.height18,
+                        fontSize: dimension.height20,
                         fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: dimension.height20,
+                  ),
+                  Text(
+                    "OTP has been sent via SMS to",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: dimension.height5,
+                  ),
+                  Text(
+                    "+91${authMoNo}",
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height16,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: dimension.height15,
                   ),
                   // Text(
                   //   phoneController.text,
@@ -121,7 +148,8 @@ class _OtpPageState extends State<OtpPage> {
                         width: 48,
                         height: 48,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
+                          borderRadius:
+                              BorderRadius.circular(dimension.height7),
                           border: Border.all(color: AppColors.Colorq, width: 2),
                         ),
                         textStyle: const TextStyle(
@@ -133,14 +161,16 @@ class _OtpPageState extends State<OtpPage> {
                         width: dimension.height45,
                         height: dimension.height45,
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(dimension.height7),
+                          borderRadius: BorderRadius.circular(
+                            dimension.height7,
+                          ),
                           border: Border.all(color: AppColors.Colorq, width: 2),
                         ),
                         textStyle: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.Colorq),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.Colorq,
+                        ),
                       ),
                       onCompleted: (value) {
                         setState(() {
@@ -152,7 +182,7 @@ class _OtpPageState extends State<OtpPage> {
                   SizedBox(height: dimension.height30),
                   Center(
                     child: RoundButton(
-                      title: "verify",
+                      title: "Verify",
                       loding: loading,
                       onTap: () async {
                         setState(() {
@@ -165,7 +195,7 @@ class _OtpPageState extends State<OtpPage> {
                         try {
                           await auth.signInWithCredential(credential);
 
-                       Get.off(SignUp2());
+                          Get.off(SignUp2());
                           print("aaaaaaaaaaaaaaa" +
                               auth.currentUser!.uid.toString());
                           authUid = auth.currentUser!.uid.toString();

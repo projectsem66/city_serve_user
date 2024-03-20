@@ -86,18 +86,114 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           Container(
                             width: double.maxFinite,
                             decoration: BoxDecoration(
-                                color: AppColors.red.withOpacity(0.1)),
+                              color: bookServiceRef?.get("status") == "Pending"
+                                  ? AppColors.red.withOpacity(0.1)
+                                  : bookServiceRef?.get("status") == "Cancelled"
+                                      ? AppColors.red.withOpacity(0.1)
+                                      : bookServiceRef?.get("status") ==
+                                              "Accepted"
+                                          ? AppColors.lightGreen
+                                              .withOpacity(0.1)
+                                          : bookServiceRef?.get("status") ==
+                                                  "In Progress"
+                                              ? AppColors.jetBlue
+                                                  .withOpacity(0.1)
+                                              : bookServiceRef?.get("status") ==
+                                                      "is Done?"
+                                                  ? AppColors.yellow
+                                                      .withOpacity(0.1)
+                                                  : bookServiceRef
+                                                              ?.get("status") ==
+                                                          "Completed"
+                                                      ? AppColors.darkGreen
+                                                          .withOpacity(0.1)
+                                                      : AppColors.Colorq
+                                                          .withOpacity(0.1),
+                            ),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                bookServiceRef!.get("status").toString(),
-                                // Completed == null
-                                //  Accepted == null
-                                //  Cancelled == Reason of booking cancel
-                                style: GoogleFonts.poppins(
-                                    color: AppColors.red,
-                                    fontSize: dimension.height14,
-                                    fontWeight: FontWeight.w500),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    bookServiceRef!.get("status").toString(),
+                                    // Completed == null
+                                    //  Accepted == null
+                                    //  Cancelled == Reason of booking cancel
+                                    style: GoogleFonts.poppins(
+                                        color: bookServiceRef?.get("status") ==
+                                                "Pending"
+                                            ? AppColors.red
+                                            : bookServiceRef?.get("status") ==
+                                                    "Cancelled"
+                                                ? AppColors.red
+                                                : bookServiceRef
+                                                            ?.get("status") ==
+                                                        "Accepted"
+                                                    ? AppColors.lightGreen
+                                                    : bookServiceRef?.get(
+                                                                "status") ==
+                                                            "In Progress"
+                                                        ? AppColors.jetBlue
+                                                        : bookServiceRef?.get(
+                                                                    "status") ==
+                                                                "is Done?"
+                                                            ? AppColors.yellow
+                                                            : bookServiceRef?.get(
+                                                                        "status") ==
+                                                                    "Completed"
+                                                                ? AppColors
+                                                                    .darkGreen
+                                                                : AppColors
+                                                                    .Colorq,
+                                        fontSize: dimension.height14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  bookServiceRef!.get("status") == "Cancelled"
+                                      ? Text(
+                                          bookServiceRef!
+                                              .get("cancelReason")
+                                              .toString(),
+                                          overflow: TextOverflow.ellipsis,
+                                          // Completed == null
+                                          //  Accepted == null
+                                          //  Cancelled == Reason of booking cancel
+                                          style: GoogleFonts.poppins(
+                                              color: bookServiceRef?.get(
+                                                          "status") ==
+                                                      "Pending"
+                                                  ? AppColors.red
+                                                  : bookServiceRef
+                                                              ?.get("status") ==
+                                                          "Cancelled"
+                                                      ? AppColors.red
+                                                      : bookServiceRef?.get(
+                                                                  "status") ==
+                                                              "Accepted"
+                                                          ? AppColors.lightGreen
+                                                          : bookServiceRef?.get(
+                                                                      "status") ==
+                                                                  "In Progress"
+                                                              ? AppColors
+                                                                  .jetBlue
+                                                              : bookServiceRef
+                                                                          ?.get(
+                                                                              "status") ==
+                                                                      "is Done?"
+                                                                  ? AppColors
+                                                                      .yellow
+                                                                  : bookServiceRef?.get(
+                                                                              "status") ==
+                                                                          "Completed"
+                                                                      ? AppColors
+                                                                          .darkGreen
+                                                                      : AppColors
+                                                                          .Colorq,
+                                              fontSize: dimension.height14,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      : SizedBox()
+                                ],
                               ),
                             ),
                           ),
@@ -131,67 +227,75 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    bookServiceRef?.get(" serviceName"),
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height18,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                  SizedBox(
-                                    height: dimension.height5,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Date : ",
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq.withOpacity(
-                                                0.8),
-                                            fontSize: dimension.height16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Text(
-                                        bookServiceRef?.get("date"),
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Time : ",
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq.withOpacity(
-                                                0.8),
-                                            fontSize: dimension.height16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      Text(
-                                        bookServiceRef?.get("time"),
-                                        style: GoogleFonts.poppins(
-                                            color: AppColors.Colorq,
-                                            fontSize: dimension.height16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Expanded(
+                                flex: 5,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      bookServiceRef?.get(" serviceName"),
+                                      style: GoogleFonts.poppins(
+                                          color: AppColors.Colorq,
+                                          fontSize: dimension.height18,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    SizedBox(
+                                      height: dimension.height5,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Date : ",
+                                          style: GoogleFonts.poppins(
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.8),
+                                              fontSize: dimension.height16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          bookServiceRef?.get("date"),
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Time : ",
+                                          style: GoogleFonts.poppins(
+                                              color:
+                                                  AppColors.Colorq.withOpacity(
+                                                      0.8),
+                                              fontSize: dimension.height16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          bookServiceRef?.get("time"),
+                                          style: GoogleFonts.poppins(
+                                              color: AppColors.Colorq,
+                                              fontSize: dimension.height16,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Container(
-                                height: 100,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: NetworkImage(
-                                          bookServiceRef?.get(" serviceImg"))),
-                                  borderRadius: BorderRadius.circular(7),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            bookServiceRef?.get(" serviceImg")),
+                                        fit: BoxFit.cover),
+                                    borderRadius: BorderRadius.circular(7),
+                                  ),
                                 ),
                               ),
                             ],
@@ -243,8 +347,11 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                         height: dimension.height70,
                                         width: dimension.height70,
                                         decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: AppColors.Colorq),
+                                          image: DecorationImage(
+                                              image: NetworkImage(bookServiceRef
+                                                  ?.get("providerImg"))),
+                                          shape: BoxShape.circle,
+                                        ),
                                       ),
                                       SizedBox(
                                         width: dimension.height15,
@@ -596,9 +703,17 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                     if (bookServiceRef?.get("status") == "Cancelled")
                       SizedBox(),
                     if (bookServiceRef?.get("status") == "In Progress")
-                      Text("Service in progress"),
+                      Center(
+                          child: Text(
+                        "Service in progress",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.Colorq,
+                            fontSize: dimension.height14,
+                            fontWeight: FontWeight.w500),
+                      )),
                     if (bookServiceRef?.get("status") == "is Done?")
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("Service is Done?"),
                           Bounce(
@@ -627,10 +742,9 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                     //  Accepted == cancel booking
                                     //  Cancelled == null
                                     style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: dimension.height18,
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                                        color: Colors.white,
+                                        fontSize: dimension.height16,
+                                        fontWeight: FontWeight.w500),
                                   ),
                                 ),
                               ),
@@ -669,7 +783,7 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           ),
                         ),
                       ),
-                    if (bookServiceRef?.get("status") == "Rated")
+                    if (bookServiceRef?.get("status") == "Paid")
                       Bounce(
                         duration: Duration(milliseconds: 200),
                         onPressed: () {
@@ -781,7 +895,6 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                           ),
                         ),
                       ),
-
                   ],
                 ),
               ),

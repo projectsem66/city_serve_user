@@ -131,7 +131,6 @@ class _SignUpState extends State<SignUp> {
       "lname": _lnamecon.text.toString(),
       "emailid": _emailcon.text.toString(),
       "mono": _monocon.text.toString(),
-      "password": _passwordcon.text.toString()
     }).then((value) {
       log("User Uploaded");
     });

@@ -4,56 +4,56 @@ List allServices = [
     "image": "assets/dashboard/mostBook/1u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Sofa Cleaning",
     "image": "assets/dashboard/mostBook/2u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostookedservice"
+    "category": "mostookedservice"
   },
   {
     "name": "Hair Cut for Men ",
     "image": "assets/dashboard/mostBook/3u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Classic Bathroom Cleaning",
     "image": "assets/dashboard/mostBook/4u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Tap Repair",
     "image": "assets/dashboard/mostBook/5u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Top Load(Fully Automatic Checkup)",
     "image": "assets/dashboard/mostBook/6u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Back Pain Relief Massage",
     "image": "assets/dashboard/mostBook/7u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Hair Cut for Kids",
     "image": "assets/dashboard/mostBook/8u.jpg",
     "rating": "4.88",
     "price": "220",
-    "category":"mostBookedservice"
+    "category": "mostBookedservice"
   },
   {
     "name": "Bathroom & Kitchen Cleaning",
@@ -69,7 +69,8 @@ List allServices = [
     "name": "Ac Service and Repair",
     "image": "assets/dashboard/new&noteworthy/newNdNoteworthy3.jpg",
     "category": "newAndNoteworthy"
-  }, {
+  },
+  {
     "name": "Stress Relief",
     "image": "assets/dashboard/massageMen/man1.jpg",
     "category": "massageMen"
@@ -78,55 +79,62 @@ List allServices = [
     "name": "Pain Relief",
     "image": "assets/dashboard/massageMen/man2.jpg",
     "category": "massageMen"
-  },{
+  },
+  {
+    "section": "Stress relief",
     "name": "Stress Relief Therapy",
     "image": "assets/dashboard/spaWomen/women1.jpg",
     "category": "spaWomen"
   },
   {
+    "section": "Pain relief",
     "name": "Pain Relief Therapy",
     "image": "assets/dashboard/spaWomen/women2.jpg",
     "category": "spaWomen"
   },
   {
-    "name": "Postback Workout",
+    "section": "Skincare Scrubs",
+    "name": "Skincare Scrubs",
     "image": "assets/dashboard/spaWomen/women3.jpg",
     "category": "spaWomen"
-  },{
+  },
+  {
+    "section": "Waxing",
     "name": "Waxing",
     "image": "assets/dashboard/spaWomen/women4.jpg",
     "category": "salonWomen"
   },
   {
-    "name": "Facial & Cleanup",
-    "image": "assets/dashboard/spaWomen/women5.jpg",
-    "category": "salonWomen"
-  },
-  {
+    "section": "Manicure",
     "name": "Manicure",
-    "image": "assets/dashboard/spaWomen/women6.jpg",
+    "image": "assets/dashboard/studio/spaWomen/women4.jpg",
     "category": "salonWomen"
   },
   {
+    "section": "PediCure",
     "name": "Pedicure",
     "image": "assets/dashboard/spaWomen/women7.jpg",
     "category": "salonWomen"
   },
   {
+    "section": "Threading",
     "name": "Threading & Face wax",
     "image": "assets/dashboard/spaWomen/women8.jpg",
     "category": "salonWomen"
   },
   {
+    "section": "Bleach & Detan",
     "name": "Bleach & Detan",
     "image": "assets/dashboard/spaWomen/women9.jpg",
     "category": "salonWomen"
   },
   {
+    "section": "Haircare",
     "name": "Haircare",
     "image": "assets/dashboard/spaWomen/women10.jpg",
     "category": "salonWomen"
-  },{
+  },
+  {
     "name": "Bathroom & Kitchen Cleaning",
     "image": "assets/dashboard/pestControl/1x.jpg",
     "category": "pestControl"
@@ -135,7 +143,8 @@ List allServices = [
     "name": "Sofa & Carpet Cleaning",
     "image": "assets/dashboard/pestControl/2x.jpg",
     "category": "pestControl"
-  },  {
+  },
+  {
     "name": "Ac Service & Repair",
     "image": "assets/dashboard/acApplianceRepair/1y.jpg",
     "category": "acApplianceRepair"
@@ -164,7 +173,8 @@ List allServices = [
     "name": "Chimney Repair",
     "image": "assets/dashboard/acApplianceRepair/6y.jpg",
     "category": "acApplianceRepair"
-  }, {
+  },
+  {
     "name": "Tap Repairs",
     "image": "assets/dashboard/quickHomeRepairs/1z.jpg",
     "rating": "4.88",
@@ -212,5 +222,27 @@ List allServices = [
     "rating": "4.88",
     "price": "220",
     "category": "quickHomeRepairs"
+  },
+  {
+
+    "name": "Hair Color",
+    "image": "assets/dashboard/men/men3.jpg",
+    "category": "men"
+
+  },{
+
+    "name": "Haircut & Beard Styling",
+    "image": "assets/dashboard/men/men1.jpg",    "category": "men"
+
+  },{
+
+    "name": "Facial & Cleanup",
+    "image": "assets/dashboard/men/men2.jpg",    "category": "men"
+
+  },{
+
+    "name": "Hair Color",
+    "image": "assets/dashboard/men/men4.jpg",    "category": "men"
+
   },
 ];

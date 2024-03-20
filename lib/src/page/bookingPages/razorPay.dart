@@ -1,5 +1,8 @@
+import 'package:city_serve/src/page/bookingPages/paymentPage.dart';
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+
+import 'UPIpage.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,16 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _startPayment() async {
     var options = {
-      'key': 'rzp_test_1D5mm0lF5G5ag', // Replace with your Razorpay API key
-      'amount': 100, // Amount in the smallest currency unit (e.g., paisa for INR)
+      'key': 'rzp_test_j268DTf9wvugT9', // Replace with your Razorpay API key
+      'amount': paymentAmount*100, // Amount in the smallest currency unit (e.g., paisa for INR)
       'timeout': 180, // Timeout in seconds
       'currency': 'INR',
       'name': 'City Serve',
       'description': 'Payment for the service',
       'prefill': {'contact': '7016199407', 'email': 'projectsem66@gmail.com'},
-      'external': {
-        'wallets': ['paytm']
-      }
+
     };
 
     try {

@@ -1,3 +1,4 @@
+import 'package:city_serve/src/page/bookingPages/paymentPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class UpiPage extends StatefulWidget {
 }
 
 String providerUPIid = "";
-double paymentAmount = 0;
+
 
 class _UpiPageState extends State<UpiPage> {
   Future<UpiResponse>? _transaction;

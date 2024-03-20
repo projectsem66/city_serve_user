@@ -23,23 +23,6 @@ BtmController _ = Get.put(BtmController());
 int _currentIndex1 = 0;
 List<Map<String, dynamic>> providersList = [];
 
-// Future<List<Map<String, dynamic>>> getProvidersWithUserId() async {
-//   try {
-//     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-//         .collection('providerDetails')
-//         .where('userId', isEqualTo: "P6kTweWzOnUTxp2O2j2ieNNtsax1")
-//         .get();
-//     print("object: ${querySnapshot.docs}");
-//     querySnapshot.docs.forEach((doc) {
-//       Map<String, dynamic> providerData = doc.data() as Map<String, dynamic>;
-//       providersList.add(providerData);
-//     });
-//   } catch (e) {
-//     print('Error getting providers: $e');
-//   }
-//
-//   return providersList;
-// }
 
 class _BookingsState extends State<Bookings> {
   @override
@@ -88,17 +71,14 @@ class _BookingsState extends State<Bookings> {
                           final DocumentSnapshot documentSnapshot =
                           streamSnapshot.data!.docs[index];
 
-                          return documentSnapshot.get("userId") == auth.currentUser?.uid
+                          return documentSnapshot.get("userId") ==
+                              auth.currentUser?.uid
                               ? Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
                               Get.to(BookingSubPage());
                               bookingId = documentSnapshot.id;
                               print(bookingId);
-                              //   servicename
-                              //   date
-                              //   description
-                              //   providerDetails
                             },
                             child: Padding(
                               padding:
@@ -113,251 +93,282 @@ class _BookingsState extends State<Bookings> {
                                         color: AppColors.Colorq,
                                         width: 1)),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Column(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Column(
+                                      children: [
+                                    Row(
                                     children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            flex:2,
-                                            child: Container(
-                                              height: 100,
-                                              width: 100,
-                                              decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: NetworkImage(
-                                                        documentSnapshot.get(
-                                                            " serviceImg")),fit: BoxFit.cover),
-                                                borderRadius:
-                                                BorderRadius.circular(
-                                                    7),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            flex:5,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                          color: AppColors
-                                                              .red
-                                                              .withOpacity(
-                                                              0.2),
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(
-                                                              7),
-                                                          border: Border.all(
-                                                              color:
-                                                              AppColors
-                                                                  .red)),
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets
-                                                            .symmetric(
-                                                            horizontal:
-                                                            5,
-                                                            vertical:
-                                                            4),
-                                                        child: Text(
-                                                          documentSnapshot
-                                                              .get(
-                                                              "status"),
-                                                          style: GoogleFonts
-                                                              .poppins(
-                                                              color:
-                                                              AppColors
-                                                                  .red,
-                                                              fontSize:
-                                                              dimension
-                                                                  .height14,
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .w600),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: dimension
-                                                          .width100 +
-                                                          dimension.width27,
-                                                    ),
-                                                    Text(
-                                                      documentSnapshot.get(
-                                                          "productServiceDetailsId"),
-                                                      style: GoogleFonts.poppins(
-                                                          color: AppColors
-                                                              .Colorq,
-                                                          fontSize:
-                                                          dimension
-                                                              .height14,
-                                                          fontWeight:
-                                                          FontWeight
-                                                              .w600),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(
-                                                  height: 10,
-                                                ),
-                                                Text(
-                                                  documentSnapshot.get(
-                                                      " serviceName"),
-                                                  overflow: TextOverflow.ellipsis,
-                                                  style:
-                                                  GoogleFonts.poppins(
-                                                      color: AppColors
-                                                          .Colorq,
-                                                      fontSize:
-                                                      dimension
-                                                          .height18,
-                                                      fontWeight:
-                                                      FontWeight
-                                                          .w500),
-                                                ),
-                                                SizedBox(
-                                                  height: 30,
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Container(
+                                    Expanded(
+                                    flex:2,
+                                      child: Container(
+                                        height: 100,
+                                        width: 100,
                                         decoration: BoxDecoration(
-                                          color: AppColors.Colorq
-                                              .withOpacity(0.05),
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                  documentSnapshot.get(
+                                                      " serviceImg")),
+                                              fit: BoxFit.cover),
                                           borderRadius:
-                                          BorderRadius.circular(7),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                          const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Service Charge",
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                  Text(
-                                                    "₹${documentSnapshot.get(
-                                                        " servicePrice")}",
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                ],
-                                              ),
-                                              Divider(thickness: 1),
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Date & Time",
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                  Text(
-                                                    "${documentSnapshot.get(
-                                                        "date") + " " +
-                                                        documentSnapshot.get(
-                                                            "time")}",
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                ],
-                                              ),
-                                              Divider(thickness: 1),
-                                              Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    "Provider",
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                  Text(
-                                                    documentSnapshot.get(" providerName"),
-                                                    // documentSnapshot1?.get("userId"),
-                                                    style: GoogleFonts.poppins(
-                                                        color: AppColors
-                                                            .Colorq,
-                                                        fontSize:
-                                                        dimension
-                                                            .height14,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .w500),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                          BorderRadius.circular(
+                                              7),
                                         ),
                                       ),
-                                    ],
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                        flex: 5,
+                                        child: Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment
+                                                .spaceBetween,
+                                            children: [
+                                        Container(
+                                        decoration: BoxDecoration(
+                                        color: documentSnapshot.get("status") ==
+                                            "Pending"?
+                                        AppColors
+                                            .red
+                                            .withOpacity(
+                                            0.2) :documentSnapshot.get("status") == "Cancelled"? AppColors
+                                            .red
+                                            .withOpacity(
+                                            0.2): documentSnapshot.get(
+                                            "status") == "Accepted" ? AppColors
+                                            .lightGreen
+                                            .withOpacity(
+                                            0.2) : documentSnapshot.get("status") == "In Progress"?AppColors
+                                            .jetBlue
+                                            .withOpacity(
+                                            0.2): documentSnapshot.get("status") == "is Done?"?AppColors
+                                            .yellow
+                                            .withOpacity(
+                                            0.2): documentSnapshot.get("status") == "Completed"?AppColors
+                                            .darkGreen
+                                            .withOpacity(
+                                            0.2):AppColors
+                                            .Colorq
+                                            .withOpacity(
+                                            0.2),
+                                        borderRadius:
+                                        BorderRadius
+                                        .circular(
+                                        7),
+                                    border: Border.all(
+                                        color:
+                                        documentSnapshot.get("status") ==
+                                            "Pending" || documentSnapshot.get("status") == "Cancelled"?
+                                        AppColors
+                                            .red
+                                             : documentSnapshot.get(
+                                            "status") == "Accepted" ? AppColors
+                                            .lightGreen
+                                             : documentSnapshot.get("status") == "In Progress"?AppColors
+                                            .jetBlue
+                                            : documentSnapshot.get("status") == "is Done?"?AppColors
+                                            .yellow
+                                            : documentSnapshot.get("status") == "Completed"?AppColors
+                                            .darkGreen
+                                            :AppColors
+                                            .Colorq
+
+
+                                    ),
+                                        ),
+                                child: Padding(
+                                  padding:
+                                  const EdgeInsets
+                                      .symmetric(
+                                      horizontal:
+                                      5,
+                                      vertical:
+                                      4),
+                                  child: Text(
+                                    documentSnapshot
+                                        .get(
+                                        "status"),
+                                    style: GoogleFonts
+                                        .poppins(
+                                        color:
+                                        documentSnapshot.get("status") ==
+                                            "Pending" || documentSnapshot.get("status") == "Cancelled"?
+                                        AppColors
+                                            .red
+                                            : documentSnapshot.get(
+                                            "status") == "Accepted" ? AppColors
+                                            .lightGreen
+                                            : documentSnapshot.get("status") == "In Progress"?AppColors
+                                            .jetBlue
+                                            : documentSnapshot.get("status") == "is Done?"?AppColors
+                                            .yellow
+                                            : documentSnapshot.get("status") == "Completed"?AppColors
+                                            .darkGreen
+                                            :AppColors
+                                            .Colorq,
+                                        fontSize:
+                                        dimension
+                                            .height14,
+                                        fontWeight:
+                                        FontWeight
+                                            .w600),
                                   ),
                                 ),
                               ),
+                            SizedBox(
+                              height: 10,
                             ),
+                            Text(
+                              documentSnapshot.get(
+                                  " serviceName"),
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                              GoogleFonts.poppins(
+                                  color: AppColors
+                                      .Colorq,
+                                  fontSize:
+                                  dimension
+                                      .height18,
+                                  fontWeight:
+                                  FontWeight
+                                      .w500),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            ],
+                          )
+                          ,
+                          )
+                          ],
+                          ),
+                          SizedBox(
+                          height: 15,
+                          ),
+                          Container(
+                          decoration: BoxDecoration(
+                          color: AppColors.Colorq
+                              .withOpacity(0.05),
+                          borderRadius:
+                          BorderRadius.circular(7),
+                          ),
+                          child: Padding(
+                          padding:
+                          const EdgeInsets.all(8.0),
+                          child: Column(
+                          children: [
+                          Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment
+                              .spaceBetween,
+                          children: [
+                          Text(
+                          "Service Charge",
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          Text(
+                          "₹${documentSnapshot.get(
+                          "totalPrice")}",
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          ],
+                          ),
+                          Divider(thickness: 1),
+                          Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment
+                              .spaceBetween,
+                          children: [
+                          Text(
+                          "Date & Time",
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          Text(
+                          "${documentSnapshot.get(
+                          "date") + " " +
+                          documentSnapshot.get(
+                          "time")}",
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          ],
+                          ),
+                          Divider(thickness: 1),
+                          Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment
+                              .spaceBetween,
+                          children: [
+                          Text(
+                          "Provider",
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          Text(
+                          documentSnapshot.get(" providerName"),
+                          // documentSnapshot1?.get("userId"),
+                          style: GoogleFonts.poppins(
+                          color: AppColors
+                              .Colorq,
+                          fontSize:
+                          dimension
+                              .height14,
+                          fontWeight:
+                          FontWeight
+                              .w500),
+                          ),
+                          ],
+                          ),
+                          ],
+                          ),
+                          ),
+                          ),
+                          ],
+                          ),
+                          ),
+                          ),
+                          ),
                           )
                               : SizedBox();
                           // documentSnapshot.get("subcategory")
@@ -365,10 +376,10 @@ class _BookingsState extends State<Bookings> {
                       );
                     }
                     return Center(
-                      child: Container(
-                          width: 200,
-                          child: Lottie.asset(
-                              "assets/lottie/cityServeLoading.json")),
+                      child: CircularProgressIndicator(
+                        color: AppColors.Colorq,
+                        strokeCap: StrokeCap.round,
+                      ),
                     );
                   },
                 ),
