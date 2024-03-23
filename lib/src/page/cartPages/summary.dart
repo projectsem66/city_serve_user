@@ -47,7 +47,11 @@ class _SummaryState extends State<SummaryPage> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Summary"),
+        title: Text("Summary",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: SafeArea(
         child: Padding(
@@ -64,60 +68,7 @@ class _SummaryState extends State<SummaryPage> {
                       SizedBox(
                         height: dimension.height15,
                       ),
-                      // Row(
-                      //   children: [
-                      //     Container(
-                      //       decoration: BoxDecoration(
-                      //           shape: BoxShape.circle,
-                      //           color: AppColors.Colorq),
-                      //       child: Padding(
-                      //         padding: const EdgeInsets.all(5.0),
-                      //         child: Center(
-                      //             child: Icon(
-                      //           Icons.percent,
-                      //           color: Colors.white,
-                      //         )),
-                      //       ),
-                      //     ),
-                      //     SizedBox(
-                      //       width: dimension.height10,
-                      //     ),
-                      //     Text(
-                      //       "Coupons and Offers",
-                      //       style: GoogleFonts.poppins(
-                      //           color: AppColors.Colorq,
-                      //           fontSize: dimension.height18,
-                      //           fontWeight: FontWeight.w500),
-                      //     ),
-                      //     Spacer(),
-                      //     Bounce(
-                      //       duration: Duration(milliseconds: 200),
-                      //       onPressed: () {
-                      //         Get.bottomSheet(
-                      //           isDismissible: true,
-                      //           Container(
-                      //             height: 285,
-                      //             decoration: BoxDecoration(
-                      //                 color: Colors.white,
-                      //                 borderRadius: BorderRadius.only(
-                      //                     topLeft: Radius.circular(10),
-                      //                     topRight: Radius.circular(10))),
-                      //           ),
-                      //         );
-                      //       },
-                      //       child: Text(
-                      //         "Offers >",
-                      //         style: GoogleFonts.poppins(
-                      //             color: AppColors.Colorq,
-                      //             fontSize: dimension.height18,
-                      //             fontWeight: FontWeight.w500),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      // SizedBox(
-                      //   height: dimension.height30,
-                      // ),
+
                       Text(
                         "Payment Summary",
                         style: GoogleFonts.poppins(

@@ -49,8 +49,10 @@ class _ServicesPageState extends State<ServicesPage> {
         centerTitle: false,
         title: Text(
           "Services",
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontWeight: FontWeight.w400),
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)
         ),
       ),
       body: Padding(
@@ -119,18 +121,18 @@ class _ServicesPageState extends State<ServicesPage> {
                                                             FontWeight.w500),
                                                   ),
                                                   SizedBox(
-                                                    height: dimension.height5,
+                                                    height: dimension.height7,
                                                   ),
                                                   Row(
                                                     children: [
                                                       Icon(
                                                         Icons.star,
-                                                        color: AppColors.Colorq,
+                                                        color: AppColors.yellow,
                                                         size:
                                                             dimension.height20,
                                                       ),
                                                       SizedBox(
-                                                        width: 5,
+                                                        width: dimension.height5,
                                                       ),
                                                       Text(
                                                         '${result}(${(ratingUsers.round())})',
@@ -146,7 +148,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                                     ],
                                                   ),
                                                   SizedBox(
-                                                    height: dimension.height5,
+                                                    height: dimension.height7,
                                                   ),
                                                   Row(
                                                     children: [
@@ -196,7 +198,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                             Expanded(
                                               flex: 2,
                                               child: Container(
-                                                height: 120,
+                                                height: 117,
                                                 width: 100,
                                                 child: Stack(
                                                   children: [
@@ -228,35 +230,13 @@ class _ServicesPageState extends State<ServicesPage> {
                                                         duration: Duration(
                                                             milliseconds: 200),
                                                         onPressed: () async {
-                                                          getProviderDetails();
-
-                                                          serviceImg =
-                                                              documentSnapshot
-                                                                  .get(
-                                                                      "images");
-                                                          serviceName =
-                                                              documentSnapshot.get(
-                                                                  "serviceName");
-                                                          servicePrice =
-                                                              documentSnapshot.get(
-                                                                  "servicePrice");
-                                                          serviceDuration =
-                                                              documentSnapshot.get(
-                                                                  "serviceDuration");
-                                                          providerName =
-                                                              documentSnapshot.get(
-                                                                  "providerName");
-                                                          ServiceProviderId =
-                                                              documentSnapshot.get(
-                                                                  "providerId");
-                                                          providerMoNo =
-                                                              documentSnapshot.get(
-                                                                  "providerPhoneNumber");
-                                                          itemPrice = int.parse(
-                                                              servicePrice);
-                                                          Get.to(SummaryPage(),
-                                                              transition: Transition
-                                                                  .circularReveal);
+                                                          documentSnapshot.id;
+                                                          Get.to(
+                                                              ServiceDescription(
+                                                                  serviceId:
+                                                                  documentSnapshot.id),
+                                                              transition:
+                                                              Transition.downToUp);
                                                         },
                                                         child: Container(
                                                           height: 34,
@@ -295,6 +275,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                             )
                                           ],
                                         ),
+                                        SizedBox(height: dimension.height5,),
                                         Container(
                                           height: dimension.height50,
                                           child: Text(
@@ -307,6 +288,7 @@ class _ServicesPageState extends State<ServicesPage> {
                                                 fontWeight: FontWeight.w400),
                                           ),
                                         ),
+                                        SizedBox(height: dimension.height5,),
                                         Bounce(
                                           duration: Duration(milliseconds: 200),
                                           onPressed: () {
@@ -320,7 +302,9 @@ class _ServicesPageState extends State<ServicesPage> {
                                           },
                                           child: Text(
                                             "View details",
+
                                             style: GoogleFonts.poppins(
+                                              decoration: TextDecoration.underline,
                                                 color: AppColors.red,
                                                 fontSize: dimension.height16,
                                                 fontWeight: FontWeight.w500),
@@ -337,12 +321,10 @@ class _ServicesPageState extends State<ServicesPage> {
                     );
                   }
                   return Center(
-                    child: Container(
-                        width: 200,
-                        child: CircularProgressIndicator(
-                          strokeCap: StrokeCap.round,
-                          color: AppColors.Colorq,
-                        )),
+                    child: CircularProgressIndicator(
+                      strokeCap: StrokeCap.round,
+                      color: AppColors.Colorq,
+                    ),
                   );
                 },
               ),

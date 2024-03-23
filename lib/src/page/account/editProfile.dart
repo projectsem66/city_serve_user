@@ -25,6 +25,8 @@ class EditProfile extends StatefulWidget {
 // String currentUserId = FirebaseAuth.instance.currentUser!.uid;
 
 class _EditProfileState extends State<EditProfile> {
+  final _formKey = GlobalKey<FormState>();
+
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -192,269 +194,344 @@ class _EditProfileState extends State<EditProfile> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Edit Profile"),
+        title: Text("Edit Profile",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
         body: SafeArea(
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Form(
+                key: _formKey,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox(height: 50),
             Center(
-              child: Bounce(
-                onPressed: () {
-                  showAlertBox();
+                child: Bounce(
+                  onPressed: () {
+                    showAlertBox();
 
-                },
-                duration: Duration(milliseconds: 200),
-                child: Stack(
-                  children: [
+                  },
+                  duration: Duration(milliseconds: 200),
+                  child: Stack(
+                    children: [
 
-                    Container(
-                      height: 120,
-                      width: 120,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey
-                            .withOpacity(0.2), // Change color as needed
-                      ),
-                      child: Center(
-                        child: pickedImage != null || profileImageUrl != null
-                            ? Container(
-                                height: 120,
-                                width: 120,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                    image: pickedImage != null
-                                        ? FileImage(pickedImage!)
-                                        : (profileImageUrl != null
-                                            ? NetworkImage(profileImageUrl!)
-                                            : AssetImage(
-                                                    'assets/image/profile.png')
-                                                as ImageProvider<Object>),
-                                    fit: BoxFit.cover,
+                      Container(
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.grey
+                              .withOpacity(0.2), // Change color as needed
+                        ),
+                        child: Center(
+                          child: pickedImage != null || profileImageUrl != null
+                              ? Container(
+                                  height: 120,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: pickedImage != null
+                                          ? FileImage(pickedImage!)
+                                          : (profileImageUrl != null
+                                              ? NetworkImage(profileImageUrl!)
+                                              : AssetImage(
+                                                      'assets/image/profile.png')
+                                                  as ImageProvider<Object>),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
+                                )
+                              : Icon(
+                                  Icons.account_circle,
+                                  size: 120,
+                                  color: Colors.grey
+                                      .withOpacity(0.5), // Change color as needed
                                 ),
-                              )
-                            : Icon(
-                                Icons.account_circle,
-                                size: 120,
-                                color: Colors.grey
-                                    .withOpacity(0.5), // Change color as needed
-                              ),
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 65, left: 80),
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
+                      Container(
+                        margin: EdgeInsets.only(top: 65, left: 80),
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.camera_enhance,
+                          size: 30,
+                          color: AppColors.Colorq, // Change color as needed
+                        ),
                       ),
-                      child: Icon(
-                        Icons.camera_enhance,
-                        size: 30,
-                        color: AppColors.Colorq, // Change color as needed
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
             ),
 
 
             SizedBox(height: 30),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // First name text field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
-                    // Change color as needed
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: TextFormField(
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColors.Colorq, // Change color as needed
-                    ),
-                    controller: firstNameController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.person_outline,
-                        color: AppColors.Colorq, // Change color as needed
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "First Name",
-                      labelStyle: TextStyle(color: AppColors.Colorq),
-                      // Change color as needed
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.Colorq),
-                        // Change color as needed
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                // Last name text field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
-                    // Change color as needed
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: TextFormField(
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColors.Colorq, // Change color as needed
-                    ),
-                    controller: lastNameController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.person_outline,
-                        color: AppColors.Colorq, // Change color as needed
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Last Name",
-                      labelStyle: TextStyle(color: AppColors.Colorq),
-                      // Change color as needed
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.Colorq),
-                        // Change color as needed
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                // Email text field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
-                    // Change color as needed
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: TextFormField(
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColors.Colorq, // Change color as needed
-                    ),
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.email_outlined,
-                        color: AppColors.Colorq, // Change color as needed
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Email",
-                      labelStyle: TextStyle(color: AppColors.Colorq),
-                      // Change color as needed
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.Colorq),
-                        // Change color as needed
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                // Phone number text field
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.2),
-                    // Change color as needed
-                    borderRadius: BorderRadius.circular(7),
-                  ),
-                  child: TextFormField(
-                    controller: phoneController,
-                    cursorColor: Colors.black,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColors.Colorq, // Change color as needed
-                    ),
-                    // keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      suffixIcon: Icon(
-                        Icons.call_outlined,
-                        color: AppColors.Colorq, // Change color as needed
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      labelText: "Phone Number",
-                      hintStyle: TextStyle(
-                        color: AppColors.Colorq.withOpacity(0.5),
-                        // Change color as needed
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                      ),
-                      hintText: " Example : +91 2356897410",
-                      labelStyle: TextStyle(color: AppColors.Colorq),
-                      // Change color as needed
-                      contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColors.Colorq),
-                        // Change color as needed
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 40),
-                Bounce(
-                  duration: Duration(milliseconds: 200),
-                  onPressed: () async{
-                    await updateUserData();
-                    Get.back();
-                  },
-                  child: Container(
-                    height: dimension.height50,
-                    width: double.maxFinite,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // First name text field
+                  Container(
                     decoration: BoxDecoration(
-                      color: AppColors.Colorq.withOpacity(0.9),
+                      color: Colors.grey.withOpacity(0.2),
+                      // Change color as needed
                       borderRadius: BorderRadius.circular(7),
                     ),
-                    child: Center(
-                      child: Text(
-                        "Update",
-                        style: GoogleFonts.poppins(
-                            fontSize: 20, color: Colors.white),
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.Colorq, // Change color as needed
+                      ),
+                      controller: firstNameController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.person_outline,
+                          color: AppColors.Colorq, // Change color as needed
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelText: "First Name",
+                        labelStyle: TextStyle(color: AppColors.Colorq),
+                        // Change color as needed
+                        contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: AppColors.Colorq),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Enter First Name';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Last name text field
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.2),
+                      // Change color as needed
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.Colorq, // Change color as needed
+                      ),
+                      controller: lastNameController,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.person_outline,
+                          color: AppColors.Colorq, // Change color as needed
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelText: "Last Name",
+                        labelStyle: TextStyle(color: AppColors.Colorq),
+                        // Change color as needed
+                        contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: AppColors.Colorq),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Enter Last Name';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Email text field
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.2),
+                      // Change color as needed
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.Colorq, // Change color as needed
+                      ),
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.email_outlined,
+                          color: AppColors.Colorq, // Change color as needed
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelText: "Email",
+                        labelStyle: TextStyle(color: AppColors.Colorq),
+                        // Change color as needed
+                        contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: AppColors.Colorq),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Enter Email Address';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  // Phone number text field
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.2),
+                      // Change color as needed
+                      borderRadius: BorderRadius.circular(7),
+                    ),
+                    child: TextFormField(
+                      controller: phoneController,
+                      cursorColor: Colors.black,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: AppColors.Colorq, // Change color as needed
+                      ),
+                      // keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(
+                          Icons.call_outlined,
+                          color: AppColors.Colorq, // Change color as needed
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        labelText: "Phone Number",
+                        hintStyle: TextStyle(
+                          color: AppColors.Colorq.withOpacity(0.5),
+                          // Change color as needed
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
+                        hintText: " Example : +91 2356897410",
+                        labelStyle: TextStyle(color: AppColors.Colorq),
+                        // Change color as needed
+                        contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: AppColors.Colorq),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                          BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: AppColors.red),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return 'Enter PhoneNumber';
+                        }else if(value.length != 10){
+                          return 'Mobile Number must be of 10 digit';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Bounce(
+                    duration: Duration(milliseconds: 200),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+
+                           updateUserData();
+                          Get.back();
+
+
+                      }
+
+                    },
+                    child: Container(
+                      height: dimension.height50,
+                      width: double.maxFinite,
+                      decoration: BoxDecoration(
+                        color: AppColors.Colorq.withOpacity(0.9),
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Update",
+                          style: GoogleFonts.poppins(
+                              fontSize: 20, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
-                ),
 
-                SizedBox(height: 20),
-              ],
+                  SizedBox(height: 20),
+                ],
             ),
           ]),
+              ),
         ),
       ),
     ));

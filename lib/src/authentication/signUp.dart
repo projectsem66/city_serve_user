@@ -165,6 +165,9 @@ class _SignUpState extends State<SignUp> {
                           ? Container(
                               height: dimension.height60 * 2,
                               width: dimension.height60 * 2,
+                              child: Center(
+                                child: Icon(Icons.person,color: AppColors.Colorq.withOpacity(0.8),),
+                              ),
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: FileImage(pickedImage!),

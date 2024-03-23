@@ -224,25 +224,23 @@ List allServices = [
     "category": "quickHomeRepairs"
   },
   {
-
-    "name": "Hair Color",
+    "name": "Pedicure",
     "image": "assets/dashboard/men/men3.jpg",
     "category": "men"
-
-  },{
-
+  },
+  {
     "name": "Haircut & Beard Styling",
-    "image": "assets/dashboard/men/men1.jpg",    "category": "men"
-
-  },{
-
+    "image": "assets/dashboard/men/men1.jpg",
+    "category": "men"
+  },
+  {
     "name": "Facial & Cleanup",
-    "image": "assets/dashboard/men/men2.jpg",    "category": "men"
-
-  },{
-
+    "image": "assets/dashboard/men/men2.jpg",
+    "category": "men"
+  },
+  {
     "name": "Hair Color",
-    "image": "assets/dashboard/men/men4.jpg",    "category": "men"
-
+    "image": "assets/dashboard/men/men4.jpg",
+    "category": "men"
   },
 ];

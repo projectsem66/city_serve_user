@@ -20,9 +20,12 @@ class _AboutCSState extends State<AboutCS> {
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
         title: Text(
-          "About CS",
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontWeight: FontWeight.w400),
+          "About CS"
+            ,
+            style: GoogleFonts.poppins(
+            color: Colors.white,
+        fontSize: dimension.height22,
+        fontWeight: FontWeight.w400)
         ),
       ),
       body: SingleChildScrollView(

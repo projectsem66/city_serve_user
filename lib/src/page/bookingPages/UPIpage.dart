@@ -177,7 +177,11 @@ class _UpiPageState extends State<UpiPage> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("UPI Payment method"),
+        title: Text("UPI Payment method",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: Column(
         children: <Widget>[

@@ -8,6 +8,7 @@ import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -75,6 +76,7 @@ class _AccountState extends State<Account> {
         .doc(auth.currentUser?.uid);
     return documentReference.get();
   }
+
   // final FirebaseAuth _auth = FirebaseAuth.instance;
 
 // Create an instance of GoogleSignIn
@@ -96,13 +98,13 @@ class _AccountState extends State<Account> {
       print("Error signing out: $error");
     }
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     fetchUserData();
-    setState(() {
-    });
+    setState(() {});
   }
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -124,10 +126,14 @@ class _AccountState extends State<Account> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Account"),
+        title: Text("Account",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(dimension.height12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -135,43 +141,60 @@ class _AccountState extends State<Account> {
               height: dimension.height25,
             ),
             Center(
-              child: Container(
-                height: dimension.height100,
-                width: dimension.height100,
-                child: Bounce(
-                  duration: Duration(milliseconds: 200),
-                  onPressed: () {
-                    Get.to(EditProfile());
-                  },
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: dimension.height100,
-                        width: dimension.height100,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(userData?.get("uimage")),
-                                fit: BoxFit.cover)
-                        ),
-                      ),
-                      Align(
-                          alignment:  AlignmentDirectional.bottomEnd,
-                          child: Container(
-                            height: dimension.height30,
-                            width: dimension.height30,
-                              decoration: BoxDecoration(
-                                  color: AppColors.Colorq.withOpacity(0.7),
-
-                                  shape: BoxShape.circle
+              child: Column(
+                children: [
+                  Animate(
+                    effects: [ShimmerEffect()],
+                    child: Container(
+                      height: dimension.height100,
+                      width: dimension.height100,
+                      child: Bounce(
+                          duration: Duration(milliseconds: 200),
+                          onPressed: () {
+                            Get.to(EditProfile());
+                          },
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: dimension.height100,
+                                width: dimension.height100,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            userData?.get("uimage")),
+                                        fit: BoxFit.cover)),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(3.0),
-                                child: Icon(Icons.edit,color: Colors.white,size: 20,),
-                              )))
-                    ],
-                  )
-                ),
+                              Align(
+                                  alignment: AlignmentDirectional.bottomEnd,
+                                  child: Container(
+                                      height: dimension.height30,
+                                      width: dimension.height30,
+                                      decoration: BoxDecoration(
+                                          color:
+                                              AppColors.Colorq.withOpacity(0.7),
+                                          shape: BoxShape.circle),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(3.0),
+                                        child: Icon(
+                                          Icons.edit,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
+                                      )))
+                            ],
+                          )),
+                    ),
+                  ),
+                  SizedBox(height: dimension.height5,),
+                  Text(
+                    userData?.get("fname") + " " + userData?.get("lname"),
+                    style: GoogleFonts.poppins(
+                        color: AppColors.Colorq,
+                        fontSize: dimension.height18,
+                        fontWeight: FontWeight.w400),
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -224,6 +247,7 @@ class _AccountState extends State<Account> {
             ),
             Expanded(
               child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: accountList.length,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -270,6 +294,7 @@ class _AccountState extends State<Account> {
                 },
               ),
             ),
+
             Center(
               child: Bounce(
                   duration: Duration(milliseconds: 200),
@@ -314,7 +339,6 @@ class _AccountState extends State<Account> {
                             color: AppColors.Colorq,
                             borderRadius: BorderRadius.circular(10),
                           ),
-
                           child: Center(
                             child: Text(
                               "Yes",
@@ -334,8 +358,9 @@ class _AccountState extends State<Account> {
                             height: 40,
                             width: 90,
                             decoration: BoxDecoration(
-                              // color: AppColors.orange,
-                                border: Border.all(color: AppColors.Colorq, width: 2),
+                                // color: AppColors.orange,
+                                border: Border.all(
+                                    color: AppColors.Colorq, width: 2),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Center(
                               child: Text(
@@ -367,7 +392,7 @@ class _AccountState extends State<Account> {
                   )),
             ),
             SizedBox(
-              height: dimension.height35,
+              height: dimension.height26,
             )
           ],
         ),

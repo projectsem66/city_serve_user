@@ -36,8 +36,10 @@ class _SettingsState extends State<Settingss> {
         centerTitle: false,
         title: Text(
           "Setting",
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontWeight: FontWeight.w400),
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)
         ),
       ),
       body: Padding(

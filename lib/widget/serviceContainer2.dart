@@ -28,10 +28,14 @@ class ServiceContainer2 extends StatelessWidget {
 
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(7.0),
                 child: Text(
                   srvName,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.poppins(
+
+
                       color: AppColors.Colorq,
                       fontSize: dimension.height15,
                       fontWeight: FontWeight.w500),
@@ -40,7 +44,7 @@ class ServiceContainer2 extends StatelessWidget {
             ),
 
             Container(
-              height: dimension.height100,
+              height: dimension.height100-dimension.height1,
               width: 140,
               decoration: BoxDecoration(
                   // color: AppColors.Colorq.withOpacity(0.5),

@@ -149,11 +149,10 @@ class _SignUp2State extends State<SignUp2> {
                           : Container(
                               height: dimension.height60 * 2,
                               width: dimension.height60 * 2,
+                              child: Center(
+                                child: Icon(Icons.person,color: AppColors.Colorq.withOpacity(0.8),size: dimension.height35,),
+                              ),
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image:
-                                          AssetImage("images/addCategoryy.png"),
-                                      fit: BoxFit.cover),
                                   shape: BoxShape.circle,
                                   color: AppColors.Colorq.withOpacity(0.05)),
                             ),
@@ -205,7 +204,7 @@ class _SignUp2State extends State<SignUp2> {
                             cursorColor: Colors.black,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
+                              color: AppColors.Colorq,
                             ),
                             onChanged: (value) {
                               setState(() {});
@@ -220,12 +219,21 @@ class _SignUp2State extends State<SignUp2> {
                                   fontWeight: FontWeight.w300),
                               contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.Colorq),
+                                borderSide:
+                                BorderSide(color: AppColors.Colorq),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -250,8 +258,7 @@ class _SignUp2State extends State<SignUp2> {
                             cursorColor: Colors.black,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
-                            ),
+                              color: AppColors.Colorq,                            ),
                             onChanged: (value) {
                               setState(() {});
                             },
@@ -265,15 +272,23 @@ class _SignUp2State extends State<SignUp2> {
                                   fontWeight: FontWeight.w300),
                               contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.Colorq),
+                                borderSide:
+                                BorderSide(color: AppColors.Colorq),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                            ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),                            ),
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Enter Last Name';
@@ -299,8 +314,7 @@ class _SignUp2State extends State<SignUp2> {
                                 cursorColor: Colors.black,
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.black,
-                                ),
+                                  color: AppColors.Colorq,                                ),
                                 onChanged: (value) {
                                   setState(() {});
                                 },
@@ -309,17 +323,25 @@ class _SignUp2State extends State<SignUp2> {
                                       FloatingLabelBehavior.always,
                                   labelText: "Email Address",
                                   labelStyle: GoogleFonts.poppins(
-                                      color: AppColors.Colorq,
-                                      fontSize: 17,
+                                      color: AppColors.Colorq,                                      fontSize: 17,
                                       fontWeight: FontWeight.w300),
                                   contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: AppColors.Colorq),
+                                    borderSide:
+                                    BorderSide(color: AppColors.Colorq),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: AppColors.red),
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Colors.transparent),
+                                    BorderSide(color: Colors.transparent),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: AppColors.red),
                                     borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
@@ -352,8 +374,7 @@ class _SignUp2State extends State<SignUp2> {
                             cursorColor: Colors.black,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
-                            ),
+                              color: AppColors.Colorq),
                             onChanged: (value) {
                               setState(() {});
                             },
@@ -367,18 +388,29 @@ class _SignUp2State extends State<SignUp2> {
                                   fontWeight: FontWeight.w300),
                               contentPadding: EdgeInsets.fromLTRB(5, 10, 5, 0),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.Colorq),
+                                borderSide:
+                                BorderSide(color: AppColors.Colorq),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.transparent),
+                                BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Enter Mobile Number';
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return 'Enter Phone Number';
+                              }else if(value.length != 10){
+                                return 'Mobile Number must be of 10 digit';
                               }
                               return null;
                             },
@@ -393,8 +425,14 @@ class _SignUp2State extends State<SignUp2> {
                   duration: Duration(milliseconds: 200),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // signup();
-                      addUserData(_fnamecon.text.toString());
+                      if(pickedImage==null){
+                        Get.snackbar("Enter required fields","Pick Image");
+                      }
+                      else{
+                        addUserData(_fnamecon.text.toString());
+                      }
+
+
                     }
                   },
                   child: Container(
@@ -406,7 +444,7 @@ class _SignUp2State extends State<SignUp2> {
                     ),
                     child: Center(
                       child: Text(
-                        "Sign up",
+                        "Sign Up",
                         style: GoogleFonts.poppins(
                             fontSize: 20, color: Colors.white),
                       ),

@@ -28,14 +28,15 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
   TextEditingController _descriptionController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
+    final DateTime tomorrow = DateTime.now().add(Duration(days: 1));
     final DateTime? picked = await showDatePicker(
 
       onDatePickerModeChange: (value) {
         setState(() {});
       },
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
+      initialDate: tomorrow,
+      firstDate: tomorrow,
       lastDate: DateTime(2024, 4),
     );
     if (picked != null && picked != selectedDate) {
@@ -71,7 +72,11 @@ class _AddressAndSlotState extends State<AddressAndSlot> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Add Address & Slot"),
+        title: Text("Add Address & Slot",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: SafeArea(
         child: Padding(

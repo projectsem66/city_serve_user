@@ -26,6 +26,9 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
     super.initState();
 
     fetchBookingData();
+    setState(() {
+
+    });
   }
 
   callProviderNumber(String phoneNumber) async {
@@ -69,7 +72,11 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Bookings"),
+        title: Text("Bookings",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: bookServiceRef != null
           ? Padding(
@@ -348,8 +355,10 @@ class _ServiceDescriptionState extends State<BookingSubPage> {
                                         width: dimension.height70,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                              image: NetworkImage(bookServiceRef
-                                                  ?.get("providerImg"))),
+                                            image: NetworkImage(bookServiceRef
+                                                ?.get("providerImg")),
+                                            fit: BoxFit.cover,
+                                          ),
                                           shape: BoxShape.circle,
                                         ),
                                       ),

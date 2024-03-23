@@ -4,6 +4,7 @@ import 'package:city_serve/utils/colors.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +49,11 @@ class _BookingsState extends State<Bookings> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Bookings"),
+        title: Text("Bookings",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -80,166 +85,203 @@ class _BookingsState extends State<Bookings> {
                               bookingId = documentSnapshot.id;
                               print(bookingId);
                             },
-                            child: Padding(
-                              padding:
-                              EdgeInsets.only(top: dimension.height7),
-                              child: Container(
-                                // height: 200,
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(7),
-                                    border: Border.all(
-                                        color: AppColors.Colorq,
-                                        width: 1)),
-                                child: Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Column(
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: Padding(
+                                padding:
+                                EdgeInsets.only(top: dimension.height7),
+                                child: Container(
+                                  // height: 200,
+                                  width: double.maxFinite,
+                                  decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.circular(7),
+                                      border: Border.all(
+                                          color: AppColors.Colorq,
+                                          width: 1)),
+                                  child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Column(
+                                        children: [
+                                      Row(
                                       children: [
-                                    Row(
-                                    children: [
-                                    Expanded(
-                                    flex:2,
-                                      child: Container(
-                                        height: 100,
-                                        width: 100,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                              image: NetworkImage(
-                                                  documentSnapshot.get(
-                                                      " serviceImg")),
-                                              fit: BoxFit.cover),
-                                          borderRadius:
-                                          BorderRadius.circular(
-                                              7),
+                                      Expanded(
+                                      flex:2,
+                                        child: Container(
+                                          height: 100,
+                                          width: 100,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: NetworkImage(
+                                                    documentSnapshot.get(
+                                                        " serviceImg")),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                            BorderRadius.circular(
+                                                7),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Expanded(
-                                        flex: 5,
-                                        child: Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                            MainAxisAlignment
-                                                .spaceBetween,
-                                            children: [
-                                        Container(
-                                        decoration: BoxDecoration(
-                                        color: documentSnapshot.get("status") ==
-                                            "Pending"?
-                                        AppColors
-                                            .red
-                                            .withOpacity(
-                                            0.2) :documentSnapshot.get("status") == "Cancelled"? AppColors
-                                            .red
-                                            .withOpacity(
-                                            0.2): documentSnapshot.get(
-                                            "status") == "Accepted" ? AppColors
-                                            .lightGreen
-                                            .withOpacity(
-                                            0.2) : documentSnapshot.get("status") == "In Progress"?AppColors
-                                            .jetBlue
-                                            .withOpacity(
-                                            0.2): documentSnapshot.get("status") == "is Done?"?AppColors
-                                            .yellow
-                                            .withOpacity(
-                                            0.2): documentSnapshot.get("status") == "Completed"?AppColors
-                                            .darkGreen
-                                            .withOpacity(
-                                            0.2):AppColors
-                                            .Colorq
-                                            .withOpacity(
-                                            0.2),
-                                        borderRadius:
-                                        BorderRadius
-                                        .circular(
-                                        7),
-                                    border: Border.all(
-                                        color:
-                                        documentSnapshot.get("status") ==
-                                            "Pending" || documentSnapshot.get("status") == "Cancelled"?
-                                        AppColors
-                                            .red
-                                             : documentSnapshot.get(
-                                            "status") == "Accepted" ? AppColors
-                                            .lightGreen
-                                             : documentSnapshot.get("status") == "In Progress"?AppColors
-                                            .jetBlue
-                                            : documentSnapshot.get("status") == "is Done?"?AppColors
-                                            .yellow
-                                            : documentSnapshot.get("status") == "Completed"?AppColors
-                                            .darkGreen
-                                            :AppColors
-                                            .Colorq
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                          flex: 5,
+                                          child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
+                                              children: [
+                                          Container(
+                                          decoration: BoxDecoration(
+                                          color:  documentSnapshot
+                                              .get("status") ==
+                                              "Pending"
+                                              ? AppColors.red.withOpacity(0.2)
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Cancelled"
+                                              ? AppColors.grey.withOpacity(0.2)
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Accepted"
+                                              ? AppColors
+                                              .lightGreen.withOpacity(0.2)
+                                              : documentSnapshot
+                                              .get(
+                                              "status") ==
+                                              "In Progress"
+                                              ? AppColors
+                                              .jetBlue.withOpacity(0.2)
+                                              : documentSnapshot.get("status") ==
+                                              "is Done?"
+                                              ? Colors
+                                              .orange.withOpacity(0.2)
+                                              : documentSnapshot.get("status") ==
+                                              "Completed"
+                                              ? AppColors
+                                              .darkGreen.withOpacity(0.2)
+                                              : documentSnapshot.get("status") == "Rated"
+                                              ? AppColors.yellow.withOpacity(0.2)
+                                              : AppColors.Colorq.withOpacity(0.2),
+                                          borderRadius:
+                                          BorderRadius
+                                          .circular(
+                                          7),
+                                      border: Border.all(
+                                          color:
+                                          documentSnapshot
+                                              .get("status") ==
+                                              "Pending"
+                                              ? AppColors.red
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Cancelled"
+                                              ? AppColors.grey
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Accepted"
+                                              ? AppColors
+                                              .lightGreen
+                                              : documentSnapshot
+                                              .get(
+                                              "status") ==
+                                              "In Progress"
+                                              ? AppColors
+                                              .jetBlue
+                                              : documentSnapshot.get("status") ==
+                                              "is Done?"
+                                              ? Colors
+                                              .orange
+                                              : documentSnapshot.get("status") ==
+                                              "Completed"
+                                              ? AppColors
+                                              .darkGreen
+                                              : documentSnapshot.get("status") == "Rated"
+                                              ? AppColors.yellow
+                                              : AppColors.Colorq,
 
 
+                                      ),
+                                          ),
+                                  child: Padding(
+                                    padding:
+                                    const EdgeInsets
+                                        .symmetric(
+                                        horizontal:
+                                        5,
+                                        vertical:
+                                        4),
+                                    child: Text(
+                                      documentSnapshot
+                                          .get(
+                                          "status"),
+                                      style: GoogleFonts
+                                          .poppins(
+                                          color:
+                                          documentSnapshot
+                                              .get("status") ==
+                                              "Pending"
+                                              ? AppColors.red
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Cancelled"
+                                              ? AppColors.grey
+                                              : documentSnapshot.get(
+                                              "status") ==
+                                              "Accepted"
+                                              ? AppColors
+                                              .lightGreen
+                                              : documentSnapshot
+                                              .get(
+                                              "status") ==
+                                              "In Progress"
+                                              ? AppColors
+                                              .jetBlue
+                                              : documentSnapshot.get("status") ==
+                                              "is Done?"
+                                              ? Colors
+                                              .orange
+                                              : documentSnapshot.get("status") ==
+                                              "Completed"
+                                              ? AppColors
+                                              .darkGreen
+                                              : documentSnapshot.get("status") == "Rated"
+                                              ? AppColors.yellow
+                                              : AppColors.Colorq,
+                                          fontSize:
+                                          dimension
+                                              .height14,
+                                          fontWeight:
+                                          FontWeight
+                                              .w600),
                                     ),
-                                        ),
-                                child: Padding(
-                                  padding:
-                                  const EdgeInsets
-                                      .symmetric(
-                                      horizontal:
-                                      5,
-                                      vertical:
-                                      4),
-                                  child: Text(
-                                    documentSnapshot
-                                        .get(
-                                        "status"),
-                                    style: GoogleFonts
-                                        .poppins(
-                                        color:
-                                        documentSnapshot.get("status") ==
-                                            "Pending" || documentSnapshot.get("status") == "Cancelled"?
-                                        AppColors
-                                            .red
-                                            : documentSnapshot.get(
-                                            "status") == "Accepted" ? AppColors
-                                            .lightGreen
-                                            : documentSnapshot.get("status") == "In Progress"?AppColors
-                                            .jetBlue
-                                            : documentSnapshot.get("status") == "is Done?"?AppColors
-                                            .yellow
-                                            : documentSnapshot.get("status") == "Completed"?AppColors
-                                            .darkGreen
-                                            :AppColors
-                                            .Colorq,
-                                        fontSize:
-                                        dimension
-                                            .height14,
-                                        fontWeight:
-                                        FontWeight
-                                            .w600),
                                   ),
                                 ),
+                              SizedBox(
+                                height: 10,
                               ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              documentSnapshot.get(
-                                  " serviceName"),
-                              overflow: TextOverflow.ellipsis,
-                              style:
-                              GoogleFonts.poppins(
-                                  color: AppColors
-                                      .Colorq,
-                                  fontSize:
-                                  dimension
-                                      .height18,
-                                  fontWeight:
-                                  FontWeight
-                                      .w500),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            ],
+                              Text(
+                                documentSnapshot.get(
+                                    " serviceName"),
+                                overflow: TextOverflow.ellipsis,
+                                style:
+                                GoogleFonts.poppins(
+                                    color: AppColors
+                                        .Colorq,
+                                    fontSize:
+                                    dimension
+                                        .height18,
+                                    fontWeight:
+                                    FontWeight
+                                        .w500),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              ],
                           )
                           ,
                           )
@@ -251,7 +293,7 @@ class _BookingsState extends State<Bookings> {
                           Container(
                           decoration: BoxDecoration(
                           color: AppColors.Colorq
-                              .withOpacity(0.05),
+                                .withOpacity(0.05),
                           borderRadius:
                           BorderRadius.circular(7),
                           ),
@@ -263,32 +305,32 @@ class _BookingsState extends State<Bookings> {
                           Row(
                           mainAxisAlignment:
                           MainAxisAlignment
-                              .spaceBetween,
+                                .spaceBetween,
                           children: [
                           Text(
                           "Service Charge",
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           Text(
                           "₹${documentSnapshot.get(
                           "totalPrice")}",
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           ],
                           ),
@@ -296,19 +338,19 @@ class _BookingsState extends State<Bookings> {
                           Row(
                           mainAxisAlignment:
                           MainAxisAlignment
-                              .spaceBetween,
+                                .spaceBetween,
                           children: [
                           Text(
                           "Date & Time",
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           Text(
                           "${documentSnapshot.get(
@@ -317,13 +359,13 @@ class _BookingsState extends State<Bookings> {
                           "time")}",
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           ],
                           ),
@@ -331,32 +373,32 @@ class _BookingsState extends State<Bookings> {
                           Row(
                           mainAxisAlignment:
                           MainAxisAlignment
-                              .spaceBetween,
+                                .spaceBetween,
                           children: [
                           Text(
                           "Provider",
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           Text(
                           documentSnapshot.get(" providerName"),
                           // documentSnapshot1?.get("userId"),
                           style: GoogleFonts.poppins(
                           color: AppColors
-                              .Colorq,
+                                .Colorq,
                           fontSize:
                           dimension
-                              .height14,
+                                .height14,
                           fontWeight:
                           FontWeight
-                              .w500),
+                                .w500),
                           ),
                           ],
                           ),
@@ -369,6 +411,7 @@ class _BookingsState extends State<Bookings> {
                           ),
                           ),
                           ),
+                            ),
                           )
                               : SizedBox();
                           // documentSnapshot.get("subcategory")

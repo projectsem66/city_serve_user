@@ -225,7 +225,8 @@ class _LoginState extends State<Login> {
                                 focusedErrorBorder: OutlineInputBorder(
                                   borderSide: BorderSide(color: AppColors.red),
                                   borderRadius: BorderRadius.circular(5.0),
-                                )),
+                                ),
+                            ),
                             validator: (value) {
                               bool emailValid = RegExp(
                                       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -259,11 +260,11 @@ class _LoginState extends State<Login> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
-                              suffixIcon:
-                                  Icon(Icons.password, color: AppColors.Colorq),
+
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "Password",
+
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 17,
@@ -294,7 +295,7 @@ class _LoginState extends State<Login> {
                                 },
                                 child: Icon(spwd
                                     ? Icons.visibility_off
-                                    : Icons.visibility),
+                                    : Icons.visibility,color: AppColors.Colorq,),
                               ),
                             ),
                             validator: (value) {
@@ -385,7 +386,7 @@ class _LoginState extends State<Login> {
                           // Get.to(() => SignUp());
                         },
                         child: Text(
-                          "Sign up",
+                          "Sign Up",
                           style: GoogleFonts.poppins(
                             color: AppColors.Colorq,
                             fontSize: 15,

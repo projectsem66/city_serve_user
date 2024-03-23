@@ -21,9 +21,10 @@ class _TandCState extends State<TandC> {
         centerTitle: false,
         title: Text(
           "Terms and Conditions",
-          style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontWeight: FontWeight.w400),
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)
         ),
       ),
       body: SingleChildScrollView(

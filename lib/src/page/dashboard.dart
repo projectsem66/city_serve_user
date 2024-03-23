@@ -16,7 +16,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
 import '../../btm_controller.dart';
 import '../../servicesList/allServices.dart';
@@ -73,60 +72,61 @@ List newAndNoteworthySC = [
   },
 ];
 
-List mostBookServices = ["56","111",  "160", "110", "127", "33", "166", "161"];
+List mostBookServices = ["56", "111", "160", "110", "127", "33", "166", "161"];
+// List quickHomeRepair = ["56","111",  "160", "110", "127", "33", "166", "161"];
 List quickHomeRepair2 = ["127", "65", "149", "59", "58"];
 
-List quickHomeRepair = [
-  {
-    "name": "Tap Repairs",
-    "image": "assets/dashboard/quickHomeRepairs/1z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Washbasin Pipe Leakage",
-    "image": "assets/dashboard/quickHomeRepairs/2z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Drill & Hang (Wall Decor) ",
-    "image": "assets/dashboard/quickHomeRepairs/3z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Switch / Socket Replacement",
-    "image": "assets/dashboard/quickHomeRepairs/4z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Switchboard / Switchbox Repair",
-    "image": "assets/dashboard/quickHomeRepairs/5z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Jet Spray",
-    "image": "assets/dashboard/quickHomeRepairs/6z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-  {
-    "name": "Drawer Channel Repair",
-    "image": "assets/dashboard/quickHomeRepairs/7z.jpg",
-    "rating": "4.88",
-    "price": "220",
-    "category": "quickHomeRepairs"
-  },
-];
+// List quickHomeRepair = [
+//   {
+//     "name": "Tap Repairs",
+//     "image": "assets/dashboard/quickHomeRepairs/1z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Washbasin Pipe Leakage",
+//     "image": "assets/dashboard/quickHomeRepairs/2z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Drill & Hang (Wall Decor) ",
+//     "image": "assets/dashboard/quickHomeRepairs/3z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Switch / Socket Replacement",
+//     "image": "assets/dashboard/quickHomeRepairs/4z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Switchboard / Switchbox Repair",
+//     "image": "assets/dashboard/quickHomeRepairs/5z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Jet Spray",
+//     "image": "assets/dashboard/quickHomeRepairs/6z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+//   {
+//     "name": "Drawer Channel Repair",
+//     "image": "assets/dashboard/quickHomeRepairs/7z.jpg",
+//     "rating": "4.88",
+//     "price": "220",
+//     "category": "quickHomeRepairs"
+//   },
+// ];
 List cleaningAndPest = [
   {
     "name": "Bathroom & Kitchen Cleaning",
@@ -205,7 +205,6 @@ class _DashboardState extends State<Dashboard> {
     "186",
     // Rejuvenating Eye Treatment
 
-
     "224",
     // bleach
     "160",
@@ -215,7 +214,7 @@ class _DashboardState extends State<Dashboard> {
     "79",
     // fan installation
     "23",
-  //   Anti - Rust Deep Clean Ac Service
+    //   Anti - Rust Deep Clean Ac Service
   ];
   String c1 = "";
   var cnameValue;
@@ -401,7 +400,7 @@ class _DashboardState extends State<Dashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: dimension.height10,
+                    height: dimension.height25,
                   ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -422,8 +421,8 @@ class _DashboardState extends State<Dashboard> {
                             child: Text(
                               "See all",
                               style: GoogleFonts.poppins(
-                                  color: AppColors.Colorq,
-                                  fontSize: dimension.height20,
+                                  color: AppColors.grey,
+                                  fontSize: dimension.height16,
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
@@ -764,15 +763,15 @@ class _DashboardState extends State<Dashboard> {
                                     child: Container(
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
-                                          color:
-                                              AppColors.Colorq.withOpacity(0.1),
+                                          color: AppColors.Colorq.withOpacity(
+                                              0.05),
                                           borderRadius:
                                               BorderRadius.circular(7)),
                                       child: Container(
                                         height: 75,
                                         decoration: BoxDecoration(
                                             color: AppColors.Colorq.withOpacity(
-                                                0.1),
+                                                0.05),
                                             borderRadius:
                                                 BorderRadius.circular(7)),
                                         child: Padding(
@@ -822,14 +821,13 @@ class _DashboardState extends State<Dashboard> {
                           child: CircularProgressIndicator(
                             color: AppColors.Colorq,
                             strokeCap: StrokeCap.round,
-
                           ),
                         );
                       },
                     ),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height20,
                   ),
                   Text(
                     "Most booked service",
@@ -863,21 +861,24 @@ class _DashboardState extends State<Dashboard> {
                               double result = serviceRating / ratingUsers;
                               return mostBookServices
                                       .contains(documentSnapshot.id)
-                                  ? Bounce(
-                                      duration: Duration(milliseconds: 200),
-                                      onPressed: () {
-                                        Get.to(ServiceDescription(
-                                          serviceId: documentSnapshot.id,
-                                        ));
-                                      },
-                                      child: ServiceContainer(
-                                        image: documentSnapshot.get("images"),
-                                        srvName:
-                                            documentSnapshot.get("serviceName"),
-                                        srvRating:
-                                            '${result}(${(ratingUsers.round())})',
-                                        srvPrice:
-                                            "${documentSnapshot.get("servicePrice")}",
+                                  ? Animate(
+                                      effects: [ShimmerEffect()],
+                                      child: Bounce(
+                                        duration: Duration(milliseconds: 200),
+                                        onPressed: () {
+                                          Get.to(ServiceDescription(
+                                            serviceId: documentSnapshot.id,
+                                          ));
+                                        },
+                                        child: ServiceContainer(
+                                          image: documentSnapshot.get("images"),
+                                          srvName: documentSnapshot
+                                              .get("serviceName"),
+                                          srvRating:
+                                              '${result}(${(ratingUsers.round())})',
+                                          srvPrice:
+                                              "${documentSnapshot.get("servicePrice")}",
+                                        ),
                                       ),
                                     )
                                   // documentSnapshot.get("subcategory")
@@ -889,21 +890,18 @@ class _DashboardState extends State<Dashboard> {
                           child: CircularProgressIndicator(
                             color: AppColors.Colorq,
                             strokeCap: StrokeCap.round,
-
                           ),
                         );
                       },
                     ),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height10,
                   ),
                   CarouselSlider.builder(
                     carouselController: CarouselController(),
                     itemCount: 6,
-
                     itemBuilder: (context, index, realIndex) {
-
                       return GestureDetector(
                         onTap: () {
                           Get.to(ServiceDescription(
@@ -911,7 +909,6 @@ class _DashboardState extends State<Dashboard> {
                           ));
                         },
                         child: Container(
-
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(Slider2Images[index]),
@@ -941,7 +938,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height35,
                   ),
                   Text(
                     "New & Noteworthy",
@@ -1134,8 +1131,8 @@ class _DashboardState extends State<Dashboard> {
                             );
                             setState(() {});
                           },
-                          child: Container(
-                            // height: 300,
+                          child: Animate(
+                            effects: [ShimmerEffect()],
                             child: Padding(
                               padding:
                                   EdgeInsets.only(right: dimension.width12),
@@ -1187,9 +1184,7 @@ class _DashboardState extends State<Dashboard> {
                       },
                     ),
                   ),
-                  SizedBox(
-                    height: dimension.height15,
-                  ),
+                  SizedBox(height: dimension.height25),
                   Text(
                     "Cleaning & Pest Control",
                     style: GoogleFonts.poppins(
@@ -1198,10 +1193,10 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
-                    height: dimension.height100 + dimension.height52,
+                    height: dimension.height100 + dimension.height64,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: cleaningAndPest.length,
@@ -1381,39 +1376,55 @@ class _DashboardState extends State<Dashboard> {
                             );
                             setState(() {});
                           },
-                          child: Padding(
-                            padding: EdgeInsets.only(right: dimension.width12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 150,
-                                  child: Text(
-                                    cleaningAndPest[index]['name'],
-                                    style: GoogleFonts.poppins(
-                                        color: AppColors.Colorq,
-                                        fontSize: dimension.height15,
-                                        fontWeight: FontWeight.w500),
+                          child: Animate(
+                            effects: [ShimmerEffect()],
+                            child: Padding(
+                              padding:
+                                  EdgeInsets.only(right: dimension.width12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(
+                                                dimension.height7),
+                                            topLeft: Radius.circular(
+                                                dimension.height7))),
+                                    width: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        cleaningAndPest[index]['name'],
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.poppins(
+
+                                            color: AppColors.Colorq,
+                                            fontSize: dimension.height15,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Container(
-                                  height: dimension.height100,
-                                  width: 140,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.Colorq.withOpacity(0.5),
-                                      borderRadius: BorderRadius.circular(7),
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              cleaningAndPest[index]["image"]),
-                                          fit: BoxFit.fill)),
-                                  // child: Image(
-                                  //   image: AssetImage(mostBook[index]["image"]),
-                                  //   fit: BoxFit.cover,
-                                  // ),
-                                ),
-                              ],
+                                  Container(
+                                    height: dimension.height100,
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            AppColors.Colorq.withOpacity(0.5),
+                                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(dimension.height7),bottomLeft: Radius.circular(dimension.height7)),
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                cleaningAndPest[index]
+                                                    ["image"]),
+                                            fit: BoxFit.fill)),
+                                    // child: Image(
+                                    //   image: AssetImage(mostBook[index]["image"]),
+                                    //   fit: BoxFit.cover,
+                                    // ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -1421,7 +1432,7 @@ class _DashboardState extends State<Dashboard> {
                     ),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   Text(
                     "Quick home repairs",
@@ -1436,7 +1447,7 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: dimension.height100 +
                         dimension.height100 +
-                        dimension.height32,
+                        dimension.height45,
                     child: StreamBuilder(
                       stream: refServices.snapshots(),
                       builder: (context,
@@ -1448,27 +1459,42 @@ class _DashboardState extends State<Dashboard> {
                             itemBuilder: (context, index) {
                               final DocumentSnapshot documentSnapshot =
                                   streamSnapshot.data!.docs[index];
+                              num serviceRating =
+                                  documentSnapshot.get("serviceRating");
+                              num ratingUsers =
+                                  documentSnapshot.get("ratingUsers");
+                              double result = serviceRating / ratingUsers;
                               return quickHomeRepair2
                                       .contains(documentSnapshot.id)
-                                  ? ServiceContainer(
-                                      image: documentSnapshot.get("images"),
-                                      srvName:
-                                          documentSnapshot.get("serviceName"),
-                                      srvRating: documentSnapshot
-                                          .get("ratingUsers")
-                                          .toString(),
-                                      srvPrice:
-                                          documentSnapshot.get("servicePrice"),
+                                  ? Bounce(
+                                      duration: Duration(milliseconds: 200),
+                                      onPressed: () {
+                                        Get.to(ServiceDescription(
+                                          serviceId: documentSnapshot.id,
+                                        ));
+                                      },
+                                      child: Animate(
+                                        effects: [ShimmerEffect()],
+                                        child: ServiceContainer(
+                                          image: documentSnapshot.get("images"),
+                                          srvName: documentSnapshot
+                                              .get("serviceName"),
+                                          srvRating:
+                                              '${result}(${(ratingUsers.round())})',
+                                          srvPrice:
+                                              "${documentSnapshot.get("servicePrice")}",
+                                        ),
+                                      ),
                                     )
+                                  // documentSnapshot.get("subcategory")
                                   : SizedBox();
                             },
                           );
                         }
                         return Center(
-                          child:CircularProgressIndicator(
+                          child: CircularProgressIndicator(
                             color: AppColors.Colorq,
                             strokeCap: StrokeCap.round,
-
                           ),
                         );
                       },
@@ -1485,7 +1511,7 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
                     height: dimension.height100 + dimension.height65,
@@ -1671,9 +1697,12 @@ class _DashboardState extends State<Dashboard> {
                               );
                               setState(() {});
                             },
-                            child: ServiceContainer2(
-                                srvName: acApplianceRepair[index]["name"],
-                                srvImage: acApplianceRepair[index]["image"]),
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: ServiceContainer2(
+                                  srvName: acApplianceRepair[index]["name"],
+                                  srvImage: acApplianceRepair[index]["image"]),
+                            ),
                           );
                         }),
                   ),
@@ -1688,7 +1717,7 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
                     height: dimension.height100 + dimension.height65,
@@ -1702,9 +1731,12 @@ class _DashboardState extends State<Dashboard> {
                               Get.to(ServicesPage());
                             },
                             duration: Duration(milliseconds: 200),
-                            child: ServiceContainer2(
-                                srvName: massageForMen[index]["name"],
-                                srvImage: massageForMen[index]["image"]),
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: ServiceContainer2(
+                                  srvName: massageForMen[index]["name"],
+                                  srvImage: massageForMen[index]["image"]),
+                            ),
                           );
                         }),
                   ),
@@ -1719,7 +1751,7 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
                     height: dimension.height100 + dimension.height65,
@@ -1734,9 +1766,12 @@ class _DashboardState extends State<Dashboard> {
                               Get.to(ServicesPage());
                             },
                             duration: Duration(milliseconds: 200),
-                            child: ServiceContainer2(
-                                srvName: allServices[index]["name"],
-                                srvImage: allServices[index]["image"]),
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: ServiceContainer2(
+                                  srvName: allServices[index]["name"],
+                                  srvImage: allServices[index]["image"]),
+                            ),
                           );
                         } else {
                           return SizedBox();
@@ -1755,7 +1790,7 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
                     height: dimension.height100 + dimension.height65,
@@ -1772,9 +1807,12 @@ class _DashboardState extends State<Dashboard> {
                               );
                             },
                             duration: Duration(milliseconds: 200),
-                            child: ServiceContainer2(
-                                srvName: allServices[index]["name"],
-                                srvImage: allServices[index]["image"]),
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: ServiceContainer2(
+                                  srvName: allServices[index]["name"],
+                                  srvImage: allServices[index]["image"]),
+                            ),
                           );
                         } else {
                           return SizedBox();
@@ -1793,7 +1831,7 @@ class _DashboardState extends State<Dashboard> {
                         fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: dimension.height15,
+                    height: dimension.height25,
                   ),
                   SizedBox(
                     height: dimension.height100 + dimension.height65,
@@ -1810,9 +1848,12 @@ class _DashboardState extends State<Dashboard> {
                               );
                             },
                             duration: Duration(milliseconds: 200),
-                            child: ServiceContainer2(
-                                srvName: allServices[index]["name"],
-                                srvImage: allServices[index]["image"]),
+                            child: Animate(
+                              effects: [ShimmerEffect()],
+                              child: ServiceContainer2(
+                                  srvName: allServices[index]["name"],
+                                  srvImage: allServices[index]["image"]),
+                            ),
                           );
                         } else {
                           return SizedBox();
@@ -1823,547 +1864,10 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
+            SizedBox(height: dimension.height15,),
           ],
         ),
       ),
     );
   }
 }
-// Row(
-//   children: [
-//     Expanded(
-//       child: Padding(
-//         padding: const EdgeInsets.only(right: 5, bottom: 5),
-//         child: Bounce(
-//           duration: Duration(milliseconds: 200),
-//           onPressed: () {
-//             Get.bottomSheet(
-//                 isDismissible: true,
-//                 Column(
-//                   crossAxisAlignment: CrossAxisAlignment.end,
-//                   mainAxisSize: MainAxisSize.min,
-//                   children: [
-//                     Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Bounce(
-//                         duration: Duration(milliseconds: 200),
-//                         onPressed: () {
-//                           Get.back();
-//                         },
-//                         child: Container(
-//                             decoration: BoxDecoration(
-//                               shape: BoxShape.circle,
-//                               color: AppColors.Colorq,
-//                             ),
-//                             child: Icon(Icons.cancel,
-//                                 color: AppColors.white1,
-//                                 size: 30)),
-//                       ),
-//                     ),
-//                     Container(
-//                       height: 291,
-//                       decoration: BoxDecoration(
-//                           color: Colors.white,
-//                           borderRadius: BorderRadius.only(
-//                               topLeft: Radius.circular(10),
-//                               topRight: Radius.circular(10))),
-//                       child: Column(
-//                         crossAxisAlignment:
-//                             CrossAxisAlignment.start,
-//                         children: [
-//                           Padding(
-//                             padding:
-//                                 const EdgeInsets.all(8.0),
-//                             child: Text(
-//                               "Salon for Men",
-//                               style: GoogleFonts.poppins(
-//                                   color: AppColors.Colorq,
-//                                   fontSize: 20,
-//                                   fontWeight:
-//                                       FontWeight.w400),
-//                             ),
-//                           ),
-//                           Container(
-//                             height: 245,
-//                             child: GridView.builder(
-//                               physics:
-//                                   NeverScrollableScrollPhysics(),
-//                               gridDelegate:
-//                                   SliverGridDelegateWithFixedCrossAxisCount(
-//                                       crossAxisCount: 3,
-//                                       childAspectRatio: 1.7),
-//                               itemCount: 2,
-//                               itemBuilder: (context, index) {
-//                                 return Padding(
-//                                   padding:
-//                                       const EdgeInsets.all(
-//                                           8.0),
-//                                   child: Bounce(
-//                                     duration: Duration(
-//                                         milliseconds: 200),
-//                                     onPressed: () {
-//                                       if (index == 0) {
-//                                         mMassage = true;
-//                                         mSalon = false;
-//                                       }
-//                                       if (index == 1) {
-//                                         mSalon = true;
-//                                         mMassage = false;
-//                                       }
-//
-//                                       Get.back();
-//                                       Get.to(ForMen());
-//                                     },
-//                                     child: Container(
-//                                       // height: 40,
-//                                       // width: 80,
-//                                       decoration: BoxDecoration(
-//                                           color: AppColors
-//                                                   .Colorq
-//                                               .withOpacity(
-//                                                   0.5),
-//                                           borderRadius:
-//                                               BorderRadius
-//                                                   .circular(
-//                                                       7)),
-//                                     ),
-//                                   ),
-//                                 );
-//                               },
-//                             ),
-//                           )
-//                         ],
-//                       ),
-//                     ),
-//                   ],
-//                 ));
-//           },
-//           child: Container(
-//             height: 75,
-//             decoration: BoxDecoration(
-//               color: AppColors.Colorq.withOpacity(0.1),
-//               borderRadius: BorderRadius.circular(7),
-//             ),
-//             child: Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Row(
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.only(left: 15),
-//                     child: cnameValue == null
-//                         ? SizedBox()
-//                         : Text(
-//                       cnameValue,
-//                             style: GoogleFonts.poppins(
-//                                 fontSize: 16),
-//                           ),
-//                   ),
-//                   Spacer(),
-//                   Image(
-//                       image: AssetImage(
-//                           "assets/category/category_man.jpg"))
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     ),
-//     Expanded(
-//       child: Padding(
-//         padding: const EdgeInsets.only(left: 5, bottom: 5),
-//         child: Bounce(
-//           duration: Duration(milliseconds: 200),
-//           onPressed: () {
-//             Get.bottomSheet(
-//                 isDismissible: true,
-//                 Column(
-//                   crossAxisAlignment: CrossAxisAlignment.end,
-//                   mainAxisSize: MainAxisSize.min,
-//                   children: [
-//                     Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Bounce(
-//                         duration: Duration(milliseconds: 200),
-//                         onPressed: () {
-//                           Get.back();
-//                         },
-//                         child: Container(
-//                             decoration: BoxDecoration(
-//                               shape: BoxShape.circle,
-//                               color: AppColors.Colorq,
-//                             ),
-//                             child: Icon(Icons.cancel,
-//                                 color: AppColors.white1,
-//                                 size: 30)),
-//                       ),
-//                     ),
-//                     Container(
-//                       height: 291,
-//                       decoration: BoxDecoration(
-//                           color: Colors.white,
-//                           borderRadius: BorderRadius.only(
-//                               topLeft: Radius.circular(10),
-//                               topRight: Radius.circular(10))),
-//                       child: Column(
-//                         crossAxisAlignment:
-//                             CrossAxisAlignment.start,
-//                         children: [
-//                           Padding(
-//                             padding:
-//                                 const EdgeInsets.all(8.0),
-//                             child: Text(
-//                               "Salon for Women",
-//                               style: GoogleFonts.poppins(
-//                                   color: AppColors.Colorq,
-//                                   fontSize: 20,
-//                                   fontWeight:
-//                                       FontWeight.w400),
-//                             ),
-//                           ),
-//                           Container(
-//                             height: 245,
-//                             child: GridView.builder(
-//                               physics:
-//                                   NeverScrollableScrollPhysics(),
-//                               gridDelegate:
-//                                   SliverGridDelegateWithFixedCrossAxisCount(
-//                                       crossAxisCount: 3,
-//                                       childAspectRatio: 1.7),
-//                               itemCount: 3,
-//                               itemBuilder: (context, index) {
-//                                 return Padding(
-//                                   padding:
-//                                       const EdgeInsets.all(
-//                                           8.0),
-//                                   child: Bounce(
-//                                     duration: Duration(
-//                                         milliseconds: 200),
-//                                     onPressed: () {
-//                                       if (index == 0) {
-//                                         wSpa = true;
-//                                         wSalon = false;
-//                                         wStudio = false;
-//                                       }
-//                                       if (index == 1) {
-//                                         wSpa = false;
-//                                         wSalon = true;
-//                                         wStudio = false;
-//                                       }
-//                                       if (index == 2) {
-//                                         wSpa = false;
-//                                         wSalon = false;
-//                                         wStudio = true;
-//                                       }
-//                                       Get.back();
-//                                       Get.to(ForWomen());
-//                                     },
-//                                     child: Container(
-//                                       decoration: BoxDecoration(
-//                                           color: AppColors
-//                                                   .Colorq
-//                                               .withOpacity(
-//                                                   0.5),
-//                                           borderRadius:
-//                                               BorderRadius
-//                                                   .circular(
-//                                                       7)),
-//                                     ),
-//                                   ),
-//                                 );
-//                               },
-//                             ),
-//                           )
-//                         ],
-//                       ),
-//                     ),
-//                   ],
-//                 ));
-//           },
-//           child: Container(
-//             height: 75,
-//             decoration: BoxDecoration(
-//                 color: AppColors.Colorq.withOpacity(0.1),
-//                 borderRadius: BorderRadius.circular(7)),
-//             child: Padding(
-//               padding: const EdgeInsets.all(8.0),
-//               child: Row(
-//                 children: [
-//                   Image(
-//                       image: AssetImage(
-//                           "assets/category/category_women.jpg")),
-//                   Spacer(),
-//                   Padding(
-//                     padding: const EdgeInsets.only(right: 15),
-//                     child: Text(
-//                       "Spa for\nWomen",
-//                       style:
-//                           GoogleFonts.poppins(fontSize: 16),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     ),
-//   ],
-// ),
-// Row(
-//   crossAxisAlignment: CrossAxisAlignment.start,
-//   children: [
-//     Expanded(
-//       child: Padding(
-//         padding: const EdgeInsets.only(
-//             right: 5, bottom: 5, top: 5),
-//         child: Bounce(
-//           duration: Duration(milliseconds: 200),
-//           onPressed: () {
-//             Get.bottomSheet(
-//                 isDismissible: true,
-//                 Column(
-//                   crossAxisAlignment: CrossAxisAlignment.end,
-//                   mainAxisSize: MainAxisSize.min,
-//                   children: [
-//                     Padding(
-//                       padding: const EdgeInsets.all(8.0),
-//                       child: Bounce(
-//                         duration: Duration(milliseconds: 200),
-//                         onPressed: () {
-//                           Get.back();
-//                         },
-//                         child: Container(
-//                             decoration: BoxDecoration(
-//                               shape: BoxShape.circle,
-//                               color: AppColors.Colorq,
-//                             ),
-//                             child: Icon(Icons.cancel,
-//                                 color: AppColors.white1,
-//                                 size: 30)),
-//                       ),
-//                     ),
-//                     Container(
-//                       height: 291,
-//                       decoration: BoxDecoration(
-//                           color: Colors.white,
-//                           borderRadius: BorderRadius.only(
-//                               topLeft: Radius.circular(10),
-//                               topRight: Radius.circular(10))),
-//                       child: Column(
-//                         crossAxisAlignment:
-//                             CrossAxisAlignment.start,
-//                         children: [
-//                           Padding(
-//                             padding:
-//                                 const EdgeInsets.all(8.0),
-//                             child: Text(
-//                               "Cleaning",
-//                               style: GoogleFonts.poppins(
-//                                   color: AppColors.Colorq,
-//                                   fontSize: 20,
-//                                   fontWeight:
-//                                       FontWeight.w400),
-//                             ),
-//                           ),
-//                           Container(
-//                             height: 245,
-//                             child: GridView.builder(
-//                               physics:
-//                                   NeverScrollableScrollPhysics(),
-//                               gridDelegate:
-//                                   SliverGridDelegateWithFixedCrossAxisCount(
-//                                       crossAxisCount: 3,
-//                                       childAspectRatio: 1.7),
-//                               itemCount: 8,
-//                               itemBuilder: (context, index) {
-//                                 return Padding(
-//                                   padding:
-//                                       const EdgeInsets.all(
-//                                           8.0),
-//                                   child: Container(
-//                                     // height: 40,
-//                                     // width: 80,
-//                                     decoration: BoxDecoration(
-//                                         color: AppColors
-//                                                 .Colorq
-//                                             .withOpacity(0.5),
-//                                         borderRadius:
-//                                             BorderRadius
-//                                                 .circular(7)),
-//                                   ),
-//                                 );
-//                               },
-//                             ),
-//                           )
-//                         ],
-//                       ),
-//                     ),
-//                   ],
-//                 ));
-//           },
-//           child: Column(
-//             children: [
-//               Container(
-//                 height: 75,
-//                 width: double.maxFinite,
-//                 child: Image(
-//                     image: AssetImage(
-//                         "assets/category/category_plumber.jpg")),
-//                 decoration: BoxDecoration(
-//                     color: AppColors.Colorq.withOpacity(0.1),
-//                     borderRadius: BorderRadius.circular(7)),
-//               ),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Text(
-//                 "Cleaning",
-//                 style: GoogleFonts.poppins(
-//                     color: AppColors.Colorq,
-//                     fontSize: 16,
-//                     fontWeight: FontWeight.w400),
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//     Expanded(
-//       child: Padding(
-//         padding: const EdgeInsets.only(
-//             left: 5, bottom: 5, right: 5, top: 5),
-//         child: Bounce(
-//           duration: Duration(milliseconds: 200),
-//           onPressed: () {
-//             Get.bottomSheet(
-//                 isDismissible: true,
-//                 Container(
-//                   height: 285,
-//                   decoration: BoxDecoration(
-//                       color: Colors.white,
-//                       borderRadius: BorderRadius.only(
-//                           topLeft: Radius.circular(10),
-//                           topRight: Radius.circular(10))),
-//                   child: Column(
-//                     crossAxisAlignment:
-//                         CrossAxisAlignment.start,
-//                     children: [
-//                       Padding(
-//                         padding: const EdgeInsets.all(8.0),
-//                         child: Text(
-//                           "Electrician, Plumber & Carpenters",
-//                           style: GoogleFonts.poppins(
-//                               color: AppColors.Colorq,
-//                               fontSize: 20,
-//                               fontWeight: FontWeight.w300),
-//                         ),
-//                       ),
-//                       Container(
-//                         height: 245,
-//                         child: GridView.builder(
-//                           physics:
-//                               NeverScrollableScrollPhysics(),
-//                           gridDelegate:
-//                               SliverGridDelegateWithFixedCrossAxisCount(
-//                                   crossAxisCount: 3,
-//                                   childAspectRatio: 1.7),
-//                           itemCount: 8,
-//                           itemBuilder: (context, index) {
-//                             return Padding(
-//                               padding:
-//                                   const EdgeInsets.all(8.0),
-//                               child: Column(
-//                                 children: [
-//                                   Container(
-//                                     // height: 40,
-//                                     // width: 80,
-//                                     decoration: BoxDecoration(
-//                                         color: AppColors
-//                                                 .Colorq
-//                                             .withOpacity(0.5),
-//                                         borderRadius:
-//                                             BorderRadius
-//                                                 .circular(7)),
-//                                   ),
-//                                 ],
-//                               ),
-//                             );
-//                           },
-//                         ),
-//                       )
-//                     ],
-//                   ),
-//                 ));
-//           },
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: [
-//               Container(
-//                 height: 75,
-//                 width: double.maxFinite,
-//                 decoration: BoxDecoration(
-//                     color: AppColors.Colorq.withOpacity(0.1),
-//                     borderRadius: BorderRadius.circular(7)),
-//                 child: Image(
-//                   image: AssetImage(
-//                       "assets/category/category_acc1.png"),
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Text(
-//                 "Appliance\n    Repair",
-//                 style: GoogleFonts.poppins(
-//                     color: AppColors.Colorq,
-//                     fontSize: 16,
-//                     fontWeight: FontWeight.w400),
-//               )
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//     Expanded(
-//       child: Padding(
-//         padding:
-//             const EdgeInsets.only(left: 5, bottom: 5, top: 5),
-//         child: Bounce(
-//           duration: Duration(milliseconds: 200),
-//           onPressed: () {
-//             Get.to(Categoryy());
-//           },
-//           child: Column(
-//             children: [
-//               Container(
-//                 height: 75,
-//                 width: double.maxFinite,
-//                 child: Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Center(
-//                     child: Text(
-//                       "View all",
-//                       style: GoogleFonts.poppins(
-//                           decoration:
-//                               TextDecoration.underline,
-//                           color: AppColors.Colorq,
-//                           fontSize: 16,
-//                           fontWeight: FontWeight.w500),
-//                     ),
-//                   ),
-//                 ),
-//                 decoration: BoxDecoration(
-//                     // color: AppColors.Colorq.withOpacity(0.1),
-//                     borderRadius: BorderRadius.circular(7)),
-//               ),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//   ],
-// ),

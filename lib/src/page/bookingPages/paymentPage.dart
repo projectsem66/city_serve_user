@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounce/flutter_bounce.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 import '../../../firebaseService/fbRefrences.dart';
@@ -70,6 +71,12 @@ class _PaymentPageState extends State<PaymentPage> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     print("Payment Successful: ${response.paymentId}");
+    FirebaseFirestore.instance
+        .collection('bookingg')
+        .doc(bookingId)
+        .update({"status": "Paid"});
+    Get.offAll(Bookings());
+
     // Add your logic for successful payment here
   }
 
@@ -81,13 +88,10 @@ class _PaymentPageState extends State<PaymentPage> {
   void _startPayment() async {
     var options = {
       'key': 'rzp_test_j268DTf9wvugT9',
-      // Replace with your Razorpay API key
-      'amount': 1000,
-      // Amount in the smallest currency unit (e.g., paisa for INR)
+      'amount': paymentAmount*100,
       'timeout': 180,
-      // Timeout in seconds
       'currency': 'INR',
-      'name': 'Aniket Pandav',
+      'name': 'City Serve',
       'description': 'Payment for the service',
       'prefill': {'contact': '7016199407', 'email': 'aniketpandav0711@gmail.com'},
       'external': {
@@ -116,7 +120,11 @@ class _PaymentPageState extends State<PaymentPage> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Payment"),
+        title: Text("Payment",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -430,13 +438,39 @@ class _PaymentPageState extends State<PaymentPage> {
                 providerUPIid = getProviderUPIref?.get("upiId");
                 print("upi----------${providerUPIid}");
                 btnState == 1
-                    ? FirebaseFirestore.instance
-                        .collection('bookingg')
-                        .doc(bookingId)
-                        .update({"status": "Paid"})
-                    : "";
-                btnState == 1
-                    ? Get.off(NavigationBarr())
+                    ? {
+                        FirebaseFirestore.instance
+                            .collection('bookingg')
+                            .doc(bookingId)
+                            .update({"status": "Paid"}),
+                showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                return AlertDialog(
+                content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                Text(
+                'Payment Done',
+                style: GoogleFonts.poppins(
+                color: AppColors.Colorq,
+                fontSize: dimension.height18,
+                fontWeight: FontWeight.w500),
+                ),
+                Lottie.asset("assets/lottie/Done.json"),
+                ],
+                ),
+                );
+                },
+                ),
+                Future.delayed(Duration(seconds: 3), () {
+                  Get.to(Bookings());
+
+                  setState(() {
+                  });
+                })
+                      }
                     : btnState == 2
                         ? Get.to(UpiPage())
                         : btnState == 3

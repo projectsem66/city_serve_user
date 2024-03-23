@@ -126,7 +126,11 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
             child: Icon(Icons.arrow_back)),
         backgroundColor: AppColors.Colorq,
         centerTitle: false,
-        title: Text("Confirm Booking"),
+        title: Text("Confirm Booking",
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

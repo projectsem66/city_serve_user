@@ -58,10 +58,11 @@ class _CategoryyState extends State<Categoryy> {
         centerTitle: false,
         title: Text(
           "Category",
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)
+
         ),
       ),
       body: Padding(

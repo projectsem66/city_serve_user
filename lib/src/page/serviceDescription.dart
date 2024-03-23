@@ -358,6 +358,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                 child: Container(
                                   height: dimension.height100 * 1.69,
                                   decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(color: AppColors.grey.withOpacity(0.7),blurRadius: 7,spreadRadius:1)
+                                    ],
                                     borderRadius: BorderRadius.circular(
                                         dimension.height7),
                                     border: Border.all(color: AppColors.Colorq),
@@ -392,7 +395,10 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                           height: dimension.height4,
                                         ),
                                         Text(
-                                          serviceDetailsSS!.get("servicePrice"),
+                                          "₹${
+                                            serviceDetailsSS!
+                                                .get("servicePrice")
+                                          }",
                                           overflow: TextOverflow.ellipsis,
                                           style: GoogleFonts.poppins(
                                               color: AppColors.Colorq,
@@ -466,7 +472,7 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                         height: dimension.height10,
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(12.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -477,6 +483,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                                   color: AppColors.Colorq,
                                   fontSize: dimension.height18,
                                   fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              height: dimension.height10,
                             ),
                             Text(
                               serviceDetailsSS!.get("serviceDescription"),
@@ -499,98 +508,89 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                             SizedBox(
                               height: dimension.height10,
                             ),
-                            Bounce(
-                              duration: Duration(milliseconds: 200),
-                              onPressed: () {
-                                getProviderDetails();
-                                Send_mail();
-                                // sendEmail(templateParams);
-                                // sendEmail1(templateParams);
-                                setState(() {});
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.circular(dimension.height7),
-                                  color: AppColors.Colorq.withOpacity(0.1),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(10.0),
-                                  child: Row(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Container(
-                                            height: dimension.height70,
-                                            width: dimension.height70,
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.circular(dimension.height7),
+                                color: AppColors.Colorq.withOpacity(0.1),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Row(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          height: dimension.height70,
+                                          width: dimension.height70,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      serviceDetailsSS!.get(
+                                                          "providerImage")),
+                                                  fit: BoxFit.cover),
+                                              shape: BoxShape.circle,
+                                              color: AppColors.Colorq),
+                                        ),
+                                        SizedBox(
+                                          width: dimension.height15,
+                                        ),
+                                        Container(
+                                          width: dimension.height100 * 1.9,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                serviceDetailsSS!.get(
+                                                        "providerName") ??
+                                                    "hello",
+                                                // myObject?.property ?? 'Default Value'
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize:
+                                                        dimension.height20,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                              Text(
+                                                serviceDetailsSS!.get(
+                                                        "providerPhoneNumber") ??
+                                                    "hello",
+                                                // myObject?.property ?? 'Default Value'
+                                                style: GoogleFonts.poppins(
+                                                    color: AppColors.Colorq,
+                                                    fontSize:
+                                                        dimension.height20,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+
+                                        Bounce(
+                                          onPressed: () {
+                                            // phoneNumber = documentSnapshot!.get("providerPhoneNumber");
+                                            callProviderNumber(
+                                                serviceDetailsSS!.get(
+                                                    "providerPhoneNumber"));
+                                          },
+                                          duration:
+                                              Duration(milliseconds: 200),
+                                          child: Container(
+                                            height: dimension.height40,
+                                            width: dimension.height40,
                                             decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: NetworkImage(
-                                                        serviceDetailsSS!.get(
-                                                            "providerImage")),
-                                                    fit: BoxFit.cover),
-                                                shape: BoxShape.circle,
-                                                color: AppColors.Colorq),
+                                                color: AppColors.Colorq
+                                                    .withOpacity(0.3),
+                                                shape: BoxShape.circle),
+                                            child: Icon(Icons.call),
                                           ),
-                                          SizedBox(
-                                            width: dimension.height15,
-                                          ),
-                                          Container(
-                                            width: dimension.height100 * 2,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  serviceDetailsSS!.get(
-                                                          "providerName") ??
-                                                      "hello",
-                                                  // myObject?.property ?? 'Default Value'
-                                                  style: GoogleFonts.poppins(
-                                                      color: AppColors.Colorq,
-                                                      fontSize:
-                                                          dimension.height20,
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                                ),
-                                                Text(
-                                                  serviceDetailsSS!.get(
-                                                          "providerPhoneNumber") ??
-                                                      "hello",
-                                                  // myObject?.property ?? 'Default Value'
-                                                  style: GoogleFonts.poppins(
-                                                      color: AppColors.Colorq,
-                                                      fontSize:
-                                                          dimension.height20,
-                                                      fontWeight:
-                                                          FontWeight.w500),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Bounce(
-                                            onPressed: () {
-                                              // phoneNumber = documentSnapshot!.get("providerPhoneNumber");
-                                              callProviderNumber(
-                                                  serviceDetailsSS!.get(
-                                                      "providerPhoneNumber"));
-                                            },
-                                            duration:
-                                                Duration(milliseconds: 200),
-                                            child: Container(
-                                              height: dimension.height40,
-                                              width: dimension.height40,
-                                              decoration: BoxDecoration(
-                                                  color: AppColors.Colorq
-                                                      .withOpacity(0.3),
-                                                  shape: BoxShape.circle),
-                                              child: Icon(Icons.call),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ),
                               ),
                             ),
@@ -632,6 +632,9 @@ class _ServiceDescriptionState extends State<ServiceDescription> {
                         height: dimension.height50,
                         width: double.maxFinite,
                         decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(color: AppColors.grey,blurRadius: 10,spreadRadius:1)
+                          ],
                             color: AppColors.Colorq,
                             border: Border.all(color: Colors.white),
                             borderRadius:

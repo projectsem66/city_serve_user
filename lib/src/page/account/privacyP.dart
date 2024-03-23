@@ -20,8 +20,10 @@ class _PrivacyPState extends State<PrivacyP> {
         centerTitle: false,
         title: Text(
           "Privacy Policy",
-          style: GoogleFonts.poppins(
-              color: Colors.white, fontWeight: FontWeight.w400),
+            style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: dimension.height22,
+                fontWeight: FontWeight.w400)
         ),
       ),
       body: SingleChildScrollView(

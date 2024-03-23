@@ -67,7 +67,7 @@ class _WSpaState extends State<WSpa> {
         Padding(
           padding: const EdgeInsets.only(left: 15),
           child: Text(
-            "★  4.83",
+            "★  4.13",
             style: GoogleFonts.poppins(
                 color: AppColors.Colorq,
                 fontSize: dimension.height16,
@@ -95,7 +95,7 @@ class _WSpaState extends State<WSpa> {
               if (streamSnapshot.hasData) {
                 return GridView.builder(
                   itemCount: streamSnapshot.data!.docs.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.92
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 0.80
                     // Number of columns
                   ),
                   itemBuilder: (context, index) {
@@ -113,12 +113,15 @@ class _WSpaState extends State<WSpa> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                                height: 70,
-                                width: 70,
+                                height: 80,
+                                width: 80,
                                 decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+
                                   borderRadius: BorderRadius.circular(dimension.height7),
                                   image: DecorationImage(image: NetworkImage(documentSnapshot['simage'].toString()), fit: BoxFit.cover),
                                 )),
+                            SizedBox(height: dimension.height5,),
                             Container(
                               height: dimension.height45,
                               child: Padding(

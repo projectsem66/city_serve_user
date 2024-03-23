@@ -78,7 +78,7 @@ class _WSalonState extends State<WSalon> {
         Padding(
           padding: const EdgeInsets.only(left: 15),
           child: Text(
-            "★  4.83",
+            "★  4.52",
             style: GoogleFonts.poppins(
                 color: AppColors.Colorq,
                 fontSize: dimension.height16,
@@ -106,7 +106,7 @@ class _WSalonState extends State<WSalon> {
                 return GridView.builder(
                   itemCount: streamSnapshot.data!.docs.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, childAspectRatio: 0.92
+                      crossAxisCount: 3, childAspectRatio: 0.80
                       // Number of columns
                       ),
                   itemBuilder: (context, index) {
@@ -125,9 +125,11 @@ class _WSalonState extends State<WSalon> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                                height: 70,
-                                width: 70,
+                                height: 80,
+                                width: 80,
                                 decoration: BoxDecoration(
+                                  color: AppColors.Colorq.withOpacity(0.5),
+
                                   borderRadius:
                                       BorderRadius.circular(dimension.height7),
                                   image: DecorationImage(
@@ -136,6 +138,7 @@ class _WSalonState extends State<WSalon> {
                                               .toString()),
                                       fit: BoxFit.cover),
                                 )),
+                            SizedBox(height: dimension.height5,),
                             Container(
                               height: dimension.height45,
                               child: Padding(
