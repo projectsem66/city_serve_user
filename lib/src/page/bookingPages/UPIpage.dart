@@ -1,3 +1,4 @@
+import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/src/page/bookingPages/paymentPage.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -135,6 +136,7 @@ class _UpiPageState extends State<UpiPage> {
             .collection('bookingg')
             .doc(bookingId)
             .update({"status": "Paid"});
+        Get.to(NavigationBarr());
         break;
       case UpiPaymentStatus.SUBMITTED:
         print('Transaction Submitted');

@@ -152,7 +152,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
               SizedBox(
                 height: 25,
               ),
-              RoundButton(title: "Login",
+              RoundButton(title: "Send OTP",
                 loding: loading,
                 onTap: () {
                   authMoNo = phoneNumberController.text.toString();

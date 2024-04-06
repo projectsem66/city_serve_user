@@ -204,7 +204,7 @@ class _GoogleLocationState extends State<GoogleLocation> {
                       cursorColor: Colors.black,
                       style: TextStyle(
                         fontSize: 18,
-                        color: Colors.black,
+                        color: AppColors.Colorq,
                       ),
                       // controller: passwordController,
                       keyboardType: TextInputType.text,
@@ -235,7 +235,7 @@ class _GoogleLocationState extends State<GoogleLocation> {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Enter Password';
+                          return 'Enter Address';
                         }
                         return null;
                       },

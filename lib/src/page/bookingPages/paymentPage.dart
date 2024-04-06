@@ -75,7 +75,7 @@ class _PaymentPageState extends State<PaymentPage> {
         .collection('bookingg')
         .doc(bookingId)
         .update({"status": "Paid"});
-    Get.offAll(Bookings());
+    Get.to(NavigationBarr());
 
     // Add your logic for successful payment here
   }
@@ -465,7 +465,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 },
                 ),
                 Future.delayed(Duration(seconds: 3), () {
-                  Get.to(Bookings());
+                  Get.off(NavigationBarr());
 
                   setState(() {
                   });

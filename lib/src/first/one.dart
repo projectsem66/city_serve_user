@@ -43,7 +43,7 @@ class _OnePageState extends State<OnePage> {
                        //   color: AppColors.Colorq.withOpacity(0.6),
                        // ),
                        Text(
-                         "Welcome to CityServe service",
+                         "Welcome to City Serve service",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: dimension.height24,
@@ -53,7 +53,7 @@ class _OnePageState extends State<OnePage> {
                          height: dimension.height18,
                        ),
                        Text(
-                         "CityServe service is on-demand home service app with complete solution",
+                         "City Serve service is on-demand home service app with complete solution",
                          style: GoogleFonts.poppins(
                              color: AppColors.Colorq,
                              fontSize: dimension.height15 ,

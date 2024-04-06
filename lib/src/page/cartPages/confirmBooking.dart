@@ -169,7 +169,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
               ),
               Container(
                 // color: Colors.yellowAccent,
-                height: screenheight() - dimension.height100 * 2.6,
+                height: screenheight() - dimension.height100 * 2.66,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -328,6 +328,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                       ),
                     ],
                   ),
+                  SizedBox(height: dimension.height5,),
                   Row(
                     children: [
                       Icon(

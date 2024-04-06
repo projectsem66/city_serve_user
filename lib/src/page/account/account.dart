@@ -304,7 +304,7 @@ class _AccountState extends State<Account> {
                       buttonColor: AppColors.Colorq,
                       backgroundColor: Colors.white,
                       cancelTextColor: AppColors.Colorq,
-                      titleStyle: GoogleFonts.amaranth(
+                      titleStyle: GoogleFonts.poppins(
                           fontSize: 28, color: AppColors.Colorq),
                       titlePadding: EdgeInsets.all(10),
                       title: "Log Out",

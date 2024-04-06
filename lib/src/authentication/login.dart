@@ -189,7 +189,7 @@ class _LoginState extends State<Login> {
                             cursorColor: Colors.black,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
+                              color: AppColors.Colorq,
                             ),
                             onChanged: (value) {
                               setState(() {});
@@ -248,23 +248,36 @@ class _LoginState extends State<Login> {
                               color: AppColors.Colorq.withOpacity(0.05),
                               borderRadius: BorderRadius.circular(7)),
                           child: TextFormField(
+
                             controller: passwordController,
                             keyboardType: TextInputType.text,
                             obscureText: spwd,
                             cursorColor: Colors.black,
                             style: const TextStyle(
                               fontSize: 18,
-                              color: Colors.black,
+                              color: AppColors.Colorq,
                             ),
                             onChanged: (value) {
                               setState(() {});
                             },
                             decoration: InputDecoration(
+                              suffix: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    spwd = !spwd;
+                                  });
+                                },
+                                child: Padding(
+                                  padding:  EdgeInsets.only(right: dimension.height7),
+                                  child: Icon(spwd
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,color: AppColors.Colorq,),
+                                ),
+                              ),
 
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "Password",
-
                               labelStyle: GoogleFonts.poppins(
                                   color: AppColors.Colorq,
                                   fontSize: 17,
@@ -287,17 +300,9 @@ class _LoginState extends State<Login> {
                                 borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              suffix: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    spwd = !spwd;
-                                  });
-                                },
-                                child: Icon(spwd
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,color: AppColors.Colorq,),
-                              ),
+
                             ),
+
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'Enter Password';
@@ -413,10 +418,9 @@ class _LoginState extends State<Login> {
                       Expanded(
                         flex: 8,
                         child: Center(
-                          child: Bounce(
-                            duration: Duration(milliseconds: 200),
-                            onPressed: () {
-                              Get.to(GoogleLocation());
+                          child: InkWell(
+                            onLongPress: () {
+                              Get.offAll(GoogleLocation());
                             },
                             child: Text(
                               "Or Continue With",

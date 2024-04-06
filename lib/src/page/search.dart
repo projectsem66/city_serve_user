@@ -16,7 +16,6 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
- 
 
   String searchtxt = "";
 
@@ -100,11 +99,13 @@ class _SearchScreenState extends State<SearchScreen> {
                           return Bounce(
                             duration: Duration(milliseconds: 200),
                             onPressed: () {
-                              Get.to(ServiceDescription(serviceId: document.id));
+                              Get.to(
+                                  ServiceDescription(serviceId: document.id));
                             },
                             child: ListTile(
                               title: Text(document['serviceName']),
-                              subtitle: Text("${document['subcategory']} > ${document['section']}"),
+                              subtitle: Text(
+                                  "${document['subcategory']} > ${document['section']}"),
                               // Other UI components...
                             ),
                           );

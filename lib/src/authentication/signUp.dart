@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:city_serve/src/location/googleLocation.dart';
-import 'package:city_serve/navigationBar.dart';
 import 'package:city_serve/utils/dimension.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,6 +21,7 @@ class SignUp extends StatefulWidget {
   @override
   State<SignUp> createState() => _SignUpState();
 }
+
 class _SignUpState extends State<SignUp> {
   File? pickedImage;
   bool spwd = true;
@@ -43,8 +43,7 @@ class _SignUpState extends State<SignUp> {
             email: _emailcon.text.toString(),
             password: _passwordcon.text.toString())
         .then((value) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => GoogleLocation()));
+      Get.offAll(GoogleLocation());
       setState(() {
         loading = false;
       });
@@ -125,7 +124,10 @@ class _SignUpState extends State<SignUp> {
         .putFile(pickedImage!, SettableMetadata(contentType: 'image/jpeg'));
     TaskSnapshot taskSnapshot = await uploadtask;
     String url = await taskSnapshot.ref.getDownloadURL();
-    FirebaseFirestore.instance.collection("userDetails").doc(_auth.currentUser?.uid).set({
+    FirebaseFirestore.instance
+        .collection("userDetails")
+        .doc(_auth.currentUser?.uid)
+        .set({
       "fname": _fnamecon.text.toString(),
       "uimage": url,
       "lname": _lnamecon.text.toString(),
@@ -166,7 +168,10 @@ class _SignUpState extends State<SignUp> {
                               height: dimension.height60 * 2,
                               width: dimension.height60 * 2,
                               child: Center(
-                                child: Icon(Icons.person,color: AppColors.Colorq.withOpacity(0.8),),
+                                child: Icon(
+                                  Icons.person,
+                                  color: AppColors.Colorq.withOpacity(0.8),
+                                ),
                               ),
                               decoration: BoxDecoration(
                                   image: DecorationImage(
@@ -178,11 +183,13 @@ class _SignUpState extends State<SignUp> {
                           : Container(
                               height: dimension.height60 * 2,
                               width: dimension.height60 * 2,
+                              child: Center(
+                                child: Icon(
+                                  Icons.person,
+                                  color: AppColors.Colorq,
+                                ),
+                              ),
                               decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image:
-                                          AssetImage("images/addCategoryy.png"),
-                                      fit: BoxFit.cover),
                                   shape: BoxShape.circle,
                                   color: AppColors.Colorq.withOpacity(0.05)),
                             ),
@@ -240,6 +247,10 @@ class _SignUpState extends State<SignUp> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.person,
+                                color: AppColors.Colorq,
+                              ),
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "First Name",
@@ -252,9 +263,17 @@ class _SignUpState extends State<SignUp> {
                                 borderSide: BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -285,6 +304,10 @@ class _SignUpState extends State<SignUp> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.person,
+                                color: AppColors.Colorq,
+                              ),
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "Last Name",
@@ -297,9 +320,17 @@ class _SignUpState extends State<SignUp> {
                                 borderSide: BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -330,6 +361,10 @@ class _SignUpState extends State<SignUp> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.email_outlined,
+                                color: AppColors.Colorq,
+                              ),
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "Email Address",
@@ -342,9 +377,17 @@ class _SignUpState extends State<SignUp> {
                                 borderSide: BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),
@@ -380,6 +423,10 @@ class _SignUpState extends State<SignUp> {
                               setState(() {});
                             },
                             decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.call,
+                                color: AppColors.Colorq,
+                              ),
                               floatingLabelBehavior:
                                   FloatingLabelBehavior.always,
                               labelText: "Mobile Number",
@@ -392,15 +439,25 @@ class _SignUpState extends State<SignUp> {
                                 borderSide: BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                             ),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Enter Mobile Number';
+                                return 'Enter Phone Number';
+                              } else if (value.length != 10) {
+                                return 'Mobile Number must be of 10 digit';
                               }
                               return null;
                             },
@@ -438,9 +495,17 @@ class _SignUpState extends State<SignUp> {
                                 borderSide: BorderSide(color: AppColors.Colorq),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.red),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                               suffix: InkWell(
@@ -449,9 +514,13 @@ class _SignUpState extends State<SignUp> {
                                     spwd = !spwd;
                                   });
                                 },
-                                child: Icon(spwd
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
+                                child: Padding(
+                                  padding:
+                                      EdgeInsets.only(right: dimension.height7),
+                                  child: Icon(spwd
+                                      ? Icons.visibility_off
+                                      : Icons.visibility),
+                                ),
                               ),
                             ),
                             validator: (value) {

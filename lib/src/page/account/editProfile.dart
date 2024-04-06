@@ -559,3 +559,18 @@ class _EditProfileState extends State<EditProfile> {
     }
   }
 }
+// void updateDocuments() {
+//   FirebaseFirestore.instance
+//       .collection('providerServiceDetails')
+//       .where('providerPhoneNumber', isEqualTo: ..............................)
+//       .get()
+//       .then((querySnapshot) {
+//     querySnapshot.docs.forEach((doc) {
+//       // Update the document
+//       FirebaseFirestore.instance
+//           .collection('serviceDetails')
+//           .doc(doc.id)
+//           .update({'providerPhoneNumber': ............................});
+//     });
+//   });
+// }
